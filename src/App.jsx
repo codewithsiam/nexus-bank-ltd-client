@@ -3,8 +3,8 @@
 const App = () => {
   return (
     <div>
-      set up start , make manikdev branch
-      checking branch set up -- refat
+      set up start
+      <h1>Shuvo</h1>
     </div>
   );
 };
