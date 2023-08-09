@@ -3,10 +3,9 @@
 const App = () => {
   return (
     <div>
-      set up start , make manikdev branch
-      checking branch set up -- refat
-
-      siam - development branch
+      set up start
+      <h1>Shuvo manik vai</h1>
+      <h1>siam</h1>
     </div>
   );
 };
