@@ -5,9 +5,7 @@ const App = () => {
     <div>
       set up start
       <h1>Shuvo manik vai</h1>
-      <h1>siam</h1>
-      <h1>siam</h1>
-      <h1>siam33</h1>
+      <p>ifksjkdfjskdjfksjdfk</p>
     </div>
   );
 };
