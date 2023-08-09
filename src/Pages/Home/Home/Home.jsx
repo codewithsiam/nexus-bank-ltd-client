@@ -1,11 +1,9 @@
-
+import React from 'react';
 
 const Home = () => {
     return (
         <div>
-this is home page
-            
-            my name is siam
+            siam
         </div>
     );
 };
