@@ -1,4 +1,5 @@
-import WhyChooseUs from "../WhyChooseUs";
+import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
+
 
 
 const Home = () => {
