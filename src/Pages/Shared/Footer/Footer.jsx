@@ -67,7 +67,7 @@ const Footer = () => {
                 {/* bottom */}
                 <div className='mt-11 py-5 border-y-0 text-center'>
                     <hr className='mb-11' />
-                    <p className='text-[#323655]'>&copy; Copyright <span className="text-[#1A4DBE]">Nexus Bank LTD</span></p>
+                    <p className='text-[#323655]'>&copy; Copyright <span className="text-[#1A4DBE]">Nexus Bank LTD Team WEB WIZARDS</span></p>
                 </div>
             </div>
         </div>
