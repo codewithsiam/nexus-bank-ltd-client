@@ -21,19 +21,21 @@ const WhyChooseUs = () => {
   ]
 
   return (
-    <section className="py-12 bg-gradient-to-r from-blue-200 to-blue-500">
-      <div className="container mx-auto">
-        <h2 className="text-4xl font-extrabold text-center text-white mb-8">
-          Why Choose Us
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="py-12 pb-40 bg-gray-100 px-3">
+      <div className="py-12 bg-gradient-to-r from-blue-200 to-blue-500">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-extrabold text-center text-white mb-8">
+            Why Choose Us
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
-          {
-            datas?.map((data, index) =>
+            {
+              datas?.map((data, index) =>
                 <CardWhyChooseUs key={index} data={data}></CardWhyChooseUs>
-            )
-          }
+              )
+            }
 
+          </div>
         </div>
       </div>
     </section>
