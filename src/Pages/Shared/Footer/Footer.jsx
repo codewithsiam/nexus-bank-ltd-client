@@ -63,6 +63,7 @@ const Footer = () => {
                     {/* subscribe */}
                     <Subscribe />
                 </div>
+
                 {/* bottom */}
                 <div className='mt-11 py-5 border-y-0 text-center'>
                     <hr className='mb-11' />
