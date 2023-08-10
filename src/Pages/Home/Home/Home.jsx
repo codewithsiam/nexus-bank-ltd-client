@@ -1,10 +1,11 @@
+import WhyChooseUs from "./WhyChooseUs";
 
 
 const Home = () => {
     return (
         <div>
-this is home page
-            development 
+            
+            <WhyChooseUs></WhyChooseUs>
         </div>
     );
 };
