@@ -1,6 +1,4 @@
-import React from 'react';
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
-
 
 const Home = () => {
     return (
