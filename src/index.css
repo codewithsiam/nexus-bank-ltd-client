@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* styles for navbar  */
+
+.nav-left{
+    clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
+    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
+}
+.nav-btn{
+    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
+}
