@@ -70,7 +70,10 @@ const Footer = () => {
                     <p className='text-[#323655]'>&copy; Copyright <span className="text-[#1A4DBE]">Nexus Bank LTD Team WEB WIZARDS</span></p>
                 </div>
             </div>
+        <div></div>
         </div>
+
+
     );
 };
 
