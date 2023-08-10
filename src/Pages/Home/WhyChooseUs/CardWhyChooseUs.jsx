@@ -15,9 +15,7 @@ const CardWhyChooseUs = ({ data }) => {
                 </svg>
             </div>
             <h3 className="text-2xl font-semibold mb-2 text-gray-800">{data?.title}</h3>
-            <p className="text-gray-600">
-             {data?.details}
-            </p>
+            <p className="text-gray-600">{data?.details}</p>
         </div>
     );
 };
