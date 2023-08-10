@@ -3,7 +3,8 @@
 const Footer = () => {
     return (
         <div>
-            This is footer
+            Copyright © Nexus Bank | Designed by Web Wizards
+            <p>this is footer</p>
         </div>
     );
 };

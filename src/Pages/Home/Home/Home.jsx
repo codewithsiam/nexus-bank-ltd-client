@@ -1,11 +1,10 @@
-import React from 'react';
+import React from 'react';import WhyChooseUs from "./WhyChooseUs";
+
 
 const Home = () => {
     return (
         <div>
-            siam
-            <h1>This is home</h1>
-            2222
+            <WhyChooseUs></WhyChooseUs>
         </div>
     );
 };
