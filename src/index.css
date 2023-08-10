@@ -2,9 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 
 /* styles for navbar  */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
 .nav-left{
     clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
@@ -13,11 +18,3 @@
 .nav-btn{
     background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
 }
-=======
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
->>>>>>> 75e0ceddfd5599949e9c8a9860cf9bdec5fe3b98
