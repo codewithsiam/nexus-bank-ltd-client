@@ -1,6 +1,5 @@
 import { FaPhone, FaSistrix } from "react-icons/fa";
 
-
 const ButtomRight = () => {
     return (
         <div className="flex items-center gap-2">
