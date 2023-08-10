@@ -1,11 +1,8 @@
-import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
-
-
+import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
     return (
         <div>
-            
             <WhyChooseUs></WhyChooseUs>
         </div>
     );
