@@ -2,8 +2,8 @@
 
 const LatestNews = () => {
     return (
-        <div className="mt-8">
-            <h2 className='text-4xl text-center font-bold text-blue-400 my-8'>Our Latest News</h2>
+        <div className="mt-8 nav-btn  p-2 rounded">
+            <h2 className='text-4xl text-center text-white font-bold my-8'>Our Latest News</h2>
             <div className="card text-white  p-4 md:flex block h-full card-side bg-blue-400 shadow-xl">
                 <div className="w-full md:w-1/2 rounded-xl  border-dashed border-2 border-indigo-600 ">
                     <div>
