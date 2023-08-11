@@ -8,8 +8,8 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Banner = () => {
     return (
         <div className=" text-white ">
-            <AutoplaySlider className="h-[600px]"
-                animation="fallAnimation"
+            <AutoplaySlider className="h-[600px] md:h-[700px]"
+                animation="cubeAnimation"
                 play={true}
                 cancelOnInteraction={false} // should stop playing on user interaction
                 interval={4000}
