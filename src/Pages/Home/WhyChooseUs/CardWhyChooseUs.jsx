@@ -3,7 +3,7 @@
 const CardWhyChooseUs = ({ data }) => {
     return (
         <div className="bg-white rounded-lg p-8 shadow-md transform transition-transform hover:scale-105 hover:bg-blue-100">
-            <div className="flex items-center justify-center w-16 h-16 bg-blue-500 rounded-full mb-6">
+            <div className="flex items-center justify-center w-16 h-16 bg-[#00ACCC] rounded-full mb-6">
                 <svg
                     className="w-8 h-8 text-white"
                     fill="none"

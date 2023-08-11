@@ -1,11 +1,10 @@
+import LatestNews from "./Pages/Home/LatestNews/LatestNews";
 
 
 const App = () => {
   return (
     <div>
-      set up start
-      <h1>Shuvo manik vai</h1>
-      <p>ifksjkdfjskdjfksjdfk</p>
+      
     </div>
   );
 };
