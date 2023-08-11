@@ -1,9 +1,10 @@
+import LatestNews from "./Pages/Home/LatestNews/LatestNews";
 
 
 const App = () => {
   return (
     <div>
-      set up start
+      <LatestNews></LatestNews>
     </div>
   );
 };
