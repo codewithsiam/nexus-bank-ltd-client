@@ -13,7 +13,7 @@ const newsData = [
     },
     {
         title: 'Global Economy Update: Q3 2023',
-        content: 'Insights into the current global economy...',
+        content: 'Insights into new to the current global economy...',
     },
     {
         title: 'Technology Innovations Conference',

@@ -8,16 +8,16 @@ const AutoplaySlider = withAutoplay(AwesomeSlider);
 const Banner = () => {
     return (
         <div className=" text-white ">
-            <AutoplaySlider className="h-[600px]"
-                animation="fallAnimation"
+            <AutoplaySlider className="h-[750px]"
+                animation="cubeAnimation"
                 play={true}
                 cancelOnInteraction={false} // should stop playing on user interaction
                 interval={4000}
-            >
+            > 
                 <div data-src="https://i.ibb.co/g99WwV8/shape-bg.png" className="grid md:grid-cols-2 items-center gap-10 container mx-auto ">
-                    <div>
-                        <h2 className="text-2xl font-bold">Be Invest</h2>
-                        <h1 className="text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
+                    <div className='pt-[100px] md:pt-[0px]'>
+                        <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
                         <p className="mb-5">And In Order To Make A Business, Brand Advertising And Marketing Plays An Important </p>
                         <button 
                         className=" bg-gradient-to-r from-[#004D6E] to-[#00ACCC] py-2 px-5 rounded">Get started</button>
@@ -26,10 +26,11 @@ const Banner = () => {
                         <img className="rounded-t-full" src="https://i.ibb.co/ft8yhWW/banner-img-1.jpg" alt="" />
                     </div>
                 </div>
+                
                 <div data-src="https://i.ibb.co/g99WwV8/shape-bg.png" className="grid md:grid-cols-2 items-center gap-10 container mx-auto ">
-                    <div>
-                        <h2 className="text-2xl font-bold">Be Invest</h2>
-                        <h1 className="text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
+                <div className='pt-[100px] md:pt-[0px]'>
+                        <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
                         <p className="mb-5">And In Order To Make A Business, Brand Advertising And Marketing Plays An Important </p>
                         <button 
                         className=" bg-gradient-to-r from-[#004D6E] to-[#00ACCC] py-2 px-5 rounded">Get started</button>
@@ -39,9 +40,9 @@ const Banner = () => {
                     </div>
                 </div>
                 <div data-src="https://i.ibb.co/g99WwV8/shape-bg.png" className="grid md:grid-cols-2 items-center gap-10 container mx-auto ">
-                    <div>
-                        <h2 className="text-2xl font-bold">Be Invest</h2>
-                        <h1 className="text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
+                <div className='pt-[100px] md:pt-[0px]'>
+                        <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mt-3 mb-5">Our mission is your financial success</h1>
                         <p className="mb-5">And In Order To Make A Business, Brand Advertising And Marketing Plays An Important </p>
                         <button 
                         className="nav-btn py-2 px-5 rounded">Get started</button>
