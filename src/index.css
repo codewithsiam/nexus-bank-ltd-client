@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* styles for navbar  */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-left{
+    clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
+    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
+}
+.nav-btn{
+    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
+}
+.text-color{
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC]
+}
+
