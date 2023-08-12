@@ -8,16 +8,16 @@ const SocialFooterIcons = () => {
     return (
         <div>
             <ul className='flex gap-5'>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
+                <li className='cursor-pointer'>
                     <a href="#"> <FaFacebookF className='' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
+                <li className='cursor-pointer'>
                     <a href="#"> <AiFillInstagram className='' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
+                <li className='cursor-pointer'>
                     <a href="#"> <BsLinkedin className='' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
+                <li className='cursor-pointer'>
                     <a href="#"> <BsYoutube className='' /> </a>
                 </li>
             </ul>

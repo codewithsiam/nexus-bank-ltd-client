@@ -11,12 +11,11 @@
   },
   "dependencies": {
     "framer-motion": "^10.15.1",
-<<<<<<< HEAD
-=======
+
+
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@heroicons/react": "^2.0.18",
->>>>>>> 56bc7ff54e4914a223377feac37e1963f23a9b25
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
@@ -39,7 +38,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "postcss": "^8.4.27",
+    "tailwind": "^4.0.0",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.5"
+    "vite": "^4.4.9"
   }
 }
