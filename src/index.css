@@ -22,3 +22,11 @@
   @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC]
 }
 
+/* update */
+.heading{
+  color: #171D24;
+}
+.paragraph{
+  color: #4C5267;
+}
+

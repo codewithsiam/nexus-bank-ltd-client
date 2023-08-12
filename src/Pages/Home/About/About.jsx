@@ -5,11 +5,11 @@ const About = () => {
         <div className="container mx-auto mb-10 mt-20 grid md:grid-cols-2 gap-10">
             <div className="">
                 <div className="flex">
-                    <img className="md:w-[300px] lg:w-[450px]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
-                    <img className="md:w-[50px] lg:w-[100px] hidden md:block" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
+                    <img className="w-[400px] md:w-[300px] lg:w-[450px]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
+                    <img className="w-[50px] lg:w-[100px]" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
                 </div>
-                <div className="md:flex  md:-mt-20 lg:-mt-32 items-end">
-                    <img className="md:w-[100px] lg:w-[175px] mt-20 md:mr-5 lg:mr-10" src="https://i.ibb.co/BZx3JZn/about-left-shape-1.png" alt="" />
+                <div className="flex md:-mt-20 lg:-mt-32 items-end">
+                    <img className="w-[100px] lg:w-[175px] mt-20 md:mr-5 lg:mr-10" src="https://i.ibb.co/BZx3JZn/about-left-shape-1.png" alt="" />
                     <img className="md:w-[230px] lg:w-[300px]" src="https://i.ibb.co/sFZBGzh/about-two.jpg" alt="" />
                 </div>
             </div>

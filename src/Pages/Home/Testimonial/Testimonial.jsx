@@ -3,10 +3,10 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const Testimonial = () => {
   return (
-    <div className="w-full h-full p-16 bg-[#F5FAFF]">
+    <div className="w-full h-full p-16 bg-[#F7F9FA]">
       <h3 className="font-bold text-lg mb-5">
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-800 to-cyan-500">
-          CLIENTS TESTOMONIAL
+        <span className="">
+          CLIENTS TESTIMONIAL
         </span>
       </h3>
       <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold space-y-6 mb-6">
