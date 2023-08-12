@@ -38,12 +38,14 @@ const Menu = () => {
             <FaAngleRight onClick={() => setExpendService(true)} />
           )}
         </div>
-        {expendService && (
+       <div>
+       {expendService && (
           <div className="ps-4 py-2 flex flex-col space-y-2 ">
             <Link className="border-b-2">Service</Link>
             <Link className="border-b-2">Service details</Link>
           </div>
         )}
+       </div>
       </div>
       <div className="flex justify-between border-b-2 py-2">
         <Link>Page</Link>
