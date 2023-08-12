@@ -29,7 +29,7 @@ const OurServices = () => {
         <div className="bg-[#F7F9FA] rounded py-10">
             <div className="container mx-auto px-3">
                 <h2 className="text-4xl text-center font-extrabold mb-5 mt-11">Our Services</h2>
-                <p className="paragraph mb-11 text-center w-3/6 mx-auto">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, veniam reprehenderit cumque recusandae dolor nisi assumenda dolore voluptas ipsam </p>
+                <p className="paragraph mb-11 text-center md:w-3/6 mx-auto px-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, veniam reprehenderit cumque recusandae dolor nisi assumenda dolore voluptas ipsam </p>
             </div>
             <div className="container mx-auto px-3">
 
