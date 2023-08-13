@@ -22,8 +22,8 @@ const Banner = () => {
                         <button 
                         className=" bg-gradient-to-r from-[#004D6E] to-[#00ACCC] py-2 px-5 rounded">Get started</button>
                     </div>
-                    <div className="items-end flex">
-                        <img className="rounded-t-full w-full" src="https://i.ibb.co/ft8yhWW/banner-img-1.jpg" alt="" />
+                    <div className="">
+                        <img className="rounded-t-full" src="https://i.ibb.co/ft8yhWW/banner-img-1.jpg" alt="" />
                     </div>
                 </div>
                 
@@ -35,8 +35,8 @@ const Banner = () => {
                         <button 
                         className=" bg-gradient-to-r from-[#004D6E] to-[#00ACCC] py-2 px-5 rounded">Get started</button>
                     </div>
-                    <div className="items-end flex">
-                        <img className="rounded-t-full" src="https://i.ibb.co/m0pkkFz/banner-img-2.jpg" alt="" />
+                    <div className="">
+                        <img className="rounded-t-full " src="https://i.ibb.co/m0pkkFz/banner-img-2.jpg" alt="" />
                     </div>
                 </div>
                 <div data-src="https://i.ibb.co/g99WwV8/shape-bg.png" className="grid md:grid-cols-2 items-center gap-10 container mx-auto ">
@@ -47,7 +47,7 @@ const Banner = () => {
                         <button 
                         className="nav-btn py-2 px-5 rounded">Get started</button>
                     </div>
-                    <div className="items-end flex">
+                    <div className="">
                         <img className="rounded-t-full" src="https://i.ibb.co/gMhM45Q/banner-img-3.jpg" alt="" />
                     </div>
                 </div>
