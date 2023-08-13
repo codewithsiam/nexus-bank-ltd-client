@@ -22,7 +22,7 @@ const Banner = () => {
                         <button 
                         className=" bg-gradient-to-r from-[#004D6E] to-[#00ACCC] py-2 px-5 rounded">Get started</button>
                     </div>
-                    <div className="">
+                    <div className="items-end flex">
                         <img className="rounded-t-full" src="https://i.ibb.co/ft8yhWW/banner-img-1.jpg" alt="" />
                     </div>
                 </div>

@@ -25,8 +25,8 @@ const Navbar = () => {
            
          <div className="xl:w-[500px] 2xl:w-[600px] nav-left flex justify-center items-center " >
               <div className="flex items-center gap-2">
-                  <img className="w-10 h-10" src='https://i.ibb.co/Xzt8GjV/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-w.png' alt="" />
-                  <h2 className="text-3xl font-semibold text-white">NEXUS</h2>
+                  <img className="w-32" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" />
+                  {/* <h2 className="text-3xl font-semibold text-white">NEXUS</h2> */}
               </div>
          </div>
          <div className="w-full">
