@@ -1,16 +1,22 @@
 import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged,GoogleAuthProvider,signInWithPopup  } from "firebase/auth";
 
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app)
+const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+
+    // google sign in
+    const googleSignIn  = () => {
+        return signInWithPopup(auth, googleProvider);
+    }
 
     // create user
     const registration = (email, password) => {
@@ -40,6 +46,7 @@ const AuthProvider = ({ children }) => {
 
     const authInfo = {
         user,
+        googleSignIn,
         registration,
         login,
         logout
