@@ -1,16 +1,35 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Google from '../../components/Google/Google';
 import registrationImage from '../../assets/images/Registration/registration-img.png'
 import { Link } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useForm } from "react-hook-form"
 import { useState } from 'react';
+import { AuthContext } from '../../providers/AuthProvider';
 
 
 const Login = () => {
+    const { login } = useContext(AuthContext);
+
+    const { register, formState: { errors }, handleSubmit, } = useForm()
     const [show, setShow] = useState(false)
+    const [error, setError] = useState('');
 
     const handleShowHide = () => {
         setShow(!show)
+    }
+
+    // login
+    const onSubmit = (data) => {
+        login(data.email, data.password)
+            .then(result => {
+                const loggedUser = result;
+                console.log(loggedUser);
+                setError('');
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
 
     return (
@@ -25,12 +44,12 @@ const Login = () => {
                     </p>
                 </div>
 
-                <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
                     <div>
                         <label for="email" className="sr-only">Email</label>
 
                         <div className="relative">
-                            <input
+                            <input {...register("email", { required: true })}
                                 type="email"
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
@@ -42,7 +61,7 @@ const Login = () => {
                         <label for="password" className="sr-only">Password</label>
 
                         <div className="relative">
-                            <input
+                            <input {...register("password", { required: true })}
                                 type={show ? 'text' : 'password'}
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
@@ -54,6 +73,10 @@ const Login = () => {
                                 }
                             </span>
                         </div>
+                    </div>
+
+                    <div>
+                        <p className="text-red-500 text-center">{error}</p>
                     </div>
 
                     <div className="flex items-center justify-between">

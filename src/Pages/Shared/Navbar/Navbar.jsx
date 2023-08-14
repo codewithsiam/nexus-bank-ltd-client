@@ -1,4 +1,5 @@
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight  } from "react-icons/fa";
+import { AiOutlineLogout } from "react-icons/ai";
 import NavMiddle from "./NavMiddle/NavMiddle";
 import { useEffect, useState } from "react";
 import MobileNav from "./MobileNav/MobileNav";
@@ -7,14 +8,20 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-  /* const {user} = useContext(AuthContext);
-  console.log(user) */
+  const { user, logout } = useContext(AuthContext);
+  console.log(user)
+  console.log(logout)
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
     setWindowWidth(window.innerWidth);
   };
+
+  // logout
+  const handleLogout = () => {
+    logout();
+  }
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
@@ -37,9 +44,14 @@ const Navbar = () => {
             <NavMiddle />
           </div>
           <div className="xl:w-[500px] 2xl:w-[600px] bg-[#F4F5FA] flex justify-center items-center">
-            <Link to='/registration'>
-              <button className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center nav-btn">Registration<FaArrowRight /> </button>
-            </Link>
+            {
+              user ?
+                <button onClick={handleLogout} className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center bg-red-500"> <AiOutlineLogout size={24}/> Logout</button>
+                :
+                <Link to='/registration'>
+                  <button className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center nav-btn">Registration<FaArrowRight /> </button>
+                </Link>
+            }
           </div>
         </div>
       }

@@ -26,7 +26,7 @@ const Registration = () => {
         setShowTwo(!showTwo);
     }
 
-    // form data
+    // registration
     const onSubmit = (data) => {
         if (data.password === data.confirmPassword) {
             registration(data.email, data.password)
