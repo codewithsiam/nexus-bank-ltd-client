@@ -1,3 +1,4 @@
+import Footer from "../Shared/Footer/Footer";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import CreditCardPayment from "./CreditCardPayment/CreditCardPayment";
@@ -14,9 +15,9 @@ const Home = () => {
             <Testimonial></Testimonial>
             <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment/>
+            <CreditCardPayment />
             <WhyChooseUs></WhyChooseUs>
-            
+            <Footer />
         </div>
     );
 };
