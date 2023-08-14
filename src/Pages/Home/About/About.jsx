@@ -1,4 +1,6 @@
 import { TbSquareRounded } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
+import FirstTitle from '../../../Components/FirstTitle';
 
 const About = () => {
     return (
@@ -6,7 +8,13 @@ const About = () => {
             <div className="">
                 <div className="flex">
                     <img className="w-[400px] md:w-[300px] lg:w-[450px]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
-                    <img className="w-[50px] lg:w-[100px]" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
+                    <div>
+                        <div className='flex gap-4 items-center nav-btn py-2 px-5 text-white w-[220px] animate-fade-right animate-infinite my-custom-animation'>
+                            <h1 className='text-5xl'>5</h1>
+                            <p className='text-2xl'>Years of Experience</p>
+                        </div>
+                        <img className="w-[50px] lg:w-[100px]" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
+                    </div>
                 </div>
                 <div className="flex md:-mt-20 lg:-mt-32 items-end">
                     <img className="w-[100px] lg:w-[175px] mt-20 md:mr-5 lg:mr-10" src="https://i.ibb.co/BZx3JZn/about-left-shape-1.png" alt="" />
@@ -15,7 +23,9 @@ const About = () => {
             </div>
             <div className="bg-[url('https://i.ibb.co/5FWTNWH/bg-right-text.png')]">
                 <div>
-                    <h4 className="text-color font-bold md:text-xl lg:text-3xl">About Us</h4>
+                    <FirstTitle 
+                        heading={"yy"}
+                    ></FirstTitle>
                     <h1 className="md:text-3xl lg:text-6xl my-2 lg:mt-3 lg:mb-5 text-blue-950">Solutions that make a difference</h1>
                     <p>Payment solutions enable businesses to accept payments Payment stions enable businesses to accept payments from ctly customers ctly securely. stions enable businesses to accept payments from ctly customers ctly securely.</p>
                 </div>
@@ -33,7 +43,7 @@ const About = () => {
                         <TbSquareRounded /> <p>Our Startup industry Here</p>
                     </div>
                 </div>
-                <button className="nav-btn text-white px-4 py-2 rounded">Read More</button>
+                <Link to={`aboutDetails`} className="nav-btn text-white px-4 py-2 rounded">Read More</Link>
             </div>
         </div>
     );

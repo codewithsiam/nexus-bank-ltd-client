@@ -3,6 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import NavMiddle from "./NavMiddle/NavMiddle";
 import { useEffect, useState } from "react";
 import MobileNav from "./MobileNav/MobileNav";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 
@@ -25,7 +26,7 @@ const Navbar = () => {
            
          <div className="xl:w-[500px] 2xl:w-[600px] nav-left flex justify-center items-center " >
               <div className="flex items-center gap-2">
-                  <img className="w-32" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" />
+                  <Link to="/"><img className="w-32" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" /></Link>
                   {/* <h2 className="text-3xl font-semibold text-white">NEXUS</h2> */}
               </div>
          </div>

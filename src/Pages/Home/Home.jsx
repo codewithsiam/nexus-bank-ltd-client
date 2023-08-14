@@ -4,6 +4,7 @@ import CreditCardPayment from "./CreditCardPayment/CreditCardPayment";
 import LatestNews from "./LatestNews/LatestNews";
 import OurServices from "./OurServices/OurServices";
 import Testimonial from "./Testimonial/Testimonial";
+import Comparison from "./Comparison/Comparison";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
@@ -15,8 +16,7 @@ const Home = () => {
             <LatestNews></LatestNews>
             <OurServices></OurServices>
             <CreditCardPayment/>
-            <WhyChooseUs></WhyChooseUs>
-            
+            <Comparison></Comparison>
         </div>
     );
 };

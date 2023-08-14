@@ -3,7 +3,7 @@ import creditCard from '../../../assets/images/credit-card-payment/credit-card-f
 
 const CreditCardPayment = () => {
     return (
-        <div className='bg-[#F7F9FA] py-24'>
+        <div className='bg-[#F7F9FA] pt-10 pb-32'>
             <div className="container mx-auto px-3 ">
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 items-center'>
                     <div className=''>

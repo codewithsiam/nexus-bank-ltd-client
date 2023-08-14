@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 const Comparison = () => {
     return (
         <div>
-            
+            this is com
         </div>
     );
 };
