@@ -6,13 +6,14 @@ import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useForm } from "react-hook-form"
 import { AuthContext } from '../../providers/AuthProvider';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 
 const Registration = () => {
     const { register, formState: { errors }, handleSubmit, } = useForm()
 
-    const { registration } = useContext(AuthContext);
+    const { registration, verifyEmail } = useContext(AuthContext);
 
     const [showOne, setShowOne] = useState(false);
     const [showTwo, setShowTwo] = useState(false);
@@ -34,6 +35,12 @@ const Registration = () => {
                     const registeredUser = result;
                     console.log(registeredUser)
                     setError('')
+
+                    verifyEmail(result.user)
+                        .then(result => {
+                            console.log(result)
+                            alert('Please verify your email')
+                        })
                 })
                 .catch(error => {
                     setError(error.message)
@@ -47,6 +54,14 @@ const Registration = () => {
 
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
+            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+                <img
+                    alt="Welcome"
+                    src={registrationImage}
+                    className=""
+                />
+            </div>
+
             <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Registration!</h1>
@@ -67,6 +82,9 @@ const Registration = () => {
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Name"
                             />
+                            {errors.name?.type === "required" && (
+                                <p className="text-red-400 mt-2">Name is required</p>
+                            )}
                         </div>
                     </div>
 
@@ -79,6 +97,9 @@ const Registration = () => {
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
                             />
+                            {errors.email?.type === "required" && (
+                                <p className="text-red-400 mt-2">Email is required</p>
+                            )}
                         </div>
                     </div>
 
@@ -91,6 +112,9 @@ const Registration = () => {
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
                             />
+                            {errors.password?.type === "required" && (
+                                <p className="text-red-400 mt-2">Password is required</p>
+                            )}
 
                             <span onClick={handleShowHidePassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
                                 {
@@ -105,6 +129,9 @@ const Registration = () => {
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Confirm Password"
                             />
+                            {errors.confirmPassword?.type === "required" && (
+                                <p className="text-red-400 mt-2">Confirm Password is required</p>
+                            )}
 
                             <span onClick={handleShowHideConfirmPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
                                 {
@@ -138,14 +165,6 @@ const Registration = () => {
 
                     <Google />
                 </form>
-            </div>
-
-            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
-                <img
-                    alt="Welcome"
-                    src={registrationImage}
-                    className=""
-                />
             </div>
         </section>
     );

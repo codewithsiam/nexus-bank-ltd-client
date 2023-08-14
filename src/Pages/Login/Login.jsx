@@ -6,14 +6,20 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useForm } from "react-hook-form"
 import { useState } from 'react';
 import { AuthContext } from '../../providers/AuthProvider';
+import { useRef } from 'react';
+import { app } from '../../firebase/firebase.config';
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
+
+const auth = getAuth(app)
 
 
 const Login = () => {
-    const { login } = useContext(AuthContext);
+    const { login, resetEmail } = useContext(AuthContext);
 
     const { register, formState: { errors }, handleSubmit, } = useForm()
-    const [show, setShow] = useState(false)
+    const [show, setShow] = useState(false);
     const [error, setError] = useState('');
+    const emailRef = useRef();
 
     const handleShowHide = () => {
         setShow(!show)
@@ -29,6 +35,23 @@ const Login = () => {
             })
             .catch(error => {
                 setError(error.message);
+            })
+    }
+
+    // reset password
+    const resetPassword = e => {
+        const email = (emailRef.current.value)
+        if (!email) {
+            alert('Please provide your email');
+            return;
+        }
+        resetEmail(email)
+            .then(result => {
+                console.log(result)
+                alert('Please check your email')
+            })
+            .catch(error => {
+                console.log(error.message)
             })
     }
 
@@ -50,10 +73,14 @@ const Login = () => {
 
                         <div className="relative">
                             <input {...register("email", { required: true })}
+                                ref={emailRef}
                                 type="email"
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
                             />
+                            {errors.email?.type === "required" && (
+                                <p className="text-red-400 mt-2">Email is required</p>
+                            )}
                         </div>
                     </div>
 
@@ -66,6 +93,9 @@ const Login = () => {
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
                             />
+                            {errors.password?.type === "required" && (
+                                <p className="text-red-400 mt-2">Password is required</p>
+                            )}
 
                             <span onClick={handleShowHide} className="absolute inset-y-0 end-0 grid place-content-center px-4">
                                 {
@@ -78,6 +108,8 @@ const Login = () => {
                     <div>
                         <p className="text-red-500 text-center">{error}</p>
                     </div>
+
+                    <p onClick={resetPassword} className="text-sm text-gray-500 underline cursor-pointer">Reset Password</p>
 
                     <div className="flex items-center justify-between">
                         <p className="text-sm text-gray-500">
