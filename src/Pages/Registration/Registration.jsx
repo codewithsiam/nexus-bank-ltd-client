@@ -1,9 +1,50 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Google from '../../components/Google/Google';
 import registrationImage from '../../assets/images/Registration/registration-img.png'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useForm } from "react-hook-form"
+import { AuthContext } from '../../providers/AuthProvider';
+
+
 
 const Registration = () => {
+    const { register, formState: { errors }, handleSubmit, } = useForm()
+
+    const { registration } = useContext(AuthContext);
+
+    const [showOne, setShowOne] = useState(false);
+    const [showTwo, setShowTwo] = useState(false);
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
+
+    const handleShowHidePassword = () => {
+        setShowOne(!showOne);
+    }
+    const handleShowHideConfirmPassword = () => {
+        setShowTwo(!showTwo);
+    }
+
+    // form data
+    const onSubmit = (data) => {
+        if (data.password === data.confirmPassword) {
+            registration(data.email, data.password)
+                .then(result => {
+                    const registeredUser = result;
+                    console.log(registeredUser)
+                    setError('')
+                })
+                .catch(error => {
+                    setError(error.message)
+                })
+        } else {
+            setError('Password does not match');
+        }
+
+    }
+
+
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
             <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
@@ -16,14 +57,14 @@ const Registration = () => {
                     </p>
                 </div>
 
-                <form action="" className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+                <form onSubmit={handleSubmit(onSubmit)} className="mx-auto mb-0 mt-8 max-w-md space-y-4">
                     <div>
                         <label for="email" className="sr-only">Name</label>
 
                         <div className="relative">
-                            <input
-                                type="email"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                            <input {...register("name", { required: true })}
+                                type="text"
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Name"
                             />
                         </div>
@@ -33,9 +74,9 @@ const Registration = () => {
                         <label for="email" className="sr-only">Email</label>
 
                         <div className="relative">
-                            <input
+                            <input {...register("email", { required: true })}
                                 type="email"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
                             />
                         </div>
@@ -45,66 +86,38 @@ const Registration = () => {
                         <label for="password" className="sr-only">Password</label>
 
                         <div className="relative">
-                            <input
-                                type="password"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                            <input {...register("password", { required: true })}
+                                type={showOne ? 'text' : 'password'}
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
                             />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-4 w-4 text-gray-400 cursor-pointer"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                    />
-                                </svg>
+                            <span onClick={handleShowHidePassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                                {
+                                    showOne ? <AiFillEye size={20} className='cursor-pointer' /> : <AiFillEyeInvisible size={20} className='cursor-pointer' />
+                                }
                             </span>
                         </div>
 
                         <div className="relative mt-5">
-                            <input
-                                type="password"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                            <input {...register("confirmPassword", { required: true })}
+                                type={showTwo ? 'text' : 'password'}
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Confirm Password"
                             />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-4 w-4 text-gray-400 cursor-pointer"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                    />
-                                </svg>
+                            <span onClick={handleShowHideConfirmPassword} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                                {
+                                    showTwo ? <AiFillEye size={20} className='cursor-pointer' /> : <AiFillEyeInvisible size={20} className='cursor-pointer' />
+                                }
                             </span>
                         </div>
+                    </div>
+
+                    <div>
+                        <p className="text-red-500 text-center">
+                            {error}
+                        </p>
                     </div>
 
                     <div className="flex items-center justify-between">

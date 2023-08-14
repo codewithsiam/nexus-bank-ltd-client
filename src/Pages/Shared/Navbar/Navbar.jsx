@@ -3,8 +3,12 @@ import NavMiddle from "./NavMiddle/NavMiddle";
 import { useEffect, useState } from "react";
 import MobileNav from "./MobileNav/MobileNav";
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
+  /* const {user} = useContext(AuthContext);
+  console.log(user) */
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 

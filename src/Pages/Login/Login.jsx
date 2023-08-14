@@ -1,9 +1,18 @@
 import React from 'react';
 import Google from '../../components/Google/Google';
 import registrationImage from '../../assets/images/Registration/registration-img.png'
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useState } from 'react';
+
 
 const Login = () => {
+    const [show, setShow] = useState(false)
+
+    const handleShowHide = () => {
+        setShow(!show)
+    }
+
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
             <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
@@ -23,7 +32,7 @@ const Login = () => {
                         <div className="relative">
                             <input
                                 type="email"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
                             />
                         </div>
@@ -34,32 +43,15 @@ const Login = () => {
 
                         <div className="relative">
                             <input
-                                type="password"
-                                className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                                type={show ? 'text' : 'password'}
+                                className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter password"
                             />
 
-                            <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="h-4 w-4 text-gray-400 cursor-pointer"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                >
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                    />
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                    />
-                                </svg>
+                            <span onClick={handleShowHide} className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                                {
+                                    show ? <AiFillEye size={20} className='cursor-pointer' /> : <AiFillEyeInvisible size={20} className='cursor-pointer' />
+                                }
                             </span>
                         </div>
                     </div>
@@ -76,8 +68,6 @@ const Login = () => {
                         >
                             Sign in
                         </button>
-
-
                     </div>
 
                     <Google />
