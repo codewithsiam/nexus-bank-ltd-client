@@ -21,6 +21,9 @@ const Menu = () => {
           <FaAngleRight onClick={() => setExpendHome(true)} />
         )}
       </div>
+      <div className="border-b-2 py-2">
+        <Link to='/dashboard'>My Profile</Link>
+      </div>
       <div className="flex justify-between border-b-2 py-2">
         <Link>About Us </Link>
         {expendAbout === true ? (
