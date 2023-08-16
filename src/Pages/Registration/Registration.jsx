@@ -75,7 +75,7 @@ const Registration = () => {
     }
 
     return (
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
+        <section className="flex flex-wrap lg:h-screen lg:items-center">
             <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
                 <img
                     alt="Welcome"
