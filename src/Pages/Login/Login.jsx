@@ -9,14 +9,18 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { useRef } from 'react';
 import { app } from '../../firebase/firebase.config';
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
-
-const auth = getAuth(app)
+import { useNavigate, useLocation, Navigate, } from "react-router-dom";
 
 
 const Login = () => {
     const { login, resetEmail } = useContext(AuthContext);
 
     const { register, formState: { errors }, handleSubmit, } = useForm()
+
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || '/';
+
     const [show, setShow] = useState(false);
     const [error, setError] = useState('');
     const emailRef = useRef();
@@ -32,6 +36,7 @@ const Login = () => {
                 const loggedUser = result;
                 console.log(loggedUser);
                 setError('');
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error.message);
@@ -73,7 +78,6 @@ const Login = () => {
 
                         <div className="relative">
                             <input {...register("email", { required: true })}
-                                ref={emailRef}
                                 type="email"
                                 className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                                 placeholder="Enter Your Email"
