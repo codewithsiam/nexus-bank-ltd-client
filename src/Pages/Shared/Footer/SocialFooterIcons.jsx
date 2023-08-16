@@ -7,18 +7,18 @@ import { BsYoutube } from 'react-icons/bs';
 const SocialFooterIcons = () => {
     return (
         <div>
-            <ul className='flex gap-5'>
+            <ul className='flex gap-5 mt-3'>
                 <li className='cursor-pointer'>
-                    <a href="#"> <FaFacebookF className='' /> </a>
+                    <a href="#" className=''> <FaFacebookF className='text-2xl' /> </a>
                 </li>
                 <li className='cursor-pointer'>
-                    <a href="#"> <AiFillInstagram className='' /> </a>
+                    <a href="#" className=''> <AiFillInstagram className='text-2xl' /> </a>
                 </li>
                 <li className='cursor-pointer'>
-                    <a href="#"> <BsLinkedin className='' /> </a>
+                    <a href="#" className=''> <BsLinkedin className='text-2xl' /> </a>
                 </li>
                 <li className='cursor-pointer'>
-                    <a href="#"> <BsYoutube className='' /> </a>
+                    <a href="#" className=''> <BsYoutube className='text-2xl' /> </a>
                 </li>
             </ul>
         </div>
