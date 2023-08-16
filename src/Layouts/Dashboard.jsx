@@ -19,6 +19,9 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CreditScoreIcon from '@mui/icons-material/CreditScore';
+import SavingsIcon from '@mui/icons-material/Savings';
+import AddCardIcon from '@mui/icons-material/AddCard';
 
 const drawerWidth = 240;
 
@@ -26,12 +29,24 @@ const drawerWidth = 240;
 const userMenu = [
 
   {
-    name:"My Profile",
-    icon:<AccountCircleIcon/>,
-    route:"/myProfile"
+    name: "My Profile",
+    icon: <AccountCircleIcon />,
+    route: "dashboard/myProfile"
   },
   {
-
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "dashboard/apply-loan"
+  },
+  {
+    name: "Savings",
+    icon: < SavingsIcon />,
+    route: "dashboard/savings"
+  },
+  {
+    name: "Add Money",
+    icon: <AddCardIcon />,
+    route: "dashboard/add-money"
   }
 ]
 
@@ -142,8 +157,8 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {userMenu.map((menuItem, index) => (
+            <ListItem key={menuItem.name} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -158,16 +173,17 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                 <MailIcon />
+                  {menuItem.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={menuItem.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Home', 'About', 'Services'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
