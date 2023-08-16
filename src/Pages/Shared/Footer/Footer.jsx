@@ -12,7 +12,7 @@ const Footer = () => {
                 <div className="container mx-auto pt-32 px-3">
                     <div className='grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-11'>
                         <div>
-                            <h1 className="text-2xl font-bold mb-5">Nexus Bank LTD.</h1>
+                            <img className="w-28 mb-5" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" />
                             <p className='mb-5'>A modern, technology-first bank built for you and your growing business.</p>
 
                             {/* social icon */}

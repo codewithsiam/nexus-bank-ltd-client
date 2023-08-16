@@ -6,6 +6,7 @@ import CreditCardPayment from "./CreditCardPayment/CreditCardPayment";
 import LatestNews from "./LatestNews/LatestNews";
 import OurServices from "./OurServices/OurServices";
 import Testimonial from "./Testimonial/Testimonial";
+import Comparison from "./Comparison/Comparison";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
@@ -16,8 +17,8 @@ const Home = () => {
             <Testimonial></Testimonial>
             <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment />
-            <ContactUs />
+            <CreditCardPayment/>
+            <Comparison></Comparison>
             <WhyChooseUs></WhyChooseUs>
             <Footer />
         </div>

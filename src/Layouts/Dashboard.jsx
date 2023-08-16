@@ -22,6 +22,12 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import SavingsIcon from '@mui/icons-material/Savings';
 import AddCardIcon from '@mui/icons-material/AddCard';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import { Link } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { darkTheme } from '../config/ThemeConfig';
 
 const drawerWidth = 240;
 
@@ -47,6 +53,24 @@ const userMenu = [
     name: "Add Money",
     icon: <AddCardIcon />,
     route: "dashboard/add-money"
+  }
+]
+
+const HomeMenu = [
+  {
+    name:"Home",
+    icon:<HomeIcon/>,
+    route:"/"
+  },
+  {
+    name:"About",
+    icon:<InfoIcon/>,
+    route:"/about"
+  },
+  {
+    name:"Services",
+    icon:<ConstructionIcon/>,
+    route:"/services"
   }
 ]
 
@@ -128,7 +152,8 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <ThemeProvider theme={darkTheme}>
+      <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -183,8 +208,9 @@ export default function MiniDrawer() {
 
         <Divider />
         <List>
-          {['Home', 'About', 'Services'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {HomeMenu.map((menu, index) => (
+            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+              <Link to={menu.route}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -199,10 +225,11 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {menu.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={menu.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
+              </Link>
             </ListItem>
           ))}
         </List>
@@ -238,5 +265,6 @@ export default function MiniDrawer() {
         </Typography>
       </Box>
     </Box>
+    </ThemeProvider>
   );
 }
