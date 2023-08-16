@@ -75,16 +75,15 @@ const Registration = () => {
     }
 
     return (
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+        <section className="max-w-screen-2xl mx-auto flex flex-wrap lg:h-screen lg:items-center">
+            <div className="">
                 <img
                     alt="Welcome"
                     src={registrationImage}
                     className=""
                 />
             </div>
-
-            <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+            <div className="w-full px-4  sm:px-6 sm:py-16 lg:w-1/2 lg:px-8">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Registration!</h1>
 
