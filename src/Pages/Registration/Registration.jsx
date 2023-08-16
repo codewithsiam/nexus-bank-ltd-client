@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useForm } from "react-hook-form"
 import { AuthContext } from '../../providers/AuthProvider';
-import { sendEmailVerification } from 'firebase/auth';
+import { useNavigate, useLocation, Navigate, } from "react-router-dom";
 
 
 
@@ -14,12 +14,16 @@ const Registration = () => {
     const { register, formState: { errors }, handleSubmit, } = useForm()
 
     const { registration, verifyEmail } = useContext(AuthContext);
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || '/';
 
     const [showOne, setShowOne] = useState(false);
     const [showTwo, setShowTwo] = useState(false);
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
 
+    // show and hide password
     const handleShowHidePassword = () => {
         setShowOne(!showOne);
     }
@@ -29,12 +33,31 @@ const Registration = () => {
 
     // registration
     const onSubmit = (data) => {
+
+        // validation
+        if (!/(?=.*?[A-Z])/.test(data.password && data.confirmPassword)) {
+            setError('At least one uppercase letter');
+            return;
+        } else if (!/(?=.*?[a-z])/.test(data.password && data.confirmPassword)) {
+            setError('At least one lowercase letter')
+            return;
+        } else if (!/(?=.*?[0-9])/.test(data.password && data.confirmPassword)) {
+            setError('At least one number')
+            return
+        } else if (!/(?=.*[!#$%&?"])/.test(data.password && data.confirmPassword)) {
+            setError('At least one special character')
+            return
+        }
+
+        setError('')
+
         if (data.password === data.confirmPassword) {
             registration(data.email, data.password)
                 .then(result => {
                     const registeredUser = result;
                     console.log(registeredUser)
                     setError('')
+                    navigate(from, { navigate: true })
 
                     verifyEmail(result.user)
                         .then(result => {
@@ -50,7 +73,6 @@ const Registration = () => {
         }
 
     }
-
 
     return (
         <section className="relative flex flex-wrap lg:h-screen lg:items-center">
