@@ -47,7 +47,6 @@
 }
 
 
-<<<<<<< HEAD
 /* animated underlne: fill the line when mouse hover -start */
 .line-animation{
   line-height: 18px;
@@ -68,7 +67,7 @@
 }
 /* end  */
 
-/* social links : in the card top left - start */
+/* ----social links : in the card top left - start---------- */
 .animate-social-links {
   animation: slideIn 0.5s ease forwards;
 }
@@ -83,7 +82,4 @@
     opacity: 1;
   }
 }
-
-/* end  */
-=======
->>>>>>> ff673606f672b6931701179ab66966803e627b88
+/*------------- end-----------------  */
