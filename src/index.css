@@ -30,3 +30,41 @@
   color: #4C5267;
 }
 
+
+/* animated underlne: fill the line when mouse hover -start */
+.line-animation{
+  line-height: 18px;
+  width: 100%;
+  
+}
+.line-animation::after{
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: all 0.5s ease;
+}
+.line-animation:hover::after{
+  width: 100%;          
+  background: #ffffff;
+}
+/* end  */
+
+/* social links : in the card top left - start */
+.animate-social-links {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* end  */
