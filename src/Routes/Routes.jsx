@@ -6,6 +6,8 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 
 import Dashboard from '../Layouts/Dashboard'
+import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
+import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -31,7 +33,17 @@ const router = createBrowserRouter([
     },
     {
       path:"/dashboard",
-      element:<Dashboard/>
+      element:<Dashboard/>,
+      children:[
+        {
+          path:'my-profile',
+          element:<MyProfile/>
+        },
+        {
+          path:'open-account',
+          element:<OpenAccount/>
+        }
+      ]
     }
   ]);
 

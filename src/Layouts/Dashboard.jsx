@@ -25,9 +25,10 @@ import AddCardIcon from '@mui/icons-material/AddCard';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import ConstructionIcon from '@mui/icons-material/Construction';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { darkTheme } from '../config/ThemeConfig';
+import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 const drawerWidth = 240;
 
@@ -37,12 +38,17 @@ const userMenu = [
   {
     name: "My Profile",
     icon: <AccountCircleIcon />,
-    route: "dashboard/myProfile"
+    route: "/dashboard/my-profile"
   },
   {
     name: "Apply Loan",
     icon: <CreditScoreIcon />,
     route: "dashboard/apply-loan"
+  },
+  {
+    name:"Open An Account",
+    icon:<FileOpenIcon/>,
+    route:"/dashboard/open-account"
   },
   {
     name: "Savings",
@@ -184,7 +190,8 @@ export default function MiniDrawer() {
         <List>
           {userMenu.map((menuItem, index) => (
             <ListItem key={menuItem.name} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+            <Link to={menuItem.route}>
+            <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -202,6 +209,7 @@ export default function MiniDrawer() {
                 </ListItemIcon>
                 <ListItemText primary={menuItem.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
+            </Link>
             </ListItem>
           ))}
         </List>
@@ -235,34 +243,7 @@ export default function MiniDrawer() {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+       <Outlet/>
       </Box>
     </Box>
     </ThemeProvider>
