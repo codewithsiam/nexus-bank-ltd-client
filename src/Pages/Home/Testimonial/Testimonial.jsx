@@ -5,6 +5,8 @@ import 'swiper/css';
 import './CustomSwiper.css'; 
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { FaStar, FaStarHalf } from 'react-icons/fa';
+import TitleGroup from '../../../Components/Title/TitleGroup';
 
 const testimonialData = [
   {
@@ -12,41 +14,69 @@ const testimonialData = [
     imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
     comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
     author: "Hardli sefa",
-    authorTitle: "customer"
+    authorTitle: "customer",
+    rating: 4
   },
   {
     id: 2,
     imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-2.jpg',
     comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
     author: "Hardli sefa",
-    authorTitle: "customer"
+    authorTitle: "customer",
+    rating: 4.5
   },
   {
     id: 3,
     imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
     comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
     author: "Hardli sefa",
-    authorTitle: "customer"
+    authorTitle: "customer",
+    rating: 3.5
   },
   {
     id: 4,
     imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-2.jpg',
     comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
     author: "Hardli sefa",
-    authorTitle: "customer"
+    authorTitle: "customer",
+    rating: 4
   },
 ];
+// console.log(testimonialData)
 
 const Testimonial = () => {
+
+  const renderStars = (rating) => {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 !== 0;
+    
+    const stars = [];
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FaStar key={i} />);
+    }
+
+    if (hasHalfStar) {
+      stars.push(<FaStarHalf key="half" />);
+    }
+
+    return stars;
+  };
+
   return (
-    <div className='bg-[#F6F6F9] relative h-[400px] overflow-hidden'>
+    <div className='bg-[#F6F6F9] relative h-[500px] overflow-hidden py-10'>
       <div className='container mx-auto'>
-      <div className='absolute top-[20%] -right-20 z-[1] nav-btn origin-bottom rotate-45 '>
-        <img className='w-[100%] h-auto' src="https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/bg-shape.png" alt=""/>
-      </div>
+        <div className='absolute -top-[20%] -right-[30rem] lg:-right-[6.5rem] md:-right-[25rem] z-[1] nav-btn origin-bottom rotate-[32deg] w-[1000px]'>
+          <img className='w-[100%] h-auto' src="https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/bg-shape.png" alt=""/>
+        </div>
+      
+        <TitleGroup
+          subHeading={"CLIENTS TESTiMONIAL"}
+          heading={"Unleashing the power of your business"}
+        ></TitleGroup>
 
       <Swiper
-        slidesPerView={2}
+        slidesPerView={1}
         spaceBetween={30}
         // navigation={
           // {nextEl: '.my-custom-next-button',prevEl: '.my-custom-prev-button'}
@@ -60,7 +90,7 @@ const Testimonial = () => {
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             spaceBetween: 40,
           },
           1024: {
@@ -73,10 +103,14 @@ const Testimonial = () => {
         <div className="swiper-button-next my-custom-next-button"></div> */}
         {testimonialData?.map((testimonial) => (
           <SwiperSlide key={testimonial.id}>
-            <div className='flex gap-5'>
-              <div></div>
+            <div className='flex lg:flex md:flex-none gap-5 items-center mt-5 bg-white rounded-xl overflow-hidden shadow-xl'>
               <img src={testimonial.imageSrc} alt="alt" />
-              <div>
+              <div >
+                <div className='text-orange-500 mb-5'>
+                  <span className="flex items-center">
+                    {renderStars(testimonial.rating)}
+                  </span>
+                </div>
                 <p>{testimonial.comment}</p>
                 <h1 className='text-xl font-bold mt-4'>{testimonial.author}</h1>
                 <p>{testimonial.authorTitle}</p>

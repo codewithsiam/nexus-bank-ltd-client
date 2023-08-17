@@ -12,3 +12,30 @@
   font-size: 20px;
   color: white;
 }
+
+/* CustomSwiper.css */
+
+/* Add styles for small screens (e.g., mobile) */
+@media (min-width: 400px) and (max-width: 640px) {
+  .mySwiper {
+    slidesPerView: 1;
+    spaceBetween: 20px;
+    /* Add other styles as needed */
+  }
+}
+
+/* Add styles for medium screens (e.g., tablet) */
+@media (min-width: 641px) and (max-width: 1023px) {
+  .mySwiper {
+    slidesPerView: 1;
+    spaceBetween: 40px;
+  }
+}
+
+/* Add styles for large screens (e.g., desktop) */
+@media (min-width: 1024px) {
+  .mySwiper {
+    slidesPerView: 2;
+    spaceBetween: 50px;
+  }
+}
