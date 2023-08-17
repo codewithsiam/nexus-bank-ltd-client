@@ -27,7 +27,7 @@ const ButtomLeft = () => {
         <Link>Service 1</Link>
       </div>
       </div>
-      <Link to="/dashboard">My Profile</Link>
+      <Link to="/dashboard/my-profile">My Profile</Link>
       <Link>Blog</Link>
       <Link>Contact</Link>
     </div>

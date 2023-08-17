@@ -10,7 +10,7 @@ const ButtomRight = () => {
            <FaPhone className="text-xl text-white font-bold"/>
            </div>
  
-            <div className="text-center">
+            <div className="text-center hidden 2xl:block">
                 <h3 className="text-xl">Requesting a Call</h3>
                 <p className="text-xl font-semibold">0128554545</p>
             </div>

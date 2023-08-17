@@ -18,9 +18,9 @@ const Home = () => {
             <Testimonial></Testimonial>
             <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment />
-            <ContactUs />
-            <OurTeam></OurTeam>
+            <CreditCardPayment/>
+            <Comparison></Comparison>
+            <OurTeam/>
             <WhyChooseUs></WhyChooseUs>
             <Footer />
         </div>
