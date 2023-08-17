@@ -1,6 +1,6 @@
 import { FaPhone, FaSistrix } from "react-icons/fa";
 
-const ButtomRight = () => {
+const ButtonRight = () => {
     return (
         <div className="flex items-center gap-2">
            <div className="bg-[#F6F6F9] p-4 mr-2  rounded-full hover:bg-[#0085A6] duration-300 cursor-pointer">
@@ -18,4 +18,4 @@ const ButtomRight = () => {
     );
 };
 
-export default ButtomRight;
+export default ButtonRight;

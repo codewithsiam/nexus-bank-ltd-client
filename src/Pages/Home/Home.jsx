@@ -15,14 +15,14 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <About></About>
-            <Testimonial></Testimonial>
-            <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment/>
+            <LatestNews></LatestNews>
             <Comparison></Comparison>
+            <Testimonial></Testimonial>
+            <ContactUs />
+            <CreditCardPayment/>
             <OurTeam/>
             <WhyChooseUs></WhyChooseUs>
-            <Footer />
         </div>
     );
 };
