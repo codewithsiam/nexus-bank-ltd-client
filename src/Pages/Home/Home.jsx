@@ -9,6 +9,7 @@ import OurTeam from "./OurTeam/OurTeam";
 import Testimonial from "./Testimonial/Testimonial";
 import Comparison from "./Comparison/Comparison";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
+import Blog from "./Blog/Blog";
 
 const Home = () => {
     return (
@@ -18,9 +19,11 @@ const Home = () => {
             <Testimonial></Testimonial>
             <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment/>
+            <CreditCardPayment />
             <Comparison></Comparison>
-            <OurTeam/>
+            <OurTeam />
+            <ContactUs />
+            <Blog />
             <WhyChooseUs></WhyChooseUs>
             <Footer />
         </div>
