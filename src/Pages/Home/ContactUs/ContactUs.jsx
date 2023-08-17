@@ -1,15 +1,18 @@
 import React from 'react';
 import ContactAddress from './ContactAddress';
 import ContactInput from './ContactInput';
+import Heading from '../../../Components/Title/Heading';
 
 
 const ContactUs = () => {
     return (
-        <div className='py-11'>
+        <div className='pb-36'>
             <div className="container mx-auto">
-                <div className='shadow p-5 py-24 rounded'>
+                <div className='shadow p-5 py-10 rounded'>
                     <div>
-                        <h1 className="text-5xl text-[#16243E] font-bold">Get in touch</h1>
+                        <Heading
+                        heading={"Get in touch"}
+                        ></Heading>
                         <p className='paragraph-two'>We are here for you! how can we help, We are here for you!</p>
                         <div className='flex flex-col md:flex-row gap-5'>
 

@@ -1,12 +1,12 @@
 import { BsFillCheckCircleFill, BsFillPatchCheckFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
-import CenterTitle from "../../../Components/Title/centerTitle";
+import CenterTitle from "../../../Components/Title/CenterTitle";
 
 
 const Comparison = () => {
     return (
         <div className="container mx-auto py-10">
-            <div className="text-center">
+            <div className="text-center mb-5">
                 <CenterTitle 
                     subHeading={"SERVICE COMPARISONS"}
                     heading={"Our better services"}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTrail, animated } from 'react-spring';
 import Marquee from "react-fast-marquee";
+import Heading from '../../../Components/Title/Heading';
 
 const newsData = [
     {
@@ -26,12 +27,14 @@ const newsData = [
 ];
 
 const LatestNews = () => {
-
-
     return (
         <div className="bg-[#F7F9FA] py-8">
             <div className="container mx-auto">
-                <h2 className="text-4xl my-11 font-extrabold text-center text-gray-900">Latest News</h2>
+                <div className='text-center'>
+                <Heading
+                    heading={"Latest News"}
+                ></Heading>
+                </div>
                 <Marquee speed={100}>
                     {newsData.map((props, index) => (
                         <div key={index} style={props} className="news-item px-4"> {/* Added 'px-4' for horizontal padding */}
