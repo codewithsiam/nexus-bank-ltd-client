@@ -11,6 +11,7 @@ import Comparison from "./Comparison/Comparison";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
 
 const Home = () => {
+    // djfkdjkdk
     return (
         <div>
             <Banner></Banner>
