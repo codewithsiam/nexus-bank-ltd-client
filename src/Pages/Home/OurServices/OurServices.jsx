@@ -32,7 +32,6 @@ const OurServices = () => {
                 <p className="paragraph mb-11 text-center md:w-3/6 mx-auto px-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, veniam reprehenderit cumque recusandae dolor nisi assumenda dolore voluptas ipsam </p>
             </div>
             <div className="container mx-auto px-3">
-
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {servicesData.map((service, index) => (
                         <ServicesCard

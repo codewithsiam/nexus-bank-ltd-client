@@ -21,6 +21,22 @@
   @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC];
 }
 
+/*---------------------- About us section -----------------------*/
+.my-custom-animation {
+  animation: fade-right 2s infinite;
+}
+
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* update */
 .heading {
   color: #171d24;
@@ -31,3 +47,41 @@
 .paragraph-two {
   color: #7a687a;
 }
+
+
+/* animated underlne: fill the line when mouse hover -start */
+.line-animation{
+  line-height: 18px;
+  width: 100%;
+  
+}
+.line-animation::after{
+  content: '';
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: all 0.5s ease;
+}
+.line-animation:hover::after{
+  width: 100%;          
+  background: #ffffff;
+}
+/* end  */
+
+/* ----social links : in the card top left - start---------- */
+.animate-social-links {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/*------------- end-----------------  */

@@ -4,7 +4,7 @@ import Contact from "./Contact";
 
 const MobileMenu = ({ setShowMenu }) => {
   return (
-    <div className="bg-white mobile-menu  h-[100vh] w-full absolute z-20 top-0 p-6 transition-transform transform duration-300 ">
+    <div className="bg-white mobile-menu  h-[100vh] w-full md:w-96 absolute z-20 top-0 p-6 transition-transform transform duration-300 ">
       <div className="flex justify-between">
         <div>
           <div className=" flex items-center ">
