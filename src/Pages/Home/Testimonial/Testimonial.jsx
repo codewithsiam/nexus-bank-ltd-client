@@ -3,8 +3,9 @@ import { FaStar, FaStarHalf } from "react-icons/fa";
 
 const Testimonial = () => {
   return (
-    <div className="w-full h-full p-16 bg-[#F7F9FA]">
-      <h3 className="font-bold text-lg mb-5">
+    <div className="w-full  h-full p-16 bg-[#F7F9FA]">
+      <div className="max-w-screen-2xl mx-auto"> 
+      <h3 className="font-bold text-lg mb-5 ">
         <span className="">
           CLIENTS TESTIMONIAL
         </span>
@@ -62,6 +63,7 @@ const Testimonial = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
