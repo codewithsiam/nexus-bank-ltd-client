@@ -38,27 +38,27 @@ const userMenu = [
   {
     name: "My Profile",
     icon: <AccountCircleIcon />,
-    route: "/dashboard/my-profile"
+    route: "my-profile"
   },
   {
     name: "Apply Loan",
     icon: <CreditScoreIcon />,
-    route: "dashboard/apply-loan"
+    route: "apply-loan"
   },
   {
     name:"Open An Account",
     icon:<FileOpenIcon/>,
-    route:"/dashboard/open-account"
+    route:"open-account"
   },
   {
     name: "Savings",
     icon: < SavingsIcon />,
-    route: "dashboard/savings"
+    route: "savings"
   },
   {
     name: "Add Money",
     icon: <AddCardIcon />,
-    route: "dashboard/add-money"
+    route: "add-money"
   }
 ]
 

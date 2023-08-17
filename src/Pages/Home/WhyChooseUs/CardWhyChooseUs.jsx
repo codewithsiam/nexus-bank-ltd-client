@@ -1,5 +1,3 @@
-
-
 const CardWhyChooseUs = ({ data }) => {
     return (
         <div className="bg-white rounded-lg p-8 shadow-md transform transition-transform hover:scale-105 hover:bg-blue-100">

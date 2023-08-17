@@ -30,9 +30,11 @@ const LatestNews = () => {
     return (
         <div className="bg-[#F7F9FA] py-8">
             <div className="container mx-auto">
+                <div className='text-center'>
                 <Heading
                     heading={"Latest News"}
                 ></Heading>
+                </div>
                 <Marquee speed={100}>
                     {newsData.map((props, index) => (
                         <div key={index} style={props} className="news-item px-4"> {/* Added 'px-4' for horizontal padding */}

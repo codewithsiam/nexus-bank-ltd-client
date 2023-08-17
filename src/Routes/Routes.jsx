@@ -7,6 +7,8 @@ import Registration from "../Pages/Registration/Registration";
 import Dashboard from "../Layouts/Dashboard";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
 import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
+import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
+import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
   
 
 const router = createBrowserRouter([
@@ -43,9 +45,18 @@ const router = createBrowserRouter([
       {
         path:'open-account',
         element:<OpenAccount/>
+        },
+        {
+          path:'add-money',
+          element:<AddMoney />
+        },
+        {
+          path:'apply-loan',
+          element:<ApplyLoan />
       }
     ]
   }
 ]);
+
 
 export default router;
