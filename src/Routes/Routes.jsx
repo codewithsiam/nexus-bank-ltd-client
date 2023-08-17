@@ -4,48 +4,59 @@ import Home from "../Pages/Home/Home";
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
-
-import Dashboard from '../Layouts/Dashboard'
+import Dashboard from "../Layouts/Dashboard";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
 import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
+import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
+import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
+  
+
 const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Main></Main>,
-      children: [
-        {
-            path: "/",
-            element: <Home></Home>
+  {
+    path: "/",
+    element: <Main></Main>,
+    children: [
+      {
+          path: "/",
+          element: <Home></Home>
+      },
+      {
+          path: "/aboutDetails",
+          element: <AboutDetails></AboutDetails>
+      },
+      {
+        path: 'registration',
+        element: <Registration />
+      },
+      {
+        path: 'login',
+        element: <Login />
+      }
+    ],
+  },
+  {
+    path:'/dashboard',
+    element:<Dashboard/>,
+    children:[
+      {
+        path:'my-profile',
+        element:<MyProfile/>
+      },
+      {
+        path:'open-account',
+        element:<OpenAccount/>
         },
         {
-            path: "/aboutDetails",
-            element: <AboutDetails></AboutDetails>
+          path:'add-money',
+          element:<AddMoney />
         },
         {
-          path: 'registration',
-          element: <Registration />
-        },
-        {
-          path: 'login',
-          element: <Login />
-        }
-      ],
-    },
-    {
-      path:"/dashboard",
-      element:<Dashboard/>,
-      children:[
-        {
-          path:'my-profile',
-          element:<MyProfile/>
-        },
-        {
-          path:'open-account',
-          element:<OpenAccount/>
-        }
-      ]
-    }
-  ]);
+          path:'apply-loan',
+          element:<ApplyLoan />
+      }
+    ]
+  }
+]);
 
 
 export default router;
