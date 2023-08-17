@@ -1,49 +1,17 @@
-import React, { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
-import toast, { Toaster } from 'react-hot-toast';
-
-
+import React from 'react';
 
 const ContactInput = () => {
-    const [status, setStatus] = useState('');
-    console.log(status)
-    const form = useRef();
-
-    const sendEmail = (e) => {
-        e.preventDefault();
-
-        emailjs.sendForm('service_lsmcaij', 'template_jt0rm7n', form.current, 'hArdcxICp0UE88-Dx')
-            .then((result) => {
-                console.log(result);
-                setStatus(result.status)
-                toast.success('Email Send')
-            }, (error) => {
-                console.log(error.text);
-            });
-    };
-
-
     return (
         <>
-            <form ref={form} onSubmit={sendEmail} className='md:basis-3/4 p-5'>
-                <h2 className='text-2xl mb-3'>Get in touch</h2>
+            <input type="text" placeholder="Name" class="placeholder-[paragraph-two] border-[paragraph-two] border outline-none p-6 w-full rounded mb-5 mt-11 " />
 
-                <div className='grid grid-cols-2 gap-5 mb-5 mt-5'>
-                    <input name="user_name" type="text" className="outline-none border-b w-full" placeholder='Name' required />
+            <input type="text" placeholder="Email" class="placeholder-[paragraph-two] border-[paragraph-two] border outline-none p-6 w-full rounded mb-5" />
 
-                    <input name="user_email" type="text" className="outline-none border-b w-full" placeholder='Email' required />
-                </div>
+            <textarea placeholder="Email" class="placeholder-[paragraph-two] border-[paragraph-two] border outline-none p-7 w-full rounded" name="" id="" cols="30" rows="7"></textarea>
 
-                <input name='user_subject' type="text" className="outline-none border-b w-full" placeholder='Subject' />
-
-                <textarea name="message" className="outline-none border-b w-full mt-5" placeholder='Message' id="" cols="10" rows="5" required></textarea>
-
-                {/* <input type="submit" value="Send Message" className='bg-[#00ACCC] text-white px-5 py-3 mt-11 rounded' /> */}
-                <button className='bg-[#00ACCC] text-white px-5 py-3 mt-11 rounded'>
-                    {status === 200 ? 'Send Message Successful' : 'Send Message'}
-                </button>
-                <Toaster />
-            </form>
+            <button class="bg-gradient-to-r from-[#004F70] to-[#007C9C] w-full mt-5 text-white p-4 px-4 rounded-md">
+                Submit
+            </button>
         </>
     );
 };

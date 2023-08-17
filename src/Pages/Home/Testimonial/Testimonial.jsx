@@ -1,69 +1,90 @@
-import React from "react";
-import { FaStar, FaStarHalf } from "react-icons/fa";
+import React from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import './CustomSwiper.css'; 
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+const testimonialData = [
+  {
+    id: 1,
+    imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
+    comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
+    author: "Hardli sefa",
+    authorTitle: "customer"
+  },
+  {
+    id: 2,
+    imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-2.jpg',
+    comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
+    author: "Hardli sefa",
+    authorTitle: "customer"
+  },
+  {
+    id: 3,
+    imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
+    comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
+    author: "Hardli sefa",
+    authorTitle: "customer"
+  },
+  {
+    id: 4,
+    imageSrc: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-2.jpg',
+    comment: "Don't just take our word for it hear what our customers have to say about us! we have helped thousand people Don't just take our",
+    author: "Hardli sefa",
+    authorTitle: "customer"
+  },
+];
 
 const Testimonial = () => {
   return (
-    <div className="w-full  h-full p-16 bg-[#F7F9FA]">
-      <div className="max-w-screen-2xl mx-auto"> 
-      <h3 className="font-bold text-lg mb-5 ">
-        <span className="">
-          CLIENTS TESTIMONIAL
-        </span>
-      </h3>
-      <h1 className="text-2xl md:text-3xl lg:text-5xl font-bold space-y-6 mb-6">
-        Unleashing The Power of <br className="pb-4" />
-        Your Business
-      </h1>
-      <div className="flex flex-col md:flex-row gap-5">
-        <div>
-          <div className="flex items-center gap-5 border  rounded-md bg-white">
-            <img
-              className="h-72 rounded-md w-1/3"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxpOu09VxvyBOUjgqRG5o0mKJleYKIPNvcpw&usqp=CAU"
-              alt=""
-            />
-            <div className="space-y-3 p-4">
-              <div className="flex gap-1">
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStarHalf className="text-yellow-500"></FaStarHalf>
-              </div>
-              <p>
-                Don't just take our word for it hear what our customers have to
-                say about us! we have helped thousand people Don't just take our{" "}
-              </p>
-              <h2 className="font-bold text-lg">Manik Bro</h2>
-              <p>Customer</p>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="flex items-center gap-5 border  rounded-md bg-white">
-            <img
-              className="h-72 rounded-md w-1/3"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLy0iBBKr839kRpNKRTr4nh7y-uMIeqgboOH6-O-9h&s"
-              alt=""
-            />
-            <div className="space-y-3 p-4">
-              <div className="flex gap-1">
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStar className="text-yellow-500"></FaStar>
-                <FaStarHalf className="text-yellow-500"></FaStarHalf>
-              </div>
-              <p>
-                Don't just take our word for it hear what our customers have to
-                say about us! we have helped thousand people Don't just take our{" "}
-              </p>
-              <h2 className="font-bold text-lg">Siam Bro</h2>
-              <p>Customer</p>
-            </div>
-          </div>
-        </div>
+    <div className='bg-[#F6F6F9] relative h-[400px] overflow-hidden'>
+      <div className='container mx-auto'>
+      <div className='absolute top-[20%] -right-20 z-[1] nav-btn origin-bottom rotate-45 '>
+        <img className='w-[100%] h-auto' src="https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/bg-shape.png" alt=""/>
       </div>
+
+      <Swiper
+        slidesPerView={2}
+        spaceBetween={30}
+        // navigation={
+          // {nextEl: '.my-custom-next-button',prevEl: '.my-custom-prev-button'}
+          // {clickable: true}}
+        pagination={{clickable: true}}
+        modules={[Pagination, Navigation]}
+        className="mySwiper"
+        breakpoints={{
+          640: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 2,
+            spaceBetween: 50,
+          }
+        }}
+      >
+        {/* <div className="swiper-button-prev my-custom-prev-button"></div>
+        <div className="swiper-button-next my-custom-next-button"></div> */}
+        {testimonialData?.map((testimonial) => (
+          <SwiperSlide key={testimonial.id}>
+            <div className='flex gap-5'>
+              <div></div>
+              <img src={testimonial.imageSrc} alt="alt" />
+              <div>
+                <p>{testimonial.comment}</p>
+                <h1 className='text-xl font-bold mt-4'>{testimonial.author}</h1>
+                <p>{testimonial.authorTitle}</p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
       </div>
     </div>
   );

@@ -1,0 +1,14 @@
+/* custom-swiper.css */
+.my-custom-prev-button, .my-custom-next-button {
+    background-color: #004D6E;
+    font-size: 20px;
+    color: white;
+    border-radius: 50px;
+    padding: 10px;
+  }
+  
+.my-custom-prev-button:hover, .my-custom-next-button:hover {
+  background-color: #f39c12;
+  font-size: 20px;
+  color: white;
+}
