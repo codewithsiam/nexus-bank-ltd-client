@@ -18,14 +18,8 @@ const Home = () => {
             <Testimonial></Testimonial>
             <LatestNews></LatestNews>
             <OurServices></OurServices>
-<<<<<<< HEAD
-            <CreditCardPayment />
-            <ContactUs />
-            <OurTeam></OurTeam>
-=======
             <CreditCardPayment/>
             <Comparison></Comparison>
->>>>>>> ff673606f672b6931701179ab66966803e627b88
             <WhyChooseUs></WhyChooseUs>
             <Footer />
         </div>
