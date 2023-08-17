@@ -2,7 +2,7 @@ import { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const ButtomLeft = () => {
+const ButtonLeft = () => {
   const [expendService, setExpendService] = useState(false);
   return (
     <div className="flex gap-6 font-semibold">
@@ -50,4 +50,4 @@ const ButtomLeft = () => {
   );
 };
 
-export default ButtomLeft;
+export default ButtonLeft;

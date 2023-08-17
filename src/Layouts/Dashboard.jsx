@@ -22,6 +22,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import SavingsIcon from '@mui/icons-material/Savings';
 import AddCardIcon from '@mui/icons-material/AddCard';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
+import ConstructionIcon from '@mui/icons-material/Construction';
+import { Link, Outlet } from 'react-router-dom';
+import { ThemeProvider } from '@emotion/react';
+import { darkTheme } from '../config/ThemeConfig';
+import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 const drawerWidth = 240;
 
@@ -31,12 +38,17 @@ const userMenu = [
   {
     name: "My Profile",
     icon: <AccountCircleIcon />,
-    route: "dashboard/myProfile"
+    route: "/dashboard/my-profile"
   },
   {
     name: "Apply Loan",
     icon: <CreditScoreIcon />,
     route: "dashboard/apply-loan"
+  },
+  {
+    name:"Open An Account",
+    icon:<FileOpenIcon/>,
+    route:"/dashboard/open-account"
   },
   {
     name: "Savings",
@@ -47,6 +59,24 @@ const userMenu = [
     name: "Add Money",
     icon: <AddCardIcon />,
     route: "dashboard/add-money"
+  }
+]
+
+const HomeMenu = [
+  {
+    name:"Home",
+    icon:<HomeIcon/>,
+    route:"/"
+  },
+  {
+    name:"About",
+    icon:<InfoIcon/>,
+    route:"/about"
+  },
+  {
+    name:"Services",
+    icon:<ConstructionIcon/>,
+    route:"/services"
   }
 ]
 
@@ -128,7 +158,8 @@ export default function MiniDrawer() {
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <ThemeProvider theme={darkTheme}>
+      <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -159,7 +190,8 @@ export default function MiniDrawer() {
         <List>
           {userMenu.map((menuItem, index) => (
             <ListItem key={menuItem.name} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
+            <Link to={menuItem.route}>
+            <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -177,14 +209,16 @@ export default function MiniDrawer() {
                 </ListItemIcon>
                 <ListItemText primary={menuItem.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
+            </Link>
             </ListItem>
           ))}
         </List>
 
         <Divider />
         <List>
-          {['Home', 'About', 'Services'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {HomeMenu.map((menu, index) => (
+            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+              <Link to={menu.route}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -199,44 +233,19 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {menu.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={menu.name} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
+              </Link>
             </ListItem>
           ))}
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+       <Outlet/>
       </Box>
     </Box>
+    </ThemeProvider>
   );
 }
