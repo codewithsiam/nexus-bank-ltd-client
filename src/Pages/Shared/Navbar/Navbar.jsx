@@ -29,10 +29,10 @@ const Navbar = () => {
   }, []);
   return (
     <div>
-      {windowWidth < 1024 ? <MobileNav /> :
+      {windowWidth < 1160 ? <MobileNav /> :
         <div className="flex justify-between h-32">
 
-          <div className="xl:w-[500px] 2xl:w-[600px] nav-left flex justify-center items-center " >
+          <div className="lg:w-[400px] xl:w-[500px] 2xl:w-[600px] nav-left flex justify-center items-center " >
           <div className="flex items-center gap-2">
                   <Link to="/"><img className="w-32" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" /></Link>
                   {/* <h2 className="text-3xl font-semibold text-white">NEXUS</h2> */}
@@ -41,7 +41,7 @@ const Navbar = () => {
           <div className="w-full">
             <NavMiddle />
           </div>
-          <div className="xl:w-[500px] 2xl:w-[600px] bg-[#F4F5FA] flex justify-center items-center">
+          <div className=" lg:w-[400px] xl:w-[500px] 2xl:w-[600px] bg-[#F4F5FA] flex justify-center items-center">
             {
               user ?
                 <button onClick={handleLogout} className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center bg-red-500"> <AiOutlineLogout size={24}/> Logout</button>
