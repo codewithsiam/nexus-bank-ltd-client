@@ -7,7 +7,7 @@ const ContactUs = () => {
     return (
         <div className='bg-[#F7F9FA] py-11'>
             <div className="container mx-auto px-3">
-                <h1 className="text-center text-2xl font-bold mb-5">Contact Us</h1>
+                <h1 className="text-center text-4xl font-extrabold mb-5">Contact Us</h1>
                 <div className='bg-white shadow'>
                     <div className='flex gap-5'>
                         <div className='bg-[#00ACCC] text-white basis-2/4 p-5 md:block hidden'>
