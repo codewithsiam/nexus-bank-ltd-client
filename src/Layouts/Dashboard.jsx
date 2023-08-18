@@ -27,7 +27,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import ConstructionIcon from '@mui/icons-material/Construction';
 import { Link, Outlet } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import { darkTheme } from '../config/ThemeConfig';
+import { darkTheme, lightTheme } from '../config/ThemeConfig';
 import FileOpenIcon from '@mui/icons-material/FileOpen';
 
 const drawerWidth = 240;
@@ -158,7 +158,7 @@ export default function MiniDrawer() {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={lightTheme}>
       <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
