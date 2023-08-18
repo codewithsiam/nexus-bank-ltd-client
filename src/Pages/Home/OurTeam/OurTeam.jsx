@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import CenterTitle from "../../../Components/Title/CenterTitle";
 
 const teamMembers = [
   {
     name: "John Doe",
-    role: "Designer",
+    role: "Senior Manager",
     socialLinks: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
       instagram: "https://instagram.com/",
     },
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7GoLl5TulaocWLQ8pi__zObTN8Sj5PmFvec-6NEPb&s",
+    "https://i.ibb.co/MhFM3L3/images-2.jpg",
   },
 
   {
-    name: "John Doe",
-    role: "Designer",
+    name: "Jane Smith",
+    role: "Financial Analyst",
     socialLinks: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
       instagram: "https://instagram.com/",
     },
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7GoLl5TulaocWLQ8pi__zObTN8Sj5PmFvec-6NEPb&s",
+    "https://i.ibb.co/ckdpscW/images-1.jpg",
   },
 
   {
-    name: "John Doe",
+    name: "Michael Johnson",
     role: "Designer",
     socialLinks: {
       facebook: "https://facebook.com/",
@@ -36,24 +37,31 @@ const teamMembers = [
       instagram: "https://instagram.com/",
     },
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7GoLl5TulaocWLQ8pi__zObTN8Sj5PmFvec-6NEPb&s",
+    "https://i.ibb.co/Hr5sgCq/images.jpg",
   },
 
   {
-    name: "John Doe",
-    role: "Designer",
+    name: "Emily Williams",
+    role:"Branch Manager",
     socialLinks: {
       facebook: "https://facebook.com/",
       twitter: "https://twitter.com/",
       instagram: "https://instagram.com/",
     },
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7GoLl5TulaocWLQ8pi__zObTN8Sj5PmFvec-6NEPb&s",
+     "https://i.ibb.co/hZ219gy/john-doe.jpg",
   },
 ];
 
 const OurTeam = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  // const [employees,setEmployees] = useState([]);
+
+  // useEffect(()=>{
+  //   fetch(`${baseUrl}/employees`)
+  //   .then(res=>res.json())
+  //   .then(data=>console.log(data))
+  // },[])
 
   const handleHover = (index) => {
     setHoveredIndex(index);
@@ -65,11 +73,13 @@ const OurTeam = () => {
 
   return (
     <div className="h-max my-20">
-       <p className='p-5 text-2xl font-bold text-center bg-gradient-to-l to-[#000000] via-[#038cc7] from-[#ffffff] bg-clip-text text-transparent'>
-    OUR TEAM
-      </p>
+        <div className="text-center">
+          <CenterTitle
+            subHeading={"OUR TEAM"}
+            heading={"Leading the way in business transformation"}
+          ></CenterTitle>
+        </div>
 
-      <h2 className="text-5xl font-semibold w-[700px] text-center mx-auto mb-10">Leading the way in business transformation</h2>
       <div className="flex justify-center items-center h-max bg-white">
         <div className="flex flex-wrap justify-center gap-8">
           {teamMembers?.map((member, index) => (
@@ -141,7 +151,7 @@ const OurTeam = () => {
                     )}
                   </div>
                 </div>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-4">
+                <div className="absolute bottom-0 w-max text-center left-1/2 transform -translate-x-1/2 p-4">
                   <div className="flex flex-col space-y-2">
                     <p
                       className={`text-white font-semibold transition-all ${

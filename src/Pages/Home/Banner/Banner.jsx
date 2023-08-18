@@ -17,11 +17,11 @@ const Banner = () => {
   };
 
   return (
-    <div className='bg-[#91cae2]'>
-        <div className="carousel-container container mx-auto">
+    <div className='bg-[#16243E] text-white'>
+        <div className="carousel-container container mx-auto py-10 md:py-20">
         <Slider {...carousel}>
             {/* Slide 1 */}
-            <div className="slide-container mt-5">
+            <div className="slide-container">
                 <div className="grid md:grid-cols-2 items-center gap-10">
                     <div className="">
                         <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
@@ -42,7 +42,7 @@ const Banner = () => {
             </div>
 
             {/* Slide 2 */}
-            <div className="slide-container mt-5">
+            <div className="slide-container">
             <div className="grid md:grid-cols-2 items-center gap-10">
                 <div className="">
                     <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
@@ -63,12 +63,12 @@ const Banner = () => {
             </div>
 
             {/* Slide 3 */}
-            <div className="slide-container mt-5">
+            <div className="slide-container">
                 <div className="grid md:grid-cols-2 items-center gap-10">
                     <div className="">
                         <h2 className="text-md md:text-2xl font-bold">Be Invest</h2>
                         <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold mt-3 mb-5">
-                            Where your financial dreams become reality
+                            Our mission is your financial success
                         </h1>
                         <p className="mb-5">
                             And In Order To Make A Business, Brand Advertising And Marketing Plays An Important

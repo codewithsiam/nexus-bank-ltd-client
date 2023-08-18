@@ -16,16 +16,14 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <About></About>
-            <Testimonial></Testimonial>
-            <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment />
+            <LatestNews></LatestNews>
             <Comparison></Comparison>
+            <Testimonial></Testimonial>
             <OurTeam />
-            <ContactUs />
+            <CreditCardPayment/>
             <Blog />
-            <WhyChooseUs></WhyChooseUs>
-            <Footer />
+            <ContactUs />
         </div>
     );
 };

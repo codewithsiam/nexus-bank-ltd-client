@@ -1,3 +1,4 @@
+import Heading from "../../../Components/Title/Heading";
 import CardWhyChooseUs from "./CardWhyChooseUs";
 
 const WhyChooseUs = () => {
@@ -30,9 +31,10 @@ const WhyChooseUs = () => {
     <section className="py-12 pb-40 bg-[#F7F9FA] px-3">
       <div className="">
         <div className="container mx-auto">
-          <h2 className="text-4xl font-extrabold text-center mb-8">
-            Why Choose Us?
-          </h2>
+          <Heading
+            heading={"Why Choose Us?"}
+          ></Heading>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {
