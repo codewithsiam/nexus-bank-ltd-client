@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../../../config/server";
 
 const teamMembers = [
   {
@@ -54,6 +55,13 @@ const teamMembers = [
 
 const OurTeam = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
+  const [employees,setEmployees] = useState([]);
+
+  useEffect(()=>{
+    fetch(`${baseUrl}/employees`)
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+  },[])
 
   const handleHover = (index) => {
     setHoveredIndex(index);
