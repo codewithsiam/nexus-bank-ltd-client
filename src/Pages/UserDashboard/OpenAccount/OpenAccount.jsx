@@ -61,7 +61,7 @@ const OpenAccount = () => {
                     accounts.map((account,index)=><div className='border-2 flex flex-col items-center justify-between rounded-lg' key={index}>
                         <img className='w-40 h-40' src={account.image} alt="" />
                         <h3 className='text-3xl font-semibold'>{account.type}</h3>
-                        <p className='px-4 text-center mb-4'>{account.description}</p>
+                        <p className='px-4 text-center mb-4 mt-2'>{account.description}</p>
                     </div>)
                 }
             </div>
