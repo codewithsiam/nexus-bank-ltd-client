@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../../config/server";
+import CenterTitle from "../../../Components/Title/CenterTitle";
 
 const teamMembers = [
   {
@@ -55,13 +55,13 @@ const teamMembers = [
 
 const OurTeam = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  const [employees,setEmployees] = useState([]);
+  // const [employees,setEmployees] = useState([]);
 
-  useEffect(()=>{
-    fetch(`${baseUrl}/employees`)
-    .then(res=>res.json())
-    .then(data=>console.log(data))
-  },[])
+  // useEffect(()=>{
+  //   fetch(`${baseUrl}/employees`)
+  //   .then(res=>res.json())
+  //   .then(data=>console.log(data))
+  // },[])
 
   const handleHover = (index) => {
     setHoveredIndex(index);
@@ -73,11 +73,13 @@ const OurTeam = () => {
 
   return (
     <div className="h-max my-20">
-       <p className='p-5 text-2xl font-bold text-center bg-gradient-to-l to-[#000000] via-[#038cc7] from-[#ffffff] bg-clip-text text-transparent'>
-    OUR TEAM
-      </p>
+        <div className="text-center">
+          <CenterTitle
+            subHeading={"OUR TEAM"}
+            heading={"Leading the way in business transformation"}
+          ></CenterTitle>
+        </div>
 
-      <h2 className="text-5xl font-semibold w-[700px] text-center mx-auto mb-10">Leading the way in business transformation</h2>
       <div className="flex justify-center items-center h-max bg-white">
         <div className="flex flex-wrap justify-center gap-8">
           {teamMembers?.map((member, index) => (

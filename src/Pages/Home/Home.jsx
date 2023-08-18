@@ -9,20 +9,21 @@ import OurTeam from "./OurTeam/OurTeam";
 import Testimonial from "./Testimonial/Testimonial";
 import Comparison from "./Comparison/Comparison";
 import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
+import Blog from "./Blog/Blog";
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
             <About></About>
-            <Testimonial></Testimonial>
-            <LatestNews></LatestNews>
             <OurServices></OurServices>
-            <CreditCardPayment/>
+            <LatestNews></LatestNews>
             <Comparison></Comparison>
-            <OurTeam/>
-            <WhyChooseUs></WhyChooseUs>
-            <Footer />
+            <Testimonial></Testimonial>
+            <OurTeam />
+            <CreditCardPayment/>
+            <Blog />
+            <ContactUs />
         </div>
     );
 };

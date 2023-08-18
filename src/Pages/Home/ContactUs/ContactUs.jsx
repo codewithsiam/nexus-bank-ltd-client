@@ -1,24 +1,30 @@
 import React from 'react';
-import ContactInfo from './ContactInfo';
+import ContactAddress from './ContactAddress';
 import ContactInput from './ContactInput';
+import Heading from '../../../Components/Title/Heading';
 
 
 const ContactUs = () => {
     return (
-        <div className='bg-[#F7F9FA] py-11'>
-            <div className="container mx-auto px-3">
-                <h1 className="text-center text-4xl font-extrabold mb-5">Contact Us</h1>
-                <div className='bg-white shadow'>
-                    <div className='flex gap-5'>
-                        <div className='bg-[#00ACCC] text-white basis-2/4 p-5 md:block hidden'>
+        <div className='pb-36'>
+            <div className="container mx-auto">
+                <div className='shadow p-5 py-10 rounded'>
+                    <div>
+                        <Heading
+                        heading={"Get in touch"}
+                        ></Heading>
+                        <p className='paragraph-two'>We are here for you! how can we help, We are here for you!</p>
+                        <div className='flex flex-col md:flex-row gap-5'>
 
-                            <h2 className='text-2xl mb-3'>Let's get in touch</h2>
-                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam, mollitia. Vitae omnis fuga deleniti fugiat culpa velit odit veritatis earum.</p>
+                            <div className='md:w-3/5 mb-5 md:mb-0'>
+                                <ContactInput />
+                            </div>
 
-                            <ContactInfo/>
+                            <div className='md:w-2/4'>
+                                <ContactAddress />
+                            </div>
+                            
                         </div>
-
-                        <ContactInput/>
                     </div>
                 </div>
             </div>
