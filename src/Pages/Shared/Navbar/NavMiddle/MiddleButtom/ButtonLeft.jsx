@@ -41,7 +41,7 @@ const ButtonLeft = () => {
         <Link>Installment Lone</Link>
       </div>
       </div>
-      <Link>Contact</Link>
+      <Link to='/contact'>Contact</Link>
     </div>
   );
 };
