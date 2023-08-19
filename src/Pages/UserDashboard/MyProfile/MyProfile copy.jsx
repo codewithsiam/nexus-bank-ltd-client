@@ -56,15 +56,15 @@ const MyProfile = () => {
   const user = myProfileData[0]; // Get the user from myProfileData
 
   return (
-    <div className="user-profile mt-32">
+    <div className="border-[1px] border-[ccc] mt-32 p-5 rounded-lg shadow-xl w-[400px] mx-auto bg-[#f7f7f7] ">
       <h2 className="text-2xl font-semibold mb-4">User Profile</h2>
-      <div className="user-details">
+      <div className="mb-5">
         <p><strong>Name:</strong> {user.name}</p>
-        <p><strong>Email:</strong> {user.email}</p>
+        <p className='my-2'><strong>Email:</strong> {user.email}</p>
         <p><strong>Account Number:</strong> {user.accountNumber}</p>
-        <p><strong>Balance:</strong> ${user.balance.toFixed(2)}</p>
+        <p className='my-2'><strong>Balance:</strong> ${user.balance.toFixed(2)}</p>
       </div>
-      <div className="user-actions">
+      <div className="bg-white p-3 rounded-lg shadow-xl">
         <div className="transaction-form">
           <label htmlFor="amount" className="block font-semibold mb-1">Amount:</label>
           <input
@@ -72,7 +72,7 @@ const MyProfile = () => {
             id="amount"
             value={amount}
             onChange={handleAmountChange}
-            className="block w-full p-2 border rounded mb-2"
+            className="block w-full p-2 border border[#ccc] rounded mb-2"
           />
           <label htmlFor="transactionType" className="block font-semibold mb-1">Transaction Type:</label>
           <select

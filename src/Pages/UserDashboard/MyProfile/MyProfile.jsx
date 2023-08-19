@@ -78,12 +78,11 @@ const Profile = () => {
                                 <tr>
                                     <td className="font-semibold">Total Balance</td>
                                     <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{balance} tk</td>
+                                    <td>{balance.toFixed(2)} tk</td>
                                 </tr>
                             </tbody>
                         </table>
                         <div className="">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
                             <div className="inline-block overflow-hidden mt-4">
                             <a href="#" className="flex gap-1 items-center nav-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
                             </div>
