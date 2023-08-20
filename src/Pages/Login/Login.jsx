@@ -1,5 +1,5 @@
 import Google from '../../components/Google/Google';
-import registrationImage from '../../assets/images/Registration/registration-img.png'
+import loginImage from '../../assets/images/Registration/login-img.png'
 import LoginForm from './LoginForm';
 
 
@@ -7,8 +7,8 @@ import LoginForm from './LoginForm';
 const Login = () => {
 
     return (
-        <section className="relative flex flex-wrap lg:h-screen lg:items-center">
-            <div className="w-full px-4 py-12 sm:px-6 sm:py-16 lg:w-1/2 lg:px-8 lg:py-24">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center justify-center px-3 mt-11">
+            <div className="">
                 <div className="mx-auto max-w-lg text-center">
                     <h1 className="text-2xl font-bold sm:text-3xl">Login!</h1>
 
@@ -25,11 +25,11 @@ const Login = () => {
                 </div>
             </div>
 
-            <div className="relative h-64 w-full sm:h-96 lg:h-full lg:w-1/2">
+            <div className="">
                 <img
                     alt="Welcome"
-                    src={registrationImage}
-                    className=""
+                    src={loginImage}
+                    className="hidden md:block w-5/6"
                 />
             </div>
         </section>

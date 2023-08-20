@@ -7,13 +7,13 @@ import RegistrationForm from "./RegistrationForm";
 const Registration = () => {
 
   return (
-    <section className="max-w-screen-2xl mx-auto flex flex-wrap lg:h-screen lg:items-center">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-3 items-center justify-center px-3 mt-11">
       <div className="">
-        <img alt="Welcome" src={registrationImage} className="" />
+        <img alt="Welcome" src={registrationImage} className="hidden md:block w-5/6" />
       </div>
-      <div className="w-full px-4  sm:px-6 sm:py-16 lg:w-1/2 lg:px-8">
+      <div className="">
         <div className="mx-auto max-w-lg text-center">
-          <h1 className="text-2xl font-bold sm:text-3xl">Registration!</h1>
+          <h1 className="text-2xl font-bold sm:text-3xl mt-0">Registration!</h1>
 
           <p className="mt-4 text-gray-500">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
@@ -21,7 +21,7 @@ const Registration = () => {
           </p>
         </div>
 
-        <div className="mx-auto mb-0 mt-8 max-w-md space-y-4">
+        <div className="mx-auto mb-0 max-w-md space-y-4">
           <RegistrationForm />
 
           <Google />
