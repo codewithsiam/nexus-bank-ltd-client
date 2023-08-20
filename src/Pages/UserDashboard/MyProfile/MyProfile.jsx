@@ -4,95 +4,92 @@ import { FaFacebook, FaGoogle, FaPencilAlt, FaTwitter } from "react-icons/fa";
 
 const myProfileData = [
     {
-      id: 1,
-      photoURL: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
-      displayName: "Rukshana rupu",
-      email: "rupu.tht@gmail.com",
-      number: +8801791687736,
-      address: "tongi",
-      accountNumber: 441965406712489,
-      balance: 40000,
+        id: 1,
+        photoURL: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
+        displayName: "Rukshana rupu",
+        email: "rupu.tht@gmail.com",
+        number: +8801791687736,
+        address: "tongi",
+        accountNumber: 441965406712489,
+        balance: 40000,
+        customerInfo: 'An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.'
     },
 ];
 
 const Profile = () => {
     // const { user } = useContext(AuthContext);
     const user = myProfileData[0];
-    console.log(user)
 
-    const {photoURL,displayName,email,number,address,accountNumber,balance} = user;
+    const { photoURL, displayName, email, number, address, accountNumber, balance, customerInfo } = user;
+
+    const [showFullCustomerInfo, setShowFullCustomerInfo] = useState(false);
+
+    const handleToggleCustomerInfo = () => {
+        setShowFullCustomerInfo((prev) => !prev);
+    };
+
 
     return (
-        <div className="grid md:grid-cols-2 gap-5 md:gap-10 lg:gap-24 container mx-auto text-black mt-10">
-            <div className="text-center py-10 px-5 relative overflow-hidden">
-                <div className="relative overflow-hidden mb-7 bg-white p-5 rounded shadow-xl border-1 border-white">
-                <div className="text-center mb-4 shadow-lg p-1 nav-btn inline-block rounded-full ">
-                    <img className="rounded-full shadow-lg w-[200px] h-[200px] inline-block" src={photoURL} alt="user"/>
-                </div>
-                <div className="">
-                    <h4 className="text-3xl font-semibold">{displayName}</h4>
-                    <h3 className="text-md">{email}</h3>
-                    <ul className="flex justify-center items-center gap-3 mt-4">
-                        <li><a href="#!"><FaFacebook/></a></li>
-                        <li><a href="#!"><FaGoogle/></a></li>
-                        <li><a href="#!"><FaTwitter/></a></li>
-                    </ul>
-                </div>
-                </div>
-            </div>
-            <div className="py-10 px-5 relative overflow-hidden ">
-                <div className="relative overflow-hidden mb-7 bg-white p-5 rounded shadow-xl border-1 border-white">
-                    <h4 className="font-bold text-yellow-700 text-2xl"> My Profile</h4>
-                    <p className="my-4 ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
-                        to using Content here, content here, making it look like readable English.</p>
-                    <div className="">
-                        <table className="responsive-table bordered">
-                            <tbody>
-                                <tr>
-                                    <td className="font-semibold">User Name</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{displayName}</td>
-                                </tr>
-                                <tr>
-                                    <td className="font-semibold">Eamil</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{email}</td>
-                                </tr>
-                                <tr>
-                                    <td className="font-semibold">Phone</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>
-                                        {number}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className="font-semibold">Address</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{address}</td>
-                                </tr>
-                                <tr>
-                                    <td className="font-semibold">Account Number</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{accountNumber}</td>
-                                </tr>
-                                <tr>
-                                    <td className="font-semibold">Total Balance</td>
-                                    <td className="py-1 pl-1 pr-2">:</td>
-                                    <td>{balance} tk</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div className="">
-                            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
-                            <div className="inline-block overflow-hidden mt-4">
-                            <a href="#" className="flex gap-1 items-center nav-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
-                            </div>
-                        </div>
+        <>
+            <div className="p-8 bg-white shadow mt-24">
+                <div className="relative flex items-center md:justify-end justify-center mt-11">
+                    <div>
+                        <img className="w-28 h-28  mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500" src={photoURL} alt="" />
+                    </div>
+                    <div>
+                        <button
+                            className="flex items-center text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 md:mt-0 mt-5"
+                        >
+                            <FaPencilAlt className="mr-3" />
+                            <span>Edit Profile</span>
+                        </button>
                     </div>
                 </div>
-            </div>
 
-        </div>
+                <div className="text-center border-b pb-12">
+                    <h1 className="text-4xl font-medium text-gray-700">{displayName}</h1>
+
+                    <p className="font-light text-gray-600 mt-3">
+                        <span className="font-semibold">Email: </span>
+                        {email}
+                    </p>
+
+                    <p className="text-gray-500">
+                        <span className="font-semibold">Address: </span>
+                        {address}
+                    </p>
+
+                    <p className="text-gray-500">
+                        <span className="font-semibold">Number: </span>
+                        {number}
+                    </p>
+
+                    <p className="text-gray-500">
+                        <span className="font-semibold">Account Number: </span>
+                        {accountNumber}
+                    </p>
+
+                    <p className="text-gray-500">
+                        <span className="font-semibold">Balance: </span>
+                        {balance}
+                    </p>
+                </div>
+
+                <div className="mt-12 flex flex-col justify-center">
+                    <p className="text-gray-600 text-center font-light lg:px-16">
+                        {showFullCustomerInfo ? customerInfo : customerInfo.slice(0, 100) + '...'}
+                    </p>
+                    <button
+                        onClick={handleToggleCustomerInfo}
+                        className="text-indigo-500 py-2 px-4  font-medium mt-4"
+                    >
+                        {showFullCustomerInfo ? "Show less" : "Show more"}
+                    </button>
+                </div>
+
+            </div>
+        </>
+
     );
 };
 
