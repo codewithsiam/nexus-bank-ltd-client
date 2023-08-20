@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
-import Contact from "./Contact";
+import Contact from "./NavContact";
+import NavContact from "./NavContact";
 
 const MobileMenu = ({ setShowMenu }) => {
   return (
@@ -45,7 +46,7 @@ const MobileMenu = ({ setShowMenu }) => {
         <Menu />
       </div>
       <div>
-        <Contact />
+        <NavContact />
       </div>
     </div>
   );

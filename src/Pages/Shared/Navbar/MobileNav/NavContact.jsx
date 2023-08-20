@@ -2,7 +2,7 @@ import React from "react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaMapMarkerAlt, FaTwitter } from "react-icons/fa";
 import { MdAddIcCall, MdEmail } from "react-icons/md";
 
-const Contact = () => {
+const NavContact = () => {
   return (
     <div className="mt-4 px-2">
       <h4 className="text-xl font-semibold">Contact</h4>
@@ -32,4 +32,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default NavContact;

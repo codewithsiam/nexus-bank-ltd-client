@@ -62,12 +62,12 @@ const ApplyLoan = () => {
           <Typography variant="h5" component="div">
             Apply for a Loan
           </Typography>
-          <form onSubmit={handleSubmit(onSubmit)} className="text-white">
+          <form onSubmit={handleSubmit(onSubmit)} className="text-black">
             <div className="relative">
               <input
                 {...register("name", { required: true })}
                 type="text"
-                className="w-full border outline-none rounded-lg border-white bg-black bg-black p-4 pe-12 text-sm shadow-sm"
+                className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
                 defaultValue={user?.displayName}
                 readOnly
               />
@@ -77,7 +77,7 @@ const ApplyLoan = () => {
               <input
                 {...register("email")}
                 type="email"
-                className="w-full border outline-none rounded-lg border-white bg-black p-4 pe-12 text-sm shadow-sm"
+                className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
                 defaultValue={user?.email}
                 readOnly
               />
@@ -87,7 +87,7 @@ const ApplyLoan = () => {
               <input
                 {...register("loanAmount", { required: true })}
                 type="number"
-                className="w-full border outline-none rounded-lg border-white bg-black p-4 pe-12 text-sm shadow-sm"
+                className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter loan amount"
               />
             </div>
@@ -96,7 +96,7 @@ const ApplyLoan = () => {
               <input
                 {...register("loanPurpose", { required: true })}
                 type="text"
-                className="w-full border outline-none rounded-lg border-white bg-black p-4 pe-12 text-sm shadow-sm"
+                className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter loan purpose"
               />
             </div>

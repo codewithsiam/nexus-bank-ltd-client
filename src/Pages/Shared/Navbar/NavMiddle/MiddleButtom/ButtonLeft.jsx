@@ -20,11 +20,7 @@ const ButtonLeft = () => {
       </div>
       </div>
       <div className="relative group">
-        <Link className="flex items-center gap-1">Treasury <FaAngleDown /></Link>
-        <div className="absolute  transform -translate-x-1/2 opacity-0 bg-white  rounded-md   w-40 px-4 pb-4 pt-8  transition-opacity duration-300 group-hover:opacity-100 z-30 left-20  flex flex-col space-y-3">
-          <Link>Deposit</Link>
-          <Link>DPS</Link>
-        </div>
+        <Link to='dashboard/my-profile'>My Profile</Link>
       </div>
       <div className="relative group">
         <Link className="flex gap-1 items-center">
@@ -45,9 +41,11 @@ const ButtonLeft = () => {
         <Link>Installment Lone</Link>
       </div>
       </div>
-      <Link>Contact</Link>
+      <Link to='/contact'>Contact</Link>
     </div>
   );
 };
 
 export default ButtonLeft;
+
+// thats great

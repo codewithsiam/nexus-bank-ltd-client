@@ -79,13 +79,13 @@ const MyProfile = () => {
             id="transactionType"
             value={transactionType}
             onChange={handleTransactionTypeChange}
-            className="block w-full p-2 border rounded mb-2"
+            className="block w-full p-2 border border[#ccc] rounded mb-2"
           >
             <option value="deposit">Deposit</option>
             <option value="withdraw">Withdraw</option>
           </select>
-          <button
-            className="btn bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          <button style={{transition: "background-color 0.3s"}}
+            className="inline cursor-pointer bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
             onClick={handleTransaction}
           >
             {transactionType === 'deposit' ? 'Deposit' : 'Withdraw'}
