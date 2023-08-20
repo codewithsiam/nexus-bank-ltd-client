@@ -11,6 +11,7 @@ import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
 import AdminDashboard from "../Pages/AdminDashboard/Dashboard/AdminDashboard";
 import Dashboard from '../Layouts/Dashboard'
+import Employees from "../Pages/AdminDashboard/Employees/Employees";
 
 const router = createBrowserRouter([
   {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:"adminDashboard",
         element:<AdminDashboard/>
+      },
+      {
+        path:"employees",
+        element:<Employees/>
       }
     ],
   },
