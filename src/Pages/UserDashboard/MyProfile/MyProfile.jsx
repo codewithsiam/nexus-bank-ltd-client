@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { FaFacebook, FaGoogle, FaPencilAlt, FaTwitter, FaUser } from "react-icons/fa";
+import { FaFacebook, FaGoogle, FaInstagram, FaPencilAlt, FaTwitter, FaUser } from "react-icons/fa";
 
 const myProfileData = [
     {
@@ -25,8 +25,8 @@ const Profile = () => {
     return (
         <div className=" pt-10">
             <div class="relative w-full text-white">
-                <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" class="w-full h-[300px]" alt="Louvre"/>
-                <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hiddens bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 opacity-70"></div>
+                <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" class="w-full h-[430px]" alt="Louvre"/>
+                <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 opacity-70"></div>
                 <div className=" pl-5 md:pl-10 lg:pl-20 absolute top-16">
                     <h1 className="text-4xl">Hellow, I am {displayName}</h1>
                     <p>This is your profile page. You can see the all history and you can update your profile.</p>
@@ -38,25 +38,23 @@ const Profile = () => {
                 </div>
             </div>
                 
-            <div className="flex gap-10 container mx-auto text-black">
-                <div className="text-center relative overflow-hidden">
-                    <div className=" text-center mb-4 shadow-lg p-1 nav-btn
-                     rounded-full ">
-                        <img className="rounded-full shadow-lg w-[200px] h-[200px] inline-block" src={photoURL} alt="user"/>
+            <div className="-mt-[100px] flex gap-10 container px-[50px] text-black">
+                <div className="pt-[140px] w-[700px] text-center border bg-slate-500 relative mb-7 p-5 rounded shadow-xl border-1 border-white">
+                    <div className="absolute -top-[90px] left-[70px] mb-4 shadow-lg p-1 nav-btn
+                    rounded-full ">
+                        <img className=" rounded-full w-[200px] h-[200px]" src={photoURL} alt="user"/>
                     </div>
-                    <div className="relative overflow-hidden mb-7 bg-white p-5 rounded shadow-xl border-1 border-white">
                     <div className="">
                         <h4 className="text-3xl font-semibold">{displayName}</h4>
                         <h3 className="text-md">{email}</h3>
                         <ul className="flex justify-center items-center gap-3 mt-4">
                             <li><a href="#!"><FaFacebook/></a></li>
-                            <li><a href="#!"><FaGoogle/></a></li>
+                            <li><a href="#!"><FaInstagram/></a></li>
                             <li><a href="#!"><FaTwitter/></a></li>
                         </ul>
                     </div>
-                    </div>
                 </div>
-            <div className="py-10 px-5 relative overflow-hidden ">
+                <div className="px-5 relative overflow-hidden ">
                 <div className="relative overflow-hidden mb-7 bg-white p-5 rounded shadow-xl border-1 border-white">
                     <h4 className="font-bold text-yellow-700 text-2xl flex gap-1"><FaUser></FaUser> User Details</h4>
                     <p className="my-4 ">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed
