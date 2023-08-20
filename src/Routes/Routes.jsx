@@ -7,9 +7,10 @@ import Registration from "../Pages/Registration/Registration";
 import Dashboard from "../Layouts/Dashboard";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
 import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
-import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
+import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
+
 
 const router = createBrowserRouter([
   {
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
         path: "add-money",
         element: <AddMoney />,
       },
+      // {
+      //   path: "checkout",
+      //   element: <StripePayment />,
+      // },
       {
         path: "apply-loan",
         element: <ApplyLoan />,

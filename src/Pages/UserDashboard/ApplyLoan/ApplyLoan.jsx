@@ -56,6 +56,7 @@ const ApplyLoan = () => {
 
   return (
     <Container maxWidth="sm">
+      
       <Card variant="outlined" sx={{ marginTop: 5, padding: 3 }}>
         <CardContent>
           <Typography variant="h5" component="div">
