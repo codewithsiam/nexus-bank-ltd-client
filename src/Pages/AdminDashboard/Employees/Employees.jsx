@@ -83,7 +83,7 @@ const Employees = () => {
                     style={{ width: "300px" }}
                   />
                   <div className="mt-4">
-                    <span >@depthsearch.net</span>
+                    <span >.nexus@gmail.com</span>
                   </div>
                 </div>
                 <FormControl fullWidth>
