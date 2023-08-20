@@ -40,7 +40,8 @@ const Profile = () => {
                 
             <div className="flex gap-10 container mx-auto text-black">
                 <div className="text-center relative overflow-hidden">
-                    <div className=" text-center mb-4 shadow-lg p-1 nav-btn rounded-full ">
+                    <div className=" text-center mb-4 shadow-lg p-1 nav-btn
+                     rounded-full ">
                         <img className="rounded-full shadow-lg w-[200px] h-[200px] inline-block" src={photoURL} alt="user"/>
                     </div>
                     <div className="relative overflow-hidden mb-7 bg-white p-5 rounded shadow-xl border-1 border-white">
