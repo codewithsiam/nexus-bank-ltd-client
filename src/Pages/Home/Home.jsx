@@ -24,6 +24,7 @@ const Home = () => {
             <CreditCardPayment/>
             <Blog />
             <ContactUs />
+            <Footer/>
         </div>
     );
 };
