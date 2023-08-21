@@ -13,7 +13,7 @@ const teamMembers = [
       instagram: "https://instagram.com/",
     },
     image:
-    "https://i.ibb.co/MhFM3L3/images-2.jpg",
+    "https://i.ibb.co/YttY8Zz/Capture.png",
   },
 
   {
@@ -25,7 +25,7 @@ const teamMembers = [
       instagram: "https://instagram.com/",
     },
     image:
-    "https://i.ibb.co/ckdpscW/images-1.jpg",
+    "https://i.ibb.co/6g1FhyY/Capture2.png",
   },
 
   {
@@ -49,7 +49,7 @@ const teamMembers = [
       instagram: "https://instagram.com/",
     },
     image:
-     "https://i.ibb.co/hZ219gy/john-doe.jpg",
+     "https://i.ibb.co/3cJXDpR/shuvo.jpg",
   },
 ];
 

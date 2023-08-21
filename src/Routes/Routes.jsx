@@ -6,12 +6,13 @@ import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
 import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
-import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
-import AdminDashboard from "../Pages/AdminDashboard/Dashboard/AdminDashboard";
+import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import Dashboard from '../Layouts/Dashboard'
+import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
+
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
         path: "add-money",
         element: <AddMoney />,
       },
+      // {
+      //   path: "checkout",
+      //   element: <StripePayment />,
+      // },
       {
         path: "apply-loan",
         element: <ApplyLoan />,

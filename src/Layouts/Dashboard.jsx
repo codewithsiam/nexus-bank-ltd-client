@@ -101,8 +101,8 @@ const HomeMenu = [
   },
 ];
 
-// find user rote -----------------------------
-const user = "admin";
+// find user rote ------------------------------------------
+const user = "user";
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
