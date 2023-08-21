@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 const ButtonLeft = () => {
   const [expendService, setExpendService] = useState(false);
+
+  // use defined ------------------------------------
+  const user = "admin";
   return (
     <div className="flex gap-6 font-semibold">
       <Link>Home</Link>
@@ -20,7 +23,9 @@ const ButtonLeft = () => {
       </div>
       </div>
       <div className="relative group">
-        <Link to='dashboard/my-profile'>My Profile</Link>
+        {
+          user === "admin"? <Link to='/dashboard/adminDashboard'>Dashboard</Link>:<Link to='/dashboard/my-profile'>My Profile</Link>
+        }
       </div>
       <div className="relative group">
         <Link className="flex gap-1 items-center">
