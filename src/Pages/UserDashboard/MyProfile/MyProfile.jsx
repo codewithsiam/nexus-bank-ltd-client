@@ -30,8 +30,8 @@ const Profile = () => {
 
 
     return (
-        <>
-            <div className="p-8 bg-white shadow mt-24">
+        <div className="">
+            <div className="p-3 bg-white shadow mt-24">
                 <div className="relative flex items-center md:justify-end justify-center mt-11">
                     <div>
                         <img className="w-28 h-28  mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500" src={photoURL} alt="" />
@@ -88,7 +88,7 @@ const Profile = () => {
                 </div>
 
             </div>
-        </>
+        </div>
 
     );
 };

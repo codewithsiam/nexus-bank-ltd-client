@@ -16,8 +16,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CreditScoreIcon from '@mui/icons-material/CreditScore';
 import SavingsIcon from '@mui/icons-material/Savings';
@@ -46,9 +44,9 @@ const userMenu = [
     route: "apply-loan"
   },
   {
-    name:"Open An Account",
-    icon:<FileOpenIcon/>,
-    route:"open-account"
+    name: "Open An Account",
+    icon: <FileOpenIcon />,
+    route: "open-account"
   },
   {
     name: "Savings",
@@ -64,19 +62,19 @@ const userMenu = [
 
 const HomeMenu = [
   {
-    name:"Home",
-    icon:<HomeIcon/>,
-    route:"/"
+    name: "Home",
+    icon: <HomeIcon />,
+    route: "/"
   },
   {
-    name:"About",
-    icon:<InfoIcon/>,
-    route:"/about"
+    name: "About",
+    icon: <InfoIcon />,
+    route: "/about"
   },
   {
-    name:"Services",
-    icon:<ConstructionIcon/>,
-    route:"/services"
+    name: "Services",
+    icon: <ConstructionIcon />,
+    route: "/services"
   }
 ]
 
@@ -160,92 +158,92 @@ export default function MiniDrawer() {
   return (
     <ThemeProvider theme={lightTheme}>
       <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {userMenu.map((menuItem, index) => (
-            <ListItem key={menuItem.name} disablePadding sx={{ display: 'block' }}>
-            <Link to={menuItem.route}>
-            <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {menuItem.icon}
-                </ListItemIcon>
-                <ListItemText primary={menuItem.name} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </Link>
-            </ListItem>
-          ))}
-        </List>
+        <CssBaseline />
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: 'none' }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Mini variant drawer
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
+          <List>
+            {userMenu.map((menuItem, index) => (
+              <ListItem key={menuItem.name} disablePadding sx={{ display: 'block' }}>
+                <Link to={menuItem.route}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {menuItem.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={menuItem.name} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
 
-        <Divider />
-        <List>
-          {HomeMenu.map((menu, index) => (
-            <ListItem key={index} disablePadding sx={{ display: 'block' }}>
-              <Link to={menu.route}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {menu.icon}
-                </ListItemIcon>
-                <ListItemText primary={menu.name} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-       <Outlet/>
+          <Divider />
+          <List>
+            {HomeMenu.map((menu, index) => (
+              <ListItem key={index} disablePadding sx={{ display: 'block' }}>
+                <Link to={menu.route}>
+                  <ListItemButton
+                    sx={{
+                      minHeight: 48,
+                      justifyContent: open ? 'initial' : 'center',
+                      px: 2.5,
+                    }}
+                  >
+                    <ListItemIcon
+                      sx={{
+                        minWidth: 0,
+                        mr: open ? 3 : 'auto',
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {menu.icon}
+                    </ListItemIcon>
+                    <ListItemText primary={menu.name} sx={{ opacity: open ? 1 : 0 }} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+        <Box className='bg-[#F7F9FA]' component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
     </ThemeProvider>
   );
 }
