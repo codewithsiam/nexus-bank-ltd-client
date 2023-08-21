@@ -32,6 +32,7 @@ import FileOpenIcon from "@mui/icons-material/FileOpen";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 
 const drawerWidth = 240;
 
@@ -81,6 +82,11 @@ const adminMenu = [
     icon: <AccountTreeIcon />,
     route: "accountDetails",
   },
+  {
+    name:"Users",
+    icon:<PeopleAltIcon/>,
+    route:"users"
+  }
 ];
 
 const HomeMenu = [
@@ -102,7 +108,7 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-const user = "user";
+const user = "admin";
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
