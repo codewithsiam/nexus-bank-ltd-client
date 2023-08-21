@@ -31,7 +31,7 @@ import { darkTheme, lightTheme } from "../config/ThemeConfig";
 import FileOpenIcon from "@mui/icons-material/FileOpen";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
-import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import AccountTreeIcon from "@mui/icons-material/AccountTree";
 
 const drawerWidth = 240;
 
@@ -77,10 +77,10 @@ const adminMenu = [
     route: "employees",
   },
   {
-    name:"Account Details",
-    icon: <AccountTreeIcon/>,
-    route:"accountDetails"
-  }
+    name: "Account Details",
+    icon: <AccountTreeIcon />,
+    route: "accountDetails",
+  },
 ];
 
 const HomeMenu = [
