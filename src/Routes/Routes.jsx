@@ -12,6 +12,7 @@ import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
+import Users from "../Pages/AdminDashboard/Users/Users";
 
 
 const router = createBrowserRouter([
@@ -73,6 +74,10 @@ const router = createBrowserRouter([
       {
         path:"employees",
         element:<Employees/>
+      },
+      {
+        path:"users",
+        element:<Users/>
       }
     ],
   },
