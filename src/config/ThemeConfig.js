@@ -4,7 +4,7 @@ const lightTheme = createTheme({
   palette: {
     type: 'light',
     primary: {
-      main: '#6200ea',
+      main: '#fff',
     },
     // other color definitions
   },

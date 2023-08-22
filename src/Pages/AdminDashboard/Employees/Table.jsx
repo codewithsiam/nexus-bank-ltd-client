@@ -2,7 +2,7 @@ import React from "react";
 
 const Table = () => {
   return (
-    <div className="overflow-x-auto overflow-auto">
+    <div className="overflow-x-auto overflow-auto w-full mx-auto border border-gray-300 p-4 mt-4 shadow-lg">
       <table className="table table-zebra text-lg">
         <thead className="text-lg">
           <tr>
