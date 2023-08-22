@@ -5,7 +5,7 @@ import { GrUserNew } from "react-icons/gr";
 
 const UsersCard = () => {
     return (
-        <div className='grid sm:grid-cols-1 md:grid-cols-4 py-16 sm:space-y-2'>
+        <div className='grid sm:grid-cols-1 md:grid-cols-4 py-16'>
             <div className="item border border-gray-300 mx-auto p-8 rounded">
                 <div className="card">
                     <h3 className="title text-gray-400">Session</h3>
@@ -19,7 +19,7 @@ const UsersCard = () => {
                 </div>
 
             </div>
-            <div className="item border border-gray-300 mx-auto p-8 rounded">
+            <div className="item border border-gray-300 mx-auto p-8 rounded ">
                 <div className="card">
                     <h3 className="title text-gray-400">Paid Users</h3>
                     <div className='flex justify-between gap-3 rounded'>
