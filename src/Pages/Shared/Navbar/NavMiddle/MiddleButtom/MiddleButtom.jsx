@@ -1,14 +1,14 @@
 
 
-import ButtomLeft from "./ButtomLeft";
-import ButtomRight from "./ButtomRight";
+import ButtonLeft from "./ButtonLeft";
+import ButtonRight from "./ButtonRight";
 
 
 const MiddleButtom = () => {
     return (
         <div className="flex justify-between items-center pr-6 mt-6">
-            <ButtomLeft/>
-            <ButtomRight/>
+            <ButtonLeft/>
+            <ButtonRight/>
         </div>
     );
 };
