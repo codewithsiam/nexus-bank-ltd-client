@@ -57,6 +57,11 @@ const userMenu = [
     name: "Add Money",
     icon: <AddCardIcon />,
     route: "add-money"
+  },
+  {
+    name: "Transaction History",
+    icon: <AddCardIcon />,
+    route: "transaction-history"
   }
 ]
 

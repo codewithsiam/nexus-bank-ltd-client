@@ -10,6 +10,7 @@ import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
 import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
+import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "apply-loan",
         element: <ApplyLoan />,
+      },
+      {
+        path: "transaction-history",
+        element: <TransactionHistory />,
       },
     ],
   },
