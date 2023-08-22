@@ -168,10 +168,13 @@ const Drawer = styled(MuiDrawer, {
   ...(open && {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
+    backgroundColor: "#000",
+    
   }),
   ...(!open && {
     ...closedMixin(theme),
     "& .MuiDrawer-paper": closedMixin(theme),
+    backgroundColor: "#000",
   }),
 }));
 
@@ -188,11 +191,12 @@ export default function MiniDrawer() {
   };
 
   return (
-    <ThemeProvider theme={lightTheme}>
+
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        <AppBar position="fixed" open={open}>
+       <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
           <Toolbar>
+            <div className="flex items-center mr-auto">
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -208,10 +212,20 @@ export default function MiniDrawer() {
             <Typography variant="h6" noWrap component="div">
               Nexus Bank Limited
             </Typography>
+            </div>
+            <div className="mr-4 flex gap-2 items-center">
+              <div className="hidden  md:flex flex-col justify-center items-end">
+                <h3 className="font-semibold">Harry Kane</h3>
+                <p>admin</p>
+              </div>
+              <img className="w-10 h-10 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
+            </div>
           </Toolbar>
-        </AppBar>
-        <Drawer variant="permanent" open={open}>
-          <DrawerHeader>
+        </AppBar></ThemeProvider>
+   <ThemeProvider theme={darkTheme}>
+   <Drawer   variant="permanent" open={open}>
+          <DrawerHeader className="text-xl font-semibold">
+            <h2>Nexus Bank Ltd</h2>
             <IconButton onClick={handleDrawerClose}>
               {theme.direction === "rtl" ? (
                 <ChevronRightIcon />
@@ -221,6 +235,14 @@ export default function MiniDrawer() {
             </IconButton>
           </DrawerHeader>
           <Divider />
+          {
+            open === true && 
+            <div className="flex flex-col items-center justify-center my-6 ">
+              <img className="w-20 h-20 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
+              <h2 className=" mt-4 font-semibold">Harry Kane</h2>
+              <p>harrykane@gmail.com </p>
+            </div>
+          }
           <List>
             {user === "admin"
               ? adminMenu.map((menuItem, index) => (
@@ -318,10 +340,11 @@ export default function MiniDrawer() {
             ))}
           </List>
         </Drawer>
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+   </ThemeProvider>
+        <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
           <Outlet />
         </Box>
       </Box>
-    </ThemeProvider>
+ 
   );
 }
