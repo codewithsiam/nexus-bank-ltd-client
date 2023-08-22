@@ -13,13 +13,13 @@ const ButtonLeft = () => {
       <Link to="/aboutDetails">About Us</Link>
       <div className="relative group">
         <Link className="flex gap-1 items-center">
-          Cards <FaAngleDown />
+          Services <FaAngleDown />
         </Link>
         <div className="absolute  transform -translate-x-1/2 opacity-0 bg-white  rounded-md   w-40 px-4 pb-4 pt-8  transition-opacity duration-300 group-hover:opacity-100 z-30 left-20  flex flex-col space-y-3">
-        <Link>Debit Card</Link>
-        <Link>Credit Card</Link>
-        <Link>Payroll Card</Link>
-        <Link>Service 1</Link>
+        <Link>Cards</Link>
+        <Link>Banking</Link>
+        <Link>Lone</Link>
+        
       </div>
       </div>
       <div className="relative group">
@@ -27,7 +27,7 @@ const ButtonLeft = () => {
           user === "admin"? <Link to='/dashboard/adminDashboard'>Dashboard</Link>:<Link to='/dashboard/my-profile'>My Profile</Link>
         }
       </div>
-      <div className="relative group">
+      {/* <div className="relative group">
         <Link className="flex gap-1 items-center">
           Banking <FaAngleDown />
         </Link>
@@ -35,8 +35,8 @@ const ButtonLeft = () => {
         <Link>Digital Banking</Link>
         <Link>NRB Banking</Link>
       </div>
-      </div>
-      <div className="relative group">
+      </div> */}
+      {/* <div className="relative group">
         <Link className="flex gap-1 items-center">
           Lone <FaAngleDown />
         </Link>
@@ -45,7 +45,7 @@ const ButtonLeft = () => {
         <Link>Personal Lone</Link>
         <Link>Installment Lone</Link>
       </div>
-      </div>
+      </div> */}
       <Link to='/contact'>Contact</Link>
     </div>
   );

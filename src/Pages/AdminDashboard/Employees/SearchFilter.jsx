@@ -6,7 +6,7 @@ const SearchFilter = ({handleOpen}) => {
   return (
     <div>
       <div className="flex justify-between items-center">
-        <form className="w-[20%] mt-5">
+        <form className="w-[300px] mt-5">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
