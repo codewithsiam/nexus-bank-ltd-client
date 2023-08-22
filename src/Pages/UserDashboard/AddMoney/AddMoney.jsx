@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import StripePayment from "./Payment/Methods/Stripe/StripePayment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const AddMoney = () => {
