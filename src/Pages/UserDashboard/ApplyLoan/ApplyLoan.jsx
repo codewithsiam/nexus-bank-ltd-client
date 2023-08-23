@@ -8,10 +8,9 @@ import {
   Typography,
   Container,
 } from "@mui/material";
-import axios from "axios";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 
 const ApplyLoan = () => {
   const { handleSubmit, register, reset  } = useForm();
@@ -57,6 +56,7 @@ const ApplyLoan = () => {
 
   return (
     <Container maxWidth="sm">
+      
       <Card variant="outlined" sx={{ marginTop: 5, padding: 3 }}>
         <CardContent>
           <Typography variant="h5" component="div">

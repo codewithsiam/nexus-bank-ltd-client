@@ -13,7 +13,22 @@ const Google = () => {
     const googleSignInHandler = () => {
         googleSignIn()
             .then(result => {
-                console.log(result)
+
+                const storeUser = { name: result?.user?.displayName, email: result?.user?.email, photo: result?.user?.photoURL, role: 'customer' }
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(storeUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        toast.success('Successfully toasted!')
+                    })
+
                 navigate(from, { navigate: true });
             })
             .catch(error => {
