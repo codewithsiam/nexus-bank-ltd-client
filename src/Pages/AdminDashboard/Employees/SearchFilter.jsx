@@ -5,8 +5,8 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const SearchFilter = ({handleOpen}) => {
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <form className="w-[300px] mt-5">
+      <div className="md:flex justify-between items-center">
+        <form className="w-[300px] my-5">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -46,8 +46,8 @@ const SearchFilter = ({handleOpen}) => {
             </button>
           </div>
         </form>
-        <div className="flex gap-4 items-center">
-          <div className="form-control w-full max-w-xs">
+        <div className="md:flex gap-4 items-center ">
+          <div className="form-control w-full max-w-xs mb-4 md:mb-0">
             <select className="select select-bordered">
               <option disabled selected>
                 Pick one

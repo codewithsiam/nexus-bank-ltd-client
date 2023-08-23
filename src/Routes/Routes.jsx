@@ -13,6 +13,7 @@ import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
+import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
 
 
 const router = createBrowserRouter([
@@ -53,11 +54,22 @@ const router = createBrowserRouter([
       {
         path: "open-account",
         element: <OpenAccount />,
+        // children:[
+        //   {
+        //     path:'saving-account',
+        //     element:<SavingAccountForm/>
+        //   },
+        // ]
       },
       {
         path: "add-money",
         element: <AddMoney />,
       },
+      {
+        path:'saving-account',
+        element:<SavingAccountForm/>
+      },
+     
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -78,7 +90,8 @@ const router = createBrowserRouter([
       {
         path:"users",
         element:<Users/>
-      }
+      },
+     
     ],
   },
 ]);
