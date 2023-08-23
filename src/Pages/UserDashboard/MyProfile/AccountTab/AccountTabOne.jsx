@@ -48,7 +48,7 @@ const AccountTabOne = ({user, amount, handleAmountChange, transactionType, handl
           <div className='flex justify-center'>
           <button
             style={{ transition: "background-color 0.3s" }}
-            className="block mt-3 cursor-pointer nav-btn text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="block mt-3 cursor-pointer my-btn text-white px-4 py-2 rounded hover:bg-blue-600"
             // onClick={handleTransaction}
           > 
           Submit

@@ -199,13 +199,13 @@ const Employees = () => {
                 Cancel
               </span>
               {/* <input
-              className="nav-btn py-2 px-4 text-white rounded-md"
+              className="my-btn py-2 px-4 text-white rounded-md"
               type="submit"
               value="Add New Employee"
             /> */}
               <button
                 onClick={handleClick}
-                className="nav-btn py-2 px-4 text-white rounded-md"
+                className="my-btn py-2 px-4 text-white rounded-md"
               >
                 {" "}
                 Add New Employee

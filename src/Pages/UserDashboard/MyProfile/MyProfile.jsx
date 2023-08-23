@@ -84,7 +84,7 @@ const MyProfile = () => {
                     <p>This is your profile page. You can see the all history and you can update your profile.</p>
                     <div className="">
                         <div className="inline-block overflow-hidden mt-4">
-                        <a href="#" className="flex gap-1 items-center border-2 border-white nav-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
+                        <a href="#" className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
                         </div>
                     </div>
                 </div>
