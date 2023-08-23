@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1111,
+      "company_logo": "https://raw.githubusercontent.com/Rukshanarupu/assignment-image-link/main/Assignment-9-img/Logo/google-1-1%201.png",
+      "job_title": "Software Engineer",
+      "company_name": "Google LLC",
+      "remote_or_onsite": "Remote",
+      "location": "San Francisco, CA",
+      "fulltime_or_partTime": "Full-time",
+      "salary": "$1000,00 - $120,000",
+      "job_description": "We are seeking a skilled software engineer to develop and maintain software solutions. The ideal candidate will have experience in web development using modern JavaScript frameworks and a passion for creating high-quality, scalable software.",
+      "job_responsibility": "Design, develop, and maintain software applications; Write well-designed, testable, and efficient code; Participate in code reviews; Troubleshoot and debug applications; Collaborate with cross-functional teams to identify and solve complex problems.",
+      "educational_requirements": "Bachelor's degree in Computer Science or related field",
+      "experiences": "3+ years of experience in software development",
+      "phone":  "+1 123-456-7890",
+      "email": "jobs@llc.com"
+      
+    }
+]
