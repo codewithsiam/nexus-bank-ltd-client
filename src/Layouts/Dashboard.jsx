@@ -66,8 +66,7 @@ const userMenu = [
   {
     name: "Transaction History",
     icon: <AddCardIcon />,
-    route: "transaction-history"
-    route: "add-money",
+    route: "transaction-history",
   },
 ];
 
