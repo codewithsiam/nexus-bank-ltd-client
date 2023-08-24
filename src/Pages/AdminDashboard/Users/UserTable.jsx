@@ -72,7 +72,8 @@ export default function UserTable() {
 
   return (
     <div style={{ width: '100%' }}>
-      <div style={{ marginBottom: '16px' }}>
+      <div className='flex gap-5' style={{ marginBottom: '16px' }}>
+        <h4>Search Here</h4>
         <input
           type="text"
           placeholder="Search by username"
