@@ -11,7 +11,7 @@ const Form = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  // console.log(userData)
+  // console.log(userData)---------
   const handleOnSubmit = (e) => {
     e.preventDefault();
     fetch(`${baseUrl}/add-account`, {
