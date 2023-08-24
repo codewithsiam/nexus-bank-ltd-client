@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import EastIcon from '@mui/icons-material/East';
 const LeftSide = () => {
     return (
-        <div className='flex flex-col items-center justify-between h-full'>
+        <div className='hidden md:flex flex-col items-center justify-between h-full'>
            <div>
            <button className='flex items-center gap-1 font-semibold'><KeyboardBackspaceIcon/> Back To Profile</button>
            <h2 className='text-2xl font-semibold my-4'>Open Your Saving <br /> Account</h2>

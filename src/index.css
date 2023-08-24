@@ -17,6 +17,8 @@
 .nav-btn {
   background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
+
+
 .text-primary {
   @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC];
 }
