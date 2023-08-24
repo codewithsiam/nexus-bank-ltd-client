@@ -4,7 +4,10 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import DepositTab from './DepositTab';
+import DPSTab from './DPSTab';
 
+// this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -38,7 +41,8 @@ function a11yProps(index) {
   };
 }
 
-const ProfileTabTwo=()=> {
+const SavingsTab=({user})=> {
+  const {accountNumber, balance} = user;
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -46,32 +50,31 @@ const ProfileTabTwo=()=> {
   };
 
   return (
-    <Box
-      sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
-    >
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
-      >
-        <Tab label="Item One" {...a11yProps(0)} />
-        <Tab label="Item Two" {...a11yProps(1)} />
-        <Tab label="Item Three" {...a11yProps(2)} />
-      </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-    </Box>
+    <div className=' w-full'>
+      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
+        <div className='md:w-[250px] lg:w-96 text-right '>
+            <Tabs
+                className='bg-white p-5 h-[200px]'
+                orientation="vertical"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                sx={{ borderRight: 1, borderColor: 'divider' }}
+            >
+                <Tab label="Deposit" {...a11yProps(0)} />
+                <Tab label="DPS" {...a11yProps(1)} />
+            </Tabs>
+        </div>
+        <TabPanel value={value} index={0}>
+            <DepositTab user={user} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+            <DPSTab user={user} />
+        </TabPanel>
+        </Box>
+    </div>
+
   );
 }
 
-export default ProfileTabTwo;
+export default SavingsTab;
