@@ -43,9 +43,13 @@ const About = () => {
                                     <p className="text-[#878796]">Have questions or need assistance? Our dedicated customer support team is available around the clock to help you with account inquiries.</p>
                                 </div>
                             </div>
+                        <div className='flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
+                            <h1 className='lg:text-5xl text-xl'>5</h1>
+                            <p className='lg:text-2xl text-[10px]'>Years of Experience</p>
                         </div>
                     </div>
                 </div>
+                <Link to={`aboutDetails`} className="my-btn text-white px-4 py-2 rounded">Read More</Link>
             </div>
         </div>
     );

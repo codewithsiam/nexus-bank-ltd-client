@@ -1,96 +1,150 @@
-import { useContext, useEffect, useState } from "react";
+
 import { AuthContext } from "../../../providers/AuthProvider";
-import { FaFacebook, FaGoogle, FaPencilAlt, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaPencilAlt, FaTwitter, FaUser, FaMobileAlt } from "react-icons/fa";
+import * as React from 'react';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import AccountTab from "./AccountTab/AccountTab";
+import CardTab from "./CardTab/CardTab";
+import SavingsTab from "./SavingsTab/SavingsTab";
+import AboutTab from "./AboutTab/AboutTab";
 
 const myProfileData = [
     {
-        id: 1,
-        photoURL: 'https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/img-1.jpg',
-        displayName: "Rukshana rupu",
-        email: "rupu.tht@gmail.com",
-        number: +8801791687736,
-        address: "tongi",
-        accountNumber: 441965406712489,
-        balance: 40000,
-        customerInfo: 'An artist of considerable range, Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.'
+      id: 1,
+      photoURL: 'https://react-material.fusetheme.com/assets/images/avatars/male-04.jpg',
+      firstName: "Rukshana Akter",
+      nickname: "Rupu",
+      email: "rupu.tht@gmail.com",
+      facebook: "facebook.com/rukshana.2015",
+      number: +8801791687736,
+      address: "tongi, Gazipur, Dhaka",
+      profession: "Front end developer",
+      gender:"female",
+      dob: "February 30th, 1980",
+      accountNumber: 441965406712489,
+      balance: 40000,
+      accountType: "savings",
+      bio: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters."
     },
 ];
 
-const Profile = () => {
+const MyProfile = () => {
     // const { user } = useContext(AuthContext);
     const user = myProfileData[0];
+    const [value, setValue] = React.useState(0);
 
-    const { photoURL, displayName, email, number, address, accountNumber, balance, customerInfo } = user;
-
-    const [showFullCustomerInfo, setShowFullCustomerInfo] = useState(false);
-
-    const handleToggleCustomerInfo = () => {
-        setShowFullCustomerInfo((prev) => !prev);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
     };
 
-
+    function CustomTabPanel(props) {
+        const { children, value, index, ...other } = props;
+      
+        return (
+          <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+          >
+            {value === index && (
+              <Box sx={{ p: 3 }}>
+                <Typography>{children}</Typography>
+              </Box>
+            )}
+          </div>
+        );
+    }
+      
+    CustomTabPanel.propTypes = {
+        children: PropTypes.node,
+        index: PropTypes.number.isRequired,
+        value: PropTypes.number.isRequired,
+    };
+      
+    function a11yProps(index) {
+        return {
+          id: `simple-tab-${index}`,
+          'aria-controls': `simple-tabpanel-${index}`,
+        };
+    }
+  
+    const {photoURL,nickname,firstName,profession} = user;
     return (
-        <div className="">
-            <div className="p-3 bg-white shadow mt-24">
-                <div className="relative flex items-center md:justify-end justify-center mt-11">
-                    <div>
-                        <img className="w-28 h-28  mx-auto rounded-full shadow-2xl absolute inset-x-0 top-0 -mt-24 flex items-center justify-center text-indigo-500" src={photoURL} alt="" />
+        <div className=" pt-10 bg-gray-100">
+            <div class="relative w-full text-white">
+                <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" class="w-full h-[230px]" alt="Louvre"/>
+                <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-400 opacity-60"></div>
+                <div className="pl-5 md:pl-10 lg:pl-20 absolute top-12">
+                    <h1 className="text-4xl mb-3">Hellow {nickname}</h1>
+                    <p>This is your profile page. You can see the all history and you can update your profile.</p>  
+                </div>
+            </div>
+
+            <div className="mb-5 h-[290px] md:h-[230px] lg:h-[90px] bg-white border-b-2 ">
+                <div className="lg:w-[1024px] mx-auto grid lg:grid-cols-2 lg:gap-8 md:justify-center items-center">
+                    <div className="lg:flex lg:gap-8 lg:items-center">
+                        <div className="flex justify-center">
+                            <div className="relative w-[153px] h-[75px]">
+                                <img className="absolute -top-[75px] md:-top-[80px]  left-0 border-gray-300 border-[5px] rounded-full w-[150px] h-[150px]" src={photoURL} alt="user"/>
+                            </div>
+                        </div>
+                        <div className="flex gap-8 md:flex-none justify-center">
+                            <div className="md:flex gap-8">
+                                <div className="mt-3">
+                                    <h4 className="text-2xl font-semibold">{firstName}</h4>
+                                    <h3 className="text-lg text-gray-500">{profession}</h3>
+                                </div>
+                                <div className="">
+                                    <div className="inline-block overflow-hidden mt-4">
+                                        <a href="#" className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                       
+                    <div className="lg:flex lg:justify-end lg:items-end md:mt-3 m-0">
+                        <div className=" flex justify-center">
+                            <div className="md:inline">
+                                <Box sx={{ width: '100%' }}>
+                                    <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                            <Tab label="About" {...a11yProps(0)} />
+                                            <Tab label="Account" {...a11yProps(1)} />
+                                            <Tab label="Card" {...a11yProps(2)} />
+                                            <Tab label="Savings Account" {...a11yProps(3)} />
+                                        </Tabs>
+                                    </Box>
+                                </Box>
+                            </div>
+                       </div>
                     </div>
-                    <div>
-                        <button
-                            className="flex items-center text-white py-2 px-4 uppercase rounded bg-blue-400 hover:bg-blue-500 shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 md:mt-0 mt-5"
-                        >
-                            <FaPencilAlt className="mr-3" />
-                            <span>Edit Profile</span>
-                        </button>
-                    </div>
                 </div>
+            </div>
 
-                <div className="text-center border-b pb-12">
-                    <h1 className="text-4xl font-medium text-gray-700">{displayName}</h1>
-
-                    <p className="font-light text-gray-600 mt-3">
-                        <span className="font-semibold">Email: </span>
-                        {email}
-                    </p>
-
-                    <p className="text-gray-500">
-                        <span className="font-semibold">Address: </span>
-                        {address}
-                    </p>
-
-                    <p className="text-gray-500">
-                        <span className="font-semibold">Number: </span>
-                        {number}
-                    </p>
-
-                    <p className="text-gray-500">
-                        <span className="font-semibold">Account Number: </span>
-                        {accountNumber}
-                    </p>
-
-                    <p className="text-gray-500">
-                        <span className="font-semibold">Balance: </span>
-                        {balance}
-                    </p>
-                </div>
-
-                <div className="mt-12 flex flex-col justify-center">
-                    <p className="text-gray-600 text-center font-light lg:px-16">
-                        {showFullCustomerInfo ? customerInfo : customerInfo.slice(0, 100) + '...'}
-                    </p>
-                    <button
-                        onClick={handleToggleCustomerInfo}
-                        className="text-indigo-500 py-2 px-4  font-medium mt-4"
-                    >
-                        {showFullCustomerInfo ? "Show less" : "Show more"}
-                    </button>
-                </div>
-
+            <div className="lg:w-[1024px] mx-auto ">
+                <CustomTabPanel value={value} index={0}>
+                    <AboutTab user={user}/>
+                </CustomTabPanel>
+                <CustomTabPanel value={value} index={1}>
+                    <AccountTab user={user}/>
+                </CustomTabPanel>
+                <CustomTabPanel value={value} index={2}>
+                    <CardTab user={user}/>
+                </CustomTabPanel>
+                <CustomTabPanel value={value} index={3}>
+                    <SavingsTab user={user}/>
+                </CustomTabPanel>
             </div>
         </div>
 
     );
 };
 
-export default Profile;
+export default MyProfile;

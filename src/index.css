@@ -14,7 +14,7 @@
   clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
   background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
-.nav-btn {
+.my-btn {
   background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
 .text-color {
@@ -35,6 +35,14 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+/* ----------------------profile page-------------------------- */
+.css-19kzrtu {
+  padding: 0px !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+  min-height: 37px !important;
+  padding: 5px !important;
 }
 
 /* update */
