@@ -244,7 +244,7 @@ const Form = () => {
         </div>
         <div className="flex justify-end">
           <button
-            className="nav-btn px-12  py-3 text-white font-semibold rounded-md"
+            className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"
           >
             Submit

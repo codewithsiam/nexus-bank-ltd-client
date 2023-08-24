@@ -40,7 +40,7 @@ const SearchFilter = ({handleOpen}) => {
             />
             <button
               type="submit"
-              className="text-white absolute right-2.5 bottom-2 nav-btn px-4 py-2 rounded"
+              className="text-white absolute right-2.5 bottom-2 my-btn px-4 py-2 rounded"
             >
               Search
             </button>
@@ -59,7 +59,7 @@ const SearchFilter = ({handleOpen}) => {
               <option>Star Trek</option>
             </select>
           </div>
-          <button onClick={handleOpen} className="nav-btn px-6 py-3 rounded text-white font-semibold w-full">
+          <button onClick={handleOpen} className="my-btn px-6 py-3 rounded text-white font-semibold w-full">
             {" "}
             <AddOutlinedIcon /> Add Employee
           </button>

@@ -8,6 +8,7 @@ import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
 import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
 import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
+import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
 import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
 import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
       {
         path: "apply-loan",
         element: <ApplyLoan />,
+      },
+      {
+        path: "transaction-history",
+        element: <TransactionHistory />,
       },
       // admin dashboard routes 
       {
