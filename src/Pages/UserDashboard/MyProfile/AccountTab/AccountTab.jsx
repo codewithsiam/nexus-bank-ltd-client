@@ -53,10 +53,10 @@ const AccountTab=({user})=> {
   };
 
   return (
-    <div className=' w-full'>
-      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
+    <div className='w-full'>
+      <Box  className="md:flex justify-between gap-5 lg:gap-10">
       <Tabs
-        className='bg-white p-5 md:w-[250px] lg:w-96 text-right h-[250px]'
+        className='bg-white p-5 w-full md:w-1/3  text-right '
         orientation="vertical"
         value={value}
         onChange={handleChange}
@@ -68,7 +68,8 @@ const AccountTab=({user})=> {
         <Tab label="Salary Account" {...a11yProps(2)} />
         <Tab label="Student Account" {...a11yProps(3)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
+    <div className='w-full md:w-2/3 '>
+    <TabPanel value={value} index={0}>
         <AccountTabOne user={user} />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -80,6 +81,8 @@ const AccountTab=({user})=> {
       <TabPanel value={value} index={3}>
         <AccountTabFour user={user} />
       </TabPanel>
+    </div>
+
     </Box>
     </div>
 

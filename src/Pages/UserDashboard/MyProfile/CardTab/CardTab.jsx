@@ -48,13 +48,14 @@ const CardTab=({user})=> {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  // kdjkdjkdj
 
   return (
-    <div className=' w-full'>
-      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
-        <div className='md:w-[250px] lg:w-96 text-right '>
+    <div className=' w-full h-full'>
+      <Box className="md:flex justify-between space-y-4 gap-5 lg:gap-10">
+        <div className='bg-white p-5 w-full md:w-1/3  text-right '>
             <Tabs
-                className='bg-white p-5 h-[200px]'
+                className='bg-white '
                 orientation="vertical"
                 value={value}
                 onChange={handleChange}
@@ -65,12 +66,14 @@ const CardTab=({user})=> {
                 <Tab label="Payroll Card" {...a11yProps(1)} />
             </Tabs>
         </div>
-        <TabPanel value={value} index={0}>
+       <div className='w-full md:w-2/3 '>
+       <TabPanel value={value} index={0}>
             <CardTabOne user={user} />
         </TabPanel>
         <TabPanel value={value} index={1}>
             <CardTabTwo user={user} />
         </TabPanel>
+       </div>
         </Box>
     </div>
 

@@ -73,7 +73,7 @@ const OurTeam = () => {
 
   return (
     <div className="h-max my-20">
-        <div className="text-center">
+        <div className="text-center mb-8">
           <CenterTitle
             subHeading={"OUR TEAM"}
             heading={"Leading the way in business transformation"}
@@ -97,7 +97,7 @@ const OurTeam = () => {
                   src={member.image}
                   alt={member.name}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#004d6e] via-transparent to-transparent"></div>
+                <div className="absolute  inset-0 bg-gradient-to-t from-[#004d6e] via-transparent to-transparent"></div>
                 <div className="absolute top-0 right-0 p-4">
                   <div className="flex flex-col space-y-2">
                     {Object.entries(member.socialLinks).map(
