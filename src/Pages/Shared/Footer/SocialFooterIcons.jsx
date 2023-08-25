@@ -7,18 +7,18 @@ import { BsYoutube } from 'react-icons/bs';
 const SocialFooterIcons = () => {
     return (
         <div>
-            <ul className='flex gap-5'>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
-                    <a href="#"> <FaFacebookF className='' /> </a>
+            <ul className='flex gap-5 mt-3'>
+                <li className='cursor-pointer'>
+                    <a href="#" className=''> <FaFacebookF className='text-2xl' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
-                    <a href="#"> <AiFillInstagram className='' /> </a>
+                <li className='cursor-pointer'>
+                    <a href="#" className=''> <AiFillInstagram className='text-2xl' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
-                    <a href="#"> <BsLinkedin className='' /> </a>
+                <li className='cursor-pointer'>
+                    <a href="#" className=''> <BsLinkedin className='text-2xl' /> </a>
                 </li>
-                <li className='cursor-pointer border border-[#B4BEF1] p-2 text-[#1A4DBE] hover:bg-[#1A4DBE] hover:text-white transition duration-150 ease-in-out '>
-                    <a href="#"> <BsYoutube className='' /> </a>
+                <li className='cursor-pointer'>
+                    <a href="#" className=''> <BsYoutube className='text-2xl' /> </a>
                 </li>
             </ul>
         </div>

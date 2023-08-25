@@ -1,11 +1,15 @@
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
 const App = () => {
   return (
     <div>
-      set up start
-      <h1>Shuvo manik vai</h1>
-      <p>ifksjkdfjskdjfksjdfk</p>
+      <MessengerCustomerChat
+        pageId="<PAGE_ID>"
+        appId="<APP_ID>"
+        htmlRef="<REF_STRING>"
+      />,
+
     </div>
   );
 };

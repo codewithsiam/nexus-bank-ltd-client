@@ -1,16 +1,27 @@
+import Footer from "../Shared/Footer/Footer";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
+import ContactUs from "./ContactUs/ContactUs";
+import CreditCardPayment from "./CreditCardPayment/CreditCardPayment";
+import LatestNews from "./LatestNews/LatestNews";
+import OurServices from "./OurServices/OurServices";
+import OurTeam from "./OurTeam/OurTeam";
 import Testimonial from "./Testimonial/Testimonial";
-import WhyChooseUs from "./WhyChooseUs/WhyChooseUs";
+import Comparison from "./Comparison/Comparison";
 
 const Home = () => {
     return (
         <div>
             <Banner></Banner>
             <About></About>
+            <OurServices></OurServices>
+            <LatestNews></LatestNews>
+            <Comparison></Comparison>
             <Testimonial></Testimonial>
-            <WhyChooseUs></WhyChooseUs>
-            
+            <OurTeam />
+            <CreditCardPayment/>
+            <ContactUs />
+            <Footer/>
         </div>
     );
 };

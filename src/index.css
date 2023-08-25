@@ -2,23 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* styles for navbar  */
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
 
-.nav-left{
-    clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
-    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
+.nav-left {
+  clip-path: polygon(0px 0px, 100% 0px, 76.57% 100.79%, 0% 100%);
+  background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
-.nav-btn{
-    background: linear-gradient(90deg, #004D6E 0%, #00ACCC 100%);
-}
-.text-color{
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC]
+.my-btn {
+  background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
 
+
+.text-primary {
+  @apply text-transparent bg-clip-text bg-gradient-to-r from-[#004D6E] to-[#00ACCC];
+}
+
+/*---------------------- About us section -----------------------*/
+.my-custom-animation {
+  animation: fade-right 2s infinite;
+}
+
+@keyframes fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* ----------------------profile page-------------------------- */
+.css-19kzrtu {
+  padding: 0px !important;
+}
+.css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+  min-height: 37px !important;
+  padding: 5px !important;
+}
+
+/* update */
+.heading {
+  color: #171d24;
+}
+.paragraph {
+  color: #4c5267;
+}
+.paragraph-two {
+  color: #7a687a;
+}
+
+/* animated underlne: fill the line when mouse hover -start */
+.line-animation {
+  line-height: 18px;
+  width: 100%;
+}
+.line-animation::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: all 0.5s ease;
+}
+.line-animation:hover::after {
+  width: 100%;
+  background: #ffffff;
+}
+/* end  */
+
+/* ----social links : in the card top left - start---------- */
+.animate-social-links {
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/*------------- end-----------------  */
+
+/*------------- button glowing ------------ */
+.btn-glow-siam {
+  border-radius: 0.375rem;
+  padding: 8px 20px;
+  background-color: #00ACCC;
+  box-shadow: 0 0 5px #00ACCC, 0 0 25px #00ACCC, 0 0 50px #00ACCC,
+    0 0 100px #00ACCC, 0 0 200px #00ACCC;
+    transition: 0.5s ease;
+}
+.btn-glow-siam:hover {
+  background-color: #0173a3;
+  box-shadow: 0 0 5px #00ACCC, 0 0 5px #00ACCC;
+}
