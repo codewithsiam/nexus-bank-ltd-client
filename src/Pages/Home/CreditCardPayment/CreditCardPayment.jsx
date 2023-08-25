@@ -11,7 +11,7 @@ const CreditCardPayment = () => {
                         <p className="paragraph">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae quisquam cum tempore itaque placeat ea minima. Ad, deserunt corporis? Laboriosam?
                         </p>
-                        <button className='nav-btn mt-5 text-white px-5 py-3 rounded-lg'>Learn More</button>
+                        <button className='my-btn mt-5 text-white px-5 py-3 rounded-lg'>Learn More</button>
                     </div>
                     <div className='mx-auto'>
                         <img className='mx-auto w-5/6' src={creditCard} alt="" />

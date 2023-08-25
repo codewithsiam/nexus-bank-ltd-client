@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
-import AboutDetails from "../Pages/Home/About/AboutDetails";
+import About from "../Pages/Home/About/About";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
@@ -14,8 +14,10 @@ import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
-import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
+import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
@@ -61,11 +63,22 @@ const router = createBrowserRouter([
       {
         path: "open-account",
         element: <OpenAccount />,
+        // children:[
+        //   {
+        //     path:'saving-account',
+        //     element:<SavingAccountForm/>
+        //   },
+        // ]
       },
       {
         path: "add-money",
         element: <AddMoney />,
       },
+      {
+        path:'saving-account',
+        element:<SavingAccountForm/>
+      },
+     
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -90,7 +103,8 @@ const router = createBrowserRouter([
       {
         path:"users",
         element:<Users/>
-      }
+      },
+     
     ],
   },
 ]);

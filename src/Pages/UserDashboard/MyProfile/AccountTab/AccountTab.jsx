@@ -5,7 +5,10 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import { useState } from 'react';
-import AccountTabOne from './AccountTabOne';
+import AccountTabOne from './AccountTabDetails/AccountTabOne';
+import AccountTabTwo from './AccountTabDetails/AccountTabTwo';
+import AccountTabThree from './AccountTabDetails/AccountTabThree';
+import AccountTabFour from './AccountTabDetails/AccountTabFour';
 
 // this is design part with mui
 function TabPanel(props) {
@@ -49,58 +52,12 @@ const AccountTab=({user})=> {
     setValue(newValue);
   };
 
-  
-  //--------------------------- this is backend function
-  const [amount, setAmount] = useState('');
-  const [error, setError] = useState('');
-  const [transactionSuccess, setTransactionSuccess] = useState(false);
-  const [transactionType, setTransactionType]=React.useState('')
-  console.log(user)
-
-  const handleAmountChange = (event) => {
-    setAmount(event.target.value);
-  };
-
-  const handleTransactionTypeChange = (event) => {
-    setTransactionType(event.target.value);
-  };
-
-  const handleTransaction = () => {
-    setError('');
-    setTransactionSuccess(false);
-
-    if (isNaN(amount) || parseFloat(amount) <= 0) {
-      setError('Invalid amount');
-      return;
-    }
-
-    if (transactionType === 'withdraw' && parseFloat(amount) > balance) {
-      setError('Insufficient balance');
-      return;
-    }
-
-    // Simulate deposit and withdraw logic with a delay
-    setTimeout(() => {
-      const newBalance = transactionType === 'deposit' 
-      ? balance + parseFloat(amount) 
-      : balance - parseFloat(amount);
-
-      // Update user balance and perform necessary actions
-      // You can make an API call or use a state management library here
-
-      // Assuming you have a function like setUserBalance(newBalance);
-      // setUserBalance(newBalance);
-
-      setTransactionSuccess(true);
-    }, 1000);
-  };
-
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex' }}>
+    <div className='w-full'>
+      <Box  className="md:flex justify-between gap-5 lg:gap-10">
       <Tabs
-        className='bg-white p-5 w-96 text-right'
+        className='bg-white p-5 w-full md:w-1/3  text-right '
         orientation="vertical"
-        variant="scrollable"
         value={value}
         onChange={handleChange}
         aria-label="Vertical tabs example"
@@ -111,19 +68,24 @@ const AccountTab=({user})=> {
         <Tab label="Salary Account" {...a11yProps(2)} />
         <Tab label="Student Account" {...a11yProps(3)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
-        <AccountTabOne user={user} amount={amount} handleAmountChange={handleAmountChange} transactionType={transactionType} handleChange={handleChange}/>
+    <div className='w-full md:w-2/3 '>
+    <TabPanel value={value} index={0}>
+        <AccountTabOne user={user} />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <AccountTabOne/>
+        <AccountTabTwo user={user} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <AccountTabThree user={user} />
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item four
+      <TabPanel value={value} index={3}>
+        <AccountTabFour user={user} />
       </TabPanel>
+    </div>
+
     </Box>
+    </div>
+
   );
 }
 

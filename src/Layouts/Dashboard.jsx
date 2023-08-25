@@ -66,8 +66,8 @@ const userMenu = [
   {
     name: "Transaction History",
     icon: <AddCardIcon />,
-    route: "transaction-history"
-  },
+    route: "transaction-history",
+     },
 ];
 
 // admin menu
@@ -113,7 +113,7 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-const user = "user";
+const user = "amin";
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -282,36 +282,37 @@ export default function MiniDrawer() {
                   </ListItem>
                 ))
               : userMenu.map((menuItem, index) => (
-                  <ListItem
-                    key={menuItem.name}
-                    disablePadding
-                    sx={{ display: "block" }}
-                  >
-                    <Link to={menuItem.route}>
-                      <ListItemButton
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
                         sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
                         }}
                       >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {menuItem.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={menuItem.name}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </ListItem>
-                ))}
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+              }
           </List>
 
           <Divider />

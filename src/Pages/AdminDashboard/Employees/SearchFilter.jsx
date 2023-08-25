@@ -5,8 +5,8 @@ import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 const SearchFilter = ({handleOpen}) => {
   return (
     <div>
-      <div className="flex justify-between items-center">
-        <form className="w-[300px] mt-5">
+      <div className="md:flex justify-between items-center">
+        <form className="w-[300px] my-5">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -40,14 +40,14 @@ const SearchFilter = ({handleOpen}) => {
             />
             <button
               type="submit"
-              className="text-white absolute right-2.5 bottom-2 nav-btn px-4 py-2 rounded"
+              className="text-white absolute right-2.5 bottom-2 my-btn px-4 py-2 rounded"
             >
               Search
             </button>
           </div>
         </form>
-        <div className="flex gap-4 items-center">
-          <div className="form-control w-full max-w-xs">
+        <div className="md:flex gap-4 items-center ">
+          <div className="form-control w-full max-w-xs mb-4 md:mb-0">
             <select className="select select-bordered">
               <option disabled selected>
                 Pick one
@@ -59,7 +59,7 @@ const SearchFilter = ({handleOpen}) => {
               <option>Star Trek</option>
             </select>
           </div>
-          <button onClick={handleOpen} className="nav-btn px-6 py-3 rounded text-white font-semibold w-full">
+          <button onClick={handleOpen} className="my-btn px-6 py-3 rounded text-white font-semibold w-full">
             {" "}
             <AddOutlinedIcon /> Add Employee
           </button>
