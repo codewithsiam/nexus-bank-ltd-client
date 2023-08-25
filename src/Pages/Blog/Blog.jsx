@@ -1,8 +1,8 @@
 import React from 'react';
 import BlogNews from './BlogNews';
-import CenterTitle from '../../../Components/Title/CenterTitle';
+import CenterTitle from '../../Components/Title/CenterTitle';
 
-const Blog = () => {
+const BlogPage = () => {
     const blogNews = [
         {
             date: 'Dec 22, 2023',
@@ -52,4 +52,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default BlogPage;

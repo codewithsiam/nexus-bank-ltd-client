@@ -47,6 +47,7 @@ const ButtonLeft = () => {
       </div>
       </div> */}
       <Link to='/contact'>Contact</Link>
+      <Link to='/blogs'>Blogs</Link>
     </div>
   );
 };

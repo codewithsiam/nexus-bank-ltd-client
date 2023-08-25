@@ -14,12 +14,15 @@ import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import BlogPage from "../Pages/Blog/Blog";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -40,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "blogs",
+        element: <BlogPage />,
       },
     ],
   },
