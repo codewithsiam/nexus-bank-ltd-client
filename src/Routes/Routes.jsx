@@ -15,6 +15,7 @@ import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
+import AboutDetails from "../Pages/Home/About/AboutDetails";
 
 
 const router = createBrowserRouter([
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/aboutDetails",
-        element: <About></About>,
+        element: <AboutDetails></AboutDetails>,
       },
       {
         path: "registration",
