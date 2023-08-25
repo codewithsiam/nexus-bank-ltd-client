@@ -14,7 +14,7 @@ import Blog from "./Blog/Blog";
 const Home = () => {
     return (
         <div>
-            {/* <Banner></Banner> */}
+            <Banner></Banner>
             <About></About>
             <OurServices></OurServices>
             <LatestNews></LatestNews>
