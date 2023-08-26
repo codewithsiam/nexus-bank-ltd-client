@@ -17,18 +17,18 @@ const AddMoney = () => {
     const enteredAmount = parseFloat(amountInput.value);
 
     if (enteredAmount > 0 && termsAgreed) {
-      setErrorMessage(""); 
+      setErrorMessage("");
       setAmount(enteredAmount);
       setShowPaymentMethods(true);
     } else {
       setErrorMessage("Please enter a valid amount and agree to the terms");
     }
   };
-
+ 
   return (
     <div className="mt-20 max-w-md mx-auto p-6 bg-gradient-to-r  from-[#004D6E] to-[#00ACCC] shadow-lg rounded-lg text-white animate-fadeInUp">
       <div className="main">
-</div>
+      </div>
       <h2 className="text-2xl font-bold">
         <span className="text-green-400 flex items-center justify-center">
           NEXUS BANK LTD
@@ -81,7 +81,7 @@ const AddMoney = () => {
           </div>
           <button
             type="submit"
-           className="btn-glow-siam mt-7 mb-6"
+            className="btn-glow-siam mt-7 mb-6"
           >
             Add Money
           </button>

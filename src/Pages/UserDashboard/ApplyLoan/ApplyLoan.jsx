@@ -103,7 +103,7 @@ const ApplyLoan = () => {
                           <input
                             {...register("loanAmount", { required: true })}
                             type="number"
-                            className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
+                            className="w-full border outline-none rounded-lg border-gray-300 bg-base p-4 pe-12 text-sm shadow-sm"
                             placeholder="Enter loan amount"
                           />
                         </div>
@@ -112,25 +112,21 @@ const ApplyLoan = () => {
                           <input
                             {...register("loanPurpose", { required: true })}
                             type="text"
-                            className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
+                            className="w-full border outline-none rounded-lg border-gray-300 bg-base p-4 pe-12 text-sm shadow-sm"
                             placeholder="Enter loan purpose"
                           />
                         </div>
-
-                        <Button type="submit" variant="contained" sx={{ marginTop: 3 }}>
-                          Apply for Loan
-                        </Button>
+                        <button type="submit" className="bg-gradient-to-r  from-[#004D6E] to-[#00ACCC] py-2 px-2 rounded text-white mt-6">
+                        Apply for Loan
+                        </button>
                       </form>
                     </div>
                   </div>
 
                   {/* Right column container */}
                   <div
-                    className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none"
-                    style={{
-                      background:
-                        'linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593)',
-                    }}
+                    className="flex items-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-gradient-to-r  from-[#004D6E] to-[#00ACCC]"
+                    
                   >
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12 hidden lg:block">
                       <h4 className="mb-6 text-xl font-semibold">
