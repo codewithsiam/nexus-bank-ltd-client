@@ -5,7 +5,7 @@ import { GrUserNew } from "react-icons/gr";
 
 const UsersCard = () => {
     return (
-        <div className='grid sm:grid-cols-1 md:grid-cols-4 py-16'>
+        <div className='grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 py-16 px-4 md:px-8'>
             <div className="item border border-gray-300 mx-auto p-8 rounded">
                 <div className="card">
                     <h3 className="title text-gray-400">Session</h3>

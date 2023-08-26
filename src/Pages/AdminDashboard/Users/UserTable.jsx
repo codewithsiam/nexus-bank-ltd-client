@@ -4,6 +4,7 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from 'react';
+import { Paper } from '@mui/material';
 
 const columns = [
   {
@@ -27,7 +28,7 @@ const columns = [
   {
     field: 'actions',
     headerName: 'Actions',
-    width: 150,
+    width: 150, 
     renderCell: (params) => (
       <>
         <IconButton aria-label="update" color="primary" onClick={() => handleUpdate(params.row.id)}>
@@ -71,21 +72,25 @@ export default function UserTable() {
   );
 
   return (
-    <div style={{ width: '100%' }}>
-      <div className='flex gap-5' style={{ marginBottom: '16px' }}>
-        <h4>Search Here</h4>
-        <input
-          type="text"
-          placeholder="Search by username"
-          value={filterValue}
-          onChange={(e) => setFilterValue(e.target.value)}
-        />
-      </div>
-      <DataGrid
-        rows={filteredRows}
-        columns={columns}
-        pageSize={5}
-      />
-    </div>
+<div className='w-full mx-auto flex flex-col items-center' style={{ width: '100%' }}>
+  <div className='flex flex-col md:flex-row gap-5' style={{ marginBottom: '16px' }}>
+    <h4>Search Here</h4>
+    <input
+      type="text"
+      placeholder="Search by username"
+      value={filterValue}
+      onChange={(e) => setFilterValue(e.target.value)}
+    />
+  </div>
+  <div className="flex justify-center">
+    <DataGrid
+      rows={filteredRows}
+      columns={columns}
+      pageSize={5}
+    />
+  </div>
+</div>
+
+
   );
 }
