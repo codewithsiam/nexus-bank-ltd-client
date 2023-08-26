@@ -20,6 +20,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ContentCopyTwoToneIcon from "@mui/icons-material/ContentCopyTwoTone";
 import EmployeeTable from "./EmployeeTable";
+import { useEffect } from "react";
+import { baseUrl } from "../../../config/server";
 
 // generate random string --------------
 function generateRandomString() {
@@ -43,6 +45,13 @@ const Employees = () => {
   const [temporaryPassword, setTemporaryPassword] = useState("");
   const [isCopied, setIsCopied] = React.useState(false);
   const [hidePassword, SetHidePassword] = React.useState(true);
+  const [employees,setEmployees] = useState([]);
+
+  useEffect(()=>{
+    fetch(`${baseUrl}/employees`)
+    .then(res=>res.json())
+    .then(data=>setEmployees(data))
+  },[])
 
   const handleOpen = () => {
     setOpen(true);
@@ -84,8 +93,8 @@ const Employees = () => {
       <h1 className="text-2xl font-bold mt-16 border-b-2 border-black">
         <PeopleIcon style={{ fontSize: "42" }} /> EMPLOYEES
       </h1>
-      <SearchFilter handleOpen={handleOpen} />
-     <EmployeeTable/>
+      <SearchFilter handleOpen={handleOpen} setEmployees={setEmployees} />
+     <EmployeeTable employees={employees && employees}/>
 
       {/* modal data here  */}
       <Modal

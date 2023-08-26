@@ -59,7 +59,7 @@ const rows = [
   createData("Brazil", "BR", 210147125, 8515767),
 ];
 
-const EmployeeTable = () => {
+const EmployeeTable = ({employees}) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -112,7 +112,7 @@ const EmployeeTable = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employeeData?.map((employee) => (
+                {employees?.map((employee) => (
                   <TableRow
                     key={employee.id}
                     hover
