@@ -12,7 +12,7 @@ const useDesignation = () => {
   useEffect(() => {
     const fetchDesignation = async () => {
       try {
-        if (user && user.email) {
+        if (user && user.email) { //user 
           const response = await axios.get(
             `${baseUrl}/auth-check?email=${user.email}`
           );
