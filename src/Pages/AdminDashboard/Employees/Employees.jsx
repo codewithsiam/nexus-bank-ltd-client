@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PeopleIcon from "@mui/icons-material/People";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
-import Table from "./Table";
+import Table from "./EmployeeTable";
 import SearchFilter from "./SearchFilter";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
@@ -19,6 +19,7 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ContentCopyTwoToneIcon from "@mui/icons-material/ContentCopyTwoTone";
+import EmployeeTable from "./EmployeeTable";
 
 // generate random string --------------
 function generateRandomString() {
@@ -84,7 +85,7 @@ const Employees = () => {
         <PeopleIcon style={{ fontSize: "42" }} /> EMPLOYEES
       </h1>
       <SearchFilter handleOpen={handleOpen} />
-      <Table />
+     <EmployeeTable/>
 
       {/* modal data here  */}
       <Modal
@@ -219,7 +220,7 @@ const Employees = () => {
                 <div>
                   <AccountCircleIcon style={{ fontSize: "100" }} />
                 </div>
-                <h4>User Name : {userData.primaryEmail}@suvatrip.com </h4>
+                <h4>User Name : {userData.primaryEmail}@nexus.com </h4>
                 {isCopied && (
                   <p className="absolute ml-4 left-2/3 mb-6">Copied</p>
                 )}

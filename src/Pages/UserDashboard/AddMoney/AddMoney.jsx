@@ -53,6 +53,13 @@ const AddMoney = () => {
               placeholder="Enter your full name"
               name="name"
             />
+            <label className="block text-sm mb-2 mt-4 ">Account Number</label>
+            <input
+              type="number"
+              className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Enter your full name"
+              name="accountNumber"
+            />
 
             <label className="block text-sm mt-4 mb-2">Enter Amount ($)</label>
             <div className="flex">
