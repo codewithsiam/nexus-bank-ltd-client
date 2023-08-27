@@ -66,6 +66,11 @@ const userMenu = [
     route: "add-money"
   },
   {
+    name: "Transfer Money",
+    icon: <AddCardIcon />,
+    route: "transfer-money"
+  },
+  {
     name: "Transaction History",
     icon: <AddCardIcon />,
     route: "transaction-history",
@@ -319,6 +324,7 @@ export default function MiniDrawer() {
                   </Link>
                 </ListItem>
               ))
+            
             }
           </List>
 
