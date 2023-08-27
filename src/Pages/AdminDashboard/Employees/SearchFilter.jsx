@@ -1,12 +1,29 @@
 import React from "react";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { baseUrl } from "../../../config/server";
 
 
-const SearchFilter = ({handleOpen}) => {
+const SearchFilter = ({handleOpen,setEmployees}) => {
+
+  // handle search by name 
+  const handleSearch = (e)=>{
+    const searchItem = e.target.value;
+    fetch(`${baseUrl}/employees/${searchItem}`)
+    .then(res=>res.json())
+    .then(data=>setEmployees(data))
+  }
+
+  // filter employee by designation 
+  const handleFilter = (e)=>{
+    const filterItem = e.target.value;
+   fetch(`${baseUrl}/employeess/${filterItem}`)
+   .then(res=>res.json())
+   .then(data=>setEmployees(data))
+  }
   return (
     <div>
       <div className="md:flex justify-between items-center">
-        <form className="w-[300px] my-5">
+        <div className="w-[300px] my-5">
           <label
             htmlFor="default-search"
             className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -34,6 +51,8 @@ const SearchFilter = ({handleOpen}) => {
             <input
               type="search"
               id="default-search"
+              onChange={handleSearch}
+              name="search"
               className="block w-full p-4 pl-10 text-sm border-2 border-gray-500 rounded"
               placeholder="Search for Id,Name"
               required
@@ -45,18 +64,20 @@ const SearchFilter = ({handleOpen}) => {
               Search
             </button>
           </div>
-        </form>
+        </div>
         <div className="md:flex gap-4 items-center ">
           <div className="form-control w-full max-w-xs mb-4 md:mb-0">
-            <select className="select select-bordered">
+            <select onChange={handleFilter} name="filter" className="select select-bordered">
               <option disabled selected>
                 Pick one
               </option>
-              <option>Star Wars</option>
-              <option>Harry Potter</option>
-              <option>Lord of the Rings</option>
-              <option>Planet of the Apes</option>
-              <option>Star Trek</option>
+              <option>Bank Teller</option>
+              <option>Loan Officer</option>
+              <option>Relationship Manager</option>
+              <option>Financial Advisor</option>
+              <option>Credit Analyst</option>     
+              <option>Risk Manager</option> 
+              <option>Collections Officer</option>
             </select>
           </div>
           <button onClick={handleOpen} className="my-btn px-6 py-3 rounded text-white font-semibold w-full">
