@@ -1,8 +1,8 @@
-import Heading from "../../../Components/Title/Heading";
+import Heading from "../../../../Components/Title/Heading";
 import CardWhyChooseUs from "./CardWhyChooseUs";
 
 const WhyChooseUs = () => {
-  const datas = [
+  const chooseData = [
     {
       title: "Transparent",
       img:"https://i.ibb.co/sWBkx2H/transperant.webp",
@@ -22,9 +22,7 @@ const WhyChooseUs = () => {
       title: "Flexible",
       img:"https://i.ibb.co/nBc7Ntx/flexible.jpg",
       details: "  We adapt to your unique requirements, offering flexibility to tailor solutions that fit your needs."
-    },
-// https://i.ibb.co/WtfCxVn/affordable.jpg
-// https://i.ibb.co/NjvYKnh/flexible.webp
+    }
   ]
 
   return (
@@ -38,7 +36,7 @@ const WhyChooseUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
             {
-              datas?.map((data, index) =>
+              chooseData?.map((data, index) =>
                 <CardWhyChooseUs key={index} data={data}></CardWhyChooseUs>
               )
             }

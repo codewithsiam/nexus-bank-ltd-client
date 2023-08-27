@@ -115,10 +115,6 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-// const user = "admin";
-
-// const {user} = React.useContext(AuthContext);
-// console.lo(user)
 
 
 const openedMixin = (theme) => ({

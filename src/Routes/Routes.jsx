@@ -15,12 +15,16 @@ import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
+import AboutDetails from "../Pages/Home/About/AboutDetails";
+import BlogPage from "../Pages/Blog/Blog";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -28,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/aboutDetails",
-        element: <About></About>,
+        element: <AboutDetails></AboutDetails>,
       },
       {
         path: "registration",
@@ -41,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <Contact />,
+      },
+      {
+        path: "blogs",
+        element: <BlogPage />,
       },
     ],
   },
