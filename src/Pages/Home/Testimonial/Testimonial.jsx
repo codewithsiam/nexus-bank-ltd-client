@@ -64,9 +64,9 @@ const Testimonial = () => {
   };
 
   return (
-    <div className='bg-[#F6F6F9] relative h-[550px] overflow-hidden py-10'>
+    <div className='bg-[#F6F6F9] relative h-[550px] overflow-hidden py-10 px-4'>
       <div className='container mx-auto'>
-        <div className='absolute -top-[20%] -right-[30rem] lg:-right-[6.5rem] md:-right-[25rem] z-[1] my-btn origin-bottom rotate-[32deg] w-[1070px]'>
+        <div className='absolute top-[15%] -right-[30rem] md:-top-[10%] lg:-top-[20%] lg:-right-[25rem]  z-[1] my-btn origin-bottom rotate-[32deg] w-[1070px]'>
           <img className='w-[100%] h-auto' src="https://template.wphix.com/finbest-prv/finbest/assets/img/testimonial/bg-shape.png" alt=""/>
         </div>
       

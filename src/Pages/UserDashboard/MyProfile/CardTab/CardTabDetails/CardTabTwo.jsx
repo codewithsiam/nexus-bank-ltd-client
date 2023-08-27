@@ -5,7 +5,7 @@ const CreditTabTwo = ({user}) => {
   const {accountType, accountNumber, balance}=user
 
   return (
-      <div className='shadow-xl bg-slate-50 p-10 w-full'>
+      <div className='shadow-md bg-slate-50 p-10 w-full'>
         <div className='flex justify-center'>
           <h4 className="font-bold text-violet-600 text-lg md:text-2xl flex gap-2 mb-7 items-center">
             <FaUser></FaUser> Payroll Card Details</h4>
