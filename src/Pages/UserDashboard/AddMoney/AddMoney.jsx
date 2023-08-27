@@ -57,7 +57,7 @@ const AddMoney = () => {
             <input
               type="number"
               className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your full name"
+              placeholder="Enter your accont number"
               name="accountNumber"
             />
 
