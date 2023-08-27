@@ -67,7 +67,7 @@ const userMenu = [
     name: "Transaction History",
     icon: <AddCardIcon />,
     route: "transaction-history",
-     },
+  },
 ];
 
 // admin menu
@@ -88,9 +88,14 @@ const adminMenu = [
     route: "accountDetails",
   },
   {
-    name:"Users",
-    icon:<PeopleAltIcon/>,
-    route:"users"
+    name: "Users",
+    icon: <PeopleAltIcon />,
+    route: "users"
+  },
+  {
+    name: "Analytics",
+    icon: <PeopleAltIcon />,
+    route: "analytics"
   }
 ];
 
@@ -174,7 +179,7 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
     backgroundColor: "#000",
-    
+
   }),
   ...(!open && {
     ...closedMixin(theme),
@@ -197,11 +202,11 @@ export default function MiniDrawer() {
 
   return (
 
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-       <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
-          <Toolbar>
-            <div className="flex items-center mr-auto">
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
+        <Toolbar>
+          <div className="flex items-center mr-auto">
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -217,18 +222,18 @@ export default function MiniDrawer() {
             <Typography variant="h6" noWrap component="div">
               Nexus Bank Limited
             </Typography>
+          </div>
+          <div className="mr-4 flex gap-2 items-center">
+            <div className="hidden  md:flex flex-col justify-center items-end">
+              <h3 className="font-semibold">Harry Kane</h3>
+              <p>admin</p>
             </div>
-            <div className="mr-4 flex gap-2 items-center">
-              <div className="hidden  md:flex flex-col justify-center items-end">
-                <h3 className="font-semibold">Harry Kane</h3>
-                <p>admin</p>
-              </div>
-              <img className="w-10 h-10 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
-            </div>
-          </Toolbar>
-        </AppBar></ThemeProvider>
-   <ThemeProvider theme={darkTheme}>
-   <Drawer   variant="permanent" open={open}>
+            <img className="w-10 h-10 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
+          </div>
+        </Toolbar>
+      </AppBar></ThemeProvider>
+      <ThemeProvider theme={darkTheme}>
+        <Drawer variant="permanent" open={open}>
           <DrawerHeader className="text-xl font-semibold">
             <h2>Nexus Bank Ltd</h2>
             <IconButton onClick={handleDrawerClose}>
@@ -241,7 +246,7 @@ export default function MiniDrawer() {
           </DrawerHeader>
           <Divider />
           {
-            open === true && 
+            open === true &&
             <div className="flex flex-col items-center justify-center my-6 ">
               <img className="w-20 h-20 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
               <h2 className=" mt-4 font-semibold">Harry Kane</h2>
@@ -251,37 +256,6 @@ export default function MiniDrawer() {
           <List>
             {user === "admin"
               ? adminMenu.map((menuItem, index) => (
-                  <ListItem
-                    key={menuItem.name}
-                    disablePadding
-                    sx={{ display: "block" }}
-                  >
-                    <Link to={menuItem.route}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {menuItem.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={menuItem.name}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </ListItem>
-                ))
-              : userMenu.map((menuItem, index) => (
                 <ListItem
                   key={menuItem.name}
                   disablePadding
@@ -312,7 +286,38 @@ export default function MiniDrawer() {
                   </Link>
                 </ListItem>
               ))
-              }
+              : adminMenu.map((menuItem, index) => (
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            }
           </List>
 
           <Divider />
@@ -346,11 +351,11 @@ export default function MiniDrawer() {
             ))}
           </List>
         </Drawer>
-   </ThemeProvider>
-        <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Outlet />
-        </Box>
+      </ThemeProvider>
+      <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Outlet />
       </Box>
- 
+    </Box>
+
   );
 }

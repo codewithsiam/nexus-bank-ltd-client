@@ -14,6 +14,7 @@ import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
+import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 
 
 const router = createBrowserRouter([
@@ -45,7 +46,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard/>,
+    element: <Dashboard />,
     children: [
       {
         path: "my-profile",
@@ -69,16 +70,20 @@ const router = createBrowserRouter([
       },
       // admin dashboard routes 
       {
-        path:"adminDashboard",
-        element:<AdminDashboard/>
+        path: "adminDashboard",
+        element: <AdminDashboard />
       },
       {
-        path:"employees",
-        element:<Employees/>
+        path: "employees",
+        element: <Employees />
       },
       {
-        path:"users",
-        element:<Users/>
+        path: "users",
+        element: <Users />
+      },
+      {
+        path: "analytics",
+        element: <Analytics />
       }
     ],
   },
