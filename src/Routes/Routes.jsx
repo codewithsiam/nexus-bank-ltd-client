@@ -20,6 +20,7 @@ import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
+import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 
 
 const router = createBrowserRouter([
@@ -58,6 +59,7 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+      // ..........User dashboard routes............
       {
         path: "my-profile",
         element: <MyProfile />,
@@ -68,17 +70,19 @@ const router = createBrowserRouter([
       },
       {
         path: "open-account",
-        element: <OpenAccount />,
-        // children:[
-        //   {
-        //     path:'saving-account',
-        //     element:<SavingAccountForm/>
-        //   },
-        // ]
+        element: <OpenAccount />
+      },
+      {
+        path: "apply-loan",
+        element: <ApplyLoan />,
       },
       {
         path: "add-money",
         element: <AddMoney />,
+      },
+      {
+        path: "transfer-money",
+        element: <TransferMoney />,
       },
       {
         path:'saving-account',
@@ -90,14 +94,12 @@ const router = createBrowserRouter([
       //   element: <StripePayment />,
       // },
       {
-        path: "apply-loan",
-        element: <ApplyLoan />,
-      },
-      {
         path: "transaction-history",
         element: <TransactionHistory />,
       },
-      // admin dashboard routes 
+
+
+      // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
         element: <AdminDashboard />

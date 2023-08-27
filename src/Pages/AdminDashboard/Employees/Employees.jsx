@@ -260,11 +260,7 @@ const Employees = () => {
                 <div>
                   <AccountCircleIcon style={{ fontSize: "100" }} />
                 </div>
-<<<<<<< HEAD
-                <h4>User Name : {userData.primaryEmail}@nexus.com </h4>
-=======
                 <h4>User Name : {userData.primaryEmail}</h4>
->>>>>>> 6aa1107b57fcb02b94bbf313b866c6a6817fd605
                 {isCopied && (
                   <p className="absolute ml-4 left-2/3 mb-6">Copied</p>
                 )}

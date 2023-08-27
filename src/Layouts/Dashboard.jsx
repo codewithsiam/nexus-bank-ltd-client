@@ -35,6 +35,8 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
 
 const drawerWidth = 240;
 
@@ -46,14 +48,14 @@ const userMenu = [
     route: "my-profile",
   },
   {
-    name: "Apply Loan",
-    icon: <CreditScoreIcon />,
-    route: "apply-loan",
-  },
-  {
     name: "Open An Account",
     icon: <FileOpenIcon />,
     route: "open-account",
+  },
+  {
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "apply-loan",
   },
   {
     name: "Savings",
@@ -67,14 +69,14 @@ const userMenu = [
   },
   {
     name: "Transfer Money",
-    icon: <AddCardIcon />,
+    icon: <BiTransfer />,
     route: "transfer-money"
   },
   {
     name: "Transaction History",
-    icon: <AddCardIcon />,
+    icon: <AiOutlineTransaction />,
     route: "transaction-history",
-     },
+  },
 ];
 
 // admin menu
@@ -321,43 +323,7 @@ export default function MiniDrawer() {
                   </Link>
                 </ListItem>
               ))
-<<<<<<< HEAD
-              : adminMenu.map((menuItem, index) => (
-                <ListItem
-                  key={menuItem.name}
-                  disablePadding
-                  sx={{ display: "block" }}
-                >
-                  <Link to={menuItem.route}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {menuItem.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={menuItem.name}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
-            
-            }
-=======
               }
->>>>>>> 6aa1107b57fcb02b94bbf313b866c6a6817fd605
           </List>
 
           <Divider />
