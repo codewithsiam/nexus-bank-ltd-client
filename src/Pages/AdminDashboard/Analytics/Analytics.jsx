@@ -1,7 +1,6 @@
 import AnalyticsTitle from '../../../components/AnalyticsCardTitle/AnalyticsTitle';
-import ConversionsCard from './AnalyticsCards/ConversionsCard';
-import ImpressionsCard from './AnalyticsCards/ImpressionsCard';
-import VisitsCard from './AnalyticsCards/VisitsCard';
+import ImpressionsCard from './AnalyticsCards/AnalyticsCard';
+import NewAudience from './Audience/NewAudience';
 import VisitorsChart from './VisitorsChart';
 
 const Analytics = () => {
@@ -12,16 +11,17 @@ const Analytics = () => {
 
                 <div className='bg-[#1E293B] p-11 rounded-lg'>
                     <AnalyticsTitle chartTitle="Visitors Overview" chartSubTitle="Number of unique visitors" />
-
                     <VisitorsChart />
                 </div>
 
 
-                <div className="mt-8 grid grid-cols-3 gap-5">
-                    <ConversionsCard />
+                <div >
                     <ImpressionsCard />
-                    <VisitsCard />
                 </div>
+
+                {/* Your Audience */}
+                <AnalyticsTitle title="Your Audience" subTitle="Demographic properties of your users" />
+                <NewAudience />
             </div>
         </div>
     );

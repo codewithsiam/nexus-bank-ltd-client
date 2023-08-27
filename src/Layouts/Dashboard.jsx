@@ -33,6 +33,8 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { DiGoogleAnalytics } from 'react-icons/di';
+
 
 const drawerWidth = 240;
 
@@ -94,7 +96,7 @@ const adminMenu = [
   },
   {
     name: "Analytics",
-    icon: <PeopleAltIcon />,
+    icon: <DiGoogleAnalytics size={24} />,
     route: "analytics"
   }
 ];
