@@ -11,6 +11,7 @@ import AccountTab from "./AccountTab/AccountTab";
 import CardTab from "./CardTab/CardTab";
 import SavingsTab from "./SavingsTab/SavingsTab";
 import AboutTab from "./AboutTab/AboutTab";
+import { Link } from "react-router-dom";
 
 const myProfileData = [
     {
@@ -24,7 +25,7 @@ const myProfileData = [
       address: "tongi, Gazipur, Dhaka",
       profession: "Front end developer",
       gender:"female",
-      dob: "February 30th, 1980",
+      dob: "December 2nd, 1993",
       accountNumber: 441965406712489,
       balance: 40000,
       accountType: "savings",
@@ -102,7 +103,7 @@ const MyProfile = () => {
                                 </div>
                                 <div className="">
                                     <div className="inline-block overflow-hidden mt-4">
-                                        <a href="#" className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</a>
+                                        <Link to="/dashboard/edit-profile" className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2"><FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</Link>
                                     </div>
                                 </div>
                             </div>

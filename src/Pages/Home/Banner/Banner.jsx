@@ -18,7 +18,7 @@ const Banner = () => {
 
   return (
     <div className='bg-[#16243E] text-white'>
-        <div className="carousel-container container mx-auto py-10 md:py-20">
+        <div className="carousel-container w-full max-w-screen-xl mx-auto py-10 md:py-20">
         <Slider {...carousel}>
             {/* Slide 1 */}
             <div className="slide-container">

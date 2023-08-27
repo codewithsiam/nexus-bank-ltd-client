@@ -35,6 +35,8 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
 
 const drawerWidth = 240;
 
@@ -46,14 +48,14 @@ const userMenu = [
     route: "my-profile",
   },
   {
-    name: "Apply Loan",
-    icon: <CreditScoreIcon />,
-    route: "apply-loan",
-  },
-  {
     name: "Open An Account",
     icon: <FileOpenIcon />,
     route: "open-account",
+  },
+  {
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "apply-loan",
   },
   {
     name: "Savings",
@@ -66,10 +68,15 @@ const userMenu = [
     route: "add-money"
   },
   {
+    name: "Transfer Money",
+    icon: <BiTransfer />,
+    route: "transfer-money"
+  },
+  {
     name: "Transaction History",
-    icon: <AddCardIcon />,
+    icon: <AiOutlineTransaction />,
     route: "transaction-history",
-     },
+  },
 ];
 
 // admin menu
