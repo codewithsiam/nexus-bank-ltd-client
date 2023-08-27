@@ -106,7 +106,8 @@ const EmployeeTable = ({employees}) => {
                 <TableRow>
                   <TableCell>Id</TableCell>
                   <TableCell>Full Name</TableCell>
-                  <TableCell>Email Address</TableCell>
+                  <TableCell>Primary Email</TableCell>
+                  <TableCell>Phone Number</TableCell>
                   <TableCell>Designation</TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>
@@ -119,9 +120,10 @@ const EmployeeTable = ({employees}) => {
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell>{employee?.id}</TableCell>
-                    <TableCell>{employee?.name}</TableCell>
-                    <TableCell>{employee?.email}</TableCell>
+                    <TableCell>{employee?._id}</TableCell>
+                    <TableCell>{employee?.firstName + " " + employee?.lastName}</TableCell>
+                    <TableCell>{employee?.primaryEmail}</TableCell>
+                    <TableCell>{employee?.phoneNumber}</TableCell>
                     <TableCell>{employee?.designation}</TableCell>
                     <TableCell>
                       Delete
