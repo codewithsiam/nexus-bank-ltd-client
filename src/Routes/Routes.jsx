@@ -109,9 +109,6 @@ const router = createBrowserRouter([
         path: "analytics",
         element: <Analytics />
       }
-        path:"users",
-        element:<Users/>
-      },
          ],
   },
 ]);
