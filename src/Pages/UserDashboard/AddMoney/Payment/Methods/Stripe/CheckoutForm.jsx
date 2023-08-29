@@ -22,7 +22,7 @@ const CheckoutForm = ({ amount }) => {
   useEffect(() => {
     if (amount > 0) {
       axios
-        .post(`http://localhost:5000/create-payment-intent`, {
+        .post(`https://nexus-bank-ltd-server-siam-wd.vercel.app/create-payment-intent`, {
           amount,
         })
         .then((res) => {
@@ -87,7 +87,7 @@ const CheckoutForm = ({ amount }) => {
       };
 
       axios
-        .post(`http://localhost:5000/payments`, paymentData)
+        .post(`https://nexus-bank-ltd-server-siam-wd.vercel.app/payments`, paymentData)
         .then((res) => {
           console.log("Payment successful:", res.data.insertedId);
           if (res.data.insertedId) {

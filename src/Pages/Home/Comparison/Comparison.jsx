@@ -5,7 +5,7 @@ import CenterTitle from "../../../Components/Title/CenterTitle";
 
 const Comparison = () => {
     return (
-        <div className="container mx-auto py-10">
+        <div className="w-full max-w-screen-xl px-4  mx-auto py-10">
             <div className="text-center mb-5">
                 <CenterTitle 
                     subHeading={"SERVICE COMPARISONS"}

@@ -1,8 +1,8 @@
 import React from 'react';
 import BlogNews from './BlogNews';
-import CenterTitle from '../../../Components/Title/CenterTitle';
+import CenterTitle from '../../Components/Title/CenterTitle';
 
-const Blog = () => {
+const BlogPage = () => {
     const blogNews = [
         {
             date: 'Dec 22, 2023',
@@ -25,8 +25,8 @@ const Blog = () => {
     ]
     return (
         <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20 bg-[#F7F9FA]">
-            <div className="container mx-auto">
-                <div className="flex flex-wrap justify-center -mx-4">
+            <div className="w-full max-w-screen-xl mx-auto">
+                <div className="gird grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     <div className="w-full px-4">
                         <div className="text-center mx-auto mb-[60px] lg:mb-20 max-w-[510px]">
                             <CenterTitle
@@ -52,4 +52,4 @@ const Blog = () => {
     );
 };
 
-export default Blog;
+export default BlogPage;

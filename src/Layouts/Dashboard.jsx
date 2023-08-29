@@ -33,6 +33,11 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import { useConstant } from "@react-spring/shared";
+import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
+import useDesignation from "../Hooks/useDesignation";
 
 const drawerWidth = 240;
 
@@ -44,14 +49,14 @@ const userMenu = [
     route: "my-profile",
   },
   {
-    name: "Apply Loan",
-    icon: <CreditScoreIcon />,
-    route: "apply-loan",
-  },
-  {
     name: "Open An Account",
     icon: <FileOpenIcon />,
     route: "open-account",
+  },
+  {
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "apply-loan",
   },
   {
     name: "Savings",
@@ -61,7 +66,17 @@ const userMenu = [
   {
     name: "Add Money",
     icon: <AddCardIcon />,
-    route: "add-money",
+    route: "add-money"
+  },
+  {
+    name: "Transfer Money",
+    icon: <BiTransfer />,
+    route: "transfer-money"
+  },
+  {
+    name: "Transaction History",
+    icon: <AiOutlineTransaction />,
+    route: "transaction-history",
   },
 ];
 
@@ -108,7 +123,6 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-const user = "admin";
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -181,7 +195,9 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const {user} = React.useContext(AuthContext);
+  console.log(user)
+ 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -189,7 +205,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const {designation} = useDesignation();
   return (
 
       <Box sx={{ display: "flex" }}>
@@ -215,10 +231,10 @@ export default function MiniDrawer() {
             </div>
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
-                <h3 className="font-semibold">Harry Kane</h3>
+                <h3 className="font-semibold">{user?.displayName}</h3>
                 <p>admin</p>
               </div>
-              <img className="w-10 h-10 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
+              <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
             </div>
           </Toolbar>
         </AppBar></ThemeProvider>
@@ -238,13 +254,13 @@ export default function MiniDrawer() {
           {
             open === true && 
             <div className="flex flex-col items-center justify-center my-6 ">
-              <img className="w-20 h-20 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
-              <h2 className=" mt-4 font-semibold">Harry Kane</h2>
-              <p>harrykane@gmail.com </p>
+              <img className="w-20 h-20 rounded-full" src={user?.photoURL} alt="" />
+              <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
+              <p>{user?.email}</p>
             </div>
           }
           <List>
-            {user === "admin"
+            {user && designation === "admin"
               ? adminMenu.map((menuItem, index) => (
                   <ListItem
                     key={menuItem.name}
@@ -277,36 +293,37 @@ export default function MiniDrawer() {
                   </ListItem>
                 ))
               : userMenu.map((menuItem, index) => (
-                  <ListItem
-                    key={menuItem.name}
-                    disablePadding
-                    sx={{ display: "block" }}
-                  >
-                    <Link to={menuItem.route}>
-                      <ListItemButton
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
                         sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
                         }}
                       >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {menuItem.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={menuItem.name}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </ListItem>
-                ))}
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+              }
           </List>
 
           <Divider />
