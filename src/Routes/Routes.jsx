@@ -76,10 +76,10 @@ const router = createBrowserRouter([
         element: <AddMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: 'saving-account',
+        element: <SavingAccountForm />
       },
-     
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -108,11 +108,12 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />
-      }
-        path:"users",
-        element:<Users/>
+      }, {
+        path: "users",
+        element: <Users />
       },
-         ],
+
+    ],
   },
 ]);
 

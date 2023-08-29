@@ -30,7 +30,7 @@ const languageColors = ['#B794F4', '#805AD5'];
 
 const NewAudience = () => {
     return (
-        <div className="grid grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
             <div className='bg-white p-5 rounded-xl'>
 
                 {/* visitors */}
@@ -38,7 +38,7 @@ const NewAudience = () => {
                     <AnalyticsCardTitle cardTitle='New Visitors' cardDays='30 Days' />
                 </div>
 
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer height={300}>
                     <PieChart>
                         <Tooltip />
                         <Pie
@@ -71,7 +71,7 @@ const NewAudience = () => {
                     <AnalyticsCardTitle cardTitle='Gender' cardDays='30 Days' />
                 </div>
 
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer height={300}>
                     <PieChart>
                         <Tooltip />
                         <Pie
@@ -104,7 +104,7 @@ const NewAudience = () => {
                     <AnalyticsCardTitle cardTitle='Age' cardDays='30 Days' />
                 </div>
 
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer height={300}>
                     <PieChart>
                         <Tooltip />
                         <Pie
@@ -137,7 +137,7 @@ const NewAudience = () => {
                     <AnalyticsCardTitle cardTitle='language' cardDays='30 Days' />
                 </div>
 
-                <ResponsiveContainer width="100%" height={300}>
+                <ResponsiveContainer height={300}>
                     <PieChart>
                         <Tooltip />
                         <Pie

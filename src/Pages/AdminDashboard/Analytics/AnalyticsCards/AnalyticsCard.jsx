@@ -59,7 +59,7 @@ const data = [
 
 const AnalyticsCard = () => {
     return (
-        <div className="mt-8 grid grid-cols-3 gap-5 mb-20">
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
             <div className='bg-[#FFFFFF] shadow-sm border rounded-xl' style={{ height: '250px' }}>
                 <div className="p-5">
                     <div className='flex items-center justify-between'>
@@ -72,9 +72,8 @@ const AnalyticsCard = () => {
                 </div>
 
                 {/* chart */}
-                <ResponsiveContainer width="100%" height="50%">
+                <ResponsiveContainer height="50%">
                     <AreaChart
-                        width={500}
                         height={200}
                         data={data}
                         margin={{
@@ -102,9 +101,8 @@ const AnalyticsCard = () => {
                 </div>
 
                 {/* chart */}
-                <ResponsiveContainer width="100%" height="50%">
+                <ResponsiveContainer height="50%">
                     <AreaChart
-                        width={500}
                         height={200}
                         data={data}
                         margin={{
@@ -133,9 +131,8 @@ const AnalyticsCard = () => {
                 </div>
 
                 {/* chart */}
-                <ResponsiveContainer width="100%" height="50%">
+                <ResponsiveContainer height="50%">
                     <AreaChart
-                        width={500}
                         height={200}
                         data={data}
                         margin={{
