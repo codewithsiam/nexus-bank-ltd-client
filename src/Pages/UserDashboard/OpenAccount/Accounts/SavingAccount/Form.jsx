@@ -11,13 +11,28 @@ const Form = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  // console.log(userData)---------
+  console.log(userData)
+  console.log(userData)
   const handleOnSubmit = (e) => {
     e.preventDefault();
     fetch(`${baseUrl}/add-account`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({
+        first_name:userData.first_name,
+        last_name:userData.last_name,
+        email:userData.email,
+        account_type:userData.account_type,
+        gender:userData.gender,
+        date_of_birth:userData.date_of_birth,
+        phone:userData.phone,
+        nationality:userData.nationality,
+        marital_status:userData.marital_status,
+        job_title:userData.job_title,
+        present_address:userData.present_address,
+        permanent_address:userData.permanent_address,
+        status:"pending"
+      }),
     })
       .then((res) => res.json())
       .then((data) => {

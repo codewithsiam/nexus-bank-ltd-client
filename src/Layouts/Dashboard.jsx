@@ -35,7 +35,10 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
 import useDesignation from "../Hooks/useDesignation";
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 
 const drawerWidth = 240;
 
@@ -47,14 +50,14 @@ const userMenu = [
     route: "my-profile",
   },
   {
-    name: "Apply Loan",
-    icon: <CreditScoreIcon />,
-    route: "apply-loan",
-  },
-  {
     name: "Open An Account",
     icon: <FileOpenIcon />,
     route: "open-account",
+  },
+  {
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "apply-loan",
   },
   {
     name: "Savings",
@@ -67,10 +70,15 @@ const userMenu = [
     route: "add-money"
   },
   {
+    name: "Transfer Money",
+    icon: <BiTransfer />,
+    route: "transfer-money"
+  },
+  {
     name: "Transaction History",
-    icon: <AddCardIcon />,
+    icon: <AiOutlineTransaction />,
     route: "transaction-history",
-     },
+  },
 ];
 
 // admin menu
@@ -89,6 +97,11 @@ const adminMenu = [
     name: "Account Details",
     icon: <AccountTreeIcon />,
     route: "accountDetails",
+  },
+  {
+    name:"Account Requests",
+    icon:<AccountBalanceWalletIcon/>,
+    route:"account-request"
   },
   {
     name:"Users",
@@ -191,7 +204,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   const {user} = React.useContext(AuthContext);
   console.log(user)
-
+ 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -200,9 +213,6 @@ export default function MiniDrawer() {
     setOpen(false);
   };
   const {designation} = useDesignation();
-  console.log(designation)
-  const userr = "admin";
-
   return (
 
       <Box sx={{ display: "flex" }}>
@@ -257,7 +267,7 @@ export default function MiniDrawer() {
             </div>
           }
           <List>
-            {userr === "admin"
+            {user && designation === "admin"
               ? adminMenu.map((menuItem, index) => (
                   <ListItem
                     key={menuItem.name}
