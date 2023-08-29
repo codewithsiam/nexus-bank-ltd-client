@@ -25,7 +25,7 @@ const AddMoney = () => {
       setErrorMessage("Please enter a valid amount and agree to the terms");
     }
   };
-
+ 
   return (
     <div className="mt-20 flex gap-4 flex-col-reverse justify-center items-center md:flex-row-reverse ">
       <div className="w-1/2">
