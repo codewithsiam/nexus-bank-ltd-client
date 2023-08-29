@@ -101,6 +101,11 @@ const adminMenu = [
     name:"Users",
     icon:<PeopleAltIcon/>,
     route:"users"
+  },
+  {
+    name:"Analytics",
+    icon:<PeopleAltIcon/>,
+    route:"analytics"
   }
 ];
 
@@ -293,7 +298,7 @@ export default function MiniDrawer() {
                     </Link>
                   </ListItem>
                 ))
-              : userMenu.map((menuItem, index) => (
+              : adminMenu.map((menuItem, index) => (
                 <ListItem
                   key={menuItem.name}
                   disablePadding
