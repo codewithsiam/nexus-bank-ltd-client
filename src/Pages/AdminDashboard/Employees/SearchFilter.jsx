@@ -54,7 +54,7 @@ const SearchFilter = ({handleOpen,setEmployees}) => {
               onChange={handleSearch}
               name="search"
               className="block w-full p-4 pl-10 text-sm border-2 border-gray-500 rounded"
-              placeholder="Search for Id,Name"
+              placeholder="Search for Name,Email"
               required
             />
             <button

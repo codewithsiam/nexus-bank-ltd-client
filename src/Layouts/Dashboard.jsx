@@ -35,6 +35,7 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
+import useDesignation from "../Hooks/useDesignation";
 
 const drawerWidth = 240;
 
@@ -198,6 +199,9 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const {designation} = useDesignation();
+  console.log(designation)
+  const userr = "admin";
 
   return (
 
@@ -253,7 +257,7 @@ export default function MiniDrawer() {
             </div>
           }
           <List>
-            {user === "admin"
+            {userr === "admin"
               ? adminMenu.map((menuItem, index) => (
                   <ListItem
                     key={menuItem.name}
