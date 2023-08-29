@@ -19,6 +19,8 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
+import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 
 
 const router = createBrowserRouter([
@@ -57,42 +59,47 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+      // ..........User dashboard routes............
       {
         path: "my-profile",
         element: <MyProfile />,
       },
       {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
         path: "open-account",
-        element: <OpenAccount />,
-        // children:[
-        //   {
-        //     path:'saving-account',
-        //     element:<SavingAccountForm/>
-        //   },
-        // ]
+        element: <OpenAccount />
+      },
+      {
+        path: "apply-loan",
+        element: <ApplyLoan />,
       },
       {
         path: "add-money",
         element: <AddMoney />,
       },
       {
-        path: 'saving-account',
-        element: <SavingAccountForm />
+        path: "transfer-money",
+        element: <TransferMoney />,
       },
-
+      {
+        path:'saving-account',
+        element:<SavingAccountForm/>
+      },
+     
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
       // },
       {
-        path: "apply-loan",
-        element: <ApplyLoan />,
-      },
-      {
         path: "transaction-history",
         element: <TransactionHistory />,
       },
-      // admin dashboard routes 
+
+
+      // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
         element: <AdminDashboard />
@@ -108,12 +115,8 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />
-      }, {
-        path: "users",
-        element: <Users />
-      },
-
-    ],
+      }
+         ],
   },
 ]);
 

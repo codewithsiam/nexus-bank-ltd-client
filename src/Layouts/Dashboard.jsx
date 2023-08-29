@@ -33,8 +33,11 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import { DiGoogleAnalytics } from 'react-icons/di';
-
+import { useConstant } from "@react-spring/shared";
+import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
+import useDesignation from "../Hooks/useDesignation";
 
 const drawerWidth = 240;
 
@@ -46,14 +49,14 @@ const userMenu = [
     route: "my-profile",
   },
   {
-    name: "Apply Loan",
-    icon: <CreditScoreIcon />,
-    route: "apply-loan",
-  },
-  {
     name: "Open An Account",
     icon: <FileOpenIcon />,
     route: "open-account",
+  },
+  {
+    name: "Apply Loan",
+    icon: <CreditScoreIcon />,
+    route: "apply-loan",
   },
   {
     name: "Savings",
@@ -66,8 +69,13 @@ const userMenu = [
     route: "add-money"
   },
   {
+    name: "Transfer Money",
+    icon: <BiTransfer />,
+    route: "transfer-money"
+  },
+  {
     name: "Transaction History",
-    icon: <AddCardIcon />,
+    icon: <AiOutlineTransaction />,
     route: "transaction-history",
   },
 ];
@@ -90,14 +98,14 @@ const adminMenu = [
     route: "accountDetails",
   },
   {
-    name: "Users",
-    icon: <PeopleAltIcon />,
-    route: "users"
+    name:"Users",
+    icon:<PeopleAltIcon/>,
+    route:"users"
   },
   {
-    name: "Analytics",
-    icon: <DiGoogleAnalytics size={24} />,
-    route: "analytics"
+    name:"Analytics",
+    icon:<PeopleAltIcon/>,
+    route:"analytics"
   }
 ];
 
@@ -120,7 +128,7 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-const user = "admin";
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -181,7 +189,7 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
     backgroundColor: "#000",
-
+    
   }),
   ...(!open && {
     ...closedMixin(theme),
@@ -193,7 +201,9 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const {user} = React.useContext(AuthContext);
+  console.log(user)
+ 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -201,14 +211,14 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const {designation} = useDesignation();
   return (
 
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <div className="flex items-center mr-auto">
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+       <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <div className="flex items-center mr-auto">
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -224,18 +234,18 @@ export default function MiniDrawer() {
             <Typography variant="h6" noWrap component="div">
               Nexus Bank Limited
             </Typography>
-          </div>
-          <div className="mr-4 flex gap-2 items-center">
-            <div className="hidden  md:flex flex-col justify-center items-end">
-              <h3 className="font-semibold">Harry Kane</h3>
-              <p>admin</p>
             </div>
-            <img className="w-10 h-10 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
-          </div>
-        </Toolbar>
-      </AppBar></ThemeProvider>
-      <ThemeProvider theme={darkTheme}>
-        <Drawer variant="permanent" open={open}>
+            <div className="mr-4 flex gap-2 items-center">
+              <div className="hidden  md:flex flex-col justify-center items-end">
+                <h3 className="font-semibold">{user?.displayName}</h3>
+                <p>admin</p>
+              </div>
+              <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+            </div>
+          </Toolbar>
+        </AppBar></ThemeProvider>
+   <ThemeProvider theme={darkTheme}>
+   <Drawer   variant="permanent" open={open}>
           <DrawerHeader className="text-xl font-semibold">
             <h2>Nexus Bank Ltd</h2>
             <IconButton onClick={handleDrawerClose}>
@@ -248,46 +258,46 @@ export default function MiniDrawer() {
           </DrawerHeader>
           <Divider />
           {
-            open === true &&
+            open === true && 
             <div className="flex flex-col items-center justify-center my-6 ">
-              <img className="w-20 h-20 rounded-full" src="https://imgv3.fotor.com/images/gallery/Realistic-Male-Profile-Picture.jpg" alt="" />
-              <h2 className=" mt-4 font-semibold">Harry Kane</h2>
-              <p>harrykane@gmail.com </p>
+              <img className="w-20 h-20 rounded-full" src={user?.photoURL} alt="" />
+              <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
+              <p>{user?.email}</p>
             </div>
           }
           <List>
-            {user === "admin"
+            {user && designation === "admin"
               ? adminMenu.map((menuItem, index) => (
-                <ListItem
-                  key={menuItem.name}
-                  disablePadding
-                  sx={{ display: "block" }}
-                >
-                  <Link to={menuItem.route}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                  <ListItem
+                    key={menuItem.name}
+                    disablePadding
+                    sx={{ display: "block" }}
+                  >
+                    <Link to={menuItem.route}>
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {menuItem.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={menuItem.name}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {menuItem.icon}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={menuItem.name}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </ListItem>
+                ))
               : adminMenu.map((menuItem, index) => (
                 <ListItem
                   key={menuItem.name}
@@ -319,7 +329,7 @@ export default function MiniDrawer() {
                   </Link>
                 </ListItem>
               ))
-            }
+              }
           </List>
 
           <Divider />
@@ -353,11 +363,11 @@ export default function MiniDrawer() {
             ))}
           </List>
         </Drawer>
-      </ThemeProvider>
-      <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Outlet />
+   </ThemeProvider>
+        <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Outlet />
+        </Box>
       </Box>
-    </Box>
-
+ 
   );
 }
