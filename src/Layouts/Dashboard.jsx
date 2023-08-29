@@ -37,6 +37,7 @@ import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
 import { BiTransfer } from "react-icons/bi"
 import { AiOutlineTransaction } from "react-icons/ai"
+import useDesignation from "../Hooks/useDesignation";
 
 const drawerWidth = 240;
 
@@ -197,7 +198,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
   const {user} = React.useContext(AuthContext);
   console.log(user)
-
+ 
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -205,7 +206,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const {designation} = useDesignation();
   return (
 
       <Box sx={{ display: "flex" }}>
@@ -260,7 +261,7 @@ export default function MiniDrawer() {
             </div>
           }
           <List>
-            {user === "admin"
+            {user && designation === "admin"
               ? adminMenu.map((menuItem, index) => (
                   <ListItem
                     key={menuItem.name}
