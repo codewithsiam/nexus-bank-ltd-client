@@ -22,6 +22,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
+import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 
 
 const router = createBrowserRouter([
@@ -112,6 +113,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />
+      },
+      {
+        path:"accounts",
+        element:<Accounts/>
       },
       {
         path:"account-request",

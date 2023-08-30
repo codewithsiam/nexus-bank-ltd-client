@@ -94,9 +94,9 @@ const adminMenu = [
     route: "employees",
   },
   {
-    name: "Account Details",
+    name: "Accounts",
     icon: <AccountTreeIcon />,
-    route: "accountDetails",
+    route: "accounts",
   },
   {
     name:"Account Requests",
