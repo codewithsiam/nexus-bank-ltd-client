@@ -13,16 +13,24 @@ import { baseUrl } from "../../../config/server";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { jsx } from "@emotion/react";
 
 function createData(name, code, population, size) {
   const density = population / size;
   return { name, code, population, size, density };
 }
 
-const RequestTable = ({ accounts, setAccounts ,control,setControl}) => {
+const RequestTable = ({ accounts, setAccounts, control, setControl }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [openAction, setOpenAction] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [feedId, setFeedId] = useState(null);
+  //   console.log(classes);
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   const handleAction = () => {
     setOpenAction(!openAction);
@@ -41,7 +49,7 @@ const RequestTable = ({ accounts, setAccounts ,control,setControl}) => {
   const handleStatus = (id, status) => {
     axios.patch(`${baseUrl}/status/${id}/?status=${status}`).then((data) => {
       if (data.data.modifiedCount > 0) {
-        setControl(!control)
+        setControl(!control);
         Swal.fire({
           position: "top-center",
           icon: "success",
@@ -49,8 +57,40 @@ const RequestTable = ({ accounts, setAccounts ,control,setControl}) => {
           showConfirmButton: false,
           timer: 1500,
         });
+      
+        if (status === "denied") {
+          setIsOpen(true);
+          setFeedId(id);
+        }
       }
     });
+  };
+
+  // handle feedBack ---------
+  const handleFeedback = (event) => {
+    event.preventDefault();
+    const feedback = event.target.feedback.value;
+    fetch(`${baseUrl}/feedback/${feedId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({ feedback }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Successfully send feedback`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setIsOpen(false)
+        }
+      })
+      .catch(err=>console.log(err))
   };
 
   return (
@@ -126,6 +166,35 @@ const RequestTable = ({ accounts, setAccounts ,control,setControl}) => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         /> */}
       </Paper>
+      {isOpen && (
+        <div className="fixed inset-0  flex items-center justify-center z-10 shadow-xl">
+          <div className="absolute  px-16 bg-white w-2/5 p-6 rounded-lg">
+            <h2 className="text-2xl my-4 font-semibold">Give Feedback</h2>
+            <form onSubmit={handleFeedback}>
+              <textarea
+                className="textarea w-full my-4 h-32 textarea-bordered"
+                name="feedback"
+                required
+                placeholder="Write Feedback"
+              ></textarea>
+
+              <div className="flex justify-between">
+                <input
+                  className="btn-primary rounded cursor-pointer px-4 py-2"
+                  type="submit"
+                  value="Send Feedback"
+                />
+                <button
+                  onClick={closeModal}
+                  className="bg-gray-500 rounded-md font-semibold hover:bg-gray-700 text-white py-2 px-4"
+                >
+                  Close
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

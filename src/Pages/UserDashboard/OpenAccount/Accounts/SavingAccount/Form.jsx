@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
+  // console.log(userData)
 
   // handle user data change
   const handleUserDataOnChange = (e) => {
@@ -15,6 +16,7 @@ const Form = () => {
   console.log(userData)
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
     fetch(`${baseUrl}/add-account`, {
       method: "POST",
       headers: { "content-type": "application/json" },
@@ -45,6 +47,7 @@ const Form = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          form.reset();
         }
       })
       .catch((error) => console.log(error));
@@ -190,20 +193,22 @@ const Form = () => {
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="form-control w-full mt-2">
+        <div className="form-control w-full ">
             <label className="label">
-              <span className="label-text text-md font-semibold">
-                Marital Status *
-              </span>
+              <span className="label-text text-md font-semibold">Marital Status</span>
             </label>
-            <input
-              type="text"
+            <select
               name="marital_status"
               required
               onChange={handleUserDataOnChange}
-              placeholder="Enter Your Last Name"
-              className="input input-bordered w-full "
-            />
+              className="select select-bordered"
+            >
+              {/* <option disabled selected>
+                Pick one
+              </option> */}
+              <option>Married</option>
+              <option>Unmarried</option>
+            </select>
           </div>
           <div className="form-control w-full mt-2">
             <label className="label">
