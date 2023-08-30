@@ -31,7 +31,7 @@ const EditProfile = () => {
           Swal.fire({
             icon: "success",
             title: "Success",
-            text: "Toy added has been successful",
+            text: "Profile Info updated successful",
           });
         }
         
