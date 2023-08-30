@@ -1,26 +1,26 @@
 import React from "react";
-import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { baseUrl } from "../../../config/server";
 
+const SrcAndFilter = ({ requestedAccounts, setRequestedAccounts }) => {
 
-const SearchFilter = ({handleOpen,setEmployees}) => {
 
-  // handle search by name 
-  const handleSearch = (e)=>{
+  // handle search -----------
+  const handleSearch = (e) => {
     const searchItem = e.target.value;
-    // console.log(searchItem)
-    fetch(`${baseUrl}/employees/${searchItem}`)
-    .then(res=>res.json())
-    .then(data=>setEmployees(data))
-  }
+    fetch(`${baseUrl}/pending-account/${searchItem}`)
+      .then((res) => res.json())
+      .then((data) => setRequestedAccounts(data));
+  };
 
-  // filter employee by designation 
+  // handle filter -------------
   const handleFilter = (e)=>{
     const filterItem = e.target.value;
-   fetch(`${baseUrl}/employeess/${filterItem}`)
+    console.log(filterItem)
+   fetch(`${baseUrl}/pending/${filterItem}`)
    .then(res=>res.json())
-   .then(data=>setEmployees(data))
+   .then(data=>setRequestedAccounts(data))
   }
+
   return (
     <div>
       <div className="md:flex justify-between items-center">
@@ -50,9 +50,9 @@ const SearchFilter = ({handleOpen,setEmployees}) => {
               </svg>
             </div>
             <input
+                onChange={handleSearch}
               type="search"
               id="default-search"
-              onChange={handleSearch}
               name="search"
               className="block w-full p-4 pl-10 text-sm border-2 border-gray-500 rounded"
               placeholder="Search for Name,Email"
@@ -68,27 +68,24 @@ const SearchFilter = ({handleOpen,setEmployees}) => {
         </div>
         <div className="md:flex gap-4 items-center ">
           <div className="form-control w-full max-w-xs mb-4 md:mb-0">
-            <select onChange={handleFilter} name="filter" className="select select-bordered">
+            <select
+                onChange={handleFilter}
+              name="filter"
+              className="select select-bordered"
+            >
               <option disabled selected>
                 Pick one
               </option>
-              <option>Bank Teller</option>
-              <option>Loan Officer</option>
-              <option>Relationship Manager</option>
-              <option>Financial Advisor</option>
-              <option>Credit Analyst</option>     
-              <option>Risk Manager</option> 
-              <option>Collections Officer</option>
+              <option>Saving Account</option>
+              <option>Checking Account</option>
+              <option>Business Account</option>
+              <option>Student Account</option>
             </select>
           </div>
-          <button onClick={handleOpen} className="my-btn px-6 py-3 rounded text-white font-semibold w-full">
-            {" "}
-            <AddOutlinedIcon /> Add Employee
-          </button>
         </div>
       </div>
     </div>
   );
 };
 
-export default SearchFilter;
+export default SrcAndFilter;

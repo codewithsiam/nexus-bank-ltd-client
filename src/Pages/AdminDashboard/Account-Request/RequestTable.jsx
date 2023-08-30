@@ -20,7 +20,7 @@ function createData(name, code, population, size) {
   return { name, code, population, size, density };
 }
 
-const RequestTable = ({ accounts, setAccounts, control, setControl }) => {
+const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setControl }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [openAction, setOpenAction] = useState(false);
@@ -111,7 +111,7 @@ const RequestTable = ({ accounts, setAccounts, control, setControl }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {accounts?.map((account) => (
+                {requestedAccounts?.map((account) => (
                   <TableRow
                     key={account.id}
                     hover
