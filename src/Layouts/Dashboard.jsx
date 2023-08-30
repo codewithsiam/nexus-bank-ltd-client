@@ -38,6 +38,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { BiTransfer } from "react-icons/bi"
 import { AiOutlineTransaction } from "react-icons/ai"
 import useDesignation from "../Hooks/useDesignation";
+import { FcDebt } from "react-icons/fc";
 
 const drawerWidth = 240;
 
@@ -106,6 +107,11 @@ const adminMenu = [
     name:"Analytics",
     icon:<PeopleAltIcon/>,
     route:"analytics"
+  },
+  {
+    name:"Loan Request",
+    icon:<FcDebt></FcDebt>,
+    route:"loan-request"
   }
 ];
 
