@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import useTitle from "../../Component/Hook/UseTitle";
 
 const EditProfile = () => {
-  const toy = useLoaderData();
+  const profileData = useLoaderData();
   const { user } = useContext(AuthContext);
   useTitle("MyToy-Update")
 
@@ -19,7 +18,7 @@ const EditProfile = () => {
 
   const onSubmit = (data) => {
     data.price = Number(data.price);
-    fetch(`https://the-toy-universe-server.vercel.app/update/${toy._id}`, {
+    fetch(`${baseUrl}/update_Profile/${toy._id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

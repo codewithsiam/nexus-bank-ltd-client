@@ -22,7 +22,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import { baseUrl } from "../config/server";
-
+import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
+import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -68,7 +69,7 @@ const router = createBrowserRouter([
       {
         path: "edit-profile/:id",
         element: <EditProfile />,
-        loader:({params})=>fetch(`${baseUrl}/update_Profile/${params.id}`)
+        loader:({params})=>fetch(`${baseUrl}/Profile/${params.id}`)
       },
       {
         path: "open-account",
@@ -87,10 +88,10 @@ const router = createBrowserRouter([
         element: <TransferMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: 'saving-account',
+        element: <SavingAccountForm />
       },
-     
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -117,8 +118,17 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />
+      },
+      {
+        path: "loan-request",
+        element: <LoanRequest />,
+        loader:() => fetch(`${baseUrl}/loans`)
+      },
+      {
+        path: "feedback",
+        element: <Feedback/>
       }
-         ],
+    ],
   },
 ]);
 
