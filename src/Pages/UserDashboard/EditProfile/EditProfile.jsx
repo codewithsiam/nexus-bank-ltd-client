@@ -1,61 +1,118 @@
-import React from 'react';
+import React, { useContext } from "react";
+import { useForm } from "react-hook-form";
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
+import useTitle from "../../Component/Hook/UseTitle";
 
 const EditProfile = () => {
-    return (
-        <div className='w-full max-w-screen-xl mx-auto'>
-            <form 
-            // onSubmit={handleCollegeUpdate} 
-            className="bg-[url(https://rn53themes.net/themes/demo/education-master/images/weather.png)]">
-            <div className="p-10">
-              <div className="flex gap-4 items-center my-5">
-                <span className="text-lg">First Name: </span>
-                <input type="text" placeholder="Your First name" name="firstName" className="input input-bordered w-[70%]"/>
-              </div>
-              <div className="flex gap-4 items-center my-5">
-                <span className="text-lg w-[125px]">Last Name: </span>
-                <input type="text" placeholder="Your name" name="name" className="input input-bordered w-[70%]"/>
-              </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg w-[125px]">User Email</span>
-                    <input type="email" placeholder="email" name="email" className="input input-bordered w-[70%]"/>
-                </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg w-[125px]">Your Subject:</span>
-                <input type="text" placeholder="Your favorite subject" name="subject" className="input input-bordered w-[70%]"/>
-              </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg">Phone Number:</span>
-                    <input type="number" name="number" placeholder="Enter your phone number" className="input input-bordered w-[70%]" />
-                </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg w-[125px]">Your Address:</span>
-                    <input type="text" name="address" placeholder='Enter your address' className="input input-bordered w-[70%]" />
-                </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg w-[125px]">Date of Birth:</span>
-                    <input type="date" id="dob" name="dob" value={dob} onChange={handleChange} className="input input-bordered w-[70%]"/>
-                </div>
-                <div className="flex gap-4 items-center mb-5">
-                    <span className="text-lg w-[125px]">Your Image:</span>
-                    <label>
-                      <input
-                        onChange={event => {
-                          handleUploadImage(event.target.files[0])
-                        }}
-                        className='text-sm cursor-pointer w-36 hidden' type='file' name='photo' id='image' accept='image/*' hidden
-                      />
-                      <div className='text-gray-400 border border-gray-300 rounded-lg cursor-pointer p-2.5'>
-                        {uploadButtonText}
-                      </div>
+  const toy = useLoaderData();
+  const { user } = useContext(AuthContext);
+  useTitle("MyToy-Update")
+
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    data.price = Number(data.price);
+    fetch(`https://the-toy-universe-server.vercel.app/update/${toy._id}`, {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.modifiedCount>0) {
+          Swal.fire({
+            icon: "success",
+            title: "Success",
+            text: "Toy added has been successful",
+          });
+        }
+        
+      });
+  };
+
+  return (
+    <div>
+      <div className="hero py-5 md:min-h-screen bg-[#ccf7ff]">
+        <div className="hero-content flex-col">
+          <h2 className="text-3xl font-bold">Update Toy</h2>
+          <div className="card w-full  md:w-[500px]  shadow-2xl bg-base-100">
+            <div className="card-body">
+              <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                  <div className="form-control px-2 my-6">
+                    <label className="label">
+                      <span className="label-text">Price</span>
                     </label>
-                </div>
-                <div className="form-control">
-                <input className="btn bg-secondary hover:bg-primary border-0 text-black" type="submit" value="Apply Now"/>
-                </div>
+                    <input
+                      className="input w-full input-bordered"
+                      placeholder="Price"
+                      defaultValue={toy.price}
+                      {...register("price", { required: true })}
+                    />
+
+                    {errors.price && (
+                      <span className="text-red-600">
+                        Provide Toy Price
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="form-control my-6">
+                    <label className="label">
+                      <span className="label-text">Available quantity</span>
+                    </label>
+                    <input
+                      className="input input-bordered"
+                      placeholder="Available quantity"
+                      defaultValue={toy.available_quantity}
+                      {...register("available_quantity", { required: true })}
+                    />
+                    {errors.available_quantity && (
+                      <span className="text-red-600">Provide Toy Quantity</span>
+                    )}
+                  </div>
+
+                  <div className="form-control my-6">
+                    <label className="label">
+                      <span className="label-text">Description</span>
+                    </label>
+                    <textarea
+                      className="input input-bordered"
+                      placeholder="description"
+                      defaultValue={toy.description}
+                      {...register("description", { required: true })}
+                    />
+                    {errors.description && (
+                      <span className="text-red-600">
+                        Provide Toy description
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="form-control mt-6">
+                    <input
+                      className="btn btn-primary"
+                      type="submit"
+                      value="Update Toy"
+                    />
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default EditProfile;

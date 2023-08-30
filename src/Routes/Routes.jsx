@@ -21,6 +21,7 @@ import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
+import { baseUrl } from "../config/server";
 
 
 const router = createBrowserRouter([
@@ -65,8 +66,9 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
-        path: "edit-profile",
+        path: "edit-profile/:id",
         element: <EditProfile />,
+        loader:({params})=>fetch(`${baseUrl}/update_Profile/${params.id}`)
       },
       {
         path: "open-account",

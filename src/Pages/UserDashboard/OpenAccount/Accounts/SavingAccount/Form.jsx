@@ -34,6 +34,7 @@ const Form = () => {
       })
       .catch((error) => console.log(error));
   };
+  
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
