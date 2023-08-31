@@ -2,19 +2,13 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
-import useTitle from "../../Component/Hook/UseTitle";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const EditProfile = () => {
   const profileData = useLoaderData();
+  console.log(profileData)
   const { user } = useContext(AuthContext);
-  useTitle("MyToy-Update")
-
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, watch, formState: { errors },} = useForm();
 
   const onSubmit = (data) => {
     data.price = Number(data.price);
@@ -40,7 +34,7 @@ const EditProfile = () => {
 
   return (
     <div>
-      <div className="hero py-5 md:min-h-screen bg-[#ccf7ff]">
+      {/* <div className="hero py-5 md:min-h-screen bg-[#ccf7ff]">
         <div className="hero-content flex-col">
           <h2 className="text-3xl font-bold">Update Toy</h2>
           <div className="card w-full  md:w-[500px]  shadow-2xl bg-base-100">
@@ -109,7 +103,8 @@ const EditProfile = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
+      <h1 className="mt-20">hellow</h1>
     </div>
   );
 };

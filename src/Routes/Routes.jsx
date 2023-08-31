@@ -69,8 +69,9 @@ const router = createBrowserRouter([
       {
         path: "edit-profile/:id",
         element: <EditProfile />,
-        loader:({params})=>fetch(`${baseUrl}/Profile/${params.id}`)
-      },
+        // loader:({params})=>fetch(`${baseUrl}/Profile/${params.id}`)
+        loader:()=>fetch(`${baseUrl}/Profile`)
+      },      
       {
         path: "open-account",
         element: <OpenAccount />
