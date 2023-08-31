@@ -25,7 +25,7 @@ const AddMoney = () => {
       setErrorMessage("Please enter a valid amount and agree to the terms");
     }
   };
-
+ 
   return (
     <div className="mt-20 flex gap-4 flex-col-reverse justify-center items-center md:flex-row-reverse ">
       <div className="w-1/2">
@@ -57,7 +57,7 @@ const AddMoney = () => {
             <input
               type="number"
               className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your full name"
+              placeholder="Enter your accont number"
               name="accountNumber"
             />
 

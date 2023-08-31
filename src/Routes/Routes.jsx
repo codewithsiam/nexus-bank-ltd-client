@@ -14,12 +14,17 @@ import Dashboard from '../Layouts/Dashboard'
 import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
+import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ChatUs from "../Pages/Chat/ChatUs";
 import PrivetRout from "./PrivetRout";
+import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
+import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
+import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
+import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 
 
 const router = createBrowserRouter([
@@ -60,57 +65,74 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard/>,
+    element: <Dashboard />,
     children: [
+      // ..........User dashboard routes............
       {
         path: "my-profile",
         element: <MyProfile />,
       },
       {
+        path: "edit-profile",
+        element: <EditProfile />,
+      },
+      {
         path: "open-account",
-        element: <OpenAccount />,
-        // children:[
-        //   {
-        //     path:'saving-account',
-        //     element:<SavingAccountForm/>
-        //   },
-        // ]
+        element: <OpenAccount />
+      },
+      {
+        path: "apply-loan",
+        element: <ApplyLoan />,
       },
       {
         path: "add-money",
         element: <AddMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: "transfer-money",
+        element: <TransferMoney />,
       },
-     
+      {
+        path: 'saving-account',
+        element: <SavingAccountForm />
+      },
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
       // },
       {
-        path: "apply-loan",
-        element: <ApplyLoan />,
-      },
-      {
         path: "transaction-history",
         element: <TransactionHistory />,
       },
-      // admin dashboard routes 
+
+
+      // ..................admin dashboard routes........................
       {
-        path:"adminDashboard",
-        element:<AdminDashboard/>
+        path: "adminDashboard",
+        element: <AdminDashboard />
       },
       {
-        path:"employees",
-        element:<Employees/>
+        path: "employees",
+        element: <Employees />
       },
       {
-        path:"users",
-        element:<Users/>
+        path: "users",
+        element: <Users />
       },
-     
+      {
+        path: "analytics",
+        element: <Analytics />
+      },
+      {
+        path: "loan-request",
+        element: <LoanRequest />,
+        loader:() => fetch('http://localhost:5000/loans')
+      },
+      {
+        path: "feedback",
+        element: <Feedback/>
+      }
     ],
   },
 ]);
