@@ -18,6 +18,8 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ChatUs from "../Pages/Chat/ChatUs";
+import PrivetRout from "./PrivetRout";
 
 
 const router = createBrowserRouter([
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path:'/chat',
+        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "/aboutDetails",
