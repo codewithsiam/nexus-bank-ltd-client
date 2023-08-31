@@ -19,9 +19,13 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ChatUs from "../Pages/Chat/ChatUs";
+import PrivetRout from "./PrivetRout";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import { baseUrl } from "../config/server";
+import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
+import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 
@@ -34,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path:'/chat',
+        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "/aboutDetails",
@@ -115,6 +123,14 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />
+      },
+      {
+        path:"accounts",
+        element:<Accounts/>
+      },
+      {
+        path:"account-request",
+        element:<AccountRequest/>
       },
       {
         path: "analytics",

@@ -1,8 +1,11 @@
 import React from 'react';
 import BlogNews from './BlogNews';
 import CenterTitle from '../../Components/Title/CenterTitle';
+import useDesignation from '../../Hooks/useDesignation';
 
 const BlogPage = () => {
+    const {designation} = useDesignation();
+    console.log(designation)
     const blogNews = [
         {
             date: 'Dec 22, 2023',

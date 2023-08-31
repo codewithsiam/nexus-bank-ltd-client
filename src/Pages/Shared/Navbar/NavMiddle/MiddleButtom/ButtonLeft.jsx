@@ -24,7 +24,7 @@ const ButtonLeft = () => {
       </div>
       <div className="relative group">
         {
-          user === "admin"? <Link to='/dashboard/adminDashboard'>Dashboard</Link>:<Link to='/dashboard/my-profile'>My Profile</Link>
+          user === "admin"? <Link to='/dashboard/analytics'>Dashboard</Link>:<Link to='/dashboard/my-profile'>My Profile</Link>
         }
       </div>
       {/* <div className="relative group">
