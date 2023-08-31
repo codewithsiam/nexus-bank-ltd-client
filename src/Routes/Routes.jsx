@@ -19,6 +19,8 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ChatUs from "../Pages/Chat/ChatUs";
+import PrivetRout from "./PrivetRout";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
@@ -34,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path:'/chat',
+        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "/aboutDetails",

@@ -8,11 +8,13 @@ import OurServices from "./OurServices/OurServices";
 import OurTeam from "./OurTeam/OurTeam";
 import Testimonial from "./Testimonial/Testimonial";
 import Comparison from "./Comparison/Comparison";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     return (
-        <div>
+        <div className="relative">
             <Banner></Banner>
+           
             <About></About>
             <OurServices></OurServices>
             <LatestNews></LatestNews>
@@ -22,6 +24,9 @@ const Home = () => {
             <CreditCardPayment/>
             <ContactUs />
             <Footer/>
+            <Link to={'/chat'} className=" fixed bottom-5 right-10 z-50 text-red-500"><img
+            className="w-12"
+            src="https://i.ibb.co/FxwYW6L/messenger-icon-free-png.webp" alt="" /></Link>
         </div>
     );
 };
