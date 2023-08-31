@@ -23,7 +23,6 @@ const MyProfile = () => {
     console.log(user)
     
     const [myProfileData, setMyProfileData] = useState([]);
-    const [loadingProfile, setLoadingProfile] = useState(true);
 
     useEffect(() => {
         fetch(`${baseUrl}/approved-account`)
@@ -31,11 +30,9 @@ const MyProfile = () => {
           .then((data) => {
             console.log(data);
             setMyProfileData(data);
-            setLoadingProfile(false); // Set loading state to false when data is fetched
           })
           .catch((error) => {
             console.error("Error fetching data:", error);
-            setLoadingProfile(false); // Set loading state to false even if there's an error
           });
     }, []);
     console.log(myProfileData)
