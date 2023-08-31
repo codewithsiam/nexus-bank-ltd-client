@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
+import { baseUrl } from "../../../config/server";
 // import Swal from "sweetalert2";
 
 const ApplyLoan = () => {
@@ -21,7 +22,7 @@ const ApplyLoan = () => {
       data.status = "pending";
       data.email = user.email;
       const response = await fetch(
-        `${import.meta.env.VITE_SERVER_URL}/apply-loan`,
+        `${baseUrl}/apply-loan`,
         {
           method: "POST",
           headers: {

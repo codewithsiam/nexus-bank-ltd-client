@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { baseUrl } from "../../../../../config/server";
 import Swal from "sweetalert2";
+import AuthProvider, { AuthContext } from "../../../../../providers/AuthProvider";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
+  const {user}=useContext(AuthContext)
   // console.log(userData)
 
   // handle user data change
@@ -12,7 +14,6 @@ const Form = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData)
   console.log(userData)
   const handleOnSubmit = (e) => {
     e.preventDefault();
@@ -52,6 +53,7 @@ const Form = () => {
       })
       .catch((error) => console.log(error));
   };
+  
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
@@ -98,6 +100,7 @@ const Form = () => {
             <input
               type="text"
               name="email"
+              // value={user?.email}
               onChange={handleUserDataOnChange}
               required
               placeholder="Enter Your Last Name"

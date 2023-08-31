@@ -23,11 +23,11 @@ import ChatUs from "../Pages/Chat/ChatUs";
 import PrivetRout from "./PrivetRout";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
+import { baseUrl } from "../config/server";
 import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
 import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
-
 
 const router = createBrowserRouter([
   {
@@ -75,9 +75,11 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
-        path: "edit-profile",
+        path: "edit-profile/:id",
         element: <EditProfile />,
-      },
+        // loader:({params})=>fetch(`${baseUrl}/Profile/${params.id}`)
+        loader:()=>fetch(`${baseUrl}/Profile`)
+      },      
       {
         path: "open-account",
         element: <OpenAccount />
@@ -137,7 +139,7 @@ const router = createBrowserRouter([
       {
         path: "loan-request",
         element: <LoanRequest />,
-        loader:() => fetch('http://localhost:5000/loans')
+        loader:() => fetch(`${baseUrl}/loans`)
       },
       {
         path: "feedback",
