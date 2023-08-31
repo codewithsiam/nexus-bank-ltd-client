@@ -1,5 +1,4 @@
 
-import { AuthContext } from "../../../providers/AuthProvider";
 import { FaFacebook, FaInstagram, FaPencilAlt, FaTwitter, FaUser, FaMobileAlt } from "react-icons/fa";
 import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
@@ -15,39 +14,19 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { baseUrl } from "../../../config/server";
-import { useContext } from "react";
 import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
-
-const myProfileData5 = [
-    {
-      id: 1,
-      photoURL: 'https://react-material.fusetheme.com/assets/images/avatars/male-04.jpg',
-      firstName: "Rukshana Akter",
-      nickname: "Rupu",
-      email: "rupu.tht@gmail.com",
-      facebook: "facebook.com/rukshana.2015",
-      number: +8801791687736,
-      address: "tongi, Gazipur, Dhaka",
-      profession: "Front end developer",
-      gender:"female",
-      dob: "December 2nd, 1993",
-      accountNumber: 441965406712489,
-      balance: 40000,
-      accountType: "savings",
-      bio: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters."
-    },
-];
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const MyProfile = () => {
-    const user5 = myProfileData5[0];
-    const { user, loading } = useContext(AuthContext);
-   
+    const {user} =useContext(AuthContext)
     console.log(user)
+    
     const [myProfileData, setMyProfileData] = useState([]);
     const [loadingProfile, setLoadingProfile] = useState(true);
 
     useEffect(() => {
-        fetch(`${baseUrl}/profile`)
+        fetch(`${baseUrl}/approved-account`)
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -58,10 +37,11 @@ const MyProfile = () => {
             console.error("Error fetching data:", error);
             setLoadingProfile(false); // Set loading state to false even if there's an error
           });
-      }, []);
+    }, []);
     console.log(myProfileData)
-    const filterMyProfile=myProfileData.filter(myProfileSingle=>user5.email==myProfileSingle.email)
-    console.log(filterMyProfile[0])
+
+    const myAccounts =myProfileData.filter(myProfileSingle=>myProfileSingle.email===user?.email)
+    console.log(myAccounts[0])
 
     const [value, setValue] = React.useState(0);
     const handleChange = (event, newValue) => {
@@ -100,13 +80,9 @@ const MyProfile = () => {
           'aria-controls': `simple-tabpanel-${index}`,
         };
     }
-
-    if (loading || loadingProfile) {
-        return <LoadingSpinner />; // Render loading spinner while user and profile data are loading
-    }
   
-    const {photoURL} = user5;
-    const {_id, first_name, last_name,job_title} = filterMyProfile[0];
+    const {photoURL} = user;
+    const {_id, first_name, last_name,job_title} = myAccounts[0];
     return (
         <div className=" pt-10 bg-gray-100">
             <div class="relative w-full text-white">
@@ -179,7 +155,7 @@ const MyProfile = () => {
         // <div className="mt-20">
         //     <div className="inline-block overflow-hidden mt-4">
         //         <Link 
-        //         to={`/dashboard/edit-profile/${_id}`} 
+        //         to={`/dashboard/edit-profile/${myAccounts[0]._id}`} 
         //         className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2">
         //         <FaPencilAlt className="mr-1"></FaPencilAlt> Edit my profile</Link>
         //     </div>
