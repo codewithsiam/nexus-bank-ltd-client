@@ -32,13 +32,14 @@ import FileOpenIcon from "@mui/icons-material/FileOpen";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
-import { BiTransfer } from "react-icons/bi"
-import { AiOutlineTransaction } from "react-icons/ai"
+import { BiTransfer } from "react-icons/bi";
+import { AiOutlineTransaction } from "react-icons/ai";
 import useDesignation from "../Hooks/useDesignation";
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
+import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import { FcDebt } from "react-icons/fc";
 
 const drawerWidth = 240;
 
@@ -67,12 +68,12 @@ const userMenu = [
   {
     name: "Add Money",
     icon: <AddCardIcon />,
-    route: "add-money"
+    route: "add-money",
   },
   {
     name: "Transfer Money",
     icon: <BiTransfer />,
-    route: "transfer-money"
+    route: "transfer-money",
   },
   {
     name: "Transaction History",
@@ -83,10 +84,15 @@ const userMenu = [
 
 // admin menu
 const adminMenu = [
+  // {
+  //   name: "Dashboard",
+  //   icon: <DashboardIcon />,
+  //   route: "adminDashboard",
+  // },
   {
-    name: "Dashboard",
-    icon: <DashboardIcon />,
-    route: "adminDashboard",
+    name: "Analytics",
+    icon: <PeopleAltIcon />,
+    route: "analytics",
   },
   {
     name: "Employees",
@@ -99,15 +105,21 @@ const adminMenu = [
     route: "accounts",
   },
   {
-    name:"Account Requests",
-    icon:<AccountBalanceWalletIcon/>,
-    route:"account-request"
+    name: "Account Requests",
+    icon: <AccountBalanceWalletIcon />,
+    route: "account-request",
   },
   {
-    name:"Users",
-    icon:<PeopleAltIcon/>,
-    route:"users"
-  }
+    name: "Users",
+    icon: <PeopleAltIcon />,
+    route: "users",
+  },
+
+  {
+    name: "Loan Request",
+    icon: <FcDebt></FcDebt>,
+    route: "loan-request",
+  },
 ];
 
 const HomeMenu = [
@@ -129,7 +141,6 @@ const HomeMenu = [
 ];
 
 // find user rote ------------------------------------------
-
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -190,7 +201,6 @@ const Drawer = styled(MuiDrawer, {
     ...openedMixin(theme),
     "& .MuiDrawer-paper": openedMixin(theme),
     backgroundColor: "#000",
-    
   }),
   ...(!open && {
     ...closedMixin(theme),
@@ -202,9 +212,9 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const {user} = React.useContext(AuthContext);
-  console.log(user)
- 
+  const { user } = React.useContext(AuthContext);
+  console.log(user);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -212,41 +222,47 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const {designation} = useDesignation();
+  const { designation } = useDesignation();
   return (
-
-      <Box sx={{ display: "flex" }}>
-        <CssBaseline />
-       <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <ThemeProvider theme={lightTheme}>
+        {" "}
+        <AppBar position="fixed" open={open}>
           <Toolbar>
             <div className="flex items-center mr-auto">
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography variant="h6" noWrap component="div">
-              Nexus Bank Limited
-            </Typography>
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{
+                  marginRight: 5,
+                  ...(open && { display: "none" }),
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography variant="h6" noWrap component="div">
+                Nexus Bank Limited
+              </Typography>
             </div>
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
                 <h3 className="font-semibold">{user?.displayName}</h3>
                 <p>admin</p>
               </div>
-              <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+              <img
+                className="w-10 h-10 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
             </div>
           </Toolbar>
-        </AppBar></ThemeProvider>
-   <ThemeProvider theme={darkTheme}>
-   <Drawer   variant="permanent" open={open}>
+        </AppBar>
+      </ThemeProvider>
+      <ThemeProvider theme={darkTheme}>
+        <Drawer variant="permanent" open={open}>
           <DrawerHeader className="text-xl font-semibold">
             <h2>Nexus Bank Ltd</h2>
             <IconButton onClick={handleDrawerClose}>
@@ -258,14 +274,17 @@ export default function MiniDrawer() {
             </IconButton>
           </DrawerHeader>
           <Divider />
-          {
-            open === true && 
+          {open === true && (
             <div className="flex flex-col items-center justify-center my-6 ">
-              <img className="w-20 h-20 rounded-full" src={user?.photoURL} alt="" />
+              <img
+                className="w-20 h-20 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
               <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
               <p>{user?.email}</p>
             </div>
-          }
+          )}
           <List>
             {user && designation === "admin"
               ? adminMenu.map((menuItem, index) => (
@@ -300,37 +319,36 @@ export default function MiniDrawer() {
                   </ListItem>
                 ))
               : userMenu.map((menuItem, index) => (
-                <ListItem
-                  key={menuItem.name}
-                  disablePadding
-                  sx={{ display: "block" }}
-                >
-                  <Link to={menuItem.route}>
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                  <ListItem
+                    key={menuItem.name}
+                    disablePadding
+                    sx={{ display: "block" }}
+                  >
+                    <Link to={menuItem.route}>
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {menuItem.icon}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={menuItem.name}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-              ))
-              }
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {menuItem.icon}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={menuItem.name}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </ListItem>
+                ))}
           </List>
 
           <Divider />
@@ -364,11 +382,14 @@ export default function MiniDrawer() {
             ))}
           </List>
         </Drawer>
-   </ThemeProvider>
-        <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Outlet />
-        </Box>
+      </ThemeProvider>
+      <Box
+        className="bg-[rgb(241,245,249)] min-h-screen"
+        component="main"
+        sx={{ flexGrow: 1, p: 3 }}
+      >
+        <Outlet />
       </Box>
- 
+    </Box>
   );
 }

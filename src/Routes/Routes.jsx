@@ -23,6 +23,8 @@ import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
 import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
+import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
+import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 
 
 const router = createBrowserRouter([
@@ -87,10 +89,10 @@ const router = createBrowserRouter([
         element: <TransferMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: 'saving-account',
+        element: <SavingAccountForm />
       },
-     
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -125,8 +127,17 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />
+      },
+      {
+        path: "loan-request",
+        element: <LoanRequest />,
+        loader:() => fetch('http://localhost:5000/loans')
+      },
+      {
+        path: "feedback",
+        element: <Feedback/>
       }
-         ],
+    ],
   },
 ]);
 

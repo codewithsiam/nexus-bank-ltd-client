@@ -60,15 +60,14 @@ const data = [
 
 const VisitorsChart = () => {
     return (
-        <ResponsiveContainer width="100%" height={250}>
+        <ResponsiveContainer width='100%' height={250}>
             <AreaChart
-                // width={500}
-                // height={400}
+                width='100%'
                 data={data}
                 syncId="anyId"
                 margin={{
                     top: 10,
-                    right: 30,
+                    right: 0,
                     left: 0,
                     bottom: 0,
                 }}
