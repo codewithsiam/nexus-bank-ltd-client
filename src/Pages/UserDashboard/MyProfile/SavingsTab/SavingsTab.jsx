@@ -10,7 +10,6 @@ import DPSTab from './DPSTab';
 // this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -27,13 +26,11 @@ function TabPanel(props) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -41,10 +38,8 @@ function a11yProps(index) {
   };
 }
 
-const SavingsTab=({user})=> {
-  const {accountNumber, balance} = user;
+const SavingsTab=({myAccountData})=> {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -66,10 +61,10 @@ const SavingsTab=({user})=> {
             </Tabs>
         </div>
         <TabPanel value={value} index={0}>
-            <DepositTab user={user} />
+            <DepositTab myAccountData={myAccountData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-            <DPSTab user={user} />
+            <DPSTab myAccountData={myAccountData} />
         </TabPanel>
         </Box>
     </div>

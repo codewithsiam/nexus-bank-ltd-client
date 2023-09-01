@@ -7,7 +7,7 @@ const AccountTab=({user, myAccountData})=> {
 
   return (
     <div className=''>
-      <h1 className="text-2xl my-5 font-bold text-violet-600">Total Account: {myAccountData.length}</h1>
+      <h1 className="text-2xl my-5 font-bold text-violet-600">Total Account: {myAccounts.length}</h1>
       <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
       {myAccounts?.map((myAccount, index) => (
             <AccountCard key={index} myAccount={myAccount} />

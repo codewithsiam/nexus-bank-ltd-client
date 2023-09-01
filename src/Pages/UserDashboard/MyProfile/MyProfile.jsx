@@ -25,7 +25,7 @@ const myAccountData=[
         account_number:"1003465000788",
     },
     {
-        account_type: 'Current', 
+        account_type: 'Millionaire', 
         balance: 1000,
         email: "rupu.pharm@gmail.com",
         status: "approved",
@@ -215,7 +215,7 @@ const MyProfile = () => {
         </CustomTabPanel>
         <CustomTabPanel value={value} index={3}>
             {user && myAccountData ? 
-            <SavingsTab user={user} myAccountData={myAccountData}/> : 
+            <SavingsTab myAccountData={myAccountData}/> : 
             <h1 className="mt-10 text-center text-blue-800 font-bold text-2xl">Please Login first</h1>
             }
         </CustomTabPanel>
