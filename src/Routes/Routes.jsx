@@ -19,9 +19,16 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ChatUs from "../Pages/Chat/ChatUs";
+import PrivetRout from "./PrivetRout";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
-
+import { baseUrl } from "../config/server";
+import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
+import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
+import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
+import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
+import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path:'/chat',
+        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "/aboutDetails",
@@ -66,8 +77,8 @@ const router = createBrowserRouter([
       },
       {
         path: "edit-profile",
-        element: <EditProfile />,
-      },
+        element: <EditProfile />
+      },      
       {
         path: "open-account",
         element: <OpenAccount />
@@ -85,10 +96,10 @@ const router = createBrowserRouter([
         element: <TransferMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: 'saving-account',
+        element: <SavingAccountForm />
       },
-     
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -113,10 +124,32 @@ const router = createBrowserRouter([
         element: <Users />
       },
       {
+        path:'users/:email',
+        element:<UserProfile></UserProfile>
+
+      },
+      {
+        path:"accounts",
+        element:<Accounts/>
+      },
+      {
+        path:"account-request",
+        element:<AccountRequest/>
+      },
+      {
         path: "analytics",
         element: <Analytics />
+      },
+      {
+        path: "loan-request",
+        element: <LoanRequest />,
+        loader:() => fetch(`${baseUrl}/loans`)
+      },
+      {
+        path: "feedback",
+        element: <Feedback/>
       }
-         ],
+    ],
   },
 ]);
 
