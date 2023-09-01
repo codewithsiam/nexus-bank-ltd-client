@@ -76,10 +76,8 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
-        path: "edit-profile/:id",
-        element: <EditProfile />,
-        // loader:({params})=>fetch(`${baseUrl}/Profile/${params.id}`)
-        loader:()=>fetch(`${baseUrl}/Profile`)
+        path: "edit-profile",
+        element: <EditProfile />
       },      
       {
         path: "open-account",
