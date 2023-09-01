@@ -75,7 +75,7 @@ function RegistrationForm() {
                         photoURL: photo.data.display_url
                     };
 
-                    fetch('http://localhost:5000/users', {
+                    fetch('http://localhost:5000/addUser', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -231,5 +231,6 @@ function RegistrationForm() {
         </form>
     );
 }
+
 
 export default RegistrationForm;
