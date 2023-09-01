@@ -4,7 +4,8 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useState } from 'react';
-
+import { CgProfile} from "react-icons/cg";
+import { Link } from 'react-router-dom';
 const columns = [
   {
     field: 'user',
@@ -36,6 +37,7 @@ const columns = [
         <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete(params.row._id)}>
           <DeleteIcon />
         </IconButton>
+         <Link to={`${params.row.userEmail}`}> <CgProfile className='h-6 w-6 cursor-pointer m-2'></CgProfile></Link>
       </>
     ),
   },
@@ -79,6 +81,7 @@ export default function UserTable({ usersTableData }) {
           getRowId={(row) => row._id}
         />
       </div>
+      
     </div>
   );
 }

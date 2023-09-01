@@ -28,6 +28,7 @@ import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountReque
 import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
+import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
 
 const router = createBrowserRouter([
   {
@@ -121,6 +122,11 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />
+      },
+      {
+        path:'users/:email',
+        element:<UserProfile></UserProfile>
+
       },
       {
         path:"accounts",
