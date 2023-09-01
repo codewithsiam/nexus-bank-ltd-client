@@ -14,6 +14,7 @@ import SerarchAndFilter from "./SerarchAndFilter";
 
 const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
+  const [control,setControl] = useState(false);
 
   useEffect(() => {
     fetch(`${baseUrl}/approved-accounts`)
@@ -27,7 +28,7 @@ const Accounts = () => {
       <h1 className="text-2xl font-bold mt-16 border-b-2 border-black">
         <AccountTreeIcon style={{ fontSize: "42" }} /> ACCOUNTS
       </h1>
-      <SerarchAndFilter accounts={accounts && accounts} setAccounts={setAccounts} />
+      <SerarchAndFilter accounts={accounts && accounts} setAccounts={setAccounts} control={control} setControl={setControl} />
       <div className="mt-4">
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <div className="w-full overflow-x-auto">
