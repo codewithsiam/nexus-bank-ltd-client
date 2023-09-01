@@ -1,91 +1,48 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import { useState } from 'react';
-import AccountTabOne from './AccountTabDetails/AccountTabOne';
-import AccountTabTwo from './AccountTabDetails/AccountTabTwo';
-import AccountTabThree from './AccountTabDetails/AccountTabThree';
-import AccountTabFour from './AccountTabDetails/AccountTabFour';
+import { FaUser } from "react-icons/fa";
 
-// this is design part with mui
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const AccountTab=({user, myAccountData})=> {
+  const allowedAccountTypes = ['Current', 'savings', 'Student'];
+  const myAccounts = myAccountData.filter(account => allowedAccountTypes.includes(account.account_type));
+  console.log(myAccounts)
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+    <div className=''>
+      <h1 className="text-2xl my-5 font-bold text-violet-600">Total Account: {myAccountData.length}</h1>
+      <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
+      {myAccounts?.map((myAccount, index) => (
+            <AccountCard key={index} myAccount={myAccount} />
+          ))
+        }
+      </div>
     </div>
   );
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-
-const AccountTab=({user})=> {
-  const {accountNumber, balance} = user;
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  return (
-    <div className='w-full'>
-      <Box  className="md:flex justify-between gap-5 lg:gap-10">
-      <Tabs
-        className='bg-white p-5 w-full md:w-1/3  text-right '
-        orientation="vertical"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        sx={{ borderRight: 1, borderColor: 'divider' }}
-      >
-        <Tab label="Current Account" {...a11yProps(0)} />
-        <Tab label="Savings Account" {...a11yProps(1)} />
-        <Tab label="Salary Account" {...a11yProps(2)} />
-        <Tab label="Student Account" {...a11yProps(3)} />
-      </Tabs>
-    <div className='w-full md:w-2/3 '>
-    <TabPanel value={value} index={0}>
-        <AccountTabOne user={user} />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <AccountTabTwo user={user} />
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        <AccountTabThree user={user} />
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        <AccountTabFour user={user} />
-      </TabPanel>
+const AccountCard=({myAccount})=>{
+  const { account_number, balance, account_type } = myAccount;
+  return(
+    <div className='shadow-md bg-slate-50 p-10 w-full'>
+      <div className='flex justify-center'>
+        <h4 className="font-bold text-blue-800 text-lg md:text-2xl flex gap-2 mb-7 items-center">
+          <FaUser></FaUser> {account_type} Account Details</h4>
+      </div>
+      <div>
+          <table className="responsive-table bordered">
+          <tbody>
+            <tr className="text-md md:text-lg lg:text-xl">
+              <td className="font-semibold">Account Number</td>
+              <td className="py-1 pl-1 pr-2">:</td>
+              <td>{account_number}</td>
+            </tr>
+            <tr className="text-md md:text-lg lg:text-xl">
+              <td className="font-semibold">Total Balance</td>
+              <td className="py-1 pl-1 pr-2">:</td>
+              <td>{balance.toFixed(2)} tk</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
-    </Box>
-    </div>
-
   );
 }
 

@@ -1,82 +1,48 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import CardTabOne from './CardTabDetails/CardTabOne';
-import CardTabTwo from './CardTabDetails/CardTabTwo';
+import { FaUser } from "react-icons/fa";
 
-// this is design part with mui
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+const CardTab=({user, myAccountData})=> {
+  const allowedAccountTypes = ['Credit Card', 'Payroll Card'];
+  const myAccounts = myAccountData.filter(account => allowedAccountTypes.includes(account.account_type));
+  console.log(myAccounts)
 
   return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+    <div className=''>
+      <h1 className="text-2xl my-5 font-bold text-violet-600">Total Account: {myAccountData.length}</h1>
+      <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
+          {myAccounts?.map((myAccount, index) => (
+                <CardDetails key={index} myAccount={myAccount} />
+              ))
+          }
+      </div>
     </div>
   );
 }
 
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-
-const CardTab=({user})=> {
-  const {accountNumber, balance} = user;
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  // kdjkdjkdjc
-
-  return (
-    <div className=' w-full h-full'>
-      <Box className="md:flex justify-between space-y-4 gap-5 lg:gap-10">
-        <div className='bg-white p-5 w-full md:w-1/3  text-right '>
-            <Tabs
-                className='bg-white '
-                orientation="vertical"
-                value={value}
-                onChange={handleChange}
-                aria-label="Vertical tabs example"
-                sx={{ borderRight: 1, borderColor: 'divider' }}
-            >
-                <Tab label="Credit Card" {...a11yProps(0)} />
-                <Tab label="Payroll Card" {...a11yProps(1)} />
-            </Tabs>
-        </div>
-       <div className='w-full md:w-2/3 '>
-       <TabPanel value={value} index={0}>
-            <CardTabOne user={user} />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-            <CardTabTwo user={user} />
-        </TabPanel>
-       </div>
-        </Box>
+const CardDetails=({myAccount})=>{
+  const { account_number, balance, account_type } = myAccount;
+  return(
+    <div className='shadow-md bg-slate-50 p-10 w-full'>
+      <div className='flex justify-center'>
+        <h4 className="font-bold text-blue-800 text-lg md:text-2xl flex gap-2 mb-7 items-center">
+          <FaUser></FaUser> {account_type} Account Details</h4>
+      </div>
+      <div>
+          <table className="responsive-table bordered">
+          <tbody>
+            <tr className="text-md md:text-lg lg:text-xl">
+              <td className="font-semibold">Account Number</td>
+              <td className="py-1 pl-1 pr-2">:</td>
+              <td>{account_number}</td>
+            </tr>
+            <tr className="text-md md:text-lg lg:text-xl">
+              <td className="font-semibold">Total Balance</td>
+              <td className="py-1 pl-1 pr-2">:</td>
+              <td>{balance.toFixed(2)} tk</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-
   );
 }
 
