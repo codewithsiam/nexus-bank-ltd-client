@@ -18,11 +18,11 @@ import { AuthContext } from "../../../providers/AuthProvider";
 
 const myAccountData=[
     {
-        account_type: 'Current', 
-        balance: 1000,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000788",
+      account_type: 'Current Account', 
+      balance: 1000,
+      email: "rupu.pharm@gmail.com",
+      status: "approved",
+      account_number:"1003465000788",
     },
     {
         account_type: 'Millionaire', 
@@ -46,14 +46,14 @@ const myAccountData=[
         account_number:"1003465000788",
     },
     {
-        account_type: 'savings', 
+        account_type: 'Savings Account', 
         balance: 500,
         email: "rupu.pharm@gmail.com",
         status: "approved",
         account_number:"1003465000320",
     },
     {
-        account_type: 'Student', 
+        account_type: 'Student Account', 
         balance: 70,
         email: "rupu.pharm@gmail.com",
         status: "approved",
@@ -120,10 +120,7 @@ const MyProfile = () => {
       "aria-controls": `simple-tabpanel-${index}`,
     };
   }
-
-
-
-//   const {photoURL} = user;
+  
   return(
     // <div className="m-20">hellow</div>
     <div className=" pt-10 bg-gray-100">
@@ -161,7 +158,7 @@ const MyProfile = () => {
                 </div>
                 <div className="inline-block overflow-hidden mt-4">
                   <Link
-                    // to={`/dashboard/edit-profile/${_id}`}
+                    to={`/dashboard/edit-profile`}
                     className="flex gap-1 items-center border-2 border-white my-btn text-white cursor-pointer px-3 py-2"
                   >
                     <FaPencilAlt className="mr-1"></FaPencilAlt> Edit profile

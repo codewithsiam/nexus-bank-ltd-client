@@ -1,47 +1,76 @@
-import { FaUser } from "react-icons/fa";
+import CurrentAccTab from "./AccountTabDetails/CurrentAccTab";
+import StudentAccTab from "./AccountTabDetails/StudentAccTab";
+import SavingsAccTab from "./AccountTabDetails/SavingsAccTab";
+import * as React from 'react';
+import PropTypes from 'prop-types';
+import Typography from '@mui/material/Typography';
+import { Box, Tab, Tabs } from "@mui/material";
 
-const AccountTab=({user, myAccountData})=> {
-  const allowedAccountTypes = ['Current', 'savings', 'Student'];
-  const myAccounts = myAccountData.filter(account => allowedAccountTypes.includes(account.account_type));
-  console.log(myAccounts)
-
+// this is design part with mui
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
   return (
-    <div className=''>
-      <h1 className="text-2xl my-5 font-bold text-violet-600">Total Account: {myAccounts.length}</h1>
-      <div className="grid md:grid-cols-2 gap-5 lg:gap-10">
-      {myAccounts?.map((myAccount, index) => (
-            <AccountCard key={index} myAccount={myAccount} />
-          ))
-        }
-      </div>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`vertical-tabpanel-${index}`}
+      aria-labelledby={`vertical-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box sx={{ p: 3 }}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
     </div>
   );
 }
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+};
+function a11yProps(index) {
+  return {
+    id: `vertical-tab-${index}`,
+    'aria-controls': `vertical-tabpanel-${index}`,
+  };
+}
 
-const AccountCard=({myAccount})=>{
-  const { account_number, balance, account_type } = myAccount;
-  return(
-    <div className='shadow-md bg-slate-50 p-10 w-full'>
-      <div className='flex justify-center'>
-        <h4 className="font-bold text-blue-800 text-lg md:text-2xl flex gap-2 mb-7 items-center">
-          <FaUser></FaUser> {account_type} Account Details</h4>
-      </div>
-      <div>
-          <table className="responsive-table bordered">
-          <tbody>
-            <tr className="text-md md:text-lg lg:text-xl">
-              <td className="font-semibold">Account Number</td>
-              <td className="py-1 pl-1 pr-2">:</td>
-              <td>{account_number}</td>
-            </tr>
-            <tr className="text-md md:text-lg lg:text-xl">
-              <td className="font-semibold">Total Balance</td>
-              <td className="py-1 pl-1 pr-2">:</td>
-              <td>{balance.toFixed(2)} tk</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+const AccountTab=({myAccountData})=> {
+  const [value, setValue] = React.useState(0);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  return (
+    <div className=' w-full'>
+      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
+        <div className='w-1/3 text-right '>
+            <Tabs
+                className='bg-white p-5 h-[200px]'
+                orientation="vertical"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                sx={{ borderRight: 1, borderColor: 'divider' }}
+            >
+                <Tab label="Current Account" {...a11yProps(0)} />
+                <Tab label="Student Account" {...a11yProps(1)} />
+                <Tab label="Savings Account" {...a11yProps(2)} />
+            </Tabs>
+        </div>
+        <div className='w-2/3'>
+        <TabPanel value={value} index={0}>
+            <CurrentAccTab myAccountData={myAccountData} />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+            <StudentAccTab myAccountData={myAccountData} />
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+            <SavingsAccTab myAccountData={myAccountData} />
+        </TabPanel>
+        </div>
+        </Box>
     </div>
   );
 }
