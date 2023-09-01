@@ -250,7 +250,7 @@ export default function MiniDrawer() {
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
                 <h3 className="font-semibold">{user?.displayName}</h3>
-                <p>admin</p>
+                {designation ? <p>{designation}</p> : <p>Regular User</p>}
               </div>
               <img
                 className="w-10 h-10 rounded-full"

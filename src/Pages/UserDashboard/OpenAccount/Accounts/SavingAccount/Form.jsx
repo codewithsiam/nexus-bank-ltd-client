@@ -34,6 +34,7 @@ const Form = () => {
         job_title:userData.job_title,
         present_address:userData.present_address,
         permanent_address:userData.permanent_address,
+        balance: 0,
         status:"pending"
       }),
     })
