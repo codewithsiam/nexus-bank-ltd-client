@@ -35,6 +35,14 @@ import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
+import { BiTransfer } from "react-icons/bi"
+import { AiOutlineTransaction } from "react-icons/ai"
+import { AiOutlineLogout } from "react-icons/ai"
+import useDesignation from "../Hooks/useDesignation";
+import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
+import { Button } from "@mui/material";
+import { useContext } from "react";
+// import { AuthContext } from "../providers/";
 import { BiTransfer } from "react-icons/bi";
 import { AiOutlineTransaction } from "react-icons/ai";
 import useDesignation from "../Hooks/useDesignation";
@@ -42,6 +50,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { FcDebt } from "react-icons/fc";
 
 const drawerWidth = 240;
+
 
 // routes
 const userMenu = [
@@ -105,6 +114,21 @@ const adminMenu = [
     route: "accounts",
   },
   {
+    name: "Users",
+    icon: <PeopleAltIcon />,
+    route: "users"
+  },
+
+  {
+    name: "Finace Dashboard",
+    icon: <PeopleAltIcon />,
+    route: "transaction-history",
+  },
+  {
+    name: "Analytics",
+    icon: <PeopleAltIcon />,
+    route: "analytics"
+  }
     name: "Account Requests",
     icon: <AccountBalanceWalletIcon />,
     route: "account-request",
@@ -131,12 +155,12 @@ const HomeMenu = [
   {
     name: "About",
     icon: <InfoIcon />,
-    route: "/about",
+    route: "/aboutDetails",
   },
   {
     name: "Services",
     icon: <ConstructionIcon />,
-    route: "/services",
+    route: "/contact",
   },
 ];
 
@@ -212,6 +236,13 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const { user, logout } = React.useContext(AuthContext);
+  console.log(user)
+  console.log(logout)
+
+  const handleLogout = () => {
+    logout()
+  }
   const { user } = React.useContext(AuthContext);
   console.log(user);
 
@@ -224,6 +255,37 @@ export default function MiniDrawer() {
   };
   const { designation } = useDesignation();
   return (
+
+    <Box sx={{ display: "flex" }}>
+      <CssBaseline />
+      <ThemeProvider theme={lightTheme}> <AppBar position="fixed" open={open}>
+        <Toolbar>
+          <div className="flex items-center mr-auto">
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={{
+                marginRight: 5,
+                ...(open && { display: "none" }),
+              }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Nexus Bank Limited
+            </Typography>
+          </div>
+          <div className="mr-4 flex gap-2 items-center">
+            <div className="hidden  md:flex flex-col justify-center items-end">
+              <h3 className="font-semibold">{user?.displayName}</h3>
+              <p>admin</p>
+            </div>
+            <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+          </div>
+        </Toolbar>
+      </AppBar></ThemeProvider>
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <ThemeProvider theme={lightTheme}>
@@ -261,6 +323,7 @@ export default function MiniDrawer() {
           </Toolbar>
         </AppBar>
       </ThemeProvider>
+
       <ThemeProvider theme={darkTheme}>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader className="text-xl font-semibold">
@@ -274,7 +337,12 @@ export default function MiniDrawer() {
             </IconButton>
           </DrawerHeader>
           <Divider />
+
+          {
+            open === true &&
+
           {open === true && (
+
             <div className="flex flex-col items-center justify-center my-6 ">
               <img
                 className="w-20 h-20 rounded-full"
@@ -287,20 +355,54 @@ export default function MiniDrawer() {
           )}
           <List>
             {user && designation === "admin"
-              ? adminMenu.map((menuItem, index) => (
-                  <ListItem
-                    key={menuItem.name}
-                    disablePadding
-                    sx={{ display: "block" }}
-                  >
-                    <Link to={menuItem.route}>
-                      <ListItemButton
+              ? userMenu.map((menuItem, index) => (
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
                         sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
                         }}
                       >
+
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+              : adminMenu.map((menuItem, index) => (
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+
                         <ListItemIcon
                           sx={{
                             minWidth: 0,
@@ -326,12 +428,26 @@ export default function MiniDrawer() {
                   >
                     <Link to={menuItem.route}>
                       <ListItemButton
+
                         sx={{
                           minHeight: 48,
                           justifyContent: open ? "initial" : "center",
                           px: 2.5,
                         }}
                       >
+
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))
+            }
+
                         <ListItemIcon
                           sx={{
                             minWidth: 0,
@@ -349,6 +465,7 @@ export default function MiniDrawer() {
                     </Link>
                   </ListItem>
                 ))}
+
           </List>
 
           <Divider />
@@ -380,9 +497,21 @@ export default function MiniDrawer() {
                 </Link>
               </ListItem>
             ))}
+
+            <Button onClick={handleLogout}>
+              <AiOutlineLogout size={24}></AiOutlineLogout>
+            </Button>
+
           </List>
         </Drawer>
       </ThemeProvider>
+
+      <Box className="bg-[rgb(241,245,249)] min-h-screen" component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <Outlet />
+      </Box>
+    </Box>
+
+
       <Box
         className="bg-[rgb(241,245,249)] min-h-screen"
         component="main"
@@ -391,5 +520,6 @@ export default function MiniDrawer() {
         <Outlet />
       </Box>
     </Box>
+
   );
 }
