@@ -148,7 +148,7 @@ const router = createBrowserRouter([
         loader:() => fetch(`${baseUrl}/loans`)
       },
       {
-        path: "feedback",
+        path: "feedback/:id",
         element: <Feedback/>
       }
     ],
