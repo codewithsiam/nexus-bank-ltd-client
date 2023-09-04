@@ -123,7 +123,8 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />
+        element: <Users />,
+        loader:() => fetch(`${baseUrl}/users`)
       },
       {
         path:'users/:email',
