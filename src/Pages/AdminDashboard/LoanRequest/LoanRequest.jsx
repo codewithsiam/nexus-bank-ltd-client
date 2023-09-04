@@ -1,23 +1,8 @@
-// import React from 'react';
-// import { FcDebt } from "react-icons/fc";
-
-// const LoanRequest = () => {
-//   return (
-//     <div>
-
-//     </div>
-//   );
-// };
-
-// export default LoanRequest;
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const LoanRequest = () => {
-    const loanData = useLoaderData()
-    const [fullName, email, loanAmount, loanPurpose, status] = loanData;
-    console.log(loanData.fullName)
-
+    const loanData = useLoaderData();
     // Static data for demonstration
     const staticData = [
         // ... Your static data goes here
@@ -37,7 +22,7 @@ const LoanRequest = () => {
                 Manage all pending Loans
             </h2>
             <div className="overflow-x-auto">
-                <table className="table">
+                <table className="table text-center w-full mx-auto">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -80,7 +65,7 @@ const LoanRequest = () => {
                                         Deny
                                     </button>
                                     <Link
-                                        to={'/dashboard/feedback'}
+                                        to={`/dashboard/feedback/${loanRequests._id}`}
                                         className="w-full btn btn-sm font-bold"
                                     >
                                         Feedback
