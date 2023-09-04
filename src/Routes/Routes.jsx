@@ -121,7 +121,8 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />
+        element: <Users />,
+        loader:() => fetch(`${baseUrl}/users`)
       },
       {
         path:'users/:email',
@@ -146,7 +147,7 @@ const router = createBrowserRouter([
         loader:() => fetch(`${baseUrl}/loans`)
       },
       {
-        path: "feedback",
+        path: "feedback/:id",
         element: <Feedback/>
       }
     ],
