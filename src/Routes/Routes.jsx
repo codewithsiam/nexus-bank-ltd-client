@@ -29,6 +29,10 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import EStatement from "../Pages/UserDashboard/MyProfile/CardTab/E-statement/EStatement";
+import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFundTransfer/BkashFundTransfer";
+import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
+import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
 
 const router = createBrowserRouter([
   {
@@ -107,6 +111,22 @@ const router = createBrowserRouter([
       {
         path: "transaction-history",
         element: <TransactionHistory />,
+      },
+      {
+        path: "e-statement",
+        element: <EStatement />,
+      },
+      {
+        path: "fund-transfer",
+        element: <BkashFundTransfer />,
+      },
+      {
+        path: "verify-pin",
+        element: <PaymentPinVerification />,
+      },
+      {
+        path: "payment-successfull",
+        element: <PaymentSuccessful />,
       },
 
 

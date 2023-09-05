@@ -80,6 +80,16 @@ const userMenu = [
     icon: <AiOutlineTransaction />,
     route: "transaction-history",
   },
+  {
+    name: "E-Statemnet",
+    icon: <AiOutlineTransaction />,
+    route: "e-statement",
+  },
+  {
+    name: "Bkash Payment Pin Verification",
+    icon: <AiOutlineTransaction />,
+    route: "verify-pin",
+  },
 ];
 
 // admin menu
