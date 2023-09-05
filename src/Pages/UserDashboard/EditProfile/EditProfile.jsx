@@ -3,12 +3,116 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { baseUrl } from "../../../config/server";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Box, FormControl, FormHelperText, Input, InputAdornment, InputLabel, TextField } from "@mui/material";
+
+const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
 
 const EditProfile = () => {
-  const {user}=useContext(AuthContext)
   const [gender, setGender] = useState("Pick One");
-  console.log(user)
+  const [birthdayData, setBirthdayData] = useState({});
+  const {user}=useContext(AuthContext)
   // const navigate = useNavigate();
+  // const location = useLocation();
+  // const from = location.state?.from?.pathname || "/";
+
+  // handle user data change
+  const birthDataOnChange = (e) => {
+    const newBirthdayData = { ...birthdayData };
+    newBirthdayData[e.target.name] = e.target.value;
+    setBirthdayData(newBirthdayData);
+  };
+  console.log(user)
+  
+  const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
+  const img_key = "c694c4abb3bcf601b0b79494e815c533";
+
+  const uploadedImage = (e) => {
+    axios
+      .post(`https://api.imgbb.com/1/upload?&key=${img_key}`, formData)
+      .then((res) => {
+        if (res.data.success) {
+          // const img = res.data.data.url;
+          // const updateImage = {
+          //   img: img,
+          // };
+
+          axiosPrivate
+            .patch(`/user/image/${user?.email}`, updateImage)
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.matchedCount > 0) {
+                refetch();
+              }
+            })
+            .catch((err) => {
+              if (err.response.status === 401 || err.response.status === 403) {
+                signOut(auth);
+                Navigate("/");
+                localStorage.removeItem("userToken");
+              }
+            });
+        }
+      });
+  };
+
+const uploadImage = (e) => {
+  const image = e.target.files[0];
+  const formData = new FormData();
+  formData.append("image", image);
+
+  // Step 1: Upload the image to ImgBB using the Fetch
+  fetch(imageHostingUrl, {
+    method: "POST",
+    body: formData,
+  })
+    // .then((response) => {
+    //   if (!response.ok) {
+    //     throw new Error("Failed to upload image to ImgBB");
+    //   }
+    //   return response.json();
+    // })
+    .then((data) => {
+      if (data.success) {
+        const img = data.data.url;
+        const updateImage = {
+          img: img,
+        };
+
+        // Step 2: Update the user's image using Fetch API
+        fetch(`/user/image/${user?.email}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateImage),
+        })
+          // .then((response) => {
+          //   if (!response.ok) {
+          //     throw new Error("Failed to update user image");
+          //   }
+          //   return response.json();
+          // })
+          .then((responseData) => {
+            console.log(responseData);
+            if (responseData.matchedCount > 0) {
+              refetch();
+            }
+          })
+          .catch((err) => {
+            if (err.response.status === 401 || err.response.status === 403) {
+              signOut(auth);
+              Navigate("/");
+              localStorage.removeItem("userToken");
+            }
+          });
+      }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
+
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
@@ -53,7 +157,7 @@ const EditProfile = () => {
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
-            if (data.matchedCount) {
+            if (data.matchedCount>0) {
               Swal.fire({
                 title: "success",
                 text: "Profile Information Updated Successfully",
@@ -71,157 +175,140 @@ const EditProfile = () => {
       }
     });
   };
+
   return (
-    <div className="md:w-6/12 w-10/12 mx-auto my-16">
-      <h1 className="mb-12 text-center text-2xl font-extrabold leading-none tracking-tight text-gray-900 md:text-3xl lg:text-4xl ">
+    <div className="my-16">
+      <h1 className="mb-12 text-center text-2xl font-extrabold leading-none tracking-tight md:text-3xl lg:text-4xl ">
         Update your Profile page {" "}
       </h1>
-      <form onSubmit={handleOnSubmit}>
-        {/* email */}
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            required
-            defaultValue={user?.email}
-            type="text"
-            name="userEmail"
-            id="userEmail"
-            className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            disabled
-          />
-          <label
-            htmlFor="userEmail"
-            className="peer-focus:font-medium peer-focus:text-3xl absolute text-xl font-bold mb-2 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-800 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Email address
-          </label>
-        </div>
-        {/* Profile name */}
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            required
-            defaultValue={user?.displayName}
-            type="text"
-            name="profileName"
-            id="profileName"
-            className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-            disabled
-          />
-          <label
-            htmlFor="profileName"
-            className="peer-focus:font-medium peer-focus:text-3xl absolute text-xl font-bold duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Profile Name
-          </label>
-        </div>
-        {/* Nationality name */}
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            type="text"
-            name="nationality"
-            id="nationality"
-            className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-          />
-          <label
-            htmlFor="nationality"
-            className="peer-focus:text-lg peer-focus:font-bold font-bold absolute text-md peer-focus:text-blue-800 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Nationality
-          </label>
-        </div>
-        {/* Birthday */}
-        {/* <div className="relative z-0 w-full mb-6 group">
-          <input
-            type="text"
-            name="birthday"
-            id="birthday"
-            className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-          />
-          <label
-            htmlFor="birthday"
-            className="peer-focus:text-lg peer-focus:font-bold font-bold peer-focus:text-blue-800 text-md absolute duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-          >
-            Birthday
-          </label>
-        </div> */}
-        {/* Gender */}
-        <div className="my-3 form-control w-full text-black max-w-xs">
-          <label className="label">
-            <span className="text-black font-bold text-md">Gender</span>
-          </label>
-          <select
-            id="gender"
-            name="gender"
-            className="select select-bordered"
-            onChange={(e) => setGender(e.target.value)}
-            value={gender}
-          >
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Transgender">Transgender</option>
-          </select>
-        </div>
+      <div className=" md:flex gap-10  ">
+        <div class="mt-5 w-1/3 bg-white py-10 overflow-hidden h-[300px] ">
+          <div>
+            {user? (
+              <div className="flex justify-center">
+                <div class="avatar ml-3">
+                <div class="w-32 mx-auto text-center border-2 border-gray-300 rounded-full ring ring-offset-base-100 ring-offset-2">
+                  <img className="" src={user?.img} />
+                </div>
+              </div>
+              </div>
 
-        <div className="grid md:grid-cols-2 md:gap-6">
-          {/* Profession */}
-          <div className="relative z-0 w-full mb-6 group">
-            <input
-              type="text"
-              name="profession"
-              id="profession"
-              className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-            />
-            <label
-              htmlFor="profession"
-              className="peer-focus:text-lg peer-focus:font-bold font-bold peer-focus:text-blue-800 text-md absolute duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Your Profession
-            </label>
+            ) : (
+              <img
+                className="w-[200px] rounded-full"
+                src="https://i.ibb.co/7kT8phM/profile5.png"
+                alt="profile"
+              ></img>
+            )}
           </div>
-          {/* number */}
-          <div className="relative z-0 w-full mb-6 group">
-            <input
-              type="number"
-              name="number"
-              id="number"
-              className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-              placeholder=" "
-            />
-            <label
-              htmlFor="number"
-              className="peer-focus:text-lg peer-focus:font-bold font-bold peer-focus:text-blue-800 text-md absolute duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Phone Number
+          <div className=" ">
+            <label htmlFor="img" class="label">
+              <span class="label-text mx-auto  font-[500] text-xl">
+                <p className="cursor-pointer my-btn px-5 py-3 btn-primary rounded-md mt-5">
+                  Upload Photo
+                </p>
+              </span>
             </label>
+            <input
+              id="img"
+              type="file"
+              placeholder="Name"
+              hidden
+              class="input input-bordered"
+              onChange={(e) => uploadImage(e)}
+            />
           </div>
         </div>
-        {/* About Me */}
-        <div className="relative z-0 w-full mb-6 group">
-          <input
-            type="textarea"
-            name="description"
-            id="description"
-            className="block pt-5 pb-2.5 px-0 w-full text-md text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-            placeholder=" "
-          />
-          <label
-            htmlFor="description"
-            className="peer-focus:text-lg peer-focus:font-bold font-bold peer-focus:text-blue-800 text-md absolute duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-            About Yourself
-          </label>
+        <div className="w-2/3">
+        <form onSubmit={handleOnSubmit}>
+          <Box>
+            <div className="grid md:grid-cols-2 gap-5 mb-4">
+              {/* Profile Name */}
+              <div>
+                <label
+                    htmlFor="profileName"
+                    className="block font-bold">
+                    Profile Name
+                  </label>
+                <TextField 
+                defaultValue={user?.displayName}
+                className="w-full" id="outlined-basic" variant="standard" />
+              </div>
+              {/* email */}
+              <div className="">
+                <label htmlFor="email" className="block font-bold">User's Email</label>
+                <TextField 
+                defaultValue={user?.email}
+                className="w-full" id="outlined-basic" variant="standard" />
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5 mb-4">
+              {/* Nick Name */}
+              <div>
+                <label htmlFor="nickName" className="block font-bold">Nick Name</label>
+                <TextField className="w-full" id="outlined-basic" label="Nick Name" variant="standard" />
+              </div>
+              {/* number */}
+              <div>
+                <label htmlFor="number" className="block font-bold">Number</label>
+                <TextField className="w-full" id="outlined-basic" label="Number" variant="standard" />
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5 mb-4">
+              {/* Profession */}
+              <div>
+                <label htmlFor="profession" className="block font-bold">Profession</label>
+                <TextField className="w-full" id="outlined-basic" label="Profession" variant="standard" />
+              </div>
+              {/* Birthday */}
+              <div className="">
+                <label htmlFor="Birthday" className="block font-bold">Birthday</label>
+                <input
+                  name="birthDate"
+                  required
+                  onChange={birthDataOnChange}
+                  className="border px-3 py-3 rounded-md w-full"
+                  type="date"
+                />
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5 mb-4">
+              {/* Nationality */}
+              <div>
+                <label htmlFor="nationality" className="block font-bold">Nationality</label>
+                <TextField className="w-full" id="outlined-basic" label="Nationality" variant="standard" />
+              </div>
+              {/* Gender */}
+              <div className="">
+                <label htmlFor="profileName" className="block font-bold">Gender</label>
+                <select
+                  id="gender"
+                  name="gender"
+                  className="select select-bordered"
+                  onChange={(e) => setGender(e.target.value)}
+                  value={gender}
+                >
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Transgender">Transgender</option>
+                </select>
+              </div>
+            </div>
+            {/* About Me */}
+            <div className="">
+              <label htmlFor="description" className="block font-bold">About Yourself</label>
+              <input
+                type="textarea"
+                name="description"
+                className="border px-3 py-3 rounded-md w-full"
+              />
+            </div>
+            <button type="submit"className="text-white my-btn px-5 py-2.5 rounded mt-4">Submit</button>
+          </Box>
+        </form>
         </div>
-        <button
-          type="submit"
-          className="text-white my-btn focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center   "
-        >
-          Submit
-        </button>
-      </form>
+        
+      </div>
     </div>
   );
 };

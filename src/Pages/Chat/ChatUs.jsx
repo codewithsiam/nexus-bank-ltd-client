@@ -6,7 +6,7 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 const ChatUs = () => {
     const { user } = useContext(AuthContext)
-    let socketIO = socketIoClient('http://localhost:5000')
+    let socketIO = socketIoClient(`${baseUrl}`)
     const [massage, setMassage] = useState('')
     const name = user?.displayName;
     const [chats, setChats] = useState([])

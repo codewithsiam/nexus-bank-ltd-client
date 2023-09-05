@@ -78,7 +78,7 @@ const router = createBrowserRouter([
       {
         path: "edit-profile",
         element: <EditProfile />
-      },      
+      },    
       {
         path: "open-account",
         element: <OpenAccount />
