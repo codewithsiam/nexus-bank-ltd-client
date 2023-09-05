@@ -10,38 +10,55 @@ const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
 
 const EditProfile = () => {
   const [gender, setGender] = useState("Pick One");
-  const [birthdayData, setBirthdayData] = useState({});
   const {user}=useContext(AuthContext)
   // const navigate = useNavigate();
   // const location = useLocation();
   // const from = location.state?.from?.pathname || "/";
-
-  // handle user data change
-  const birthDataOnChange = (e) => {
-    const newBirthdayData = { ...birthdayData };
-    newBirthdayData[e.target.name] = e.target.value;
-    setBirthdayData(newBirthdayData);
-  };
   console.log(user)
   
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
   const img_key = "c694c4abb3bcf601b0b79494e815c533";
 
-  const uploadedImage = (e) => {
-    axios
-      .post(`https://api.imgbb.com/1/upload?&key=${img_key}`, formData)
-      .then((res) => {
-        if (res.data.success) {
-          // const img = res.data.data.url;
-          // const updateImage = {
-          //   img: img,
-          // };
+  const uploadImage = (e) => {
+    const image = e.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image);
 
-          axiosPrivate
-            .patch(`/user/image/${user?.email}`, updateImage)
-            .then((res) => {
-              console.log(res.data);
-              if (res.data.matchedCount > 0) {
+    // Step 1: Upload the image to ImgBB using the Fetch
+    fetch(imageHostingUrl, {
+      method: "POST",
+      body: formData,
+    })
+      // .then((response) => {
+      //   if (!response.ok) {
+      //     throw new Error("Failed to upload image to ImgBB");
+      //   }
+      //   return response.json();
+      // })
+      .then((data) => {
+        if (data.success) {
+          const img = data.data.url;
+          const updateImage = {
+            img: img,
+          };
+
+          // Step 2: Update the user's image using Fetch API
+          fetch(`/user/image/${user?.email}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateImage),
+          })
+            // .then((response) => {
+            //   if (!response.ok) {
+            //     throw new Error("Failed to update user image");
+            //   }
+            //   return response.json();
+            // })
+            .then((responseData) => {
+              console.log(responseData);
+              if (responseData.matchedCount > 0) {
                 refetch();
               }
             })
@@ -53,77 +70,22 @@ const EditProfile = () => {
               }
             });
         }
+      })
+      .catch((error) => {
+        console.error(error);
       });
   };
-
-const uploadImage = (e) => {
-  const image = e.target.files[0];
-  const formData = new FormData();
-  formData.append("image", image);
-
-  // Step 1: Upload the image to ImgBB using the Fetch
-  fetch(imageHostingUrl, {
-    method: "POST",
-    body: formData,
-  })
-    // .then((response) => {
-    //   if (!response.ok) {
-    //     throw new Error("Failed to upload image to ImgBB");
-    //   }
-    //   return response.json();
-    // })
-    .then((data) => {
-      if (data.success) {
-        const img = data.data.url;
-        const updateImage = {
-          img: img,
-        };
-
-        // Step 2: Update the user's image using Fetch API
-        fetch(`/user/image/${user?.email}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updateImage),
-        })
-          // .then((response) => {
-          //   if (!response.ok) {
-          //     throw new Error("Failed to update user image");
-          //   }
-          //   return response.json();
-          // })
-          .then((responseData) => {
-            console.log(responseData);
-            if (responseData.matchedCount > 0) {
-              refetch();
-            }
-          })
-          .catch((err) => {
-            if (err.response.status === 401 || err.response.status === 403) {
-              signOut(auth);
-              Navigate("/");
-              localStorage.removeItem("userToken");
-            }
-          });
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-};
-
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const gender = form.gender.value;
-    // const birthday = form.birthday.value;
+    const birthday = form.birthday.value;
     const nationality = form.nationality.value;
     const number = form.number.value;
     const profession = form.profession.value;
-    // const presentAddress = form.presentAddress.value;
-    // const permanentAddress = form.permanentAddress.value;
+    const presentAddress = form.presentAddress.value;
+    const permanentAddress = form.permanentAddress.value;
     const description = form.description.value;
 
     const updatedProfileInfo = {
@@ -131,9 +93,9 @@ const uploadImage = (e) => {
       number: number,
       nationality: nationality,
       profession: profession,
-      // birthday: birthday,
-      // presentAddress: presentAddress,
-      // permanentAddress: permanentAddress,
+      birthday: birthday,
+      presentAddress: presentAddress,
+      permanentAddress: permanentAddress,
       description: description,
     };
     console.log(updatedProfileInfo);
@@ -292,6 +254,18 @@ const uploadImage = (e) => {
                   <option value="Female">Female</option>
                   <option value="Transgender">Transgender</option>
                 </select>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 gap-5 mb-4">
+              {/* present Address */}
+              <div>
+                <label htmlFor="present_address" className="block font-bold">Present Address</label>
+                <TextField className="w-full" id="outlined-basic" variant="standard" />
+              </div>
+              {/* Permanent Address */}
+              <div>
+                <label htmlFor="permanent_address" className="block font-bold">Permanent Address</label>
+                <TextField className="w-full" id="outlined-basic" variant="standard" />
               </div>
             </div>
             {/* About Me */}
