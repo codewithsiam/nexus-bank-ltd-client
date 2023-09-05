@@ -4,13 +4,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import CardTabOne from './CardTabDetails/CardTabOne';
-import CardTabTwo from './CardTabDetails/CardTabTwo';
-
+import PayrollCardTab from './CardTabDetails/PayrollCardTab';
+import CreditCardTab from './CardTabDetails/CreditCardTab';
+ 
 // this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -27,13 +26,11 @@ function TabPanel(props) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -41,21 +38,18 @@ function a11yProps(index) {
   };
 }
 
-const CardTab=({user})=> {
-  const {accountNumber, balance} = user;
+const CardTab=({myAccountData})=> {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // kdjkdjkdjc
 
   return (
-    <div className=' w-full h-full'>
-      <Box className="md:flex justify-between space-y-4 gap-5 lg:gap-10">
-        <div className='bg-white p-5 w-full md:w-1/3  text-right '>
+    <div className=' w-full'>
+      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
+        <div className='w-1/3 text-right '>
             <Tabs
-                className='bg-white '
+                className='bg-white p-5 h-[200px]'
                 orientation="vertical"
                 value={value}
                 onChange={handleChange}
@@ -66,15 +60,15 @@ const CardTab=({user})=> {
                 <Tab label="Payroll Card" {...a11yProps(1)} />
             </Tabs>
         </div>
-       <div className='w-full md:w-2/3 '>
-       <TabPanel value={value} index={0}>
-            <CardTabOne user={user} />
+        <div className='w-2/3'>
+        <TabPanel value={value} index={0}>
+            <CreditCardTab myAccountData={myAccountData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-            <CardTabTwo user={user} />
+            <PayrollCardTab myAccountData={myAccountData} />
         </TabPanel>
-       </div>
-        </Box>
+        </div>
+      </Box>
     </div>
 
   );

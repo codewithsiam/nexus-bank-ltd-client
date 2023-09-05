@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { baseUrl } from "../../../../../config/server";
 import Swal from "sweetalert2";
+import AuthProvider, { AuthContext } from "../../../../../providers/AuthProvider";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
+  const {user}=useContext(AuthContext)
+  // console.log(userData)
 
   // handle user data change
   const handleUserDataOnChange = (e) => {
@@ -11,13 +14,29 @@ const Form = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  // console.log(userData)---------
+  console.log(userData)
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
     fetch(`${baseUrl}/add-account`, {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify(userData),
+      body: JSON.stringify({
+        first_name:userData.first_name,
+        last_name:userData.last_name,
+        email:userData.email,
+        account_type:userData.account_type,
+        gender:userData.gender,
+        date_of_birth:userData.date_of_birth,
+        phone:userData.phone,
+        nationality:userData.nationality,
+        marital_status:userData.marital_status,
+        job_title:userData.job_title,
+        present_address:userData.present_address,
+        permanent_address:userData.permanent_address,
+        balance: 0,
+        status:"pending"
+      }),
     })
       .then((res) => res.json())
       .then((data) => {
@@ -30,10 +49,12 @@ const Form = () => {
             showConfirmButton: false,
             timer: 1500
           })
+          form.reset();
         }
       })
       .catch((error) => console.log(error));
   };
+  
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
@@ -80,6 +101,7 @@ const Form = () => {
             <input
               type="text"
               name="email"
+              // value={user?.email}
               onChange={handleUserDataOnChange}
               required
               placeholder="Enter Your Last Name"
@@ -175,20 +197,22 @@ const Form = () => {
           </div>
         </div>
         <div className="flex gap-4">
-          <div className="form-control w-full mt-2">
+        <div className="form-control w-full ">
             <label className="label">
-              <span className="label-text text-md font-semibold">
-                Marital Status *
-              </span>
+              <span className="label-text text-md font-semibold">Marital Status</span>
             </label>
-            <input
-              type="text"
+            <select
               name="marital_status"
               required
               onChange={handleUserDataOnChange}
-              placeholder="Enter Your Last Name"
-              className="input input-bordered w-full "
-            />
+              className="select select-bordered"
+            >
+              {/* <option disabled selected>
+                Pick one
+              </option> */}
+              <option>Married</option>
+              <option>Unmarried</option>
+            </select>
           </div>
           <div className="form-control w-full mt-2">
             <label className="label">

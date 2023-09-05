@@ -4,13 +4,12 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import DepositTab from './DepositTab';
-import DPSTab from './DPSTab';
+import MillionaireTab from './DPSDetails/MillionaireTab';
+import FixedDepositTab from './DPSDetails/FixedDepositTab';
 
 // this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -27,13 +26,11 @@ function TabPanel(props) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -41,10 +38,8 @@ function a11yProps(index) {
   };
 }
 
-const SavingsTab=({user})=> {
-  const {accountNumber, balance} = user;
+const SavingsTab=({myAccountData})=> {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -52,7 +47,7 @@ const SavingsTab=({user})=> {
   return (
     <div className=' w-full'>
       <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
-        <div className='md:w-[250px] lg:w-96 text-right '>
+        <div className='w-1/3 text-right '>
             <Tabs
                 className='bg-white p-5 h-[200px]'
                 orientation="vertical"
@@ -61,17 +56,19 @@ const SavingsTab=({user})=> {
                 aria-label="Vertical tabs example"
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
-                <Tab label="Deposit" {...a11yProps(0)} />
-                <Tab label="DPS" {...a11yProps(1)} />
+                <Tab label="Millionaire Plan" {...a11yProps(0)} />
+                <Tab label="Fixed Deposit" {...a11yProps(1)} />
             </Tabs>
         </div>
+        <div className='w-2/3'>
         <TabPanel value={value} index={0}>
-            <DepositTab user={user} />
+            <MillionaireTab myAccountData={myAccountData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-            <DPSTab user={user} />
+            <FixedDepositTab myAccountData={myAccountData} />
         </TabPanel>
-        </Box>
+        </div>
+      </Box>
     </div>
 
   );

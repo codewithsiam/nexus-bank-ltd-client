@@ -19,9 +19,20 @@ import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/Savin
 import AboutDetails from "../Pages/Home/About/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import ChatUs from "../Pages/Chat/ChatUs";
+import PrivetRout from "./PrivetRout";
 import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
-
+import { baseUrl } from "../config/server";
+import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
+import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
+import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
+import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
+import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import EStatement from "../Pages/UserDashboard/MyProfile/CardTab/E-statement/EStatement";
+import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFundTransfer/BkashFundTransfer";
+import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
+import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path:'/chat',
+        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "/aboutDetails",
@@ -66,10 +81,10 @@ const router = createBrowserRouter([
       },
       {
         path: "edit-profile",
-        element: <EditProfile />,
-      },
+        element: <EditProfile />
+      },      
       {
-        path: "open-account",
+        path: "current-account",
         element: <OpenAccount />
       },
       {
@@ -85,10 +100,10 @@ const router = createBrowserRouter([
         element: <TransferMoney />,
       },
       {
-        path:'saving-account',
-        element:<SavingAccountForm/>
+        path: 'saving-account',
+        element: <SavingAccountForm />
       },
-     
+
       // {
       //   path: "checkout",
       //   element: <StripePayment />,
@@ -96,6 +111,22 @@ const router = createBrowserRouter([
       {
         path: "transaction-history",
         element: <TransactionHistory />,
+      },
+      {
+        path: "e-statement",
+        element: <EStatement />,
+      },
+      {
+        path: "fund-transfer",
+        element: <BkashFundTransfer />,
+      },
+      {
+        path: "verify-pin",
+        element: <PaymentPinVerification />,
+      },
+      {
+        path: "payment-successfull",
+        element: <PaymentSuccessful />,
       },
 
 
@@ -110,13 +141,36 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />
+        element: <Users />,
+        loader:() => fetch(`${baseUrl}/users`)
+      },
+      {
+        path:'users/:email',
+        element:<UserProfile></UserProfile>
+
+      },
+      {
+        path:"accounts",
+        element:<Accounts/>
+      },
+      {
+        path:"account-request",
+        element:<AccountRequest/>
       },
       {
         path: "analytics",
         element: <Analytics />
+      },
+      {
+        path: "loan-request",
+        element: <LoanRequest />,
+        loader:() => fetch(`${baseUrl}/loans`)
+      },
+      {
+        path: "feedback/:id",
+        element: <Feedback/>
       }
-         ],
+    ],
   },
 ]);
 
