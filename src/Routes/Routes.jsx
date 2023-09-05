@@ -29,6 +29,9 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
+import StudentAccTab from "../Pages/UserDashboard/MyProfile/AccountTab/AccountTabDetails/StudentAccTab";
+import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
 
 const router = createBrowserRouter([
   {
@@ -80,8 +83,16 @@ const router = createBrowserRouter([
         element: <EditProfile />
       },      
       {
-        path: "current-account",
+        path: "saving-account",
         element: <OpenAccount />
+      },
+      {
+        path:"current-account",
+        element:<CurrentAccount/>
+      },
+      {
+        path:"student-account",
+        element:<StudentAccount/>
       },
       {
         path: "apply-loan",
