@@ -679,7 +679,7 @@ export default function MiniDrawer() {
                             {<AccountBalanceWalletOutlinedIcon/>}
                           </ListItemIcon>
                           <ListItemText
-                            primary={"Beneficiary"}
+                            primary={"Card Payment Beneficiary"}
                             sx={{ opacity: open ? 1 : 0 }}
                           />
                         </ListItemButton>
