@@ -29,6 +29,12 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import FundTransfer from "../Pages/FundTransfer/FundTransfer";
+import Beneficiary from "../Pages/Beneficiary/Beneficiary";
+import BeneficiaryList from "../Pages/Beneficiary/BeneficiaryList/BeneficiaryList";
+import FundTransferBeneficiaryList from "../Pages/FundTransfer/FundTransferBeneficiaryList";
+import MobilTopUpHistory from "../Pages/MobilTopUpHistory/MobilTopUpHistory";
+import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -100,6 +106,30 @@ const router = createBrowserRouter([
       {
         path: "apply-loan",
         element: <ApplyLoan />,
+      },
+      {
+        path: "Fund-transfer",
+        element: <FundTransfer/>,
+      },
+      {
+        path: "Beneficiary",
+        element: <Beneficiary/>,
+      },
+      {
+        path: "BeneficiaryList",
+        element: <BeneficiaryList/>,
+      },
+      {
+        path: "FundTransferBeneficiaryList",
+        element: <FundTransferBeneficiaryList/>,
+      },
+      {
+        path: "MobilTopUpHistory",
+        element: <MobilTopUpHistory/>,
+      },
+      {
+        path: "AddBeneficiary",
+        element: <AddBeneficiary/>,
       },
       {
         path: "add-money",
