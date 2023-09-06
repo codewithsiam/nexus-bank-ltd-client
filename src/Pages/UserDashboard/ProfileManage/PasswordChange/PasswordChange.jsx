@@ -28,7 +28,7 @@ const PasswordChange = () => {
                     </div>
                 </div>
                 <div className='h-[1px] w-full border border-dashed bg-primary'></div>
-                <input type="submit" className="cursor-pointer my-btn text-white text-lg mt-6 input input-bordered w-full max-w-xs" />
+                <input type="submit" className="cursor-pointer bg-primary text-white text-lg mt-6 input input-bordered w-full max-w-xs" />
             </div>
         </div>
     );

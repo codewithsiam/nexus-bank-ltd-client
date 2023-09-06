@@ -16,7 +16,7 @@ import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
-import AboutDetails from "../Pages/Home/About/AboutDetails";
+import AboutDetails from "../Pages/Home/About/AboutDetails/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ChatUs from "../Pages/Chat/ChatUs";
@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "/aboutDetails",
+        path: "aboutDetails",
         element: <AboutDetails></AboutDetails>,
       },
       {
