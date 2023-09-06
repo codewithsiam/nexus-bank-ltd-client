@@ -61,6 +61,36 @@ const userMenu = [
     route: "apply-loan",
   },
   {
+    name: "Fund Transfer",
+    icon: <CreditScoreIcon />,
+    route: "Fund-transfer",
+  },
+  {
+    name: "Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "Beneficiary",
+  },
+  {
+    name: "Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "BeneficiaryList",
+  },
+  {
+    name: "Fund Transfer Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "FundTransferBeneficiaryList",
+  },
+  {
+    name: "Mobil Top-Up History",
+    icon: <CreditScoreIcon />,
+    route: "MobilTopUpHistory",
+  },
+  {
+    name: "Add Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "AddBeneficiary",
+  },
+  {
     name: "Savings",
     icon: <SavingsIcon />,
     route: "savings",
