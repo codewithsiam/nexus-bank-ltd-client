@@ -344,29 +344,6 @@ export default function MiniDrawer() {
                     disablePadding
                     sx={{ display: "block" }}
                   >
-                    <Link to={"my-profile"} >
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountCircleIcon/>}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"My Profile"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
                     {/* Dashboard overview------------------------- */}
                     <div>
                       {
@@ -675,10 +652,8 @@ export default function MiniDrawer() {
                           </ListItemButton>
                         </Link>
                       </div>
+                      
                     </div>
-                  
-                  
-                    
                   </ListItem>
                  
                 // ))
