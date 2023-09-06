@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../../providers/AuthProvider";
-import { baseUrl } from "../../../config/server";
+import { AuthContext } from "../../../../providers/AuthProvider";
+import { baseUrl } from "../../../../config/server";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box, FormControl, FormHelperText, Input, InputAdornment, InputLabel, TextField } from "@mui/material";
 
