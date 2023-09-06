@@ -52,7 +52,6 @@ function RegistrationForm() {
             setError("At least one special character");
             return;
         }
-
         setError("");
 
         if (data.password === data.confirmPassword) {

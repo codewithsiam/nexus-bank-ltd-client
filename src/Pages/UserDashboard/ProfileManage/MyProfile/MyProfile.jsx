@@ -11,10 +11,10 @@ import SavingsTab from "./SavingsTab/SavingsTab";
 import AboutTab from "./AboutTab/AboutTab";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { baseUrl } from "../../../config/server";
-import LoadingSpinner from "../../Shared/LoadingSpinner/LoadingSpinner";
+import { baseUrl } from "../../../../config/server";
+import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 import { useContext } from "react";
-import { AuthContext } from "../../../providers/AuthProvider";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const myAccountData=[
     {

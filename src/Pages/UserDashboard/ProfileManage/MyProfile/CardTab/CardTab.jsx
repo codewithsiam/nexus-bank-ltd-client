@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import PayrollCardTab from './CardTabDetails/PayrollCardTab';
 import CreditCardTab from './CardTabDetails/CreditCardTab';
-
+ 
 // this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
