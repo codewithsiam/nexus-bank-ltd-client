@@ -1,6 +1,24 @@
 import React, { useState } from "react";
+import { baseUrl } from "../../../config/server";
 
-const SerarchAndFilter = ({ accounts, setAccounts }) => {
+const SerarchAndFilter = ({ accounts, setAccounts,control,setControl }) => {
+
+  // handle search -----------
+  const handleSearch = (e) => {
+    const searchItem = e.target.value;
+    fetch(`${baseUrl}/approved-account/${searchItem}`)
+      .then((res) => res.json())
+      .then((data) => setAccounts(data));
+  };
+
+  // handle filter -------------
+  const handleFilter = (e)=>{
+    const filterItem = e.target.value;
+    console.log(filterItem)
+   fetch(`${baseUrl}/approved/${filterItem}`)
+   .then(res=>res.json())
+   .then(data=>setAccounts(data))
+  }
   return (
     <div>
       <div className="md:flex justify-between items-center">
@@ -30,7 +48,7 @@ const SerarchAndFilter = ({ accounts, setAccounts }) => {
               </svg>
             </div>
             <input
-              // onChange={handleSearch}
+              onChange={handleSearch}
               type="search"
               id="default-search"
               name="search"
@@ -49,7 +67,7 @@ const SerarchAndFilter = ({ accounts, setAccounts }) => {
         <div className="md:flex gap-4 items-center ">
           <div className="form-control w-full max-w-xs mb-4 md:mb-0">
             <select
-              // onChange={handleFilter}
+              onChange={handleFilter}
               name="filter"
               className="select select-bordered"
             >

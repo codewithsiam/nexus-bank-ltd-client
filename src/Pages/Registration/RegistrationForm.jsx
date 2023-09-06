@@ -5,6 +5,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { baseUrl } from "../../config/server";
 
 
 const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
@@ -51,7 +52,6 @@ function RegistrationForm() {
             setError("At least one special character");
             return;
         }
-
         setError("");
 
         if (data.password === data.confirmPassword) {
@@ -75,7 +75,7 @@ function RegistrationForm() {
                         photoURL: photo.data.display_url
                     };
 
-                    fetch('http://localhost:5000/users', {
+                    fetch(`${baseUrl}/addUser`, {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'
@@ -231,5 +231,6 @@ function RegistrationForm() {
         </form>
     );
 }
+
 
 export default RegistrationForm;

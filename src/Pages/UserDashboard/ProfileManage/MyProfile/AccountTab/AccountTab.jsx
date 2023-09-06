@@ -1,16 +1,14 @@
+import CurrentAccTab from "./AccountTabDetails/CurrentAccTab";
+import StudentAccTab from "./AccountTabDetails/StudentAccTab";
+import SavingsAccTab from "./AccountTabDetails/SavingsAccTab";
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import CardTabOne from './CardTabDetails/CardTabOne';
-import CardTabTwo from './CardTabDetails/CardTabTwo';
+import { Box, Tab, Tabs } from "@mui/material";
 
 // this is design part with mui
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -27,13 +25,11 @@ function TabPanel(props) {
     </div>
   );
 }
-
 TabPanel.propTypes = {
   children: PropTypes.node,
   index: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
 };
-
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -41,43 +37,42 @@ function a11yProps(index) {
   };
 }
 
-const CardTab=({user})=> {
-  const {accountNumber, balance} = user;
+const AccountTab=({myAccountData})=> {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  // kdjkdjkdjc
-
   return (
-    <div className=' w-full h-full'>
-      <Box className="md:flex justify-between space-y-4 gap-5 lg:gap-10">
-        <div className='bg-white p-5 w-full md:w-1/3  text-right '>
+    <div className=' w-full'>
+      <Box sx={{ flexGrow: 1 }} className="md:flex gap-5 lg:gap-10">
+        <div className='w-1/3 text-right '>
             <Tabs
-                className='bg-white '
+                className='bg-white p-5 h-[200px]'
                 orientation="vertical"
                 value={value}
                 onChange={handleChange}
                 aria-label="Vertical tabs example"
                 sx={{ borderRight: 1, borderColor: 'divider' }}
             >
-                <Tab label="Credit Card" {...a11yProps(0)} />
-                <Tab label="Payroll Card" {...a11yProps(1)} />
+                <Tab label="Current Account" {...a11yProps(0)} />
+                <Tab label="Student Account" {...a11yProps(1)} />
+                <Tab label="Savings Account" {...a11yProps(2)} />
             </Tabs>
         </div>
-       <div className='w-full md:w-2/3 '>
-       <TabPanel value={value} index={0}>
-            <CardTabOne user={user} />
+        <div className='w-2/3'>
+        <TabPanel value={value} index={0}>
+            <CurrentAccTab myAccountData={myAccountData} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-            <CardTabTwo user={user} />
+            <StudentAccTab myAccountData={myAccountData} />
         </TabPanel>
-       </div>
+        <TabPanel value={value} index={2}>
+            <SavingsAccTab myAccountData={myAccountData} />
+        </TabPanel>
+        </div>
         </Box>
     </div>
-
   );
 }
 
-export default CardTab;
+export default AccountTab;

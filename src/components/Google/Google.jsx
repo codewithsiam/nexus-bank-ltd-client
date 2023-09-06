@@ -16,7 +16,7 @@ const Google = () => {
 
                 const storeUser = { name: result?.user?.displayName, email: result?.user?.email, photo: result?.user?.photoURL, role: 'customer' }
 
-                fetch('http://localhost:5000/users', {
+                fetch(`${baseUrl}/addUser`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
