@@ -79,8 +79,9 @@ const EditProfile = () => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
+    const nickName = form.nickName.value;
     const gender = form.gender.value;
-    const birthday = form.birthday.value;
+    const birthday = form.birthDate.value;
     const nationality = form.nationality.value;
     const number = form.number.value;
     const profession = form.profession.value;
@@ -90,6 +91,7 @@ const EditProfile = () => {
 
     const updatedProfileInfo = {
       gender: gender,
+      nickname: nickName,
       number: number,
       nationality: nationality,
       profession: profession,
@@ -208,37 +210,31 @@ const EditProfile = () => {
               {/* Nick Name */}
               <div>
                 <label htmlFor="nickName" className="block font-bold">Nick Name</label>
-                <TextField className="w-full" id="outlined-basic" label="Nick Name" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="nickName" variant="standard" />
               </div>
               {/* number */}
               <div>
                 <label htmlFor="number" className="block font-bold">Number</label>
-                <TextField className="w-full" id="outlined-basic" label="Number" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="number" variant="standard" />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-5 mb-4">
               {/* Profession */}
               <div>
                 <label htmlFor="profession" className="block font-bold">Profession</label>
-                <TextField className="w-full" id="outlined-basic" label="Profession" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="profession" variant="standard" />
               </div>
               {/* Birthday */}
               <div className="">
                 <label htmlFor="Birthday" className="block font-bold">Birthday</label>
-                <input
-                  name="birthDate"
-                  required
-                  onChange={birthDataOnChange}
-                  className="border px-3 py-3 rounded-md w-full"
-                  type="date"
-                />
+                <input name="birthDate" className="border px-3 py-3 rounded-md w-full" type="date" />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-5 mb-4">
               {/* Nationality */}
               <div>
                 <label htmlFor="nationality" className="block font-bold">Nationality</label>
-                <TextField className="w-full" id="outlined-basic" label="Nationality" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="nationality" variant="standard" />
               </div>
               {/* Gender */}
               <div className="">
@@ -260,22 +256,18 @@ const EditProfile = () => {
               {/* present Address */}
               <div>
                 <label htmlFor="present_address" className="block font-bold">Present Address</label>
-                <TextField className="w-full" id="outlined-basic" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="presentAddress" variant="standard" />
               </div>
               {/* Permanent Address */}
               <div>
                 <label htmlFor="permanent_address" className="block font-bold">Permanent Address</label>
-                <TextField className="w-full" id="outlined-basic" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="permanentAddress" variant="standard" />
               </div>
             </div>
             {/* About Me */}
             <div className="">
               <label htmlFor="description" className="block font-bold">About Yourself</label>
-              <input
-                type="textarea"
-                name="description"
-                className="border px-3 py-3 rounded-md w-full"
-              />
+              <input type="textarea"  name="description" className="border px-3 py-3 rounded-md w-full"/>
             </div>
             <button type="submit"className="text-white my-btn px-5 py-2.5 rounded mt-4">Submit</button>
           </Box>
