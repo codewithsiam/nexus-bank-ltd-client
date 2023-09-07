@@ -184,6 +184,10 @@ const router = createBrowserRouter([
         path: "payment-successfull",
         element: <PaymentSuccessful />,
       },
+      {
+        path: "my-accounts",
+        element: <h1>My accounts page</h1>,
+      },
     ],
   },
   // admin dashboard 
