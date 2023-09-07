@@ -27,11 +27,8 @@ const FundTransfer = () => {
     const handleAccountChange = (event) => {
       const selectedAccount = event.target.value;
       setSelectedAccount(selectedAccount); 
-      // Find the balance of the selected account in the transferInfo array
-      const selectedBalance = transferInfo.find(
-        (info) => info.transferFrom === selectedAccount
-      )?.balance;
-      // Set the balance in state
+      console.log(selectedAccount)
+      const selectedBalance = transferInfo.find((info) => info.transferFrom === selectedAccount)?.balance;
       setBalance(selectedBalance || "");
     };
 
