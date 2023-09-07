@@ -35,6 +35,8 @@ import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentP
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
+import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
+import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
 
 const router = createBrowserRouter([
   {
@@ -94,8 +96,16 @@ const router = createBrowserRouter([
         element: <PasswordChange />
       },    
       {
-        path: "current-account",
+        path: "saving-account",
         element: <OpenAccount />
+      },
+      {
+        path:"current-account",
+        element:<CurrentAccount/>
+      },
+      {
+        path:"student-account",
+        element:<StudentAccount/>
       },
       {
         path: "apply-loan",
