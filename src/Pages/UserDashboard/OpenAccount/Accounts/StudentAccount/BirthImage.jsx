@@ -4,11 +4,11 @@ import { FaPlus } from "react-icons/fa";
 import Cropper from "react-cropper";
 import 'cropperjs/dist/cropper.css';
 
-const BirthImage = () => {
+const BirthImage = ({birthImage,setBirthImage}) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [cropAspectRatio, setCropAspectRatio] = useState(3);
   const [croppedImage, setCroppedImage] = useState(null);
-  const [birthImage,setBirthImage] = useState(null);
+
   const cropperRef2 = useRef(null);
   console.log(birthImage);
 
