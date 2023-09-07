@@ -46,7 +46,6 @@ const AboutDetails = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto h-full mt-10">
-        <div>
         <Box 
         className="md:flex lg:gap-10 md:gap-5 justify-between"
         sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
@@ -61,7 +60,7 @@ const AboutDetails = () => {
                 borderRight: 1, 
                 borderColor: 'divider' ,
                 '& .MuiTab-label': {
-                  color: 'white', 
+                color: 'white', 
                 },
             }}
             >
@@ -85,7 +84,6 @@ const AboutDetails = () => {
                 Item Four
             </TabPanel>
         </Box>
-        </div>
     </div>
   );
 }
