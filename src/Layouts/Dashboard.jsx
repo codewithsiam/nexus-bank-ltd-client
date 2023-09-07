@@ -49,11 +49,6 @@ const drawerWidth = 300;
 // routes
 const userMenu = [
   {
-    name: "My Profile",
-    icon: <AccountCircleIcon />,
-    route: "my-profile",
-  },
-  {
     name: "Internet Banking Dashboard",
     icon: <AiOutlineDashboard />,
     route: "account-overview",
@@ -67,6 +62,36 @@ const userMenu = [
     name: "Apply Loan",
     icon: <CreditScoreIcon />,
     route: "apply-loan",
+  },
+  {
+    name: "Fund Transfer",
+    icon: <CreditScoreIcon />,
+    route: "Fund-transfer",
+  },
+  {
+    name: "Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "Beneficiary",
+  },
+  {
+    name: "Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "BeneficiaryList",
+  },
+  {
+    name: "Fund Transfer Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "FundTransferBeneficiaryList",
+  },
+  {
+    name: "Mobil Top-Up History",
+    icon: <CreditScoreIcon />,
+    route: "MobilTopUpHistory",
+  },
+  {
+    name: "Add Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "AddBeneficiary",
   },
   {
     name: "Savings",
@@ -97,6 +122,16 @@ const userMenu = [
     name: "Bkash Payment Pin Verification",
     icon: <AiOutlineTransaction />,
     route: "verify-pin",
+  },
+  {
+    name: "My Profile",
+    icon: <AccountCircleIcon />,
+    route: "my-profile",
+  },
+  {
+    name: "Change Password",
+    icon: <PiPasswordFill />,
+    route: "change-password",
   },
 ];
 

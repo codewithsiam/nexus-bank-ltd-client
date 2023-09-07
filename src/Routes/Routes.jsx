@@ -16,7 +16,7 @@ import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
-import AboutDetails from "../Pages/Home/About/AboutDetails";
+import AboutDetails from "../Pages/Home/About/AboutDetails/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ChatUs from "../Pages/Chat/ChatUs";
@@ -29,6 +29,12 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import FundTransfer from "../Pages/FundTransfer/FundTransfer";
+import Beneficiary from "../Pages/Beneficiary/Beneficiary";
+import BeneficiaryList from "../Pages/Beneficiary/BeneficiaryList/BeneficiaryList";
+import FundTransferBeneficiaryList from "../Pages/FundTransfer/FundTransferBeneficiaryList";
+import MobilTopUpHistory from "../Pages/MobilTopUpHistory/MobilTopUpHistory";
+import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -53,7 +59,7 @@ const router = createBrowserRouter([
         element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "/aboutDetails",
+        path: "aboutDetails",
         element: <AboutDetails></AboutDetails>,
       },
       {
@@ -110,6 +116,30 @@ const router = createBrowserRouter([
       {
         path: "apply-loan",
         element: <ApplyLoan />,
+      },
+      {
+        path: "Fund-transfer",
+        element: <FundTransfer/>,
+      },
+      {
+        path: "Beneficiary",
+        element: <Beneficiary/>,
+      },
+      {
+        path: "BeneficiaryList",
+        element: <BeneficiaryList/>,
+      },
+      {
+        path: "FundTransferBeneficiaryList",
+        element: <FundTransferBeneficiaryList/>,
+      },
+      {
+        path: "MobilTopUpHistory",
+        element: <MobilTopUpHistory/>,
+      },
+      {
+        path: "AddBeneficiary",
+        element: <AddBeneficiary/>,
       },
       {
         path: "add-money",
