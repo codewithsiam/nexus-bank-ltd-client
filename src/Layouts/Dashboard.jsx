@@ -93,6 +93,11 @@ const userMenu = [
     icon: <AiOutlineTransaction />,
     route: "verify-pin",
   },
+  {
+    name: "Cedit Card Apply",
+    icon: <AiOutlineTransaction />,
+    route: "credit-card-apply",
+  },
 ];
 
 // admin menu

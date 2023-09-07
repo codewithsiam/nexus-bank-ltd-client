@@ -33,6 +33,7 @@ import EStatement from "../Pages/UserDashboard/MyProfile/CardTab/E-statement/ESt
 import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
 import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
+import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
 
 const router = createBrowserRouter([
   {
@@ -127,6 +128,10 @@ const router = createBrowserRouter([
       {
         path: "payment-successfull",
         element: <PaymentSuccessful />,
+      },
+      {
+        path: "credit-card-apply",
+        element: <CreditCardApply />,
       },
 
 
