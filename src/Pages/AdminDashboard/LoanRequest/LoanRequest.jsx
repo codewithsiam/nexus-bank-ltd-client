@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { baseUrl } from '../../../config/server';
 
 const LoanRequest = () => {
   const loanData = useLoaderData();

@@ -32,6 +32,7 @@ const TransferMoney = () => {
     accountType: "",
     email: "",
     transferAmount: "",
+    userEmail: userAccount.email,
   });
 
   const handleInputChange = (event) => {
@@ -64,21 +65,20 @@ const TransferMoney = () => {
       senderLastName: userAccount.last_name,
     };
     if (!userAccount?.account_number) {
+      await Swal.fire("Error", "You hav no account number", "error");
+    }
+    // Insufficient balance check
+    if (
+      parseFloat(userAccount?.balance) <= 0 ||
+      parseFloat(userAccount?.balance) < parseFloat(formData.transferAmount)
+    ) {
       await Swal.fire(
         "Error",
-        "You hav no account number",
+        "Insufficient balance for the transfer",
         "error"
       );
+      return;
     }
-     // Insufficient balance check
-  if (parseFloat(userAccount?.balance) <= 0 || parseFloat(userAccount?.balance) < parseFloat(formData.transferAmount)) {
-    await Swal.fire(
-      "Error",
-      "Insufficient balance for the transfer",
-      "error"
-    );
-    return;
-  }
     try {
       const response = await axios.put(
         `${baseUrl}/money-transfer`,
@@ -87,7 +87,7 @@ const TransferMoney = () => {
       console.log(response.data);
 
       await Swal.fire("Success", "Money transfer successfully", "success");
-      // reset the form 
+      // reset the form
       setFormData({
         receiverName: "",
         receiverAccountNumber: "",
