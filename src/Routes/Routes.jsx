@@ -45,7 +45,8 @@ import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentA
 import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
-import MyAccount from "../Pages/UserDashboard/MyAccount/MyAccount";
+import MyAccount from "../Pages/UserDashboard/MyAccounts/MyAccounts";
+import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 
 const router = createBrowserRouter([
   {
@@ -188,6 +189,10 @@ const router = createBrowserRouter([
       {
         path: "payment-successfull",
         element: <PaymentSuccessful />,
+      },
+      {
+        path: "my-accounts",
+        element: <MyAccounts />,
       },
     ],
   },

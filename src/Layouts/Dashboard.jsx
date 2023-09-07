@@ -45,6 +45,8 @@ import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeaf
 import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import { PiPasswordFill } from "react-icons/pi";
+import { MdAccountTree } from "react-icons/md";
+
 const drawerWidth = 300;
 
 // routes
@@ -304,7 +306,7 @@ export default function MiniDrawer() {
             </div>
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
-                <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.displayName}</span></h3>
+                <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.username}</span></h3>
                 {designation ? <p> {designation}</p> : <p>Regular User</p>}
               </div>
               <img
@@ -336,8 +338,8 @@ export default function MiniDrawer() {
                 src={user?.photoURL}
                 alt=""
               />
-              <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
-              <p>{user?.email}</p>
+              <h2 className=" mt-4 font-semibold">{user?.username}</h2>
+              <p>{user?.status}</p>
             </div>
           )}
           <List>
@@ -384,6 +386,40 @@ export default function MiniDrawer() {
                     </Link>
                   </div>
                 </div>
+                {/* account Information  */}
+                <div>
+                  {
+                    !open?  <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 "/>
+                    </div>:
+                    <h4 className="ml-5 font-semibold my-3">Account Information</h4>
+                  }
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"my-accounts"} >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {<MdAccountTree/>}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"My Accounts"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                    </Link>
+                  </div>
+                </div>
 
                   {/* Account Details------------------------- */}
                   <div>
@@ -418,7 +454,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"/saving-account"} >
+                    <Link to={"saving-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -441,7 +477,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"/student-account"} >
+                    <Link to={"student-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
