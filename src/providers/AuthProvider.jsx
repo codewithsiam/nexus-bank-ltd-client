@@ -2,6 +2,8 @@ import React, { createContext, useEffect } from 'react';
 import { useState } from 'react';
 import { app } from '../firebase/firebase.config';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
+import axios from 'axios';
+import { baseUrl } from '../config/server';
 
 
 export const AuthContext = createContext(null);
@@ -39,24 +41,55 @@ const AuthProvider = ({ children }) => {
         return sendPasswordResetEmail(auth, email)
     }
 
+    // backend user 
+    useEffect(() => {
+        const storedToken = localStorage.getItem("authToken");
+        if (storedToken) {
+          axios
+            .get(`${baseUrl}/user/profile`, {
+              headers: {
+                Authorization: `Bearer ${storedToken}`,
+              },
+            })
+            .then((res) => {
+                console.log(res.data.success === true);
+              if (res.data) {
+                setUser(res.data.result);
+              } else {
+                localStorage.removeItem("authToken");
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+            });
+        }
+      }, []);
+      
+      const logout = () => {
+        localStorage.removeItem("authToken");
+        setUser(null);
+        
+      };
+
     // logout
-    const logout = () => {
-        signOut(auth)
-    }
+    // const logout = () => {
+    //     signOut(auth)
+    // }
 
     // 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-            setLoading(false)
-        })
-        return () => {
-            return unsubscribe();
-        }
-    }, [])
+    // useEffect(() => {
+    //     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    //         setUser(currentUser);
+    //         setLoading(false)
+    //     })
+    //     return () => {
+    //         return unsubscribe();
+    //     }
+    // }, [])
 
     const authInfo = {
         user,
+        setUser,
         googleSignIn,
         registration,
         verifyEmail,

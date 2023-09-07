@@ -42,6 +42,7 @@ import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverv
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
 import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
 import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
+import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
 
@@ -183,8 +184,13 @@ const router = createBrowserRouter([
         path: "payment-successfull",
         element: <PaymentSuccessful />,
       },
-
-
+    ],
+  },
+  // admin dashboard 
+  {
+    path: "/admin",
+    element: <AdminDashboardLayout />,
+    children: [
       // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
