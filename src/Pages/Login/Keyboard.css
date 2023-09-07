@@ -1,0 +1,54 @@
+/* Keyboard.css */
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .keyboard {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  
+  .keyboard-key {
+    width: 100%;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+  }
+  
+  .keyboard-key:hover {
+    background-color: #ddd;
+  }
+  
+  .keyboard-key.space {
+    grid-column: span 3;
+  }
+  
+  .keyboard-key.clear {
+    background-color: #ff6347; /* Red color for the clear button */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .keyboard-key-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .keyboard-key.password {
+    background-color: #3498db; /* Blue color for the password button */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .keyboard-key.password:hover {
+    background-color: #2980b9;
+  }
+  

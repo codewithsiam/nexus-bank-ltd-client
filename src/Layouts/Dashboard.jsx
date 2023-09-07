@@ -36,7 +36,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import { useConstant } from "@react-spring/shared";
 import { AuthContext } from "../providers/AuthProvider";
 import { BiTransfer } from "react-icons/bi";
-import { AiOutlineTransaction } from "react-icons/ai";
+import { AiOutlineDashboard, AiOutlineTransaction } from "react-icons/ai";
 import useDesignation from "../Hooks/useDesignation";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import { FcDebt } from "react-icons/fc";
@@ -44,14 +44,15 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
 import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
+import { PiPasswordFill } from "react-icons/pi";
 const drawerWidth = 300;
 
 // routes
 const userMenu = [
   {
-    name: "My Profile",
-    icon: <AccountCircleIcon />,
-    route: "my-profile",
+    name: "Internet Banking Dashboard",
+    icon: <AiOutlineDashboard />,
+    route: "account-overview",
   },
   {
     name: "Open An Account",
@@ -62,6 +63,36 @@ const userMenu = [
     name: "Apply Loan",
     icon: <CreditScoreIcon />,
     route: "apply-loan",
+  },
+  {
+    name: "Fund Transfer",
+    icon: <CreditScoreIcon />,
+    route: "Fund-transfer",
+  },
+  {
+    name: "Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "Beneficiary",
+  },
+  {
+    name: "Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "BeneficiaryList",
+  },
+  {
+    name: "Fund Transfer Beneficiary List",
+    icon: <CreditScoreIcon />,
+    route: "FundTransferBeneficiaryList",
+  },
+  {
+    name: "Mobil Top-Up History",
+    icon: <CreditScoreIcon />,
+    route: "MobilTopUpHistory",
+  },
+  {
+    name: "Add Beneficiary",
+    icon: <CreditScoreIcon />,
+    route: "AddBeneficiary",
   },
   {
     name: "Savings",
@@ -82,6 +113,26 @@ const userMenu = [
     name: "Transaction History",
     icon: <AiOutlineTransaction />,
     route: "transaction-history",
+  },
+  {
+    name: "E-Statement",
+    icon: <AiOutlineTransaction />,
+    route: "e-statement",
+  },
+  {
+    name: "Bkash Payment Pin Verification",
+    icon: <AiOutlineTransaction />,
+    route: "verify-pin",
+  },
+  {
+    name: "My Profile",
+    icon: <AccountCircleIcon />,
+    route: "my-profile",
+  },
+  {
+    name: "Change Password",
+    icon: <PiPasswordFill />,
+    route: "change-password",
   },
 ];
 
@@ -252,8 +303,8 @@ export default function MiniDrawer() {
             </div>
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
-                <h3 className="font-semibold">{user?.displayName}</h3>
-                {designation ? <p>{designation}</p> : <p>Regular User</p>}
+                <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.displayName}</span></h3>
+                {designation ? <p> {designation}</p> : <p>Regular User</p>}
               </div>
               <img
                 className="w-10 h-10 rounded-full"
@@ -290,7 +341,8 @@ export default function MiniDrawer() {
           )}
           <List>
             {
-              user && designation === "admin" ? (
+              // todo :
+              designation == "admin" ? (
                 adminMenu.map((menuItem, index) => (
                   <ListItem
                     key={menuItem.name}

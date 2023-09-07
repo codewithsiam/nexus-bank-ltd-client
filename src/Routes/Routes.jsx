@@ -5,7 +5,7 @@ import About from "../Pages/Home/About/About";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
-import MyProfile from "../Pages/UserDashboard/MyProfile/MyProfile";
+import MyProfile from "../Pages/UserDashboard/ProfileManage/MyProfile/MyProfile";
 import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
 import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
@@ -16,12 +16,12 @@ import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
-import AboutDetails from "../Pages/Home/About/AboutDetails";
+import AboutDetails from "../Pages/Home/About/AboutDetails/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ChatUs from "../Pages/Chat/ChatUs";
 import PrivetRout from "./PrivetRout";
-import EditProfile from "../Pages/UserDashboard/EditProfile/EditProfile";
+import EditProfile from "../Pages/UserDashboard/ProfileManage/EditProfile/EditProfile";
 import TransferMoney from "../Pages/UserDashboard/TransferMoney/TransferMoney";
 import { baseUrl } from "../config/server";
 import AccountRequest from "../Pages/AdminDashboard/Account-Request/AccountRequest";
@@ -29,8 +29,19 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import FundTransfer from "../Pages/FundTransfer/FundTransfer";
+import Beneficiary from "../Pages/Beneficiary/Beneficiary";
+import BeneficiaryList from "../Pages/Beneficiary/BeneficiaryList/BeneficiaryList";
+import FundTransferBeneficiaryList from "../Pages/FundTransfer/FundTransferBeneficiaryList";
+import MobilTopUpHistory from "../Pages/MobilTopUpHistory/MobilTopUpHistory";
+import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
+import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
+import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
+import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
+import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
+import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
+import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
 import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
-import StudentAccTab from "../Pages/UserDashboard/MyProfile/AccountTab/AccountTabDetails/StudentAccTab";
 import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
 
 const router = createBrowserRouter([
@@ -48,7 +59,7 @@ const router = createBrowserRouter([
         element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "/aboutDetails",
+        path: "aboutDetails",
         element: <AboutDetails></AboutDetails>,
       },
       {
@@ -75,13 +86,21 @@ const router = createBrowserRouter([
     children: [
       // ..........User dashboard routes............
       {
+        path: "account-overview",
+        element: <AccountOverview />,
+      },
+      {
         path: "my-profile",
         element: <MyProfile />,
       },
       {
         path: "edit-profile",
         element: <EditProfile />
-      },      
+      },
+      {
+        path: "change-password",
+        element: <PasswordChange />
+      },    
       {
         path: "saving-account",
         element: <OpenAccount />
@@ -97,6 +116,30 @@ const router = createBrowserRouter([
       {
         path: "apply-loan",
         element: <ApplyLoan />,
+      },
+      {
+        path: "Fund-transfer",
+        element: <FundTransfer/>,
+      },
+      {
+        path: "Beneficiary",
+        element: <Beneficiary/>,
+      },
+      {
+        path: "BeneficiaryList",
+        element: <BeneficiaryList/>,
+      },
+      {
+        path: "FundTransferBeneficiaryList",
+        element: <FundTransferBeneficiaryList/>,
+      },
+      {
+        path: "MobilTopUpHistory",
+        element: <MobilTopUpHistory/>,
+      },
+      {
+        path: "AddBeneficiary",
+        element: <AddBeneficiary/>,
       },
       {
         path: "add-money",
@@ -119,6 +162,22 @@ const router = createBrowserRouter([
         path: "transaction-history",
         element: <TransactionHistory />,
       },
+      {
+        path: "e-statement",
+        element: <EStatement />,
+      },
+      {
+        path: "fund-transfer",
+        element: <BkashFundTransfer />,
+      },
+      {
+        path: "verify-pin",
+        element: <PaymentPinVerification />,
+      },
+      {
+        path: "payment-successfull",
+        element: <PaymentSuccessful />,
+      },
 
 
       // ..................admin dashboard routes........................
@@ -132,7 +191,8 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />
+        element: <Users />,
+        loader:() => fetch(`${baseUrl}/users`)
       },
       {
         path:'users/:email',
@@ -157,7 +217,7 @@ const router = createBrowserRouter([
         loader:() => fetch(`${baseUrl}/loans`)
       },
       {
-        path: "feedback",
+        path: "feedback/:id",
         element: <Feedback/>
       }
     ],
