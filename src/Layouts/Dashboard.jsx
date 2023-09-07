@@ -44,6 +44,8 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
 import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
+import { PiPasswordFill } from "react-icons/pi";
+
 const drawerWidth = 300;
 
 // routes
@@ -341,39 +343,7 @@ export default function MiniDrawer() {
           <List>
             {
               // todo :
-              designation == "admin" ? (
-                adminMenu.map((menuItem, index) => (
-                  <ListItem
-                    key={menuItem.name}
-                    disablePadding
-                    sx={{ display: "block" }}
-                  >
-                    <Link to={menuItem.route}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {menuItem.icon}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={menuItem.name}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </ListItem>
-                ))
-              ) : (
+         
                 // userMenu.map((menuItem, index) => (
                 <ListItem
                   key={"My Profile"}
@@ -624,7 +594,7 @@ export default function MiniDrawer() {
                     </div>
                   </div>
                 </ListItem>
-              )
+           
 
               // ))
             }

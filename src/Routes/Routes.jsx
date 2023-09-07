@@ -43,6 +43,7 @@ import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverv
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
 import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
 import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
+import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -178,8 +179,13 @@ const router = createBrowserRouter([
         path: "payment-successfull",
         element: <PaymentSuccessful />,
       },
-
-
+    ],
+  },
+  // admin dashboard 
+  {
+    path: "/admin",
+    element: <AdminDashboardLayout />,
+    children: [
       // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
