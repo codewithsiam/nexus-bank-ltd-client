@@ -44,6 +44,7 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import EnergySavingsLeafOutlinedIcon from "@mui/icons-material/EnergySavingsLeafOutlined";
 import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
+import { PiPasswordFill } from "react-icons/pi";
 const drawerWidth = 300;
 
 // routes
