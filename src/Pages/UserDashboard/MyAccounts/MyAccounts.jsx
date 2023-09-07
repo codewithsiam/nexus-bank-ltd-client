@@ -44,19 +44,28 @@ const MyAccounts = () => {
                   </thead>
                   <tbody>
                     {/* row 1 */}
-                    {myAccounts.map(({accountNumber, first_name, last_name, balance, account_type}) => (
-                      <tr>
-                        <td>
-                          {accountNumber}
-                          <br />
-                          {first_name} {last_name}
-                        </td>
-                        <td>{account_type}</td>
-                        <td>Operative</td>
-                        <td>BDT</td>
-                        <td>{balance}</td>
-                      </tr>
-                    ))}
+                    {myAccounts &&
+                      myAccounts?.map(
+                        ({
+                          accountNumber,
+                          first_name,
+                          last_name,
+                          balance,
+                          account_type,
+                        } , index) => (
+                          <tr key={index}>
+                            <td>
+                              {accountNumber}
+                              <br />
+                              {first_name} {last_name}
+                            </td>
+                            <td>{account_type}</td>
+                            <td>Operative</td>
+                            <td>BDT</td>
+                            <td>{balance}</td>
+                          </tr>
+                        )
+                      )}
                   </tbody>
                 </table>
               </div>
