@@ -29,11 +29,10 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
-import FundTransfer from "../Pages/FundTransfer/FundTransfer";
-import Beneficiary from "../Pages/Beneficiary/Beneficiary";
-import BeneficiaryList from "../Pages/Beneficiary/BeneficiaryList/BeneficiaryList";
-import FundTransferBeneficiaryList from "../Pages/FundTransfer/FundTransferBeneficiaryList";
-import MobilTopUpHistory from "../Pages/MobilTopUpHistory/MobilTopUpHistory";
+import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
+import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
+import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
@@ -41,6 +40,8 @@ import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentP
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
+import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
+import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
 
 const router = createBrowserRouter([
   {
@@ -112,16 +113,20 @@ const router = createBrowserRouter([
         element: <FundTransfer/>,
       },
       {
-        path: "Beneficiary",
-        element: <Beneficiary/>,
+        path: "fund-transfer-pin-verification",
+        element: <FundTransferPin/>,
       },
       {
-        path: "BeneficiaryList",
-        element: <BeneficiaryList/>,
+        path: "topup-beneficiary-list",
+        element: <TopUpBeneficiaryList/>,
+      },
+      {
+        path: "card-beneficiary-list",
+        element: <CardBeneficiaryList/>,
       },
       {
         path: "FundTransferBeneficiaryList",
-        element: <FundTransferBeneficiaryList/>,
+        element: <AccountBeneficiaryList/>,
       },
       {
         path: "MobilTopUpHistory",

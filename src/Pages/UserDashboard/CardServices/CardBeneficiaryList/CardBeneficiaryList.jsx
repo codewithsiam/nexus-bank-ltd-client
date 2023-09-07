@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Beneficiary = () => {
+const CardBeneficiaryList = () => {
     return (
         <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200'>
             <div className='p-4'>
@@ -47,8 +47,8 @@ const Beneficiary = () => {
 
                 </div>
             </div>
-        </div>
+        </div>        
     );
 };
 
-export default Beneficiary;
+export default CardBeneficiaryList;
