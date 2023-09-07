@@ -416,7 +416,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"/saving-account"} >
+                    <Link to={"saving-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -439,7 +439,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"/student-account"} >
+                    <Link to={"student-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
