@@ -111,6 +111,7 @@ const userMenu = [
     icon: <BiTransfer />,
     route: "transfer-money",
   },
+ 
   {
     name: "Transaction History",
     icon: <AiOutlineTransaction />,
@@ -429,6 +430,7 @@ export default function MiniDrawer() {
                       <h4 className="ml-5 font-semibold my-3">Open Accounts</h4>
                     }
                     <div className={`${open && "ml-3"}`}>
+                    
                     <Link to={"current-account"} >
                     <ListItemButton
                       sx={{

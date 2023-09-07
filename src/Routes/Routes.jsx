@@ -45,6 +45,7 @@ import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentA
 import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
+import MyAccount from "../Pages/UserDashboard/MyAccount/MyAccount";
 
 const router = createBrowserRouter([
   {
@@ -126,6 +127,10 @@ const router = createBrowserRouter([
       {
         path: "fund-transfer-pin-verification",
         element: <FundTransferPin/>,
+      },
+      {
+        path: "MyAccount",
+        element: <MyAccount/>,
       },
       {
         path: "topup-beneficiary-list",
