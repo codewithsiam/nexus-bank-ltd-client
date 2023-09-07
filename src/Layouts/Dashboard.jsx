@@ -50,11 +50,6 @@ const drawerWidth = 300;
 // routes
 const userMenu = [
   {
-    name: "My Profile",
-    icon: <AccountCircleIcon />,
-    route: "my-profile",
-  },
-  {
     name: "Internet Banking Dashboard",
     icon: <AiOutlineDashboard />,
     route: "account-overview",
@@ -128,6 +123,16 @@ const userMenu = [
     name: "Bkash Payment Pin Verification",
     icon: <AiOutlineTransaction />,
     route: "verify-pin",
+  },
+  {
+    name: "My Profile",
+    icon: <AccountCircleIcon />,
+    route: "my-profile",
+  },
+  {
+    name: "Change Password",
+    icon: <PiPasswordFill />,
+    route: "change-password",
   },
 ];
 
@@ -837,7 +842,7 @@ export default function MiniDrawer() {
                           </ListItemButton>
                         </Link>
                       </div>
-                      
+
                     </div>
                   </ListItem>
                  

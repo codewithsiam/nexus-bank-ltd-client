@@ -7,7 +7,7 @@ const LoanRequest = () => {
 
   const handleApprove = (loanId) => {
     // Send a PATCH request to approve the loan with the specified loanId
-    fetch(`http://localhost:5000/loans/approve/${loanId}`, {
+    fetch(`${baseUrl}/loans/approve/${loanId}`, {
       method: 'PATCH',
     })
       .then((res) => res.json())
