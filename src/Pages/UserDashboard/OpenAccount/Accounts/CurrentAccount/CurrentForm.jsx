@@ -26,6 +26,7 @@ const CurrentForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
+  console.log(userData)
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -65,7 +66,7 @@ const CurrentForm = () => {
               nationality: userData.nationality,
               marital_status: userData.marital_status,
               job_title: userData.job_title,
-              nid_image: nidCardImage,
+              nidCardNumber: userData.nidCardNumber,
               profile_image: profileImage,
               present_address: userData.present_address,
               profileImage:profileImage,
@@ -333,6 +334,7 @@ const CurrentForm = () => {
           otp={otp}
           setOtp={setOtp}
           error={error}
+          email={userData?.email}
         />
       )}
     </div>
