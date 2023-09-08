@@ -16,7 +16,7 @@ import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
 import SavingAccountForm from "../Pages/UserDashboard/OpenAccount/Accounts/SavingAccount/SavingAccountForm";
-import AboutDetails from "../Pages/Home/About/AboutDetails";
+import AboutDetails from "../Pages/Home/About/AboutDetails/AboutDetails";
 import BlogPage from "../Pages/Blog/Blog";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import ChatUs from "../Pages/Chat/ChatUs";
@@ -29,11 +29,10 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
-import FundTransfer from "../Pages/FundTransfer/FundTransfer";
-import Beneficiary from "../Pages/Beneficiary/Beneficiary";
-import BeneficiaryList from "../Pages/Beneficiary/BeneficiaryList/BeneficiaryList";
-import FundTransferBeneficiaryList from "../Pages/FundTransfer/FundTransferBeneficiaryList";
-import MobilTopUpHistory from "../Pages/MobilTopUpHistory/MobilTopUpHistory";
+import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
+import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
+import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
@@ -41,6 +40,13 @@ import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentP
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
+import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
+import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
+import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
+import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
+import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
+import MyAccount from "../Pages/UserDashboard/MyAccounts/MyAccounts";
+import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 
 const router = createBrowserRouter([
   {
@@ -57,7 +63,7 @@ const router = createBrowserRouter([
         element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "/aboutDetails",
+        path: "aboutDetails",
         element: <AboutDetails></AboutDetails>,
       },
       {
@@ -100,8 +106,16 @@ const router = createBrowserRouter([
         element: <PasswordChange />
       },    
       {
-        path: "current-account",
+        path: "saving-account",
         element: <OpenAccount />
+      },
+      {
+        path:"current-account",
+        element:<CurrentAccount/>
+      },
+      {
+        path:"student-account",
+        element:<StudentAccount/>
       },
       {
         path: "apply-loan",
@@ -112,16 +126,24 @@ const router = createBrowserRouter([
         element: <FundTransfer/>,
       },
       {
-        path: "Beneficiary",
-        element: <Beneficiary/>,
+        path: "fund-transfer-pin-verification",
+        element: <FundTransferPin/>,
       },
       {
-        path: "BeneficiaryList",
-        element: <BeneficiaryList/>,
+        path: "MyAccount",
+        element: <MyAccount/>,
+      },
+      {
+        path: "topup-beneficiary-list",
+        element: <TopUpBeneficiaryList/>,
+      },
+      {
+        path: "card-beneficiary-list",
+        element: <CardBeneficiaryList/>,
       },
       {
         path: "FundTransferBeneficiaryList",
-        element: <FundTransferBeneficiaryList/>,
+        element: <AccountBeneficiaryList/>,
       },
       {
         path: "MobilTopUpHistory",
@@ -168,8 +190,17 @@ const router = createBrowserRouter([
         path: "payment-successfull",
         element: <PaymentSuccessful />,
       },
-
-
+      {
+        path: "my-accounts",
+        element: <MyAccounts />,
+      },
+    ],
+  },
+  // admin dashboard 
+  {
+    path: "/admin",
+    element: <AdminDashboardLayout />,
+    children: [
       // ..................admin dashboard routes........................
       {
         path: "adminDashboard",

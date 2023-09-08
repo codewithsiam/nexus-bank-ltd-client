@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BeneficiaryList = () => {
+const TopUpBeneficiaryList = () => {
     const handelEdit=()=>{
         alert('Are You Ready For Edit')
     }
     return (
-      
-             <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200'>
+        <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200'>
             <div className='p-4'>
                 <h1 className='text-3xl font-bold text-green-600'>Beneficiary List</h1>
                 <div className='bg-slate-100 p-2 rounded-lg'>
@@ -86,8 +85,7 @@ const BeneficiaryList = () => {
                 </div>
             </div>
         </div>
-        
     );
 };
 
-export default BeneficiaryList;
+export default TopUpBeneficiaryList;

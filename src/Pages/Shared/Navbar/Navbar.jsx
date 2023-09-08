@@ -30,13 +30,12 @@ const Navbar = () => {
   return (
     <div>
       {windowWidth < 1160 ? <MobileNav /> :
-        <div className="flex justify-between h-32">
-
+        <div className="flex justify-between h-32"> 
           <div className="lg:w-[400px] xl:w-[500px] 2xl:w-[600px] nav-left flex justify-center items-center " >
-          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
                   <Link to="/"><img className="w-32" src='https://i.ibb.co/GsDWGkj/logo.png' alt="" /></Link>
                   {/* <h2 className="text-3xl font-semibold text-white">NEXUS</h2> */}
-              </div>
+            </div>
           </div>
           <div className="w-full">
             <NavMiddle />

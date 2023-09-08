@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { AuthContext } from "../../../../../../providers/AuthProvider";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
+import { baseUrl } from "../../../../../../config/server";
 
 const CheckoutForm = ({ amount }) => {
   const stripe = useStripe();
@@ -22,7 +23,7 @@ const CheckoutForm = ({ amount }) => {
   useEffect(() => {
     if (amount > 0) {
       axios
-        .post(`https://nexus-bank-ltd-server-siam-wd.vercel.app/create-payment-intent`, {
+        .post(`${baseUrl}/create-payment-intent`, {
           amount,
         })
         .then((res) => {
