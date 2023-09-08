@@ -66,7 +66,7 @@ const CurrentForm = () => {
               nationality: userData.nationality,
               marital_status: userData.marital_status,
               job_title: userData.job_title,
-              nidCardNumber: userData.nidCardNumber,
+              nid_card_number: userData.nidCardNumber,
               profile_image: profileImage,
               present_address: userData.present_address,
               profileImage:profileImage,

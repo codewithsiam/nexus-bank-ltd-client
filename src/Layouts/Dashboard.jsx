@@ -784,6 +784,41 @@ export default function MiniDrawer() {
                       </Link>
                     </div>
                   </div>
+                  {/* other transfer------------------------- */}
+                  <div>
+                    {
+                      !open?  
+                      <div className="flex items-center justify-center">
+                        <FileOpenIcon className="opacity-60 "/>
+                      </div>:
+                      <h4 className="ml-5 font-semibold my-3">Other Transefer</h4>
+                    }
+                    <div className={`${open && "ml-3"}`}>
+                      <Link to={"bkash-fund-transfer"} >
+                        <ListItemButton
+                          sx={{
+                            minHeight: 48,
+                            justifyContent: open ? "initial" : "center",
+                            px: 2.5,
+                          }}
+                        >
+                          <ListItemIcon
+                            sx={{
+                              minWidth: 0,
+                              mr: open ? 3 : "auto",
+                              justifyContent: "center",
+                            }}
+                          >
+                            {<AiOutlineTransaction/>}
+                          </ListItemIcon>
+                          <ListItemText
+                            primary={"Bkash Fund Transfer"}
+                            sx={{ opacity: open ? 1 : 0 }}
+                          />
+                        </ListItemButton>
+                      </Link>
+                    </div>
+                  </div>
 
                   {/* Profile overview------------------------- */}
                   <div>
