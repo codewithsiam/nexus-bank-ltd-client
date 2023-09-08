@@ -34,6 +34,7 @@ import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFun
 import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
 import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
 import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
+import Careers from "../Pages/Careers/Careers";
 
 const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <BlogPage />,
+      },
+      {
+        path: "careers",
+        element: <Careers />,
       },
     ],
   },
