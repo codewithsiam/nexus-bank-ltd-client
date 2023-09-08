@@ -2,7 +2,7 @@ import Google from '../../components/Google/Google';
 import loginImage from '../../assets/images/Registration/login-img.png'
 import LoginForm from './LoginForm';
 import Keyboard from './Keyboard';
-
+import {Link} from 'react-router-dom';
 
 
 const Login = () => {
@@ -13,17 +13,27 @@ const Login = () => {
                 <div className="mx-auto mb-0 mt-8 space-y-4">
                     {/* <LoginForm/> */}
 
-                    <Keyboard/>
+                    <Keyboard />
                     {/* <Google /> */}
 
 
-                    
+
                 </div>
             </div>
 
             <div className="">
-                <p className="font-bold">Guidelines for safety banking online</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem facilis tenetur, molestiae, ex, quae voluptatem illum quo neque magnam suscipit optio! Illo est nemo ea magnam doloribus nihil, rerum quidem.</p>
+                <p className="bg-[#00A7C7] p-2 text-[#fff]">Accounts</p>
+                <div className=''>
+                    <p>
+                        <Link to="/dashboard/current-account">Current Account</Link>
+                    </p>
+                    <p>
+                        <Link to="/dashboard/saving-account">Saving Account</Link>
+                    </p>
+                    <p>
+                        <Link to="/dashboard/student-account">Student Account</Link>
+                    </p>
+                </div>
             </div>
         </section>
     );

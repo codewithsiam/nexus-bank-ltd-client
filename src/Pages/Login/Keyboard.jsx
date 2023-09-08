@@ -7,6 +7,13 @@ import { baseUrl } from "../../config/server";
 import axios from "axios";
 
 const Keyboard = () => {
+    const { login } = useContext(AuthContext);
+    const { register, formState: { errors }, handleSubmit, } = useForm()
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || '/';
+    const [show, setShow] = useState(false);
+    const [error, setError] = useState('');
   const { setUser, user } = useContext(AuthContext);
   // console.log(user);
   
@@ -30,6 +37,22 @@ const Keyboard = () => {
     const username = data.username;
     const password = data.password;
 
+
+    // login
+    const onSubmit = (data) => {
+        login(data.email, data.password)
+            // console.log(data.email)
+            // console.log(data.password)
+            .then(result => {
+                const loggedUser = result;
+                console.log(loggedUser);
+                setError('');
+                navigate(from, { replace: true });
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
     // verify login and send data to the database
     axios
       .post(`${baseUrl}/login?username=${username}&password=${password}`)
@@ -117,6 +140,40 @@ console.log(user)
     ["Password"],
   ];
 
+
+    return (
+        <div className='bg-[#EEEDEB]'>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="bg-[#3E639F] flex items-center">
+                    <input
+                        {...register("email", { required: true })}
+                        className='border'
+                        type="text"
+                        // value={inputValue}
+                        id="emailInput"
+                        placeholder='Type your email'
+                        onChange={() => { }}
+                        onClick={() => setActiveInput('emailInput')}
+                    />
+                    {errors.email?.type === "required" && (
+                        <p className="text-red-400 mt-2">Email is required</p>
+                    )}
+
+                    <input
+                        {...register("password", { required: true })}
+                        className='border ml-2'
+                        type="text"
+                        placeholder='Type your password'
+                        value={passwordValue}
+                        id="passwordInput"
+                        onChange={() => { }}
+                        onClick={() => setActiveInput('passwordInput')}
+                    />
+
+                    <button className='bg-[#E40100] text-white ml-2 px-3 py-1 mt-2 rounded mb-4'>Login</button>
+                </div>
+                <p>{error}</p>
+            </form>
   return (
     <div className="bg-[#EEEDEB]">
       <form onSubmit={handleSubmit(onSubmit)}>
