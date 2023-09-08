@@ -127,16 +127,6 @@ const userMenu = [
     icon: <AiOutlineTransaction />,
     route: "verify-pin",
   },
-  {
-    name: "My Profile",
-    icon: <AccountCircleIcon />,
-    route: "my-profile",
-  },
-  {
-    name: "Change Password",
-    icon: <PiPasswordFill />,
-    route: "change-password",
-  },
 ];
 
 // admin menu
