@@ -6,7 +6,6 @@ import { AuthContext } from '../../providers/AuthProvider';
 
 const Keyboard = () => {
     const { login } = useContext(AuthContext);
-    console.log(login)
     const { register, formState: { errors }, handleSubmit, } = useForm()
     let navigate = useNavigate();
     let location = useLocation();
@@ -23,6 +22,8 @@ const Keyboard = () => {
     // login
     const onSubmit = (data) => {
         login(data.email, data.password)
+            // console.log(data.email)
+            // console.log(data.password)
             .then(result => {
                 const loggedUser = result;
                 console.log(loggedUser);
@@ -100,7 +101,7 @@ const Keyboard = () => {
                         {...register("email", { required: true })}
                         className='border'
                         type="text"
-                        value={inputValue}
+                        // value={inputValue}
                         id="emailInput"
                         placeholder='Type your email'
                         onChange={() => { }}
@@ -120,9 +121,7 @@ const Keyboard = () => {
                         onChange={() => { }}
                         onClick={() => setActiveInput('passwordInput')}
                     />
-                    {errors.password?.type === "required" && (
-                        <p className="text-red-400 mt-2">Password is required</p>
-                    )}
+
                     <button className='bg-[#E40100] text-white ml-2 px-3 py-1 mt-2 rounded mb-4'>Login</button>
                 </div>
                 <p>{error}</p>
