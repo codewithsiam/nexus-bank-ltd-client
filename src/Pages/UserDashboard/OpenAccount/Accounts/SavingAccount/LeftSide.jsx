@@ -11,7 +11,7 @@ const LeftSide = () => {
         </button>
 
         <h2 className="text-2xl font-semibold my-4">
-          Open Your Saving <br /> Account
+          Open Your Current <br /> Account
         </h2>
         <p className="mb-6">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt

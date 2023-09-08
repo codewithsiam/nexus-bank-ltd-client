@@ -333,6 +333,7 @@ const CurrentForm = () => {
           otp={otp}
           setOtp={setOtp}
           error={error}
+          email={userData?.email}
         />
       )}
     </div>
