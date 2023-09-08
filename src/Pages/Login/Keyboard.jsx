@@ -43,7 +43,7 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          // navigate(from);
+          navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);

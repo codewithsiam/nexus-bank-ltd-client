@@ -108,7 +108,7 @@ const ProfilePhoto = ({profileImage,setProfileImage}) => {
         <FaPlus className="text-blue-500"></FaPlus>
         Upload Your Photo
       </label>
-      <input onChange={handleFileChange} type="file" id="your-photo" className="hidden" />
+      <input onChange={handleFileChange} required type="file" id="your-photo" className="hidden" />
       {selectedImage && !croppedImage && (
         <div className="mt-2 absolute w-[600px] ">
           <Cropper

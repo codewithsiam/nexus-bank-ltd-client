@@ -25,7 +25,7 @@ const ButtonLeft = () => {
       </div>
       <div className="relative group">
         {
-          designation === "admin"? <Link to='/dashboard/analytics'>Dashboard</Link>:<Link to='/dashboard/my-profile'>My Profile</Link>
+          designation === "admin"? <Link to='/dashboard/analytics'>Dashboard</Link>:<Link to='/dashboard/account-overview'>Dashboard</Link>
         }
       </div>
       {/* <div className="relative group">

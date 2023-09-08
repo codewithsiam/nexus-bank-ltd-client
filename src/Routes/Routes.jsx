@@ -29,10 +29,6 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
-import EStatement from "../Pages/UserDashboard/MyProfile/CardTab/E-statement/EStatement";
-import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFundTransfer/BkashFundTransfer";
-import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
-import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
 import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
 import Careers from "../Pages/Careers/Careers";
 import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
@@ -40,10 +36,7 @@ import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBenefic
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
-import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
-import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
-import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
 import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
@@ -53,6 +46,9 @@ import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryL
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
 import MyAccount from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
+import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
+import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
+import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 
 const router = createBrowserRouter([
   {
@@ -189,7 +185,6 @@ const router = createBrowserRouter([
         element: <EStatement />,
       },
       {
-        path: "bkash-fund-transfer",
         path: "bkash-fund-transfer",
         element: <BkashFundTransfer />,
       },

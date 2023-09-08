@@ -115,7 +115,7 @@ const BkashFundTransfer = () => {
         </div>
 
         <div className="mt-4 mr-16 flex justify-center space-x-4 pb-10">
-          <Link to={'/dashboard/payment-successfull'}>
+          <Link to={'/dashboard/verify-pin'}>
           
           <button
             type="submit"
