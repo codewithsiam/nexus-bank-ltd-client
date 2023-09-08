@@ -179,7 +179,7 @@ const router = createBrowserRouter([
         element: <EStatement />,
       },
       {
-        path: "fund-transfer",
+        path: "bkash-fund-transfer",
         element: <BkashFundTransfer />,
       },
       {
