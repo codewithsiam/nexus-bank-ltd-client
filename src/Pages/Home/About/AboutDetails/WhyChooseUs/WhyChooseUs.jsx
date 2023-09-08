@@ -1,5 +1,4 @@
-import Heading from "../../../../Components/Title/Heading";
-import CardWhyChooseUs from "./CardWhyChooseUs";
+import CenterTitle from "../../../../../Components/Title/CenterTitle";
 
 const WhyChooseUs = () => {
   const chooseData = [
@@ -26,15 +25,12 @@ const WhyChooseUs = () => {
   ]
 
   return (
-    <section className="py-12 pb-40 bg-[#F7F9FA] px-3">
+    <section className="py-12">
       <div className="">
         <div className="container mx-auto">
-          <Heading
-            heading={"Why Choose Us?"}
-          ></Heading>
+          <CenterTitle heading={"Why Choose Us?"} ></CenterTitle>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {
               chooseData?.map((data, index) =>
                 <CardWhyChooseUs key={index} data={data}></CardWhyChooseUs>
@@ -45,6 +41,19 @@ const WhyChooseUs = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+const CardWhyChooseUs = ({ data }) => {
+  return (
+      <div className="bg-white rounded-lg p-8 shadow-md transform transition-transform hover:scale-105 hover:bg-blue-100">
+          
+          <div className="flex gap-2 items-center">
+              <img className="w-12 h-12 rounded-full p-1 my-btn" src={data?.img} alt="" />
+              <h3 className="text-2xl font-semibold mb-2 text-gray-800">{data?.title}</h3>
+          </div>
+          <p className="text-gray-600">{data?.details}</p>
+      </div>
   );
 };
 

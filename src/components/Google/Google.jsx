@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import googleImage from '../../assets/images/Registration/google.svg'
 import { AuthContext } from '../../providers/AuthProvider';
 import { useNavigate, useLocation, Navigate, } from "react-router-dom";
+import { baseUrl } from '../../config/server';
 
 const Google = () => {
     const { googleSignIn } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const Google = () => {
 
                 const storeUser = { name: result?.user?.displayName, email: result?.user?.email, photo: result?.user?.photoURL, role: 'customer' }
 
-                fetch('http://localhost:5000/addUser', {
+                fetch(`${baseUrl}/addUser`, {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
