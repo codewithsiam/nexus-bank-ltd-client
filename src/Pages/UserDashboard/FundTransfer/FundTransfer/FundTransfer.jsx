@@ -82,7 +82,10 @@ const FundTransfer = () => {
                 <p className="md:w-1/4">Transfer to</p>
                 <select className="select select-bordered md:w-3/4">
                   <option value="">Select an account</option>
-                  {/* You can populate this select with beneficiary account info */}
+                 {user?.beneficiaryList?.map(({}, index) =>
+                  <option key={index} value="">Select an account</option>
+                 )}
+                 
                 </select>
               </div>
               <div className="border border-dashed border-blue-200 mb-5"></div>
