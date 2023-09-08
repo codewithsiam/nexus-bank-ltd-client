@@ -26,7 +26,7 @@ const FundTransferBeneficiaryList = () => {
           </p>
         </div>
         <div className="bg-slate-100 p-2 rounded-lg mt-4 divide-y-2 divide-solid">
-          <p className="text-center mt-4">Total number of Beneficiary : 5</p>
+          <p className="text-center mt-4">Total number of Beneficiary : {beneficiaryList.length}</p>
           <div className="">
             <div className="overflow-x-auto ">
               <table className="table table-zebra border border-green-500">
