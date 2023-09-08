@@ -521,7 +521,7 @@ export default function MiniDrawer() {
                         </ListItemButton>
                       </Link>
                       
-                      <Link to={"AddBeneficiary"} >
+                      {/* <Link to={"AddBeneficiary"} >
                         <ListItemButton
                           sx={{
                             minHeight: 48,
@@ -543,7 +543,7 @@ export default function MiniDrawer() {
                             sx={{ opacity: open ? 1 : 0 }}
                           />
                         </ListItemButton>
-                      </Link>
+                      </Link> */}
                     </div>
                   </div>
 
