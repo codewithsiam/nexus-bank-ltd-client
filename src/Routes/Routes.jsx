@@ -29,6 +29,12 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import EStatement from "../Pages/UserDashboard/MyProfile/CardTab/E-statement/EStatement";
+import BkashFundTransfer from "../Pages/UserDashboard/MyProfile/CardTab/BkashFundTransfer/BkashFundTransfer";
+import PaymentPinVerification from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentPinVerification";
+import PaymentSuccessful from "../Pages/UserDashboard/MyProfile/CardTab/PaymentPinVerification/PaymentSuccessful";
+import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
+import Careers from "../Pages/Careers/Careers";
 import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
@@ -81,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <BlogPage />,
+      },
+      {
+        path: "careers",
+        element: <Careers />,
       },
     ],
   },
@@ -180,6 +190,7 @@ const router = createBrowserRouter([
       },
       {
         path: "bkash-fund-transfer",
+        path: "bkash-fund-transfer",
         element: <BkashFundTransfer />,
       },
       {
@@ -190,6 +201,12 @@ const router = createBrowserRouter([
         path: "payment-successfull",
         element: <PaymentSuccessful />,
       },
+      {
+        path: "credit-card-apply",
+        element: <CreditCardApply />,
+      },
+
+
       {
         path: "my-accounts",
         element: <MyAccounts />,

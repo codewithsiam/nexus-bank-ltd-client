@@ -35,7 +35,7 @@ const PaymentPinVerification = () => {
           </div>
 
           <div className="flex justify-end gap-4">
-            <Link to={'/dashboard/fund-transfer'}>
+            <Link to={'/dashboard/bkash-fund-transfer'}>
             <button
               type="button"
               className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
