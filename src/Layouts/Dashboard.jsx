@@ -408,6 +408,30 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                     </Link>
+                    {/* e-statement */}
+                    <Link to={"e-statement"} >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {<MdAccountTree/>}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"E-Statement"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                    </Link>
                   </div>
                 </div>
 
@@ -486,6 +510,29 @@ export default function MiniDrawer() {
                       </ListItemIcon>
                       <ListItemText
                         primary={"Student Account"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                    <Link to={"credit-card-apply"} >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {<StickyNote2OutlinedIcon/>}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"Apply For Credit Card"}
                         sx={{ opacity: open ? 1 : 0 }}
                       />
                     </ListItemButton>
