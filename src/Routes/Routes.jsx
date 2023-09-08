@@ -150,7 +150,7 @@ const router = createBrowserRouter([
         element: <MobilTopUpHistory/>,
       },
       {
-        path: "AddBeneficiary",
+        path: "FundTransferBeneficiaryList/AddBeneficiary",
         element: <AddBeneficiary/>,
       },
       {
