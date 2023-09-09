@@ -35,7 +35,8 @@ import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundT
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
-import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
+import AddBeneficiary from "../Pages/UserDashboard/AddBeneficiary/AddBeneficiary";
+import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
@@ -44,9 +45,7 @@ import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentA
 import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
-import MyAccount from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
-import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 
@@ -134,10 +133,6 @@ const router = createBrowserRouter([
       {
         path: "fund-transfer-pin-verification",
         element: <FundTransferPin/>,
-      },
-      {
-        path: "MyAccount",
-        element: <MyAccount/>,
       },
       {
         path: "topup-beneficiary-list",
