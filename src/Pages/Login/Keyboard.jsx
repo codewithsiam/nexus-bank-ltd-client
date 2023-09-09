@@ -7,7 +7,9 @@ import { baseUrl } from "../../config/server";
 import axios from "axios";
 
 const Keyboard = () => {
-  const { login } = useContext(AuthContext);
+  const { setUser, user } = useContext(AuthContext);
+  // console.log(user);
+  
   const {
     register,
     handleSubmit,
@@ -32,14 +34,15 @@ const Keyboard = () => {
     axios
       .post(`${baseUrl}/login?username=${username}&password=${password}`)
       .then((res) => {
-        if (res.data.status) {
+        if (res.data.success === true) {
           const { token, result } = res.data;
-          console.log("Login Successful!");
+          console.log("Login Successful!", res.data);
           console.log("User Data:", result);
           console.log("Token:", token);
 
-          login(token);
-
+          // login(token);
+          localStorage.setItem("authToken", token);
+          setUser(result);
           navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
@@ -51,7 +54,7 @@ const Keyboard = () => {
         setError("An error occurred during login.");
       });
   };
-
+console.log(user)
   const handleKeyPress = (key) => {
     if (key === "Backspace") {
       handleBackspace();
