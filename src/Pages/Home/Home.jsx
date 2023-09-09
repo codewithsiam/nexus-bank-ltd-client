@@ -14,13 +14,11 @@ const Home = () => {
     return (
         <div className="relative">
             <Banner></Banner>
-           
             <About></About>
             <OurServices></OurServices>
             <LatestNews></LatestNews>
             <Comparison></Comparison>
             <Testimonial></Testimonial>
-            <OurTeam />
             <CreditCardPayment/>
             <ContactUs />
             <Footer/>

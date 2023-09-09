@@ -381,40 +381,40 @@ export default function MiniDrawer() {
                   disablePadding
                   sx={{ display: "block" }}
                 >
-                {/* Account Details------------------------- */}
-                <div>
-                  {
-                    !open?  <div className="flex items-center justify-center">
-                      <FileOpenIcon className="opacity-60 "/>
-                    </div>:
-                    <h4 className="ml-5 font-semibold my-3">Dashboard</h4>
-                  }
-                  <div className={`${open && "ml-3"}`}>
-                    <Link to={"account-overview"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                  {/* Internet banking dashboard ------------------------- */}
+                  <div>
+                    {
+                      !open?  <div className="flex items-center justify-center">
+                        <FileOpenIcon className="opacity-60 "/>
+                      </div>:
+                      <h4 className="ml-5 font-semibold my-3">Dashboard</h4>
+                    }
+                    <div className={`${open && "ml-3"}`}>
+                      <Link to={"account-overview"} >
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {<AiOutlineDashboard/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Internet Banking Dashboard"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                    </Link>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AiOutlineDashboard/>}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Internet Banking Dashboard"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                      </Link>
+                    </div>
                   </div>
-                </div>
 
                   {/* Account Details------------------------- */}
                   <div>

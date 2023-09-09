@@ -37,7 +37,9 @@ const cards = [
     }
 ]
   
+
 const AccountOverview = () => {
+    const totalBalance = accounts.reduce((total, account) => total + account.Balance, 0);
     return (
         <div className='mt-16 border border-blue-200 p-10 rounded border-spacing-1' style={{ boxShadow: '1px 1px 5px lightblue' }}>
             <h1 className='text-3xl font-semibold text-primary '>Summary of Accounts</h1>
@@ -65,6 +67,9 @@ const AccountOverview = () => {
                             ))}
                         </tbody>
                     </table>
+                </div>
+                <div className='border border-primary'>
+                    <h1 className='p-2 text-lg text-right'>Total Balance: <span className='font-bold'>{totalBalance}</span></h1>
                 </div>
             </div>
             <div className='h-[1px] w-full mt-6 mb-10 border border-dashed bg-primary'></div>

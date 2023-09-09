@@ -33,7 +33,7 @@ import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundT
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
-import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
+import AddBeneficiary from "../Pages/UserDashboard/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -44,6 +44,7 @@ import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentA
 import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentAccount/StudentAccount";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
+import History from "../Pages/Home/About/AboutDetails/History/History";
 
 const router = createBrowserRouter([
   {
