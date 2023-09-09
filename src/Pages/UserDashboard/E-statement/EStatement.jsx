@@ -13,7 +13,7 @@ const EStatement = () => {
 
   return (
     <div className="p-4 bg-gray-100 rounded-lg py-20">
-      <h2 className="text-2xl font-bold mb-4">E-Statement</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary">E-Statement</h2>
       <span className='text-lg font-semibold'>E-Statement Generation</span>
       <form onSubmit={(e) => handleSubmit(onSubmit)(e)}>
         <div className="flex flex-wrap -mx-2 my-10">
