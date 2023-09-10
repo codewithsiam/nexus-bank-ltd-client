@@ -5,7 +5,6 @@ import ContactUs from "./ContactUs/ContactUs";
 import CreditCardPayment from "./CreditCardPayment/CreditCardPayment";
 import LatestNews from "./LatestNews/LatestNews";
 import OurServices from "./OurServices/OurServices";
-import OurTeam from "./OurTeam/OurTeam";
 import Testimonial from "./Testimonial/Testimonial";
 import Comparison from "./Comparison/Comparison";
 import { Link } from "react-router-dom";
@@ -14,13 +13,11 @@ const Home = () => {
     return (
         <div className="relative">
             <Banner></Banner>
-           
             <About></About>
             <OurServices></OurServices>
             <LatestNews></LatestNews>
             <Comparison></Comparison>
             <Testimonial></Testimonial>
-            <OurTeam />
             <CreditCardPayment/>
             <ContactUs />
             <Footer/>

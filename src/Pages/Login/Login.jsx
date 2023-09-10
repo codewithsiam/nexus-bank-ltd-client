@@ -2,7 +2,7 @@ import Google from '../../components/Google/Google';
 import loginImage from '../../assets/images/Registration/login-img.png'
 import LoginForm from './LoginForm';
 import Keyboard from './Keyboard';
-
+import { Link } from 'react-router-dom';
 
 
 const Login = () => {
@@ -13,17 +13,37 @@ const Login = () => {
                 <div className="mx-auto mb-0 mt-8 space-y-4">
                     {/* <LoginForm/> */}
 
-                    <Keyboard/>
+                    <Keyboard />
                     {/* <Google /> */}
-
-
-                    
                 </div>
             </div>
 
             <div className="">
-                <p className="font-bold">Guidelines for safety banking online</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem facilis tenetur, molestiae, ex, quae voluptatem illum quo neque magnam suscipit optio! Illo est nemo ea magnam doloribus nihil, rerum quidem.</p>
+                <p className="bg-[#00A7C7] p-2 text-[#fff]">Accounts</p>
+                <div className='mt-5'>
+
+                    <Link to="/dashboard/student-account" className='flex items-center justify-between w-full mt-2'>
+                        <button>Student Account</button>
+                        <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
+                            Register
+                        </span>
+                    </Link>
+
+                    <Link to='/dashboard/saving-account' className='flex items-center justify-between w-full mt-2'>
+                        <button>Saving Account</button>
+                        <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
+                            Register
+                        </span>
+                    </Link>
+
+                    <Link to="/dashboard/current-account" className='flex items-center justify-between w-full mt-2'>
+                        <button>Current Account</button>
+                        <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
+                            Register
+                        </span>
+                    </Link>
+                    
+                </div>
             </div>
         </section>
     );

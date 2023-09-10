@@ -45,7 +45,7 @@ const Navbar = () => {
               user ?
                 <button onClick={handleLogout} className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center bg-red-500"> <AiOutlineLogout size={24}/> Logout</button>
                 :
-                <Link to='/registration'>
+                <Link to='/login'>
                   <button className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center my-btn">Login<FaArrowRight /> </button>
                 </Link>
             }

@@ -20,7 +20,12 @@ function createData(name, code, population, size) {
   return { name, code, population, size, density };
 }
 
-const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setControl }) => {
+const RequestTable = ({
+  requestedAccounts,
+  setRequestedAccounts,
+  control,
+  setControl,
+}) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [openAction, setOpenAction] = useState(false);
@@ -30,10 +35,6 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
 
   const closeModal = () => {
     setIsOpen(false);
-  };
-
-  const handleAction = () => {
-    setOpenAction(!openAction);
   };
 
   const handleChangePage = (event, newPage) => {
@@ -57,7 +58,7 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
           showConfirmButton: false,
           timer: 1500,
         });
-      
+
         if (status === "denied") {
           setIsOpen(true);
           setFeedId(id);
@@ -87,10 +88,10 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
             showConfirmButton: false,
             timer: 1500,
           });
-          setIsOpen(false)
+          setIsOpen(false);
         }
       })
-      .catch(err=>console.log(err))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -101,7 +102,7 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
             <Table stickyHeader aria-label="sticky table">
               <TableHead sx={{ fontSize: "24" }}>
                 <TableRow>
-                  <TableCell>Id</TableCell>
+                  <TableCell>Serial</TableCell>
                   <TableCell>Full Name</TableCell>
                   <TableCell>Primary Email</TableCell>
                   <TableCell>Phone Number</TableCell>
@@ -111,14 +112,14 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
                 </TableRow>
               </TableHead>
               <TableBody>
-                {requestedAccounts?.map((account) => (
+                {requestedAccounts?.map((account,index) => (
                   <TableRow
                     key={account.id}
                     hover
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell>{account?._id}</TableCell>
+                    <TableCell>{index + 1}</TableCell>
                     <TableCell>
                       {account?.first_name + " " + account?.last_name}
                     </TableCell>
@@ -127,11 +128,21 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
                     <TableCell>{account?.account_type}</TableCell>
                     <TableCell>{account?.status}</TableCell>
                     <TableCell className="relative">
-                      <MoreHorizIcon
-                        onClick={handleAction}
-                        className="cursor-pointer"
-                      />
-                      {openAction && (
+                      <div className="flex gap-2">
+                        <button
+                          onClick={() => handleStatus(account._id, "denied")}
+                          className="px-3 py-2 bg-red-500 rounded-md"
+                        >
+                          Deny
+                        </button>
+                        <button
+                          onClick={() => handleStatus(account._id, "approved")}
+                          className="px-3 py-2 bg-green-500 rounded-md"
+                        >
+                          Approve
+                        </button>
+                      </div>
+                      {/* {openAction && (
                         <div className="absolute top-12 -left-2  z-30 bg-white text-black p-4 ">
                           <p
                             onClick={() =>
@@ -148,7 +159,7 @@ const RequestTable = ({ requestedAccounts, setRequestedAccounts, control, setCon
                             Denied
                           </p>
                         </div>
-                      )}
+                      )} */}
                     </TableCell>
                   </TableRow>
                 ))}

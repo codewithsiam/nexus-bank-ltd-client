@@ -3,7 +3,14 @@ import { render, screen } from '@testing-library/react';
 import Dashboard from '../../Layouts/Dashboard';
 
 describe('Dashboard', () => {
-    it('when adminMenu is true then loading text should be displayed', () => {
-      render(<Dashboard adminMenu={false}/>);
-    });
+  it('renders loading text when adminMenu is false', () => {
+    render(<Dashboard adminMenu={false} />);
+    const loadingText = screen.getByText('Loading'); // Replace 'Loading' with the actual loading text
+    expect(loadingText).toBeInTheDocument();
+  });
+
+  it('renders something else when adminMenu is true', () => {
+    render(<Dashboard adminMenu={true} />);
+    // Add your assertion here for the content displayed when adminMenu is true.
+  });
 });

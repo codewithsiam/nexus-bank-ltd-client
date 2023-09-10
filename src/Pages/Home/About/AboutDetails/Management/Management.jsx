@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CenterTitle from "../../../Components/Title/CenterTitle";
+import MainBanner from "../../../../../Components/Banner/MainBanner";
 
 const teamMembers = [
   {
@@ -53,7 +53,7 @@ const teamMembers = [
   },
 ];
 
-const OurTeam = () => {
+const Management = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
   // const [employees,setEmployees] = useState([]);
 
@@ -72,14 +72,12 @@ const OurTeam = () => {
   };
 
   return (
-    <div className="h-max my-20">
-        <div className="text-center mb-8">
-          <CenterTitle
-            subHeading={"OUR TEAM"}
-            heading={"Leading the way in business transformation"}
-          ></CenterTitle>
-        </div>
-
+    <div className="max-w-screen-xl mx-auto mt-10">
+      <MainBanner 
+      banner="https://i.ibb.co/fXKszF9/management-bg.webp" 
+      subBannerTitle="Leading the way in business transformation"
+      bannerTitle="Management Committee">
+      </MainBanner>
       <div className="flex justify-center items-center h-max bg-white">
         <div className="flex flex-wrap justify-center gap-8">
           {teamMembers?.map((member, index) => (
@@ -175,6 +173,6 @@ const OurTeam = () => {
       </div>
     </div>
   );
-};
+}
 
-export default OurTeam;
+export default Management;

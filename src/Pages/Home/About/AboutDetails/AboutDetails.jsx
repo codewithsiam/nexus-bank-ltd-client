@@ -5,6 +5,11 @@ import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
 import BankOverview from "./BankOverview/BankOverview";
+import History from "./History/History";
+import Mission from "./Mission/Mission";
+import { BiSolidChevronsRight } from "react-icons/bi";
+import Management from "./Management/Management";
+import Gallery from "./Gallery/Gallery";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -39,51 +44,60 @@ function a11yProps(index) {
 
 const AboutDetails = () => {
   const [value, setValue] = React.useState(0);
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const handleTabClick = () => {
+    const googleDriveLink = 'https://drive.google.com/file/d/1y1xbvQWvQSpfXLE0ad0jSaAuECq5V6cl/view?usp=drive_link';   
+    window.open(googleDriveLink, '_blank');
+  };
+
   return (
     <div className="max-w-screen-xl mx-auto h-full mt-10">
-        <Box 
-        className="md:flex lg:gap-10 md:gap-5 justify-between"
-        sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
-            <Tabs
-            className="bg-primary p-10 mb-4 md:w-1/4 w-full"
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ 
-                borderRight: 1, 
-                borderColor: 'divider' ,
-                '& .MuiTab-label': {
-                color: 'white', 
-                },
-            }}
-            >
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">Overview</span>} {...a11yProps(0)} />
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">History</span>} {...a11yProps(1)} />
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">Vision and Mission</span>} {...a11yProps(2)} />
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">Management</span>} {...a11yProps(3)} />
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">Gallery</span>} {...a11yProps(4)} />
-                <Tab label={<span className="text-white font-semibold mb-3 text-xl">Organogram</span>} {...a11yProps(4)} />
-            </Tabs>
-            <TabPanel value={value} index={0} className="md:w-2/3 w-full">
-                <BankOverview/>
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Item Three
-            </TabPanel>
-            <TabPanel value={value} index={3}>
-                Item Four
-            </TabPanel>
-        </Box>
+      <Box 
+      className="md:flex lg:gap-10 md:gap-5 justify-between"
+      sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
+        <Tabs className="bg-primary px-3 py-10 mb-4 md:w-1/4 w-full"
+        orientation="vertical"
+        variant="scrollable"
+        value={value}
+        onChange={handleChange}
+        aria-label="Vertical tabs example"
+        sx={{ 
+            borderRight: 1, 
+            borderColor: 'divider' ,
+            '& .MuiTab-label': {
+            color: 'white', 
+            },
+        }}
+        >
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Overview 
+            <BiSolidChevronsRight/> </span>} {...a11yProps(0)} />
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">History 
+            <BiSolidChevronsRight/></span>} {...a11yProps(1)} />
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Vision and Mission 
+            <BiSolidChevronsRight/></span>} {...a11yProps(2)} />
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Management 
+            <BiSolidChevronsRight/></span>} {...a11yProps(3)} />
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Gallery 
+            <BiSolidChevronsRight/></span>} {...a11yProps(4)} />
+          <Tab label={<span 
+          className="text-white font-semibold my-3 text-xl flex gap-2 items-center"
+           onClick={handleTabClick}>Organogram <BiSolidChevronsRight/></span>} {...a11yProps(4)} />
+        </Tabs>
+        <TabPanel value={value} index={0} className="md:w-3/4 w-full"><BankOverview/></TabPanel>
+        <TabPanel value={value} index={1} className="md:w-3/4 w-full"><History/></TabPanel>
+        <TabPanel value={value} index={2} className="md:w-3/4 w-full"><Mission/></TabPanel>
+        <TabPanel value={value} index={3} className="md:w-3/4 w-full"><Management/></TabPanel>
+        <TabPanel value={value} index={4} className="md:w-3/4 w-full"><Gallery/></TabPanel>
+        <TabPanel value={value} index={5} className="md:w-3/4 w-full"></TabPanel>
+      </Box>
     </div>
   );
 }

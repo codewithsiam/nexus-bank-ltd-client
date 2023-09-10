@@ -29,14 +29,14 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
+import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
+import Careers from "../Pages/Careers/Careers";
 import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
-import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
-import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import AccountOverview from "../Pages/UserDashboard/AccountOverview/AccountOverview";
 import PasswordChange from "../Pages/UserDashboard/ProfileManage/PasswordChange/PasswordChange";
 import CurrentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/CurrentAccount/CurrentAccount";
@@ -44,9 +44,12 @@ import StudentAccount from "../Pages/UserDashboard/OpenAccount/Accounts/StudentA
 import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
-import MyAccount from "../Pages/UserDashboard/MyAccount/MyAccount";
 import AddLatestNews from "../Pages/AdminDashboard/AddLatestNews/AddLatestNews";
 import AddBeneficiary from "../Pages/UserDashboard/AddBeneficiary/AddBeneficiary";
+import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
+import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
+import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
+import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 
 const router = createBrowserRouter([
   {
@@ -81,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <BlogPage />,
+      },
+      {
+        path: "careers",
+        element: <Careers />,
       },
     ],
   },
@@ -118,6 +125,10 @@ const router = createBrowserRouter([
         element:<StudentAccount/>
       },
       {
+        path:"deposit-account",
+        element:<DepositAccount/>
+      },
+      {
         path: "apply-loan",
         element: <ApplyLoan />,
       },
@@ -128,10 +139,6 @@ const router = createBrowserRouter([
       {
         path: "fund-transfer-pin-verification",
         element: <FundTransferPin/>,
-      },
-      {
-        path: "MyAccount",
-        element: <MyAccount/>,
       },
       {
         path: "topup-beneficiary-list",
@@ -150,7 +157,7 @@ const router = createBrowserRouter([
         element: <MobilTopUpHistory/>,
       },
       {
-        path: "AddBeneficiary",
+        path: "FundTransferBeneficiaryList/AddBeneficiary",
         element: <AddBeneficiary/>,
       },
       {
@@ -179,7 +186,7 @@ const router = createBrowserRouter([
         element: <EStatement />,
       },
       {
-        path: "fund-transfer",
+        path: "bkash-fund-transfer",
         element: <BkashFundTransfer />,
       },
       {
@@ -189,6 +196,16 @@ const router = createBrowserRouter([
       {
         path: "payment-successfull",
         element: <PaymentSuccessful />,
+      },
+      {
+        path: "credit-card-apply",
+        element: <CreditCardApply />,
+      },
+
+
+      {
+        path: "my-accounts",
+        element: <MyAccounts />,
       },
     ],
   },
