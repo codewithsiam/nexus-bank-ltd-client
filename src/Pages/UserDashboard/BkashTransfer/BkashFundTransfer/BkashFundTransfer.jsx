@@ -12,11 +12,15 @@ const BkashFundTransfer = () => {
   };
 
   return (
-    <div className="p-4 bg-gray-100 rounded-lg my-20">
-      <h2 className="text-2xl font-bold mb-4">Fund Transfer Form</h2>
-      <form onSubmit={handleSubmit(onSubmit)} className="p-4 space-y-4">
-        <div className="bg-white shadow-md rounded px-4 py-4">
-          <h2 className="text-lg font-semibold">Transfer From</h2>
+    <div className="bg-white rounded-lg my-20 p-8  border border-gray-300">
+      <div className='flex justify-between items-center'>
+      <h2 className="text-2xl font-bold mb-4 text-green-700">Fund Transfer Form</h2>
+      <img className='h-20 w-auto' src="https://markedium.com/wp-content/uploads/2018/04/Bkash-2.png" alt="" />
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="m-8 border border-gray-200">
+        <div className=" rounded px-4 py-5">
+          <h2 className="text-xl font-semibold py-4 text-green-600">Transfer From</h2>
+          <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="fromAccountNum" className="block text-gray-700 font-semibold w-1/3">
               From Account Number :
@@ -34,8 +38,9 @@ const BkashFundTransfer = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-md rounded px-4 py-4">
-          <h2 className="text-lg font-semibold">Transfer To</h2>
+        <div className="rounded px-4 py-4">
+          <h2 className="text-xl font-semibold py-5 text-green-600">Transfer To</h2>
+          <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="beneficiary" className="block text-gray-700 font-semibold w-1/3">
               Beneficiary :
@@ -73,8 +78,9 @@ const BkashFundTransfer = () => {
           </div>
         </div>
 
-        <div className="bg-white shadow-md rounded px-4 py-4">
-          <h2 className="text-lg font-semibold">Transfer</h2>
+        <div className="rounded px-4">
+          <h2 className="text-xl font-semibold py-5 text-green-600">Transfer</h2>
+          <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="transferAmount" className="block text-gray-700 font-semibold w-1/3">
               Transfer Amount :
@@ -108,19 +114,19 @@ const BkashFundTransfer = () => {
           </div>
         </div>
 
-        <div className="mt-4 flex justify-end space-x-4">
-          <Link to={'/dashboard/payment-successfull'}>
+        <div className="mt-4 mr-16 flex justify-center space-x-4 pb-10">
+          <Link to={'/dashboard/verify-pin'}>
           
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="bg-green-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           >
             Transfer
           </button>
           </Link>
           <button
             type="button"
-            className="bg-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+            className="bg-red-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
           >
             Cancel
           </button>
