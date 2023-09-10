@@ -408,8 +408,6 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                     </Link>
-<<<<<<< HEAD
-=======
                     {/* e-statement */}
                     <Link to={"e-statement"} >
                     <ListItemButton
@@ -646,7 +644,6 @@ export default function MiniDrawer() {
                       </Link> */}
                     </div>
                   </div>
->>>>>>> 47fa6b3e16f399e8ed4fa999731fea20272699ff
 
                   {/* Loan Services------------------------- */}
                   <div>
