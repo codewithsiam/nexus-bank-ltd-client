@@ -33,18 +33,14 @@ const FundTransfer = () => {
   };
 
   const handleTransfer = () => {
-    // Perform the transfer logic here
-    // You can use axios or fetch to send a transfer request to the server
-    // and handle the response accordingly
-    // You may also want to validate the transferAmount and other details
-    // before initiating the transfer.
-    Swal.fire("Good job!", "Your Transaction is successful");
+    
+    
   };
 
   const handleCancel = () => {
     Swal.fire("Your Transaction is Cancel !");
   };
-
+// console.log(user.beneficiaryList);
   return (
     <div className="mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-blue-200">
       <div className="p-4">
@@ -82,7 +78,10 @@ const FundTransfer = () => {
                 <p className="md:w-1/4">Transfer to</p>
                 <select className="select select-bordered md:w-3/4">
                   <option value="">Select an account</option>
-                  {/* You can populate this select with beneficiary account info */}
+                 {user?.beneficiaryList?.map(({account_number, username}, index) =>
+                  <option key={index} value={account_number}>{username} - {account_number}</option>
+                 )}
+                 
                 </select>
               </div>
               <div className="border border-dashed border-blue-200 mb-5"></div>

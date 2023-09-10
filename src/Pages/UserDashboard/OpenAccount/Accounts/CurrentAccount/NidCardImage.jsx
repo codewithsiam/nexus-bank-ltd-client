@@ -110,6 +110,7 @@ const NidCardImage = ({nidCardImage,setNidCardImage}) => {
         onChange={handleFileChange}
         id="nid-card-image"
         className="hidden"
+        required
         type="file"
       />
        {selectedImage && !croppedImage && (

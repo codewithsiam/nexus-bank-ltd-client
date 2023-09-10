@@ -6,26 +6,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { baseUrl } from "../../../config/server";
 
-const accounts = [
-  {
-    "Account Type": "Savings",
-    "Account No": "1234567890",
-    Status: "Active",
-    Balance: 5000,
-  },
-  {
-    "Account Type": "Checking",
-    "Account No": "9876543210",
-    Status: "Active",
-    Balance: 2500,
-  },
-  {
-    "Account Type": "Credit Card",
-    "Account No": "5432109876",
-    Status: "Active",
-    Balance: -1000,
-  },
-];
 const cards = [
   {
     Card_Type: "Credit Card",

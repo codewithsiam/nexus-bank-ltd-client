@@ -4,7 +4,7 @@ import { FaTimes } from "react-icons/fa";
 import { useScroll } from "framer-motion";
 import { useState } from "react";
 
-const OtpModal = ({setIsOpen,handleOpenAccount,otp,setOtp,error}) => {
+const OtpModal = ({setIsOpen,handleOpenAccount,otp,setOtp,error,email}) => {
   
   return (
     <div className=" bg-white rounded-lg absolute left-1/2 top-1/2 shadow-lg text-center px-6 py-8">
@@ -12,7 +12,7 @@ const OtpModal = ({setIsOpen,handleOpenAccount,otp,setOtp,error}) => {
         <FaTimes />
         </div>
       <h2 className="text-xl font-semibold my-3">OTP Verification</h2>
-      <p>Enter the OTP to send <span className="font-semibold">maniksarker@gmail.com</span></p>
+      <p>Enter the OTP to send <span className="font-semibold">{email}</span></p>
       <OtpField otp={otp} setOtp={setOtp}/>
       {error && <p>{error}</p>}
       <p className="mt-12">Don't receive the OTP? <span className="text-orange-300">Resend OTP</span></p>
