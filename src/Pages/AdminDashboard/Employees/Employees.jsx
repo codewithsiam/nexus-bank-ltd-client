@@ -22,6 +22,7 @@ import ContentCopyTwoToneIcon from "@mui/icons-material/ContentCopyTwoTone";
 import EmployeeTable from "./EmployeeTable";
 import { useEffect } from "react";
 import { baseUrl } from "../../../config/server";
+import toast from "react-hot-toast";
 
 // generate random string --------------
 function generateRandomString() {
@@ -46,8 +47,9 @@ const Employees = () => {
   const [isCopied, setIsCopied] = React.useState(false);
   const [hidePassword, SetHidePassword] = React.useState(true);
   const [employees, setEmployees] = useState([]);
-  const [control,setControl] =useState(true)
-  console.log(userData)
+  const [control, setControl] = useState(true);
+  const [error,setError] = useState("");
+  console.log(temporaryPassword);
 
   useEffect(() => {
     fetch(`${baseUrl}/employees`)
@@ -70,28 +72,37 @@ const Employees = () => {
     setUserData(newUserData);
   };
   // click on submit ---------
-  const handleOnSubmit = (e)=>{
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    fetch(`${baseUrl}/add-employee`,{
-      method:"POST",
-      headers:{"content-type":"application/json"},
-      body:JSON.stringify({
-        firstName:userData.first_name,
-        lastName:userData.last_name,
-        primaryEmail:userData.primaryEmail,
-        secondaryEmail:userData.secondaryEmail,
-        designation:userData.designation,
-        phoneNumber:userData.phoneNumber,
-        password:randomString
+    fetch(`${baseUrl}/add-employee`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        firstName: userData.first_name,
+        lastName: userData.last_name,
+        username: userData.username,
+        email: userData.email,
+        designation: userData.designation,
+        phoneNumber: userData.phoneNumber,
+        password: randomString,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        if(data.acknowledged === true){
+          setTemporaryPassword(randomString);
+   
+          setControl(!control);
+        }
+        else{
+          setError(data.message)
+          toast.error(data.message)
+        }
+       
       })
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      setTemporaryPassword(data.password)
-      setControl(!control)
-    })
-    .catch(err=>console.log(err))
-  }
+      .catch((err) => console.log(err));
+  };
 
   // copy
   const passRef = useRef(null);
@@ -125,7 +136,8 @@ const Employees = () => {
         aria-describedby="child-modal-description"
       >
         {temporaryPassword === "" ? (
-          <form onSubmit={handleOnSubmit}
+          <form
+            onSubmit={handleOnSubmit}
             //   onSubmit={handleOnSubmit}
             className="mt-32 bg-white rounded p-8 text-black w-10/12 md:w-8/12 lg:w-[700px] mx-auto "
           >
@@ -162,16 +174,14 @@ const Employees = () => {
                     <TextField
                       id="standard-basic"
                       type="text"
-                      label="Primary Email*"
+                      label="Username*"
                       variant="standard"
-                      name="primaryEmail"
+                      name="username"
                       required
                       onChange={handleUserDataOnChange}
                       style={{ width: "300px" }}
                     />
-                    <div className="mt-4">
-                      
-                    </div>
+                    <div className="mt-4"></div>
                   </div>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Role</InputLabel>
@@ -209,9 +219,9 @@ const Employees = () => {
                   <TextField
                     id="standard-basic"
                     type="email"
-                    label="Secondary Email*"
+                    label="Email*"
                     variant="standard"
-                    name="secondaryEmail"
+                    name="email"
                     required
                     onChange={handleUserDataOnChange}
                     sx={{ width: "100%" }}
@@ -228,10 +238,12 @@ const Employees = () => {
                   />
                 </div>
               </div>
-              <p className="mt-4">
-                Manage user,s password, organization unit and profile photo
-                <KeyboardArrowDownIcon />
-              </p>
+            {
+              error &&   <p className="mt-4 text-red-600">
+              {error}
+              
+            </p>
+            }
             </div>
             <div className="flex gap-2 justify-end my-2">
               <span
@@ -245,9 +257,7 @@ const Employees = () => {
               type="submit"
               value="Add New Employee"
             /> */}
-              <button
-                className="my-btn py-2 px-4 text-white rounded-md"
-              >
+              <button className="my-btn py-2 px-4 text-white rounded-md">
                 {" "}
                 Add New Employee
               </button>
@@ -260,30 +270,16 @@ const Employees = () => {
                 <div>
                   <AccountCircleIcon style={{ fontSize: "100" }} />
                 </div>
-                <h4>User Name : {userData.primaryEmail}</h4>
+                <h4>User Name : {userData.username}</h4>
                 {isCopied && (
                   <p className="absolute ml-4 left-2/3 mb-6">Copied</p>
                 )}
                 <p className="flex gap-2 items-center justify-center">
                   <span>Password : </span>{" "}
-                  <span className={hidePassword && "mb-2"} ref={passRef}>
-                    {hidePassword === true ? (
-                      <span className="text-2xl font-bold ">......</span>
-                    ) : (
-                      <span>{temporaryPassword}</span>
-                    )}
-                  </span>{" "}
-                  <button>
-                    {hidePassword === true ? (
-                      <span onClick={() => SetHidePassword(false)}>
-                        <RemoveRedEyeIcon />
-                      </span>
-                    ) : (
-                      <span onClick={() => SetHidePassword(true)}>
-                        <VisibilityOffIcon />
-                      </span>
-                    )}
-                  </button>{" "}
+                  <span ref={passRef}>
+                    <span>{temporaryPassword}</span>
+                  </span>
+                  
                   <button className="ml-4" onClick={handleCopy}>
                     {" "}
                     {isCopied ? (
