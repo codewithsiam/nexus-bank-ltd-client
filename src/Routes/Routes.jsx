@@ -48,6 +48,7 @@ import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin
 import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
+import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 
 const router = createBrowserRouter([
   {
@@ -121,6 +122,10 @@ const router = createBrowserRouter([
       {
         path:"student-account",
         element:<StudentAccount/>
+      },
+      {
+        path:"deposit-account",
+        element:<DepositAccount/>
       },
       {
         path: "apply-loan",
