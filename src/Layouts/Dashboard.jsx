@@ -491,6 +491,29 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
+                    <Link to={"deposit-account"} >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {<EnergySavingsLeafOutlinedIcon/>}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"Deposit Account"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
                     <Link to={"student-account"} >
                     <ListItemButton
                       sx={{
