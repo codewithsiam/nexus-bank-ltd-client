@@ -10,9 +10,9 @@ const AddBeneficiary = () => {
           )
     }
     return (
-        <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200'>
+        <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-4'>
-                <h1 className='text-3xl font-bold text-green-600'>Add Beneficiary</h1>
+                <h1 className='text-3xl font-bold text-primary'>Add Beneficiary</h1>
                 <div className='bg-slate-100 p-2 rounded-lg md:ps-16'>
 
                     <div className='flex gap-9 '>
