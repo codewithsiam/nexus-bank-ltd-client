@@ -1,60 +1,93 @@
 import React, { useContext, useState } from "react";
 import { baseUrl } from "../../../../../config/server";
 import Swal from "sweetalert2";
-import AuthProvider, { AuthContext } from "../../../../../providers/AuthProvider";
+import AuthProvider, {
+  AuthContext,
+} from "../../../../../providers/AuthProvider";
+import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
+import SharedProfileImage from "../DepositAccount/SharedProfileImage";
+import OtpModal from "../OtpModal/OtpModal";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
-  const {user}=useContext(AuthContext)
-  // console.log(userData)
+  const [nidCardImage, setNidCardImage] = useState("");
+  const [profileImage, setProfileImage] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const [otp, setOtp] = useState(new Array(5).fill(""));
+  const otpDigit = otp.reduce((acc, curr) => acc + curr);
+  const [error, setError] = useState("");
 
-  // handle user data change
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData)
+  console.log(userData);
+
+  // handle submit
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const form = e.target;
-    fetch(`${baseUrl}/add-account`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        first_name:userData.first_name,
-        last_name:userData.last_name,
-        email:userData.email,
-        account_type:userData.account_type,
-        gender:userData.gender,
-        date_of_birth:userData.date_of_birth,
-        phone:userData.phone,
-        nationality:userData.nationality,
-        marital_status:userData.marital_status,
-        job_title:userData.job_title,
-        present_address:userData.present_address,
-        permanent_address:userData.permanent_address,
-        balance: 0,
-        status:"pending"
-      }),
+    fetch(
+      `${baseUrl}/send-otp?email=${userData.email}&userName=${userData.first_name}`
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .then((err) => console.log(err));
+    setIsOpen(true);
+    // const form = e.target;
+  };
+
+  const handleOpenAccount = () => {
+    fetch(`${baseUrl}/verify-otp?email=${userData.email}&otp=${otpDigit}`, {
+      method: "Post",
+      headers: {
+        "content-type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.acknowledged === true){
-          Swal.fire({
-            position: 'top-middle',
-            icon: 'success',
-            title: 'Your Account Successfully Created',
-            showConfirmButton: false,
-            timer: 1500
+        if (data.verified) {
+          fetch(`${baseUrl}/add-account`, {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({
+              first_name: userData.first_name,
+              last_name: userData.last_name,
+              email: userData.email,
+              account_type: "Saving Account",
+              date_of_birth: userData.date_of_birth,
+              phone: userData.phone,
+              marital_status: userData.marital_status,
+              job_title: userData.job_title,
+              nid_card_number: userData.nidCardNumber,
+              nidCardImage: nidCardImage,
+              profileImage: profileImage,
+              present_address: userData.present_address,
+              permanent_address: userData.permanent_address,
+              status: "pending",
+            }),
           })
-          form.reset();
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              if (data.acknowledged === true) {
+                Swal.fire({
+                  position: "top-middle",
+                  icon: "success",
+                  title: "Your Account Successfully Created",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                // form.reset();
+              }
+            })
+            .catch((error) => console.log(error));
+        } else {
+          setError(data.message);
         }
-      })
-      .catch((error) => console.log(error));
+      });
   };
-  
+
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
@@ -108,26 +141,21 @@ const Form = () => {
               className="input input-bordered w-full "
             />
           </div>
-          <div className="form-control w-full ">
+          <div className="form-control w-full mt-2">
             <label className="label">
               <span className="label-text text-md font-semibold">
-                Account Type
+                Nid Card Number *
               </span>
             </label>
-            <select
-              name="account_type"
-              required
+            <input
+              type="text"
+              name="nidCardNumber"
+              // value={user?.email}
               onChange={handleUserDataOnChange}
-              className="select select-bordered"
-            >
-              {/* <option disabled selected>
-                Pick one
-              </option> */}
-              <option>Saving Account</option>
-              <option>Checking Account</option>
-              <option>Business Account</option>
-              <option>Student Account</option>
-            </select>
+              required
+              placeholder="Enter Nid Card Number"
+              className="input input-bordered w-full "
+            />
           </div>
         </div>
         <div className="flex items-center gap-4 mt-2 ">
@@ -196,10 +224,22 @@ const Form = () => {
             />
           </div>
         </div>
+        <div className="flex gap-4 mt-4 mb-2">
+          <SharedNidCardImage
+            nidCardImage={nidCardImage}
+            setNidCardImage={setNidCardImage}
+          />
+          <SharedProfileImage
+            profileImage={profileImage}
+            setProfileImage={setProfileImage}
+          />
+        </div>
         <div className="flex gap-4">
-        <div className="form-control w-full ">
+          <div className="form-control w-full ">
             <label className="label">
-              <span className="label-text text-md font-semibold">Marital Status</span>
+              <span className="label-text text-md font-semibold">
+                Marital Status
+              </span>
             </label>
             <select
               name="marital_status"
@@ -275,6 +315,16 @@ const Form = () => {
           </button>
         </div>
       </form>
+      {isOpen && (
+        <OtpModal
+          setIsOpen={setIsOpen}
+          handleOpenAccount={handleOpenAccount}
+          otp={otp}
+          setOtp={setOtp}
+          error={error}
+          email={userData?.email}
+        />
+      )}
     </div>
   );
 };
