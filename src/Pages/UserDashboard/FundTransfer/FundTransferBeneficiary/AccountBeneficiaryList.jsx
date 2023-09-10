@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../../../config/server";
 
-const FundTransferBeneficiaryList = () => {
+const AccountBeneficiaryList = () => {
     const [beneficiaryList,setBeneficiaryList] = useState([]);
   const username = "test1";
   useEffect(() => {
@@ -69,4 +69,4 @@ const FundTransferBeneficiaryList = () => {
   );
 };
 
-export default FundTransferBeneficiaryList;
+export default AccountBeneficiaryList;
