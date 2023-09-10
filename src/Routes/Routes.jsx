@@ -33,7 +33,6 @@ import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundT
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
-import AddBeneficiary from "../Pages/AddBeneficiary/AddBeneficiary";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -46,6 +45,8 @@ import AdminDashboardLayout from "../Layouts/AdminDashboardLayout";
 import TopUpBeneficiaryList from "../Pages/UserDashboard/TopUp/TopUpBeneficiaryList/TopUpBeneficiaryList";
 import FundTransferPin from "../Pages/UserDashboard/FundTransfer/FundTransferPin/FundTransferPin";
 import MyAccount from "../Pages/UserDashboard/MyAccount/MyAccount";
+import AddLatestNews from "../Pages/AdminDashboard/AddLatestNews/AddLatestNews";
+import AddBeneficiary from "../Pages/UserDashboard/AddBeneficiary/AddBeneficiary";
 
 const router = createBrowserRouter([
   {
@@ -226,6 +227,10 @@ const router = createBrowserRouter([
       {
         path: "analytics",
         element: <Analytics />
+      },
+      {
+        path: "AddLatestNews",
+        element: <AddLatestNews />
       },
       {
         path: "loan-request",
