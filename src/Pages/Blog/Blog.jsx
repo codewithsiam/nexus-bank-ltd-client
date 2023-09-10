@@ -16,26 +16,7 @@ const BlogPage = () => {
             setBlogNews(data)
         })
     },[])
-    // const blogNews = [
-    //     {
-    //         date: 'Dec 22, 2023',
-    //         image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-01.jpg',
-    //         headline: ' Meet AutoManage, the best AI management tools',
-    //         title: ' Lorem Ipsum is simply dummy text of the printing'
-    //     },
-    //     {
-    //         date: 'OCT 02, 2019',
-    //         image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-02.jpg',
-    //         headline: ' Meet AutoManage, the best AI management tools',
-    //         title: ' Lorem Ipsum is simply dummy text of the printing'
-    //     },
-    //     {
-    //         date: 'JAN 02, 2023',
-    //         image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-03.jpg',
-    //         headline: ' Meet AutoManage, the best AI management tools',
-    //         title: ' Lorem Ipsum is simply dummy text of the printing'
-    //     }
-    // ]
+
 
 
     return (
