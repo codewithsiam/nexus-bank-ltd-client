@@ -43,7 +43,7 @@ const PasswordChange = () => {
       setErrorMessage("New passwords do not match.");
       return;
     }
-    if (newPassword.length > 5) {
+    if (newPassword.length < 6) {
       setErrorMessage("Password must be minimum 6 character long");
       return;
     }

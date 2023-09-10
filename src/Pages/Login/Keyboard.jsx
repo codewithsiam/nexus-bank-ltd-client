@@ -8,7 +8,7 @@ import axios from "axios";
 
 const Keyboard = () => {
   const { setUser, user } = useContext(AuthContext);
-  // console.log(user);
+  console.log(user);
   
   const {
     register,
@@ -23,7 +23,7 @@ const Keyboard = () => {
 
   const [inputValue, setInputValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [activeInput, setActiveInput] = useState("emailInput");
+  const [activeInput, setActiveInput] = useState("usernameInput");
   const [capsLockEnabled, setCapsLockEnabled] = useState(false);
 
   const onSubmit = (data) => {
@@ -54,26 +54,33 @@ const Keyboard = () => {
         setError("An error occurred during login.");
       });
   };
-console.log(user)
-  const handleKeyPress = (key) => {
-    if (key === "Backspace") {
+
+const handleKeyPress = (key) => {
+  switch (key) {
+    case "Backspace":
       handleBackspace();
-    } else if (key === "Space") {
+      break;
+    case "Space":
       handleSpace();
-    } else if (key === "Clear") {
+      break;
+    case "Clear":
       setInputValue("");
       setPasswordValue("");
-    } else if (key === "Password") {
+      break;
+    case "Password":
       toggleActiveInput();
-    } else if (key === "CapsLock") {
+      break;
+    case "CapsLock":
       toggleCapsLock();
-    } else {
+      break;
+    default:
       handleRegularKey(key);
-    }
-  };
+      break;
+  }
+};
 
   const handleRegularKey = (key) => {
-    if (activeInput === "emailInput") {
+    if (activeInput === "usernameInput") {
       setInputValue(inputValue + (capsLockEnabled ? key.toUpperCase() : key));
     } else {
       setPasswordValue(
@@ -83,7 +90,7 @@ console.log(user)
   };
 
   const handleSpace = () => {
-    if (activeInput === "emailInput") {
+    if (activeInput === "usernameInput") {
       setInputValue(inputValue + " ");
     } else {
       setPasswordValue(passwordValue + " ");
@@ -91,7 +98,7 @@ console.log(user)
   };
 
   const handleBackspace = () => {
-    if (activeInput === "emailInput") {
+    if (activeInput === "usernameInput") {
       setInputValue(inputValue.slice(0, -1));
     } else {
       setPasswordValue(passwordValue.slice(0, -1));
@@ -100,7 +107,7 @@ console.log(user)
 
   const toggleActiveInput = () => {
     setActiveInput(
-      activeInput === "emailInput" ? "passwordInput" : "emailInput"
+      activeInput === "usernameInput" ? "passwordInput" : "usernameInput"
     );
   };
 
@@ -125,7 +132,7 @@ console.log(user)
             {...register("username", { required: true })}
             className="border"
             type="text"
-            id="emailInput"
+            id="usernameInput"
             placeholder="Type your username"
           />
           {errors.email?.type === "required" && (
@@ -136,6 +143,7 @@ console.log(user)
             {...register("password", { required: true })}
             className="border ml-2"
             type="text"
+            // readOnly
             placeholder="Type your password"
             id="passwordInput"
           />
