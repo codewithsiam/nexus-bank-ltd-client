@@ -107,6 +107,9 @@ const Keyboard = () => {
     );
   };
 
+  const toggleCapsLock = () => {
+    setCapsLockEnabled(!capsLockEnabled);
+  };
 
   const handleToggleKeyboard = () => {
     setPasswordValue(passwordValue);
@@ -207,9 +210,13 @@ const Keyboard = () => {
                     {key}
                   </button>
                 ))}
-            </div>
-        </div>
-    );
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Keyboard;
