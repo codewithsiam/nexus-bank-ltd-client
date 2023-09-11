@@ -111,38 +111,41 @@ const EditProfile = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`${baseUrl}/update-Profile/${user?.email}`, {
+        fetch(`${baseUrl}/update-Profile/${user?._id}`, {
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(updatedProfileInfo),
         })
-          .then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-            if (data.matchedCount>0) {
-              Swal.fire({
-                title: "success",
-                text: "Profile Information Updated Successfully",
-                showDenyButton: true,
-                showCancelButton: true,
-                icon: "success",
-                confirmButtonText: "Cool",
-              });
-              // navigate("/");
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.message === 'Profile updated successfully') {
+            let updatedUser = data.user;
+          if (updatedUser.success===true) {
+            Swal.fire({
+              title: "success",
+              text: "Profile Information Updated Successfully",
+              showDenyButton: true,
+              showCancelButton: true,
+              icon: "success",
+              confirmButtonText: "Cool",
+            });
+            // navigate("/");
+          }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     });
   };
 
   return (
     <div className="my-16">
-      <h1 className="mb-12 text-center text-2xl font-extrabold leading-none tracking-tight md:text-3xl lg:text-4xl ">
+      <h1 className="text-primary mb-12 text-center text-2xl font-extrabold leading-none tracking-tight md:text-3xl lg:text-4xl ">
         Update your Profile page {" "}
       </h1>
       <div className=" md:flex gap-10  ">
@@ -195,6 +198,7 @@ const EditProfile = () => {
                     Profile Name
                   </label>
                 <TextField 
+                required
                 defaultValue={user?.displayName}
                 className="w-full" id="outlined-basic" variant="standard" />
               </div>

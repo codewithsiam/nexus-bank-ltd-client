@@ -1,5 +1,6 @@
 
-import {BiLogoGmail} from "react-icons/bi"
+import {BiLogoGmail, BiUserCircle} from "react-icons/bi"
+import {BsPersonVcardFill} from "react-icons/bs"
 import {ImLocation} from "react-icons/im"
 import {PiGenderNeuterBold} from "react-icons/pi"
 import { FaUser, FaMobileAlt, FaBirthdayCake, FaYandexInternational } from "react-icons/fa";
@@ -12,30 +13,30 @@ const AboutTab=({user})=> {
         <h2 className="text-2xl text-primary font-bold mb-5">General Information</h2>
         <div className="">
           <h1 className="text-xl font-semibold flex gap-1 items-center">
-            <PiGenderNeuterBold className="text-[rgb(1,87,155)] text-3xl"></PiGenderNeuterBold> Gender
+            <BiUserCircle className="text-primary text-3xl"></BiUserCircle> User Name
+          </h1>
+          <p className="text-lg text-gray-500 mt-1">{user?.username}</p>
+        </div>
+        <div className="">
+          <h1 className="text-xl font-semibold flex gap-1 items-center">
+            <PiGenderNeuterBold className="text-primary text-3xl"></PiGenderNeuterBold> Gender
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.gender?gender:"Please update your profile"}</p>
         </div>
         <div className="my-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <FaBirthdayCake className="text-[rgb(1,87,155)] text-2xl"></FaBirthdayCake> Birthday
+            <FaBirthdayCake className="text-primary text-2xl"></FaBirthdayCake> Birthday
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.bob?bob:"Please update your profile"}</p>
         </div>
         <div className="my-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <FaYandexInternational className="text-[rgb(1,87,155)] text-2xl"></FaYandexInternational> Nationality
+            <FaYandexInternational className="text-primary text-2xl"></FaYandexInternational> Nationality
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.nationality?nationality:"Please update your profile"}</p>
         </div>
-        {/* <div className="my-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <img className="w-[39px] -ml-[6px]" src="https://png.pngtree.com/png-vector/20190721/ourmid/pngtree-marriage-ring-icon-for-your-project-png-image_1556214.jpg" alt="" /> Marital Status
-          </h1>
-          <p className="text-lg text-gray-500 mt-1">{marital_status}</p>
-        </div> */}
         <div className="">
-        <h1 className="text-xl font-semibold flex gap-2 items-center"><FaUser className="text-[rgb(1,87,155)] text-2xl"></FaUser> About Me</h1>
+        <h1 className="text-xl font-semibold flex gap-2 items-center"><FaUser className="text-primary text-2xl"></FaUser> About Me</h1>
         <p className="text-lg text-gray-500 mt-2">{user?.bio? bio:"Please update your profile"}</p>
       </div>
 
@@ -44,27 +45,33 @@ const AboutTab=({user})=> {
         <h2 className="text-2xl text-primary font-bold mb-5">Contacts</h2>
         <div className="mb-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <BiLogoGmail className="text-[rgb(1,87,155)] text-2xl"></BiLogoGmail> Email
+            <BiLogoGmail className="text-primary text-2xl"></BiLogoGmail> Email
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.email}</p>
+          <p className="text-lg text-gray-500 mt-1">{user.email?user.email:"Please update your profile"}</p>
         </div>
         <div className="mb-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <FaMobileAlt className="text-[rgb(1,87,155)] text-2xl"></FaMobileAlt> Telephone
+            <FaMobileAlt className="text-primary text-2xl"></FaMobileAlt> Telephone
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.number?number:"Please update your profile"}</p>
         </div>
         <div className="mb-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <ImLocation className="text-[rgb(1,87,155)] text-2xl"></ImLocation>Present Address
+            <ImLocation className="text-primary text-2xl"></ImLocation>Present Address
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.present_address?present_address:"Please update your profile"}</p>
         </div>
         <div className="mb-4">
           <h1 className="text-xl font-semibold flex gap-2 items-center">
-            <ImLocation className="text-[rgb(1,87,155)] text-2xl"></ImLocation>Permanent Address
+            <ImLocation className="text-primary text-2xl"></ImLocation>Permanent Address
           </h1>
           <p className="text-lg text-gray-500 mt-1">{user?.permanent_address?permanent_address:"Please update your profile"}</p>
+        </div>
+        <div className="mb-4">
+          <h1 className="text-xl font-semibold flex gap-2 items-center">
+            <BsPersonVcardFill className="text-primary text-2xl"></BsPersonVcardFill>Nid Card Number
+          </h1>
+          <p className="text-lg text-gray-500 mt-1">{user?.nid_card_number}</p>
         </div>
       </div>
     </div>
