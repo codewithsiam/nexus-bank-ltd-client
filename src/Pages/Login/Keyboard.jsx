@@ -27,12 +27,9 @@ const Keyboard = () => {
   const [capsLockEnabled, setCapsLockEnabled] = useState(false);
 
   const onSubmit = (data) => {
-    const username = data.username;
-    const password = data.password;
-
     // verify login and send data to the database
     axios
-      .post(`${baseUrl}/login?username=${username}&password=${password}`)
+      .post(`${baseUrl}/login`, data)
       .then((res) => {
         if (res.data.success === true) {
           const { token, result } = res.data;
