@@ -15,7 +15,7 @@ const BlogNews = ({ news }) => {
                         <img
                             src={img}
                             alt="image"
-                            className="w-full h-80"
+                            className="w-full h-52"
                         />
                     </div>
                     <div>
