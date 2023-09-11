@@ -3,6 +3,7 @@ import { MdAirlineStops } from 'react-icons/md';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 import AnalyticsCardReach from '../../../../components/AnalyticsCardTitle/AnalyticsCardReach';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import TotalUsers from './TotalTransferAmount';
 
 
 const data = [
@@ -60,39 +61,14 @@ const data = [
 const AnalyticsCard = () => {
     return (
         <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5 mb-20">
-            <div className='bg-[#FFFFFF] shadow-sm border rounded-xl' style={{ height: '250px' }}>
-                <div className="p-5">
-                    <div className='flex items-center justify-between'>
-                        <AnalyticsCardTitle cardTitle='Conversions' cardDays='30 Days' />
-                    </div>
-                    
-                    <div className='flex items-center justify-between'>
-                        <AnalyticsCardReach number='1.1M' targetNumber='7%' subTitle='below target'/>
-                    </div>
-                </div>
-
-                {/* chart */}
-                <ResponsiveContainer height="50%">
-                    <AreaChart
-                        height={200}
-                        data={data}
-                        margin={{
-                            top: 10,
-                            left: 0,
-                            bottom: 0,
-                        }}
-                    >
-                        <Tooltip />
-                        <Area type="monotone" className='border-8' dataKey="uv" strokeWidth={5} stroke="#4F46E3" fill="#CED2FA" />
-                    </AreaChart>
-                </ResponsiveContainer>
-            </div>
+            
+            <TotalUsers/>
 
             {/* Impression */}
             <div className='bg-[#FFFFFF] shadow-sm border rounded-xl' style={{ height: '250px' }}>
                 <div className="p-5">
                     <div className='flex items-center justify-between'>
-                        <AnalyticsCardTitle cardTitle='Impressions' cardDays='30 Days' />
+                        <AnalyticsCardTitle cardTitle='Total Transcation' cardDays='30 Days' />
                     </div>
                     
                     <div className='flex items-center justify-between'>
