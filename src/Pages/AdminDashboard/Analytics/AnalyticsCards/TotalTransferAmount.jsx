@@ -24,11 +24,11 @@ const TotalUsers = () => {
         <div className='bg-[#FFFFFF] shadow-sm border rounded-xl' style={{ height: '250px' }}>
             <div className="p-5">
                 <div className='flex items-center justify-between'>
-                    <AnalyticsCardTitle cardTitle='Total Transfer Amount' cardDays='30 Days' />
+                    <AnalyticsCardTitle cardTitle='Total Transfer Amount'/>
                 </div>
 
                 <div className='flex items-center justify-between'>
-                    <AnalyticsCardReach number={`${transactions} BDT`} targetNumber='7%' subTitle='below target' />
+                    <AnalyticsCardReach number={`${transactions} BDT`} />
                 </div>
             </div>
 
