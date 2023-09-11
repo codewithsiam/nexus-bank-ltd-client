@@ -51,6 +51,8 @@ import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTra
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import Lone from "../Pages/Lone/Lone";
+import StudentLone from "../Pages/Lone/LoneDetails/StudentLone";
 
 
 
@@ -69,8 +71,16 @@ const router = createBrowserRouter([
         element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "aboutDetails",
+        path: "about-details",
         element: <AboutDetails></AboutDetails>,
+      },
+      {
+        path: "retail-lone",
+        element: <Lone></Lone>,
+      },
+      {
+        path: "student-lone",
+        element: <StudentLone></StudentLone>,
       },
       {
         path: "registration",

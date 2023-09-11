@@ -22,11 +22,9 @@ const Keyboard = () => {
     const [activeInput, setActiveInput] = useState('emailInput');
     const [capsLockEnabled, setCapsLockEnabled] = useState(false);
 
-
     const onSubmit = (data) => {
         const username = data.username;
         const password = data.password;
-
 
         // login
         const onSubmit = (data) => {
@@ -45,27 +43,27 @@ const Keyboard = () => {
         }
         // verify login and send data to the database
         axios
-            .post(`${baseUrl}/login?username=${username}&password=${password}`)
-            .then((res) => {
-                if (res.data.success === true) {
-                    const { token, result } = res.data;
-                    console.log("Login Successful!", res.data);
-                    console.log("User Data:", result);
-                    console.log("Token:", token);
+        .post(`${baseUrl}/login?username=${username}&password=${password}`)
+        .then((res) => {
+            if (res.data.success === true) {
+                const { token, result } = res.data;
+                console.log("Login Successful!", res.data);
+                console.log("User Data:", result);
+                console.log("Token:", token);
 
-                    // login(token);
-                    localStorage.setItem("authToken", token);
-                    setUser(result);
-                    // navigate(from);
-                } else {
-                    console.error("Login Failed:", res.data.message);
-                    setError(res.data.message);
-                }
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                setError("An error occurred during login.");
-            });
+                // login(token);
+                localStorage.setItem("authToken", token);
+                setUser(result);
+                // navigate(from);
+            } else {
+                console.error("Login Failed:", res.data.message);
+                setError(res.data.message);
+            }
+        })
+        .catch((error) => {
+            console.error("Error:", error);
+            setError("An error occurred during login.");
+        });
     };
     console.log(user)
 
