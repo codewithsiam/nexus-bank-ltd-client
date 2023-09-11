@@ -29,7 +29,6 @@ import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 
-
 const drawerWidth = 300;
 
 // Admin menu
@@ -66,7 +65,7 @@ const adminMenu = [
   },
   {
     name: "Loan Request",
-    icon: <AccountBalanceWalletIcon  />,
+    icon: <AccountBalanceWalletIcon />,
     route: "loan-request",
   },
 ];
@@ -142,8 +141,8 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const { user } = React.useContext(AuthContext);
-  const { designation } = useDesignation();
+  const { user, isAdmin, logout } = React.useContext(AuthContext);
+
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -181,13 +180,21 @@ export default function MiniDrawer() {
                 <h3 className="text-xs">
                   Welcome{" "}
                   <span className="font-semibold text-[18px]">
-                    {user?.displayName}
+                    {user?.firstName} {user?.lastName}
                   </span>
                 </h3>
                 {/* todo  */}
-                {designation ? <p> {designation}</p> : <p>Admin</p>}
+                {user ? (
+                  <p className="text-sm"> {user.designation}</p>
+                ) : (
+                  <p className="text-sm">Admin</p>
+                )}
               </div>
-              <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+              <img
+                className="w-10 h-10 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
             </div>
           </Toolbar>
         </AppBar>
@@ -197,49 +204,86 @@ export default function MiniDrawer() {
           <DrawerHeader className="text-xl font-semibold">
             <h2>Nexus Bank Ltd</h2>
             <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              {theme.direction === "rtl" ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
             </IconButton>
           </DrawerHeader>
           <Divider />
           {open === true && (
             <div className="flex flex-col items-center justify-center my-6 ">
-              <img className="w-20 h-20 rounded-full" src={user?.photoURL} alt="" />
+              <img
+                className="w-20 h-20 rounded-full"
+                src={user?.photoURL}
+                alt=""
+              />
               <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
               <p>{user?.email}</p>
             </div>
           )}
           <List>
-            {adminMenu.map((menuItem, index) => (
-              <ListItem
-                key={menuItem.name}
-                disablePadding
-                sx={{ display: "block" }}
-              >
-                <Link to={menuItem.route}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
+            {isAdmin &&
+              adminMenu.map((menuItem, index) => (
+                <ListItem
+                  key={menuItem.name}
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <Link to={menuItem.route}>
+                    <ListItemButton
                       sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
                       }}
                     >
-                      {menuItem.icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={menuItem.name}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                        {menuItem.icon}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={menuItem.name}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              ))}
+              <ListItem 
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                      {/* icon  */}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"Log Out"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </div>
+                </ListItem>
           </List>
         </Drawer>
       </ThemeProvider>

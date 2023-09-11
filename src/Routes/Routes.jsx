@@ -10,8 +10,8 @@ import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
 import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
 import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
-import Dashboard from '../Layouts/Dashboard'
-import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
+import Dashboard from "../Layouts/Dashboard";
+import AdminDashboard from "../Pages/AdminDashboard/Dashboard/AdminDashboard";
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
@@ -50,6 +50,10 @@ import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
+import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
+import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
+import AdminSecureRoute from "./AdminSecureRoute";
+import UserSecureRoute from "./UserSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 
 
@@ -65,8 +69,12 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/chat',
-        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
+        path: "/chat",
+        element: (
+          <PrivetRout>
+            <ChatUs></ChatUs>
+          </PrivetRout>
+        ),
       },
       {
         path: "aboutDetails",
@@ -101,79 +109,155 @@ const router = createBrowserRouter([
       // ..........User dashboard routes............
       {
         path: "account-overview",
-        element: <AccountOverview />,
+        element: (
+          <UserSecureRoute>
+            <AccountOverview />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "my-profile",
-        element: <MyProfile />,
+        element: (
+          <UserSecureRoute>
+            <MyProfile />,
+          </UserSecureRoute>
+        ),
       },
       {
         path: "edit-profile",
-        element: <EditProfile />
+        element: (
+          <UserSecureRoute>
+            <EditProfile />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "change-password",
-        element: <PasswordChange />
-      },    
+        element: (
+          <UserSecureRoute>
+            <PasswordChange />
+          </UserSecureRoute>
+        ),
+      },
       {
         path: "saving-account",
-        element: <OpenAccount />
+        element: (
+          <UserSecureRoute>
+            <OpenAccount />
+          </UserSecureRoute>
+        ),
       },
       {
-        path:"current-account",
-        element:<CurrentAccount/>
+        path: "current-account",
+        element: (
+          <UserSecureRoute>
+            <CurrentAccount />
+          </UserSecureRoute>
+        ),
       },
       {
-        path:"student-account",
-        element:<StudentAccount/>
+        path: "student-account",
+        element: (
+          <UserSecureRoute>
+            <StudentAccount />
+          </UserSecureRoute>
+        ),
       },
       {
-        path:"deposit-account",
-        element:<DepositAccount/>
+        path: "deposit-account",
+        element: (
+          <UserSecureRoute>
+            <DepositAccount />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "apply-loan",
-        element: <ApplyLoan />,
+        element: (
+          <UserSecureRoute>
+            <ApplyLoan />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "Fund-transfer",
-        element: <FundTransfer/>,
+        element: (
+          <UserSecureRoute>
+            <FundTransfer />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "fund-transfer-pin-verification",
-        element: <FundTransferPin/>,
+        element: (
+          <UserSecureRoute>
+            <FundTransferPin />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "topup-beneficiary-list",
-        element: <TopUpBeneficiaryList/>,
+        element: (
+          <UserSecureRoute>
+            <TopUpBeneficiaryList />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "card-beneficiary-list",
-        element: <CardBeneficiaryList/>,
+        element: (
+          <UserSecureRoute>
+            <CardBeneficiaryList />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "FundTransferBeneficiaryList",
-        element: <AccountBeneficiaryList/>,
+        element: (
+          <UserSecureRoute>
+            <AccountBeneficiaryList />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "MobilTopUpHistory",
-        element: <MobilTopUpHistory/>,
+        element: (
+          <UserSecureRoute>
+            <MobilTopUpHistory />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "FundTransferBeneficiaryList/AddBeneficiary",
-        element: <AddBeneficiary/>,
+        element: (
+          <UserSecureRoute>
+            <AddBeneficiary />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "add-money",
-        element: <AddMoney />,
+        element: (
+          <UserSecureRoute>
+            <AddMoney />,
+          </UserSecureRoute>
+        ),
       },
       {
         path: "transfer-money",
-        element: <TransferMoney />,
+        element: (
+          <UserSecureRoute>
+            <TransferMoney />
+          </UserSecureRoute>
+        ),
       },
       {
-        path: 'saving-account',
-        element: <SavingAccountForm />
+        path: "saving-account",
+        element: (
+          <UserSecureRoute>
+            <SavingAccountForm />
+          </UserSecureRoute>
+        ),
       },
 
       // {
@@ -182,71 +266,128 @@ const router = createBrowserRouter([
       // },
       {
         path: "transaction-history",
-        element: <TransactionHistory />,
+        element: (
+          <UserSecureRoute>
+            <TransactionHistory />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "e-statement",
-        element: <EStatement />,
+        element: (
+          <UserSecureRoute>
+            <EStatement />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "bkash-fund-transfer",
-        element: <BkashFundTransfer />,
+        element: (
+          <UserSecureRoute>
+            <BkashFundTransfer />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "verify-pin",
-        element: <PaymentPinVerification />,
+        element: (
+          <UserSecureRoute>
+            <PaymentPinVerification />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "payment-successfull",
-        element: <PaymentSuccessful />,
+        element: (
+          <UserSecureRoute>
+            <PaymentSuccessful />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "credit-card-apply",
-        element: <CreditCardApply />,
+        element: (
+          <UserSecureRoute>
+            <CreditCardApply />
+          </UserSecureRoute>
+        ),
       },
-
-
       {
         path: "my-accounts",
-        element: <MyAccounts />,
+        element: (
+          <UserSecureRoute>
+            <MyAccounts />
+          </UserSecureRoute>
+        ),
       },
     ],
   },
-  // admin dashboard 
+  // admin dashboard
   {
     path: "/admin",
-    element: <AdminDashboardLayout />,
+    element: (
+      <AdminSecureRoute>
+        <AdminDashboardLayout />
+      </AdminSecureRoute>
+    ),
     children: [
       // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
-        element: <AdminDashboard />
+        element: (
+          <AdminSecureRoute>
+            <AdminDashboard />
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "employees",
-        element: <Employees />
+        element: (
+          <AdminSecureRoute>
+            <Employees />
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "users",
-        element: <Users />,
-        loader:() => fetch(`${baseUrl}/users`)
+        element: (
+          <AdminSecureRoute>
+            <Users />
+          </AdminSecureRoute>
+        ),
+        loader: () => fetch(`${baseUrl}/users`),
       },
       {
-        path:'users/:email',
-        element:<UserProfile></UserProfile>
-
+        path: "users/:email",
+        element: (
+          <AdminSecureRoute>
+            <UserProfile />
+          </AdminSecureRoute>
+        ),
       },
       {
-        path:"accounts",
-        element:<Accounts/>
+        path: "accounts",
+        element: (
+          <AdminSecureRoute>
+            <Accounts />,
+          </AdminSecureRoute>
+        ),
       },
       {
-        path:"account-request",
-        element:<AccountRequest/>
+        path: "account-request",
+        element: (
+          <AdminSecureRoute>
+            <AccountRequest />,
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "analytics",
-        element: <Analytics />
+        element: (
+          <AdminSecureRoute>
+            <Analytics />,
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "AddLatestNews",
@@ -254,14 +395,30 @@ const router = createBrowserRouter([
       },
       {
         path: "loan-request",
-        element: <LoanRequest />,
-        loader:() => fetch(`${baseUrl}/loans`)
+        element: (
+          <AdminSecureRoute>
+            <LoanRequest />,
+          </AdminSecureRoute>
+        ),
+        loader: () => fetch(`${baseUrl}/loans`),
       },
       {
         path: "feedback/:id",
-        element: <Feedback/>
-      }
+        element: (
+          <AdminSecureRoute>
+            <Feedback />,
+          </AdminSecureRoute>
+        ),
+      },
     ],
+  },
+  {
+    path: "/payment-status/:success",
+    element: <PaymentStatusPage />,
+  },
+  {
+    path: "admin-login",
+    element: <AdminLogin />,
   },
 ]);
 

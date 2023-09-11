@@ -269,7 +269,8 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const { designation } = useDesignation();
+  
+  
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -297,7 +298,7 @@ export default function MiniDrawer() {
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
                 <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.username}</span></h3>
-                {designation ? <p> {designation}</p> : <p>Regular User</p>}
+                 <p>Regular User</p>
               </div>
               <img
                 className="w-10 h-10 rounded-full"
