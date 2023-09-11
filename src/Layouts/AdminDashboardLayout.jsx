@@ -27,6 +27,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
+import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 
 const drawerWidth = 300;
 
@@ -46,6 +47,11 @@ const adminMenu = [
     name: "Accounts",
     icon: <AccountTreeIcon />,
     route: "accounts",
+  },
+  {
+    name: "AddLatestNews",
+    icon: <MdCreateNewFolder/>,
+    route: "AddLatestNews",
   },
   {
     name: "Account Requests",
