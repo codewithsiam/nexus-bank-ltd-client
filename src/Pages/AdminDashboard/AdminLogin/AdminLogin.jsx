@@ -3,12 +3,14 @@ import { FaUser, FaLock } from "react-icons/fa";
 import { baseUrl } from "../../../config/server";
 import axios from "axios";
 import { AuthContext } from "../../../providers/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
-  const { setUser } = useContext(AuthContext);
+  const { setUser, setAdmin } = useContext(AuthContext);
   const [error, setError] = useState("");
+  let from =  "/admin/analytics";
   let navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -30,16 +32,19 @@ const AdminLogin = () => {
     axios
       .post(`${baseUrl}/login`, formData)
       .then((res) => {
-        if (res.data.success === true) {
-          const { token, result } = res.data;
+        console.log(res.data);
+        if (res.data.success) {
+          const { token, result, isAdmin } = res.data;
           console.log("Login Successful!", res.data);
-          console.log("User Data:", result);
-          console.log("Token:", token);
+          // console.log("User Data:", result);
+          // console.log("Token:", token);
+          // console.log("Admin:", isAdmin);
 
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          navigate("/admin/analytics");
+          // setAdmin(isAdmin);
+          navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);

@@ -7,26 +7,31 @@ import { baseUrl } from "../../config/server";
 import axios from "axios";
 
 const Keyboard = () => {
-  const { setUser, user } = useContext(AuthContext);
-  console.log(user);
-  
+
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
   } = useForm();
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
+  const [manualKeyboard, setManualKeyboard] = useState(false);
+  const { setUser, user } = useContext(AuthContext);
+  // console.log(user);
 
   const [inputValue, setInputValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const [activeInput, setActiveInput] = useState("usernameInput");
-  const [capsLockEnabled, setCapsLockEnabled] = useState(false);
+  const [activeInput, setActiveInput] = useState("emailInput");
+  const [capsLockEnabled, setCapsLockEnabled] = useState(true);
+  const [toggleKeyboardEnabled, setToggleKeyboardEnabled] = useState(true);
 
   const onSubmit = (data) => {
+    // const username = data.username;
+    // const password = data.password;
+
     // verify login and send data to the database
     axios
       .post(`${baseUrl}/login`, data)
@@ -40,7 +45,7 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          navigate(from);
+          // navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);
@@ -51,33 +56,27 @@ const Keyboard = () => {
         setError("An error occurred during login.");
       });
   };
+  console.log(user);
 
-const handleKeyPress = (key) => {
-  switch (key) {
-    case "Backspace":
+  const handleKeyPress = (key) => {
+    if (key === "Backspace") {
       handleBackspace();
-      break;
-    case "Space":
+    } else if (key === "Space") {
       handleSpace();
-      break;
-    case "Clear":
+    } else if (key === "Clear") {
       setInputValue("");
       setPasswordValue("");
-      break;
-    case "Password":
+    } else if (key === "Password") {
       toggleActiveInput();
-      break;
-    case "CapsLock":
+    } else if (key === "CapsLock") {
       toggleCapsLock();
-      break;
-    default:
+    } else {
       handleRegularKey(key);
-      break;
-  }
-};
+    }
+  };
 
   const handleRegularKey = (key) => {
-    if (activeInput === "usernameInput") {
+    if (activeInput === "emailInput") {
       setInputValue(inputValue + (capsLockEnabled ? key.toUpperCase() : key));
     } else {
       setPasswordValue(
@@ -87,7 +86,7 @@ const handleKeyPress = (key) => {
   };
 
   const handleSpace = () => {
-    if (activeInput === "usernameInput") {
+    if (activeInput === "emailInput") {
       setInputValue(inputValue + " ");
     } else {
       setPasswordValue(passwordValue + " ");
@@ -95,7 +94,7 @@ const handleKeyPress = (key) => {
   };
 
   const handleBackspace = () => {
-    if (activeInput === "usernameInput") {
+    if (activeInput === "emailInput") {
       setInputValue(inputValue.slice(0, -1));
     } else {
       setPasswordValue(passwordValue.slice(0, -1));
@@ -104,7 +103,7 @@ const handleKeyPress = (key) => {
 
   const toggleActiveInput = () => {
     setActiveInput(
-      activeInput === "usernameInput" ? "passwordInput" : "usernameInput"
+      activeInput === "emailInput" ? "passwordInput" : "emailInput"
     );
   };
 
@@ -112,11 +111,16 @@ const handleKeyPress = (key) => {
     setCapsLockEnabled(!capsLockEnabled);
   };
 
+  const handleToggleKeyboard = () => {
+    setPasswordValue(passwordValue);
+    setToggleKeyboardEnabled(!toggleKeyboardEnabled);
+  }
+
   const keyboardLayout = [
-    "1234$567890",
+    "1234567890",
     "qwertyuiop",
-    "@asdfghjkl",
-    "zxcvbnm.",
+    "asdfghjkl",
+    "zxcvbnm",
     ["CapsLock", "Space", "Clear", "Backspace"],
     ["Password"],
   ];
@@ -129,21 +133,38 @@ const handleKeyPress = (key) => {
             {...register("username", { required: true })}
             className="border"
             type="text"
-            id="usernameInput"
+            id="emailInput"
             placeholder="Type your username"
+            // value={inputValue}
+            onChange={() => {}}
+            onClick={() => setActiveInput("emailInput")}
           />
           {errors.email?.type === "required" && (
             <p className="text-red-400 mt-2">Email is required</p>
           )}
-
-          <input
-            {...register("password", { required: true })}
-            className="border ml-2"
-            type="text"
-            // readOnly
-            placeholder="Type your password"
-            id="passwordInput"
-          />
+          {toggleKeyboardEnabled ? (
+            <input
+              {...register("password", { required: true })}
+              className="border ml-2"
+              type="text"
+              placeholder="Type your password"
+              // value={passwordValue}
+              id="passwordInput"
+              onChange={() => {}}
+              onClick={() => setActiveInput("passwordInput")}
+            />
+          ) : (
+            <input
+              {...register("password", { required: true })}
+              className="border ml-2"
+              type="text"
+              placeholder="Type your password"
+              value={passwordValue}
+              id="passwordInput"
+              onChange={() => {}}
+              onClick={() => setActiveInput("passwordInput")}
+            />
+          )}
           {errors.password?.type === "required" && (
             <p className="text-red-400 mt-2">Password is required</p>
           )}
@@ -153,7 +174,12 @@ const handleKeyPress = (key) => {
         </div>
         <p>{error}</p>
       </form>
-
+      <button
+        onClick={() => handleToggleKeyboard() }
+        className="btn btn-info"
+      >
+        Manual Keyboard for password
+      </button>
       <div className="keyboard">
         {keyboardLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="keyboard-row">

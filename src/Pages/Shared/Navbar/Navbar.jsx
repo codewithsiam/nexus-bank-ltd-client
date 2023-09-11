@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 
 const Navbar = () => {
-  const { user, logout } = useContext(AuthContext);
+  const { user, isAdmin, logout } = useContext(AuthContext);
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
@@ -42,7 +42,7 @@ const Navbar = () => {
           </div>
           <div className=" lg:w-[400px] xl:w-[500px] 2xl:w-[600px] bg-[#F4F5FA] flex justify-center items-center">
             {
-              user ?
+              user & !isAdmin ?
                 <button onClick={handleLogout} className="px-8 py-3 text-white font-semibold rounded-full flex gap-2 items-center bg-red-500"> <AiOutlineLogout size={24}/> Logout</button>
                 :
                 <Link to='/login'>
