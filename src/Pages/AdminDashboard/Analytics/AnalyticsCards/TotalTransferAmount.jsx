@@ -33,7 +33,7 @@ const TotalUsers = () => {
             </div>
 
             {/* chart */}
-            <ResponsiveContainer height="50%">
+            <ResponsiveContainer height="45%">
                 <AreaChart
                     height={200}
                     data={data}

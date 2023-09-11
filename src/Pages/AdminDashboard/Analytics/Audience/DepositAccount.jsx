@@ -3,19 +3,19 @@ import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/Analyt
 
 const DepositAccount = () => {
 
-    const [currentAccounts, setCurrentAccounts] = useState([]);
+    const [depositAccounts, setDepositAccounts] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/deposit-user-account')
             .then(res => res.json())
             .then(data => {
-                setCurrentAccounts(data)
+                setDepositAccounts(data)
             })
     }, [])
 
     return (
         <div className='bg-white p-5 rounded-xl'>
             <div className='flex items-center justify-between'>
-                <AnalyticsCardTitle cardTitle={`Total Deposit Accounts ${currentAccounts.length}`} />
+                <AnalyticsCardTitle cardTitle={`Total Deposit Accounts`} total={depositAccounts.length} />
             </div>
         </div>
     );

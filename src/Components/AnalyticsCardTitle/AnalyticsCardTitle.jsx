@@ -1,11 +1,11 @@
 import React from 'react';
 
-const AnalyticsCardTitle = ({cardTitle}) => {
+const AnalyticsCardTitle = ({cardTitle, total}) => {
     return (
-        <>
-            <h4 className="text-base font-bold">{cardTitle}</h4>
-            {/* <p className="text-sm bg-[#EBEBEB] px-3 rounded-full cursor-pointer">{cardDays}</p> */}
-        </>
+        <div className=''>
+            <h4 className="text-base font-bold block">{cardTitle}</h4>
+            <p className="text-4xl font-bold text-center mt-3 text-[#489795]">{total}</p>
+        </div>
     );
 };
 

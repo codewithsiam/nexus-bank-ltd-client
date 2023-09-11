@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
 
-const CurrentAccount = () => {
+const StudentAccount = () => {
 
-    const [currentAccounts, setCurrentAccounts] = useState([]);
+    const [studentsAccounts, setStudentsAccounts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/current-user-account')
+        fetch('http://localhost:5000/student-user-account')
             .then(res => res.json())
             .then(data => {
-                setCurrentAccounts(data)
+                setStudentsAccounts(data)
             })
     }, [])
 
     return (
         <div className='bg-white p-5 rounded-xl'>
             <div className='flex items-center justify-between'>
-                <AnalyticsCardTitle cardTitle={`Total Current Accounts`} total={currentAccounts.length} />
+                <AnalyticsCardTitle cardTitle={`Total Student Accounts`} total={studentsAccounts.length} />
             </div>
         </div>
     );
 };
 
-export default CurrentAccount;
+export default StudentAccount;
