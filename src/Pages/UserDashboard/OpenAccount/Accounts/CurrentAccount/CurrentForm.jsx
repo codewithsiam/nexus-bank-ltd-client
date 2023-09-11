@@ -16,10 +16,9 @@ const CurrentForm = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [nidCardImage, setNidCardImage] = useState(null);
   const [otp, setOtp] = useState(new Array(5).fill(""));
-  const optDigit = otp.reduce((acc, curr) => acc + curr);
+  const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
-  console.log(error)
-  // console.log(optDigit)
+  // console.log(error)
 
   // handle user data change
   const handleUserDataOnChange = (e) => {
@@ -27,6 +26,7 @@ const CurrentForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
+  console.log(userData)
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -42,7 +42,7 @@ const CurrentForm = () => {
   };
 
   const handleOpenAccount = () => {
-    fetch(`${baseUrl}/verify-otp?email=${userData.email}&otp=${optDigit}`, {
+    fetch(`${baseUrl}/verify-otp?email=${userData.email}&otp=${otpDigit}`, {
       method: "Post",
       headers: {
         "content-type": "application/json",
@@ -66,7 +66,7 @@ const CurrentForm = () => {
               nationality: userData.nationality,
               marital_status: userData.marital_status,
               job_title: userData.job_title,
-              nid_image: nidCardImage,
+              nid_card_number: userData.nidCardNumber,
               profile_image: profileImage,
               present_address: userData.present_address,
               profileImage:profileImage,
@@ -334,6 +334,7 @@ const CurrentForm = () => {
           otp={otp}
           setOtp={setOtp}
           error={error}
+          email={userData?.email}
         />
       )}
     </div>
