@@ -3,6 +3,8 @@ import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/Analyt
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import AudienceCardTitle from '../../../../components/AnalyticsCardTitle/AudienceCardTitle';
 import { GoDotFill } from 'react-icons/go';
+import CurrentAccount from './CurrentAccount';
+import DepositAccount from './DepositAccount';
 
 
 
@@ -30,73 +32,13 @@ const languageColors = ['#B794F4', '#805AD5'];
 
 const NewAudience = () => {
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className='bg-white p-5 rounded-xl'>
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5">
+            
+            <CurrentAccount/>
 
-                {/* visitors */}
-                <div className='flex items-center justify-between'>
-                    <AnalyticsCardTitle cardTitle='New Visitors' cardDays='30 Days' />
-                </div>
-
-                <ResponsiveContainer height={300}>
-                    <PieChart>
-                        <Tooltip />
-                        <Pie
-                            data={visitors}
-                            cx={120}
-                            cy={200}
-                            innerRadius={60}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            paddingAngle={5}
-                            dataKey="value"
-                        >
-                            {visitors.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={visitorsColors[index % visitorsColors.length]} />
-                            ))}
-                        </Pie>
-                    </PieChart>
-                </ResponsiveContainer>
-
-                <hr className='mt-7' />
-
-                <div className='flex items-center justify-between py-5'>
-                    <AudienceCardTitle newTitle="New" newNumber="3,231" newPercent="90%" />
-                </div>
-            </div>
-
-            {/* gender */}
-            <div className='bg-white p-5 rounded-xl'>
-                <div className='flex items-center justify-between'>
-                    <AnalyticsCardTitle cardTitle='Gender' cardDays='30 Days' />
-                </div>
-
-                <ResponsiveContainer height={300}>
-                    <PieChart>
-                        <Tooltip />
-                        <Pie
-                            data={gender}
-                            cx={120}
-                            cy={200}
-                            innerRadius={60}
-                            outerRadius={80}
-                            fill="#8884d8"
-                            paddingAngle={5}
-                            dataKey="value"
-                        >
-                            {gender.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={genderColors[index % genderColors.length]} />
-                            ))}
-                        </Pie>
-                    </PieChart>
-                </ResponsiveContainer>
-
-                <hr className='mt-7' />
-
-                <div className='flex items-center justify-between py-5'>
-                    <AudienceCardTitle newTitle="New" newNumber="3,231" newPercent="90%" />
-                </div>
-            </div>
+            {/* deposit account */}
+            <DepositAccount/>
+            
 
             {/* age */}
             <div className='bg-white p-5 rounded-xl'>
