@@ -11,13 +11,14 @@ import { useState } from "react";
 import employeeData from "../../../constant/employees";
 import { baseUrl } from "../../../config/server";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 function createData(name, code, population, size) {
   const density = population / size;
   return { name, code, population, size, density };
 }
 
-const EmployeeTable = ({ employees,setControl,control }) => {
+const EmployeeTable = ({ employees, setControl, control }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -58,11 +59,29 @@ const EmployeeTable = ({ employees,setControl,control }) => {
                 showConfirmButton: false,
                 timer: 1500,
               });
-              setControl(!control)
+              setControl(!control);
             }
           });
       }
     });
+  };
+
+  // handle employee designation
+  const handleEmployeeDesignation = (id, designation) => {
+    axios
+      .patch(`${baseUrl}/designation/${id}/?designation=${designation}`)
+      .then((data) => {
+        if (data.data.modifiedCount > 0) {
+          setControl(!control);
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Make ${designation} successfully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
 
   return (
@@ -82,7 +101,7 @@ const EmployeeTable = ({ employees,setControl,control }) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employees?.map((employee,index) => (
+                {employees?.map((employee, index) => (
                   <TableRow
                     key={employee.id}
                     hover
@@ -105,19 +124,64 @@ const EmployeeTable = ({ employees,setControl,control }) => {
                             </summary>
                             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                               <li>
-                                <button>Make Manager</button>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Manager"
+                                    )
+                                  }
+                                >
+                                  Make Manager
+                                </button>
                               </li>
                               <li>
-                                <button>Make Risk Manager</button>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Risk Manager"
+                                    )
+                                  }
+                                >
+                                  Make Risk Manager
+                                </button>
                               </li>
                               <li>
-                                <button>Make Loan Officer</button>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Loan Officer"
+                                    )
+                                  }
+                                >
+                                  Make Loan Officer
+                                </button>
                               </li>
                               <li>
-                                <button>Make Helpline Representative</button>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Helpline Representative"
+                                    )
+                                  }
+                                >
+                                  Make Helpline Representative
+                                </button>
                               </li>
                               <li>
-                                <button>Make Financial Advisor</button>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Financial Advisor"
+                                    )
+                                  }
+                                >
+                                  Make Financial Advisor
+                                </button>
                               </li>
                             </ul>
                           </details>

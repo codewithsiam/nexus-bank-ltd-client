@@ -49,6 +49,7 @@ import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositA
 import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
+import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests";
 
 const router = createBrowserRouter([
   {
@@ -239,6 +240,10 @@ const router = createBrowserRouter([
       {
         path:"account-request",
         element:<AccountRequest/>
+      },
+      {
+        path:"credit-card-requests",
+        element:<CreditCardRequests/>
       },
       {
         path: "analytics",
