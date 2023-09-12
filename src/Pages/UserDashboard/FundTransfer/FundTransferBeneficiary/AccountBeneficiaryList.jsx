@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { baseUrl } from "../../../../config/server";
 
-const FundTransferBeneficiaryList = () => {
+const AccountBeneficiaryList = () => {
     const [beneficiaryList,setBeneficiaryList] = useState([]);
   const username = "test1";
   useEffect(() => {
@@ -12,14 +12,14 @@ const FundTransferBeneficiaryList = () => {
       .then((err) => console.log(err));
   }, [username]);
   return (
-    <div className="mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200">
+    <div className="mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary">
       <div className="p-4">
-        <h1 className="text-3xl font-bold text-green-600">
+        <h1 className="text-3xl font-bold text-primary">
           Fund Transfer Beneficiary List
         </h1>
         <div className="bg-slate-100 p-2 rounded-lg">
           <p>
-            <Link to="AddBeneficiary" className="text-green-600 ">
+            <Link to="AddBeneficiary" className="text-primary ">
               Click Here
             </Link>{" "}
             To Add Beneficiary Credit Card{" "}
@@ -29,9 +29,9 @@ const FundTransferBeneficiaryList = () => {
           <p className="text-center mt-4">Total number of Beneficiary : {beneficiaryList.length}</p>
           <div className="">
             <div className="overflow-x-auto ">
-              <table className="table table-zebra border border-green-500">
+              <table className="table table-zebra border border-primary">
                 {/* head */}
-                <thead className="bg-green-600 text-white font-bold">
+                <thead className="bg-primary text-white font-bold">
                   <tr>
                     <th>Name</th>
                     <th>Beneficiary</th>
@@ -52,7 +52,7 @@ const FundTransferBeneficiaryList = () => {
                         onClick={() => {
                           handelEdit();
                         }}
-                        className="btn bg-gradient-to-b from-green-500 to-green-700 rounded-md text-white ms-10 mt-4"
+                        className="btn bg-gradient-to-b from-blue-700 to-primary rounded-md text-white ms-10 mt-4"
                       >
                         Edit
                       </button>
@@ -69,4 +69,4 @@ const FundTransferBeneficiaryList = () => {
   );
 };
 
-export default FundTransferBeneficiaryList;
+export default AccountBeneficiaryList;

@@ -259,9 +259,8 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const { user } = React.useContext(AuthContext);
-  console.log(user);
-
+  const { user, logout } = React.useContext(AuthContext);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -269,7 +268,8 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const { designation } = useDesignation();
+  
+  
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -297,7 +297,7 @@ export default function MiniDrawer() {
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
                 <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.username}</span></h3>
-                {designation ? <p> {designation}</p> : <p>Regular User</p>}
+                 <p>Regular User</p>
               </div>
               <img
                 className="w-10 h-10 rounded-full"
@@ -445,7 +445,8 @@ export default function MiniDrawer() {
                     }
                     <div className={`${open && "ml-3"}`}>
                     
-                    <Link to={"current-account"} >
+                    {/* if user have current account then he can not see this page because one user can create only one current account  */}
+                   { user?.accounts[0].account_type !== "Current Account" && <Link to={"current-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -467,7 +468,7 @@ export default function MiniDrawer() {
                         sx={{ opacity: open ? 1 : 0 }}
                       />
                     </ListItemButton>
-                  </Link>
+                  </Link>}
                     <Link to={"saving-account"} >
                     <ListItemButton
                       sx={{
@@ -972,6 +973,34 @@ export default function MiniDrawer() {
                 </Link>
               </ListItem>
             ))}
+             <ListItem 
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                      {/* icon  */}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"Log Out"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </div>
+                </ListItem>
           </List>
         </Drawer>
       </ThemeProvider>

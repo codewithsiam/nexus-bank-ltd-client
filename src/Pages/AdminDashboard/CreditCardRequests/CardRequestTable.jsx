@@ -1,4 +1,3 @@
-
 import { baseUrl } from "../../../config/server";
 import React, { useEffect } from "react";
 import Paper from "@mui/material/Paper";
@@ -11,14 +10,13 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 
-
 const CardRequestTable = () => {
-    const [cardRequests, setCardRequests] = useState([]);
-    useEffect(() => {
-        fetch(`${baseUrl}/credit-card-requests`)
-          .then((res) => res.json())
-          .then((data) => setCardRequests(data));
-      }, []);
+  const [cardRequests, setCardRequests] = useState([]);
+  useEffect(() => {
+    fetch(`${baseUrl}/credit-card-requests`)
+      .then((res) => res.json())
+      .then((data) => setCardRequests(data));
+  }, []);
   return (
     <div className="mt-16">
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
@@ -36,24 +34,26 @@ const CardRequestTable = () => {
               </TableHead>
               <TableBody>
                 {cardRequests?.map((card, index) => (
-                  <TableRow
-                    key={card.id}
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                  >
+                  <TableRow key={card.id} hover role="checkbox" tabIndex={-1}>
                     <TableCell>{index + 1}</TableCell>
                     <TableCell>
-                      {card.title + " " + card?.firstName + " " + card?.lastName}
+                      {card.title +
+                        " " +
+                        card?.firstName +
+                        " " +
+                        card?.lastName}
                     </TableCell>
                     <TableCell>{card.nidCardNumber}</TableCell>
                     <TableCell>{card?.accountNumber}</TableCell>
-                    
                     <TableCell>
-                    <div className="flex gap-3 items-center">
-                        <button className="bg-red-500 px-4 py-2 rounded text-white ">Deny</button>
-                        <button className="bg-green-500 px-4 py-2 rounded text-white ">Approve</button>
-                    </div>
+                      <div className="flex gap-3 items-center">
+                        <button className="bg-red-500 px-4 py-2 rounded text-white ">
+                          Deny
+                        </button>
+                        <button className="bg-green-500 px-4 py-2 rounded text-white ">
+                          Approve
+                        </button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}
