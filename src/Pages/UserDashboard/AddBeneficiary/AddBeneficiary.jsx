@@ -1,8 +1,7 @@
 import React from "react";
 import Swal from "sweetalert2";
-import { baseUrl } from "../../config/server";
-import { useScroll } from "react-spring";
 import { useState } from "react";
+import { baseUrl } from "../../../config/server";
 
 const AddBeneficiary = () => {
  const [error,setError] = useState(null)

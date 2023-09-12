@@ -2,7 +2,7 @@ import React from "react";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Link } from "react-router-dom";
 import EastIcon from "@mui/icons-material/East";
-const LeftSide = () => {
+const LeftSide = ({accountName,accountImage,description}) => {
   return (
     <div className="hidden md:flex flex-col items-center justify-between h-full">
       <div>
@@ -11,19 +11,17 @@ const LeftSide = () => {
         </button>
 
         <h2 className="text-2xl font-semibold my-4">
-          Open Your Current <br /> Account
+          Open Your {accountName}
         </h2>
         <p className="mb-6">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt
-          optio aperiam illum similique recusandae velit ut cupiditate
-          aspernatur quae eligendi!
+         {description}
         </p>
         <Link className="text-blue-600 underline ">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit, illum.
         </Link>
       </div>
-      <img
-        src="https://i.ibb.co/JmyBQJB/360-F-244483606-h-Rcppy-IRwao-WVGx-QRN6-MMep-Tu3-Ym-SSUz-removebg-preview.png"
+      <img className="rounded-md "
+        src={accountImage}
         alt=""
       />
       <div className="bg-stone-300 p-4 rounded-lg">

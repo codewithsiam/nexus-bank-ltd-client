@@ -1,14 +1,13 @@
-import React, { useContext, useState } from "react";
+import { useScroll } from "framer-motion";
+import React from "react";
+import { useState } from "react";
 import { baseUrl } from "../../../../../config/server";
-import Swal from "sweetalert2";
-import AuthProvider, {
-  AuthContext,
-} from "../../../../../providers/AuthProvider";
-import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
-import SharedProfileImage from "../DepositAccount/SharedProfileImage";
+import SharedNidCardImage from "./SharedNidCardImage";
+import SharedProfileImage from "./SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
+import Swal from "sweetalert2";
 
-const Form = () => {
+const DepositForm = () => {
   const [userData, setUserData] = useState({});
   const [nidCardImage, setNidCardImage] = useState("");
   const [profileImage, setProfileImage] = useState("");
@@ -47,16 +46,20 @@ const Form = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.verified) {
-          fetch(`${baseUrl}/add-account`, {
+          fetch(`${baseUrl}/create-deposit-account`, {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify({
               first_name: userData.first_name,
               last_name: userData.last_name,
               email: userData.email,
-              account_type: "Saving Account",
+              account_type: "Deposit Account",
               date_of_birth: userData.date_of_birth,
               phone: userData.phone,
+              amountPerMonth: parseInt(
+                userData.amountPerMonth ? userData.amountPerMonth : 500
+              ),
+              selectedYears: parseInt(userData.year ? userData?.year : 3),
               marital_status: userData.marital_status,
               job_title: userData.job_title,
               nid_card_number: userData.nidCardNumber,
@@ -82,12 +85,12 @@ const Form = () => {
               }
             })
             .catch((error) => console.log(error));
-        } else {
-          setError(data.message);
+        }
+        else{
+          setError(data.message)
         }
       });
   };
-
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
@@ -161,22 +164,65 @@ const Form = () => {
         <div className="flex items-center gap-4 mt-2 ">
           <div className="form-control w-full ">
             <label className="label">
-              <span className="label-text text-md font-semibold">Gender</span>
+              <span className="label-text text-md font-semibold">
+                Amount Per Month
+              </span>
             </label>
             <select
-              name="gender"
+              name="amountPerMonth"
               required
               onChange={handleUserDataOnChange}
+              value={500}
               className="select select-bordered"
             >
               {/* <option disabled selected>
-                Pick one
-              </option> */}
-              <option>Male</option>
-              <option>Female</option>
-              <option>Costume</option>
+                    Pick one
+                  </option> */}
+              <option>500</option>
+              <option>1000</option>
+              <option>2000</option>
+              <option>5000</option>
             </select>
           </div>
+          <div className="form-control w-full ">
+            <label className="label">
+              <span className="label-text text-md font-semibold">
+                Duration/Year
+              </span>
+            </label>
+            <select
+              name="year"
+              required
+              onChange={handleUserDataOnChange}
+              className="select select-bordered"
+              defaultValue={3}
+            >
+              {/* <option disabled selected>
+                    Pick one
+                  </option> */}
+              <option>3</option>
+              <option>5</option>
+              <option>8</option>
+              <option>10</option>
+            </select>
+          </div>
+        </div>
+        <div className="flex gap-4">
+          {/* <div className="form-control w-full mt-2">
+              <label className="label">
+                <span className="label-text text-md font-semibold">
+                  Nationality *
+                </span>
+              </label>
+              <input
+                type="text"
+                name="nationality"
+                required
+                onChange={handleUserDataOnChange}
+                placeholder="Enter Your Last Name"
+                className="input input-bordered w-full "
+              />
+            </div> */}
           <div className="w-full">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -189,23 +235,6 @@ const Form = () => {
               onChange={handleUserDataOnChange}
               className="border px-3 py-3 rounded-md w-full"
               type="date"
-            />
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="form-control w-full mt-2">
-            <label className="label">
-              <span className="label-text text-md font-semibold">
-                Nationality *
-              </span>
-            </label>
-            <input
-              type="text"
-              name="nationality"
-              required
-              onChange={handleUserDataOnChange}
-              placeholder="Enter Your Last Name"
-              className="input input-bordered w-full "
             />
           </div>
           <div className="form-control w-full mt-2">
@@ -224,6 +253,17 @@ const Form = () => {
             />
           </div>
         </div>
+        {/* <div className="flex gap-4 mt-4 mb-2">
+            <NidCardImage
+              nidCardImage={nidCardImage}
+              setNidCardImage={setNidCardImage}
+            />
+            <ProfilePhoto
+              profileImage={profileImage}
+              setProfileImage={setProfileImage}
+            />
+          </div> */}
+
         <div className="flex gap-4 mt-4 mb-2">
           <SharedNidCardImage
             nidCardImage={nidCardImage}
@@ -234,6 +274,7 @@ const Form = () => {
             setProfileImage={setProfileImage}
           />
         </div>
+
         <div className="flex gap-4">
           <div className="form-control w-full ">
             <label className="label">
@@ -248,8 +289,8 @@ const Form = () => {
               className="select select-bordered"
             >
               {/* <option disabled selected>
-                Pick one
-              </option> */}
+                    Pick one
+                  </option> */}
               <option>Married</option>
               <option>Unmarried</option>
             </select>
@@ -281,6 +322,7 @@ const Form = () => {
               className="textarea textarea-bordered h-20"
               placeholder="Present Address"
               name="present_address"
+              required
               onChange={handleUserDataOnChange}
             ></textarea>
           </div>
@@ -294,6 +336,7 @@ const Form = () => {
               className="textarea textarea-bordered h-20"
               placeholder="Permanent Address"
               name="permanent_address"
+              required
               onChange={handleUserDataOnChange}
             ></textarea>
           </div>
@@ -329,4 +372,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+export default DepositForm;

@@ -7,32 +7,34 @@ import { baseUrl } from "../../config/server";
 import axios from "axios";
 
 const Keyboard = () => {
-  const { setUser, user } = useContext(AuthContext);
-  // console.log(user);
-  
+
   const {
     register,
-    handleSubmit,
     formState: { errors },
+    handleSubmit,
   } = useForm();
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
+  const [manualKeyboard, setManualKeyboard] = useState(false);
+  const { setUser, user } = useContext(AuthContext);
+  // console.log(user);
 
   const [inputValue, setInputValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const [activeInput, setActiveInput] = useState("emailInput");
-  const [capsLockEnabled, setCapsLockEnabled] = useState(false);
+  const [capsLockEnabled, setCapsLockEnabled] = useState(true);
+  const [toggleKeyboardEnabled, setToggleKeyboardEnabled] = useState(true);
 
   const onSubmit = (data) => {
-    const username = data.username;
-    const password = data.password;
+    // const username = data.username;
+    // const password = data.password;
 
     // verify login and send data to the database
     axios
-      .post(`${baseUrl}/login?username=${username}&password=${password}`)
+      .post(`${baseUrl}/login`, data)
       .then((res) => {
         if (res.data.success === true) {
           const { token, result } = res.data;
@@ -43,7 +45,7 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          navigate(from);
+          // navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);
@@ -54,7 +56,8 @@ const Keyboard = () => {
         setError("An error occurred during login.");
       });
   };
-console.log(user)
+  console.log(user);
+
   const handleKeyPress = (key) => {
     if (key === "Backspace") {
       handleBackspace();
@@ -108,11 +111,16 @@ console.log(user)
     setCapsLockEnabled(!capsLockEnabled);
   };
 
+  const handleToggleKeyboard = () => {
+    setPasswordValue(passwordValue);
+    setToggleKeyboardEnabled(!toggleKeyboardEnabled);
+  }
+
   const keyboardLayout = [
-    "1234$567890",
+    "1234567890",
     "qwertyuiop",
-    "@asdfghjkl",
-    "zxcvbnm.",
+    "asdfghjkl",
+    "zxcvbnm",
     ["CapsLock", "Space", "Clear", "Backspace"],
     ["Password"],
   ];
@@ -127,18 +135,36 @@ console.log(user)
             type="text"
             id="emailInput"
             placeholder="Type your username"
+            // value={inputValue}
+            onChange={() => {}}
+            onClick={() => setActiveInput("emailInput")}
           />
           {errors.email?.type === "required" && (
             <p className="text-red-400 mt-2">Email is required</p>
           )}
-
-          <input
-            {...register("password", { required: true })}
-            className="border ml-2"
-            type="text"
-            placeholder="Type your password"
-            id="passwordInput"
-          />
+          {toggleKeyboardEnabled ? (
+            <input
+              {...register("password", { required: true })}
+              className="border ml-2"
+              type="text"
+              placeholder="Type your password"
+              // value={passwordValue}
+              id="passwordInput"
+              onChange={() => {}}
+              onClick={() => setActiveInput("passwordInput")}
+            />
+          ) : (
+            <input
+              {...register("password", { required: true })}
+              className="border ml-2"
+              type="text"
+              placeholder="Type your password"
+              value={passwordValue}
+              id="passwordInput"
+              onChange={() => {}}
+              onClick={() => setActiveInput("passwordInput")}
+            />
+          )}
           {errors.password?.type === "required" && (
             <p className="text-red-400 mt-2">Password is required</p>
           )}
@@ -148,7 +174,12 @@ console.log(user)
         </div>
         <p>{error}</p>
       </form>
-
+      <button
+        onClick={() => handleToggleKeyboard() }
+        className="btn btn-info"
+      >
+        Manual Keyboard for password
+      </button>
       <div className="keyboard">
         {keyboardLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="keyboard-row">
