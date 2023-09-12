@@ -2,6 +2,7 @@ import moment from 'moment';
 import React, { useState } from 'react';
 import { AiFillDelete } from 'react-icons/ai';
 import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const News = ({ news ,handelDelete }) => {
     const { date, img, detail, title,_id } = news
@@ -25,10 +26,8 @@ const News = ({ news ,handelDelete }) => {
                         {moment(date).format("MMM Do YY")}
                     </span>
                     <div className=' flex gap-2 items-center justify-center'>
-                        <FaEdit 
-                       
-                        title='edit this news'
-                        className='w-6 h-6'></FaEdit>
+                      <Link to={`update/${_id}`}> 
+                       <FaEdit title='edit this news' className='w-6 h-6'></FaEdit></Link>
 
 
                         <AiFillDelete
@@ -47,7 +46,7 @@ const News = ({ news ,handelDelete }) => {
                         </a>
                     </h3>
                    
-                        <p className="text-base text-body-color overflow-y-auto scrollbar-hide h-40">
+                    <p className="text-base text-body-color overflow-y-auto scrollbar-hide h-40">
                             {showText ? detail.slice(0, 100) : detail} <p className='font-bold' onClick={() => setShowText(!showText)}> {
                                 detail.length>100?<>{showText ? <span>see more...</span> : <span>see less ..</span>}</>:<></>
                             }</p>

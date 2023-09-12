@@ -61,7 +61,6 @@ const AuthProvider = ({ children }) => {
           },
         })
         .then((res) => {
-          console.log(res.data);
           if (res.data) {
             setUser(res.data.result);
             setIsAdmin(res.data.isAdmin);
@@ -79,7 +78,6 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   }, []);
-  console.log("from auth state", user);
   const logout = () => {
     localStorage.removeItem("authToken");
     setUser(null);

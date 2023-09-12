@@ -49,6 +49,7 @@ const AllNews = () => {
         console.log(id)
         
     }
+  
     return (
         <div>
              <div className=' mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>

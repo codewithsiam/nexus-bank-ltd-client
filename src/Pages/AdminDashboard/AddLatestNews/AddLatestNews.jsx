@@ -19,6 +19,7 @@ const AddLatestNews = () => {
     } = useForm()
 
     const onSubmit = (data, e) => {
+        console.log(data.Photo[0])
      setLoading(true)
         const img = data.Photo[0]
         // console.log(secrete_key)
@@ -44,7 +45,7 @@ const AddLatestNews = () => {
                             Swal.fire({
                                 position: 'center',
                                 icon: 'success',
-                                title: 'News Added successfully.',
+                                title: 'News Added Successfully.',
                                 showConfirmButton: false,
                                 timer: 1500
                             });
@@ -69,24 +70,24 @@ const AddLatestNews = () => {
 
                     <div className=" md:flex md:gap-14 w-full">
                         <div >
-                            <label className="text-2xl font-semibold text-primary "> News Title</label>
+                            <label className="text-1xl font-semibold text-primary "> News Title</label>
                             <input {...register("title")} type="text" placeholder="Type here" className="input mt-2  border border-black   w-full  " />
 
                             {errors.title && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                         <div>
-                            <label className="text-2xl font-semibold text-primary">Photo Url</label>
+                            <label className="text-1xl font-semibold text-primary">Photo Url</label>
                             <input  {...register("Photo", { required: true })} type="file" className="file-input  border border-black   w-full my-2" />
 
                             {errors.photo && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                     </div>
-                    <label className="text-2xl font-semibold text-primary">Details</label><br />
+                    <label className="text-1xl font-semibold text-primary">Details</label><br />
                     <textarea {...register("detail", { required: true })} placeholder="Type Here News Details " className="textarea border border-black textarea-lg md:w-5/6 " ></textarea><br />
 
                     {errors.details && <span className="text-red-600">this field is required</span>} <br />
 
-                    <input disabled={loading} className="btn bg-primary md:w-5/6 " type="submit" />
+                    <input disabled={loading} className="btn text-white hover:text-black bg-primary md:w-5/6 " type="submit" />
                 </form>
             </div>
          

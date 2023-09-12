@@ -29,9 +29,11 @@ const BlogNews = ({ news }) => {
                             </a>
                         </h3>
                        
-                            <p className="text-base text-body-color overflow-y-auto scrollbar-hide h-40">
-                                {showText ? detail.slice(0, 150) : detail} <p className='font-bold' onClick={() => setShowText(!showText)}>{showText ? <span>see more...</span> : <span>see less ..</span>}</p>
-                            </p>
+                        <p className="text-base text-body-color overflow-y-auto scrollbar-hide h-40">
+                            {showText ? detail.slice(0, 100) : detail} <p className='font-bold' onClick={() => setShowText(!showText)}> {
+                                detail.length>100?<>{showText ? <span>see more...</span> : <span>see less ..</span>}</>:<></>
+                            }</p>
+                        </p>
                         
                     </div>
                 </div>

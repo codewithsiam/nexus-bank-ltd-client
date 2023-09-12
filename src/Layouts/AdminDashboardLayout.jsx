@@ -49,7 +49,7 @@ const adminMenu = [
     route: "accounts",
   },
   {
-    name: "AddLatestNews",
+    name: "Add Latest News",
     icon: <MdCreateNewFolder/>,
     route: "AddLatestNews",
   },
