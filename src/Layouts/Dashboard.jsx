@@ -260,8 +260,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
-  // console.log(user);
-
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -446,7 +445,8 @@ export default function MiniDrawer() {
                     }
                     <div className={`${open && "ml-3"}`}>
                     
-                    <Link to={"current-account"} >
+                    {/* if user have current account then he can not see this page because one user can create only one current account  */}
+                   { user?.accounts[0].account_type !== "Current Account" && <Link to={"current-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -468,7 +468,7 @@ export default function MiniDrawer() {
                         sx={{ opacity: open ? 1 : 0 }}
                       />
                     </ListItemButton>
-                  </Link>
+                  </Link>}
                     <Link to={"saving-account"} >
                     <ListItemButton
                       sx={{

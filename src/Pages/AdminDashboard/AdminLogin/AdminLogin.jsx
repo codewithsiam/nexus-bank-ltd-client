@@ -6,7 +6,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
-  const { setUser, setAdmin } = useContext(AuthContext);
+  const { setUser, setIsAdmin } = useContext(AuthContext);
   const [error, setError] = useState("");
   let from =  "/admin/analytics";
   let navigate = useNavigate();
@@ -43,7 +43,7 @@ const AdminLogin = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          // setAdmin(isAdmin);
+          setIsAdmin(isAdmin);
           navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);
