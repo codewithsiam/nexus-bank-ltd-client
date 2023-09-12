@@ -58,7 +58,6 @@ const Keyboard = () => {
       .catch((error) => {
         console.error("Error:", error);
         setError("An error occurred during login.");
-        loading(false);
       });
   };
   console.log(user);

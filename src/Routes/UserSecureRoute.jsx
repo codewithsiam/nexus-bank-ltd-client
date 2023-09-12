@@ -2,6 +2,8 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
+import bankLoading from "/public/jsonAmination/bankLoading.json";
+import Lottie from "lottie-react";
 
 const UserSecureRoute = ({ children }) => {
   const { user, loading, isAdmin } = useContext(AuthContext);
@@ -9,7 +11,11 @@ const UserSecureRoute = ({ children }) => {
   console.log("outside", loading);
   console.log("from secure", user);
   if (loading) {
-    return <progress className="progress w-56"></progress>;
+    return (
+      <div className="h-screen w-full">
+        <Lottie className="w-60 h-screen mx-auto my-auto" animationData={bankLoading} />
+      </div>
+    );
   }
 
   if (user) {
