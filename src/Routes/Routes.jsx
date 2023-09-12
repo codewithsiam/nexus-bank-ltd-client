@@ -410,6 +410,14 @@ const router = createBrowserRouter([
           </AdminSecureRoute>
         ),
       },
+      {
+        path: "change-password",
+        element: (
+          <AdminSecureRoute>
+            <PasswordChange />,
+          </AdminSecureRoute>
+        ),
+      },
     ],
   },
   {

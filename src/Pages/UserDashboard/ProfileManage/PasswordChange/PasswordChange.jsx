@@ -14,6 +14,8 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useState } from "react";
 import { baseUrl } from "../../../../config/server";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const PasswordChange = () => {
   const [showOldPassword, setShowOldPassword] = React.useState(false);
@@ -26,7 +28,7 @@ const PasswordChange = () => {
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
-
+  const { user, isAdmin } = useContext(AuthContext);
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -56,7 +58,7 @@ const PasswordChange = () => {
           Authorization: `Bearer ${storedToken}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ oldPassword, newPassword }),
+        body: JSON.stringify({ oldPassword, newPassword, isAdmin }),
       });
       const data = await response.json();
       console.log(data);
