@@ -112,7 +112,7 @@ const EmployeeTable = ({ employees, setControl, control }) => {
                     <TableCell>
                       {employee?.firstName + " " + employee?.lastName}
                     </TableCell>
-                    <TableCell>{employee?.primaryEmail}</TableCell>
+                    <TableCell>{employee?.email}</TableCell>
                     <TableCell>{employee?.phoneNumber}</TableCell>
                     <TableCell>{employee?.designation}</TableCell>
                     <TableCell>

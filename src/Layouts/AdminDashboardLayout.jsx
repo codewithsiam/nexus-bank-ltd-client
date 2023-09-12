@@ -29,6 +29,7 @@ import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 import { PiPasswordFill } from "react-icons/pi";
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 
 const drawerWidth = 300;
 
@@ -49,15 +50,16 @@ const adminMenu = [
     icon: <AccountTreeIcon />,
     route: "accounts",
   },
-  {
-    name: "AddLatestNews",
-    icon: <MdCreateNewFolder />,
-    route: "AddLatestNews",
-  },
+ 
   {
     name: "Account Requests",
     icon: <AccountBalanceWalletIcon />,
     route: "account-request",
+  },
+  {
+    name:"Credit Card Requests",
+    icon:<CreditCardIcon/>,
+    route:"credit-card-requests"
   },
   {
     name: "Users",
@@ -68,6 +70,11 @@ const adminMenu = [
     name: "Loan Request",
     icon: <AccountBalanceWalletIcon />,
     route: "loan-request",
+  },
+  {
+    name: "AddLatestNews",
+    icon: <MdCreateNewFolder />,
+    route: "AddLatestNews",
   },
 ];
 
