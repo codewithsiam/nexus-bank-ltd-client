@@ -49,6 +49,7 @@ import AddBeneficiary from "../Pages/UserDashboard/AddBeneficiary/AddBeneficiary
 import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
+import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
 import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
@@ -380,6 +381,10 @@ const router = createBrowserRouter([
             <AccountRequest />,
           </AdminSecureRoute>
         ),
+      },
+      {
+        path:"credit-card-requests",
+        element:<CreditCardRequests/>
       },
       {
         path: "analytics",
