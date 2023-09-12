@@ -28,6 +28,7 @@ import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
+import { PiPasswordFill } from "react-icons/pi";
 
 const drawerWidth = 300;
 
@@ -50,7 +51,7 @@ const adminMenu = [
   },
   {
     name: "AddLatestNews",
-    icon: <MdCreateNewFolder/>,
+    icon: <MdCreateNewFolder />,
     route: "AddLatestNews",
   },
   {
@@ -142,7 +143,6 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const { user, isAdmin, logout } = React.useContext(AuthContext);
-
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -256,34 +256,57 @@ export default function MiniDrawer() {
                   </Link>
                 </ListItem>
               ))}
-              <ListItem 
-                  disablePadding
-                  sx={{ display: "block" }}
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <Link to={"change-password"}>
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
                 >
-                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                      {/* icon  */}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Log Out"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </div>
-                </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {<PiPasswordFill />}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Change Password"}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </Link>
+              <div
+                onClick={logout}
+                className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4"
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {/* icon  */}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Log Out"}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </div>
+            </ListItem>
           </List>
         </Drawer>
       </ThemeProvider>
