@@ -259,8 +259,8 @@ const Drawer = styled(MuiDrawer, {
 export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const { user } = React.useContext(AuthContext);
-  console.log(user);
+  const { user, logout } = React.useContext(AuthContext);
+  // console.log(user);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -973,6 +973,34 @@ export default function MiniDrawer() {
                 </Link>
               </ListItem>
             ))}
+             <ListItem 
+                  disablePadding
+                  sx={{ display: "block" }}
+                >
+                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? "initial" : "center",
+                        px: 2.5,
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : "auto",
+                          justifyContent: "center",
+                        }}
+                      >
+                      {/* icon  */}
+                      </ListItemIcon>
+                      <ListItemText
+                        primary={"Log Out"}
+                        sx={{ opacity: open ? 1 : 0 }}
+                      />
+                    </ListItemButton>
+                  </div>
+                </ListItem>
           </List>
         </Drawer>
       </ThemeProvider>

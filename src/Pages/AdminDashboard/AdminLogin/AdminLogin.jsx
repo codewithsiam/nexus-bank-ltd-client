@@ -30,7 +30,7 @@ const AdminLogin = () => {
     console.log(formData);
 
     axios
-      .post(`${baseUrl}/login`, formData)
+      .post(`${baseUrl}/admin-login`, formData)
       .then((res) => {
         console.log(res.data);
         if (res.data.success) {

@@ -61,21 +61,25 @@ const AuthProvider = ({ children }) => {
           },
         })
         .then((res) => {
-          console.log(res.data.success);
+          console.log(res.data);
           if (res.data) {
             setUser(res.data.result);
             setIsAdmin(res.data.isAdmin);
-            setLoading(false);
           } else {
             localStorage.removeItem("authToken");
           }
         })
         .catch((error) => {
           console.error("Error:", error);
+        })
+        .finally(() => {
+          setLoading(false); 
         });
+    } else {
+      setLoading(false);
     }
   }, []);
-
+  console.log("from auth state", user);
   const logout = () => {
     localStorage.removeItem("authToken");
     setUser(null);

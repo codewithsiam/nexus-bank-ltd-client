@@ -36,8 +36,8 @@ const AccountOverview = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, [user]);
-  console.log("sdfsfd", myAccounts);
+  }, []);
+  // console.log("sdfsfd", myAccounts);
 
   return (
     <div
