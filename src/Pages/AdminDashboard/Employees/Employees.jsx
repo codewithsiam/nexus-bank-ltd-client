@@ -126,7 +126,7 @@ const Employees = () => {
         <PeopleIcon style={{ fontSize: "42" }} /> EMPLOYEES
       </h1>
       <SearchFilter handleOpen={handleOpen} setEmployees={setEmployees} />
-      <EmployeeTable employees={employees && employees} />
+      <EmployeeTable employees={employees && employees} control={control} setControl={setControl} />
 
       {/* modal data here  */}
       <Modal
