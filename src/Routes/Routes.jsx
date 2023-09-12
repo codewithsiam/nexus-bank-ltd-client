@@ -274,7 +274,8 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element: (
+        element: 
+        (
           <UserSecureRoute>
             <EStatement />
           </UserSecureRoute>
