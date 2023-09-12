@@ -55,6 +55,7 @@ import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 import AdminSecureRoute from "./AdminSecureRoute";
 import UserSecureRoute from "./UserSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
 
 
 
@@ -391,7 +392,15 @@ const router = createBrowserRouter([
       },
       {
         path: "AddLatestNews",
-        element: <AddLatestNews />
+        element:<AdminSecureRoute>
+          <AddLatestNews />
+          </AdminSecureRoute>
+      },
+      {
+        path: "AllNews",
+        element:<AdminSecureRoute>
+          <AllNews />
+          </AdminSecureRoute>
       },
       {
         path: "loan-request",
