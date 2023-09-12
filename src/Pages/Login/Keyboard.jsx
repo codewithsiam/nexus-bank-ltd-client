@@ -15,11 +15,12 @@ const Keyboard = () => {
   } = useForm();
   let navigate = useNavigate();
   let location = useLocation();
-  let from = location.state?.from?.pathname || "/";
+  // let from = location.state?.from?.pathname || "/";
+  let from = "/dashboard/account-overview";
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const [manualKeyboard, setManualKeyboard] = useState(false);
-  const { setUser, user } = useContext(AuthContext);
+  const { setUser, user, loading } = useContext(AuthContext);
   // console.log(user);
 
   const [inputValue, setInputValue] = useState("");
@@ -34,7 +35,7 @@ const Keyboard = () => {
 
     // verify login and send data to the database
     axios
-      .post(`${baseUrl}/login`, data)
+      .post(`${baseUrl}/user-login`, data)
       .then((res) => {
         if (res.data.success === true) {
           const { token, result } = res.data;
@@ -45,15 +46,19 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          // navigate(from);
+          loading(false);
+          navigate(from);
+          
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);
+          loading(false);
         }
       })
       .catch((error) => {
         console.error("Error:", error);
         setError("An error occurred during login.");
+        loading(false);
       });
   };
   console.log(user);
