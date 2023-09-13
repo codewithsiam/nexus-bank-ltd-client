@@ -178,7 +178,6 @@ const router = createBrowserRouter([
         element: (
           <UserSecureRoute>
             <ApplyLoan />
-
           </UserSecureRoute>
         ),
       },
