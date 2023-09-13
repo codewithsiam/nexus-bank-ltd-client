@@ -1,7 +1,7 @@
 import { useScroll } from 'framer-motion';
 import React, { useState } from 'react';
-import {baseUrl} from '../../../../../config/server'
 import Swal from 'sweetalert2';
+import { baseUrl } from '../../../config/server';
 
 const CreditCardApply = () => {
     const [userData,setUserData] = useState({});
