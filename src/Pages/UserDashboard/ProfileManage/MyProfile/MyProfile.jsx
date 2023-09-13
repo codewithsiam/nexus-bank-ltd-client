@@ -3,7 +3,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import PropTypes from "prop-types";
 import Typography from "@mui/material/Typography";
-import AboutTab from "./AboutTab/AboutTab";
+import AboutTab from "./AboutTab";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseUrl } from "../../../../config/server";
@@ -59,27 +59,6 @@ const myAccountData=[
 const MyProfile = () => {
     const {user}=useContext(AuthContext)
     // console.log(user)
-    const [loadingProfile, setLoadingProfile] = useState(true);
-    const [myProfileData, setMyProfileData] = useState([]);
-
-    useEffect(() => {
-      if (user && user.email) {
-        fetch(`${baseUrl}/approved-account?email=${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(data);
-          setMyProfileData(data);
-          setLoadingProfile(false); 
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoadingProfile(false); 
-      });
-      } else {
-        setLoadingProfile(false);
-      }
-    }, [user]);
-    // console.log(myProfileData);
     
   const [value, setValue] = React.useState(0);
   const handleChange = (event, newValue) => {
@@ -117,14 +96,14 @@ const MyProfile = () => {
   }
   
   return(
-    // <div className="m-20">hellow</div>
+    
     <div className=" pt-10 bg-gray-100">
       <div class="relative w-full text-white">
         <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" class="w-full h-[230px]" alt="Louvre" />
         <div class="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gradient-to-r from-[rgb(1,87,155)] via-blue-600 to-blue-300 opacity-60"></div>
         <div className="pl-5 md:pl-10 lg:pl-20 absolute top-12">
-          <h1 className="text-4xl mb-3">Hey 
-            {user?.nick_name ? nick_name : " User"}
+          <h1 className="text-4xl mb-3">Hey  
+            <span className="ml-3">{user?.nick_name ?  user.nick_name : " User"}</span>
           </h1>
           <p>This is your profile page. You can see the all history and you can update your profile.</p>
         </div>
@@ -141,13 +120,13 @@ const MyProfile = () => {
             </div>
             <div className="md:flex gap-8 justify-around text-center">
               <div className="mt-3">
-                <h4 className="text-xl md:text-2xl font-semibold">{user?user.displayName:"Rukshana"}</h4>
-                <h3 className="text-md md:text-lg text-gray-500">{user?user.profession:"Pharmacist"}</h3>
+                <h4 className="text-xl md:text-2xl font-semibold">{user?user.name:"User Name"}</h4>
+                <h3 className="text-md md:text-lg text-gray-500">{user?user.profession:"User Profession"}</h3>
               </div>
               <div className="inline-block overflow-hidden mt-4">
                 <Link
-                  to={`/dashboard/edit-profile`}
-                  className="flex gap-1 items-center border-2 border-white bg-primary rounded text-white cursor-pointer px-3 py-2"
+                to={`/dashboard/edit-profile`}
+                className="flex gap-1 items-center border-2 border-white bg-primary rounded text-white cursor-pointer px-3 py-2"
                 >
                   <FaPencilAlt className="mr-1"></FaPencilAlt> Edit profile
                 </Link>
@@ -156,10 +135,10 @@ const MyProfile = () => {
           </div>
       </div>
       <div>
-        {/* {user ?  */}
+        {user ? 
           <AboutTab user={user} /> 
-          // : <h1 className="mt-12 text-center text-blue-800 font-bold text-2xl">Please Login first</h1> 
-        {/* } */}
+          : <h1 className="mt-12 text-center text-primary font-bold text-2xl">Please Login first</h1> 
+        }
       </div>
     </div>
   )
