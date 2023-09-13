@@ -20,7 +20,7 @@ const Analytics = () => {
                 </div>
 
                 {/* Your Audience */}
-                <AnalyticsTitle title="Your Audience" subTitle="Demographic properties of your users" />
+                <AnalyticsTitle title="Account Details" subTitle="Demographic properties of your users" />
                 <NewAudience />
             </div>
         </div>

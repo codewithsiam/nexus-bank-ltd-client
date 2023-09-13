@@ -66,25 +66,25 @@ const NidCardImage = ({nidCardImage,setNidCardImage}) => {
       );
     };
   
-    const handleAspectRatioChange = (e) => {
-      setCropAspectRatio(parseFloat(e.target.value));
-    };
+    // const handleAspectRatioChange = (e) => {
+    //   setCropAspectRatio(parseFloat(e.target.value));
+    // };
   
-    ////
-    const handleCropBoxDataChange = (e) => {
-      const { width, height } = e.detail;
-      setCropAspectRatio(width / height);
-    };
+    // ////
+    // const handleCropBoxDataChange = (e) => {
+    //   const { width, height } = e.detail;
+    //   setCropAspectRatio(width / height);
+    // };
   
     // cropper option
     const cropperOptions = {
-      aspectRatio: cropAspectRatio,
-      guides: true,
-      dragMode: "crop",
-      cropBoxResizable: true,
-      cropBoxMovable: true,
-      cropBoxData: { width: "100%", height: "100%" }, // Initial crop area size
-      crop: handleCropBoxDataChange, // To update the aspect ratio when crop area is resized
+      // aspectRatio: cropAspectRatio,
+      // guides: true,
+      // dragMode: "crop",
+      // cropBoxResizable: true,
+      // cropBoxMovable: true,
+      // cropBoxData: { width: "100%", height: "100%" }, // Initial crop area size
+      // crop: handleCropBoxDataChange, // To update the aspect ratio when crop area is resized
       zoomOnWheel: false, // Disable zoom on wheel
     };
 

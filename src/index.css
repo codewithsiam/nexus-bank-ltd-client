@@ -116,14 +116,14 @@
   width: 600px !important;
   height: 600px !important;
 } */
-.cropper-crop-box {
+/* .cropper-crop-box {
  
-  min-width: 200px !important;
-  min-height: 200px !important;
+  min-width: 300px !important;
+  min-height: 250px !important;
   max-height: 800px !important;
   max-width: 1000 !important;
 
-}
+} */
 
 
 /* otp field --------------------------------------- */
