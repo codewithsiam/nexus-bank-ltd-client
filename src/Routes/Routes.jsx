@@ -50,17 +50,16 @@ import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
-import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import CustomerService from "../Pages/CustomerService/CustomerService";
 import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
 import UserSecureRoute from "./UserSecureRoute";
 import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
 import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 import AdminSecureRoute from "./AdminSecureRoute";
-import UserSecureRoute from "./UserSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
 import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
+import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
 
 
 
@@ -101,6 +100,7 @@ const router = createBrowserRouter([
       {
         path: "careers",
         element: <Careers />,
+        loader: () => fetch(`${baseUrl}/careers`)
       },
     ],
   },
@@ -180,7 +180,12 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element: <EStatement />,
+        element:
+          (
+            <UserSecureRoute>
+              <EStatement />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "bkash-fund-transfer",
@@ -196,7 +201,13 @@ const router = createBrowserRouter([
       },
       {
         path: "credit-card-apply",
-        element: <CreditCardApply />,
+        element:
+
+          (
+            <UserSecureRoute>
+              <CreditCardApply />
+            </UserSecureRoute>
+          ),
       },
 
 
@@ -208,12 +219,21 @@ const router = createBrowserRouter([
         path: "nexus-customer-service-portal",
         element: <CustomerService />,
       },
+      {
+        path:`apply/:id`,
+        element: 
+        (
+          <UserSecureRoute>
+            <JobApply />
+          </UserSecureRoute>
+        ),
+      },
     ],
   },
   // admin dashboard 
   {
     path: "/admin",
-    element: <AdminDashboardLayout />,
+    element: <AdminSecureRoute><AdminDashboardLayout /></AdminSecureRoute>,
     children: [
       // ..................admin dashboard routes........................
       {
