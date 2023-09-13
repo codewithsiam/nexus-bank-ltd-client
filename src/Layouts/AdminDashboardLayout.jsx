@@ -51,7 +51,11 @@ const adminMenu = [
     icon: <AccountTreeIcon />,
     route: "accounts",
   },
- 
+  {
+    name: "Add Latest News",
+    icon: <MdCreateNewFolder/>,
+    route: "AddLatestNews",
+  },
   {
     name: "Account Requests",
     icon: <AccountBalanceWalletIcon />,

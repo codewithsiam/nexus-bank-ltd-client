@@ -4,10 +4,8 @@ import SocialFooterIcons from './SocialFooterIcons';
 
 const Footer = () => {
     return (
-        <footer className='relative'>
-
+        <footer className='relative mt-40'>
             <Subscribe />
-
             <div className="bg-[#0F1123] pt-11 text-white">
                 <div className="container mx-auto pt-32 px-3">
                     <div className='grid md:grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-11'>

@@ -7,7 +7,6 @@ import Lottie from "lottie-react";
 const AdminSecureRoute = ({ children }) => {
   const { user, loading, isAdmin } = useContext(AuthContext);
   const location = useLocation();
-  console.log(user, loading, "is admin", isAdmin);
   if (loading) {
     return (
       <div className="h-screen w-full">

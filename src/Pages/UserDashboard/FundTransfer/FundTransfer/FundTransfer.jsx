@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import { baseUrl } from "../../../../config/server";
@@ -19,8 +19,10 @@ const FundTransfer = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [otpSent, setOtpSent] = useState(false);
-  const [otpMessage, setOtpMessage] = useState("");
+  const [otpMessageSuccess, setOtpMessageSuccess] = useState("");
+  const [otpMessageFailed, setOtpMessageFailed] = useState("");
   const [enteredOtp, setEnteredOtp] = useState(null);
+  let navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -64,6 +66,14 @@ const FundTransfer = () => {
       const result = await sendOTP(data);
       console.log(result);
       setOtpSent(true);
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: `${response.data.message}`,
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      setOtpSent(true);
     } catch (err) {
       setError(err.message || "An error occurred while sending OTP.");
     } finally {
@@ -79,13 +89,16 @@ const FundTransfer = () => {
       reason: reason,
       transferType: "accountToAccount",
     };
+
+    
     setTransferData(transferDataInfo);
     console.log(transferDataInfo);
     handleSendOTP();
   };
 
   const handleOtpchange = (event) => {
-    setOtpMessage('')
+    setOtpMessageSuccess("");
+    setOtpMessageFailed("");
     const otp = event.target.value;
     setEnteredOtp(otp);
   };
@@ -109,15 +122,17 @@ const FundTransfer = () => {
       .post(Url)
       .then((response) => {
         console.log(response);
-        setOtpMessage(response.data.message);
         if (response.data.verified) {
+          setOtpMessageSuccess(response.data.message);
           localStorage.removeItem("email");
           localStorage.removeItem("accountNumber");
           handleTransferFinally();
+        } else {
+          setOtpMessageFailed(response.data.message);
         }
       })
       .catch((error) => {
-        setOtpMessage(error.message);
+        // setOtpMessageFailed(error.message);
         console.error("Error fetching data:", error);
       });
   };
@@ -129,6 +144,19 @@ const FundTransfer = () => {
       .put(`${baseUrl}/money-transfer`, transferData)
       .then((response) => {
         console.log(response.data);
+        if (response.data.success) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: `${response.data.message}`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(`/payment-status/success/${response.data.transactionId}`);
+        } else {
+          Swal.fire("error", `${response.data.message}`);
+          navigate("/payment-status/failed/false");
+        }
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -141,141 +169,198 @@ const FundTransfer = () => {
   // console.log(user.beneficiaryList);
   return (
     <div className="mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-blue-200">
-      <div
-        className="mt-20 border rounded-lg bg-white border-gray-400"
-        style={{ boxShadow: "1px 1px 5px lightblue" }}
-      >
-        <div className="p-4">
-          <h1 className="text-3xl font-bold text-F mb-5">
-            Fund Transfer Verification with pin
-          </h1>
-          <div>
-            <p>
-              We have sent m-PIN to your email. To proceed with your request
-              please verify by entering the m-PIN below:
-            </p>
-            <div className="bg-slate-100 p-5 rounded mt-3">
-              <h1 className="font-bold">m-PIN</h1>
-              <input
-                onChange={handleOtpchange}
-                type="number"
-                placeholder="Your pin"
-                className="my-4 block input input-bordered w-full max-w-xs"
-              />
+      {otpSent ? (
+        // otp conponent
+        <div className="mt-5 rounded-lg bg-white">
+          <div className="p-4">
+            <h1 className="text-md md:text-3xl font-bold text-F mb-5 text-primary">
+              Fund Transfer Verification with pin
+            </h1>
+            <div className="border border-dashed border-blue-200 mb-5"></div>
 
-              <button
-                type="submit"
-                onClick={handleVerifyPinButton}
-                className="px-5 py-2 text-white bg-primary rounded"
-              >
-                Verify
-              </button>
-              <p>{otpMessage}</p>
+            <div className="my-5">
+              <table className="border-collapse w-full">
+                <tbody>
+                  <tr>
+                    <td className="p-2 border border-gray-300">
+                      <strong className="text-sky-800">From Account:</strong>
+                    </td>
+                    <td className="p-2 border border-gray-300">
+                      {selectedAccount}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border border-gray-300">
+                      <strong className="text-sky-800">To Account:</strong>
+                    </td>
+                    <td className="p-2 border border-gray-300">
+                      {transferToAccount}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border border-gray-300">
+                      <strong className="text-sky-800">Transfer Amount:</strong>
+                    </td>
+                    <td className="p-2 border border-gray-300">
+                      {transferAmount}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-2 border border-gray-300">
+                      <strong className="text-sky-800">Reason:</strong>
+                    </td>
+                    <td className="p-2 border border-gray-300">{reason}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-          </div>
-        </div>
-      </div>
 
-      {/* transfer fund page  */}
-      <div className="p-4">
-        <h1 className="text-3xl font-bold text-primary mb-5">Fund Transfer</h1>
-        <div className="md:flex bg-slate-100 p-2">
-          <div className="w-2/3">
-            <div className="mb-5">
-              <h3 className="font-bold text-lg text-primary">From Account</h3>
-              <div className="md:flex items-center md:gap-10 ms-2 py-6">
-                <p className="md:w-1/4">Transfer from</p>
-                <select
-                  value={selectedAccount}
-                  onChange={handleAccountChange}
-                  className="select select-bordered md:w-2/4"
-                >
-                  <option value="">Select an account</option>
-                  {user &&
-                    myAccounts?.map((info, index) => (
-                      <option
-                        key={index}
-                        onChange={handleBenificiaryChange}
-                        value={info.accountNumber}
-                      >
-                        {info.account_type} - {info.accountNumber}
-                      </option>
-                    ))}
-                </select>
-                {balance && (
-                  <p className="md:w-1/4">Drawable (BDT): {balance}</p>
-                )}
-              </div>
+            <div>
               <div className="border border-dashed border-blue-200 mb-5"></div>
-            </div>
-            <div className="mb-5">
-              <h3 className="font-bold text-lg text-primary">
-                Beneficiary Details
-              </h3>
-              <div className="md:flex items-center md:gap-10 ms-2 py-6">
-                <p className="md:w-1/4">Transfer to</p>
-                <select
-                  value={transferToAccount}
-                  onChange={handleBenificiaryChange}
-                  className="select select-bordered md:w-3/4"
+
+              <p>
+                We have sent m-PIN to your email. To proceed with your request
+                please verify by entering the PIN below and confirn your
+                transaction:
+              </p>
+              <div className="bg-slate-100 p-5 rounded mt-3">
+                <h1 className="font-bold">m-PIN</h1>
+                <input
+                  onChange={handleOtpchange}
+                  type="number"
+                  placeholder="Your pin"
+                  className="my-4 block input input-bordered w-full max-w-xs"
+                />
+
+                <button
+                  type="submit"
+                  onClick={handleVerifyPinButton}
+                  className="px-5 py-2 text-white bg-primary rounded"
                 >
-                  <option value="">Select an account</option>
-                  {user?.beneficiaryList?.map(
-                    ({ account_number, username }, index) => (
-                      <option key={index} value={account_number}>
-                        {username} - {account_number}
-                      </option>
-                    )
-                  )}
-                </select>
-              </div>
-              <div className="border border-dashed border-blue-200 mb-5"></div>
-            </div>
-            <div className="mb-5">
-              <p className="font-bold text-lg text-primary">Transfer</p>
-              <div className="md:flex items-center md:gap-10 ms-2 py-6">
-                <p className="md:w-1/4">Transfer amount</p>
-                <div className="md:w-3/4">
-                  <input
-                    className="required border p-2 mt-2 border-black rounded-lg md:w-3/4"
-                    type="number"
-                    value={transferAmount}
-                    onChange={(e) => setTransferAmount(e.target.value)}
-                    required
-                  />{" "}
-                  BDT
+                  Verify & Confirm
+                </button>
+                <p className="my-3 text-green-500">{otpMessageSuccess}</p>
+                <p className="my-3 text-red-500">{otpMessageFailed}</p>
+                <div className="text-sm flex gap-3">
+                  {" "}
+                  Didn't get a pin?{" "}
+                  <button 
+                  disabled={loading}
+                    onClick={handleSendOTP}
+                    className={` text-sky-800 font-semibold ${!loading ? "disabled" : "block" } "text-gray-600"}`}
+                  >
+                    {loading ? "Sending... Please wait" : "Resend OTP"}
+                  </button>
                 </div>
               </div>
-              <div className="md:flex items-center md:gap-10 ms-2 py-6">
-                <p className="md:w-1/4">Reason for transfer</p>
-                <textarea
-                  onChange={handleReasonChange}
-                  className="border p-2 mt-2 border-black rounded-lg md:w-3/4"
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="3"
-                ></textarea>
-              </div>
-            </div>
-            <div>
-              <button
-                onClick={handleTransfer}
-                className="btn bg-gradient-to-b from-primary to-blue-700 rounded-md text-white ms-10 mt-4"
-              >
-                Transfer
-              </button>
-              <button
-                onClick={handleCancel}
-                className="btn bg-gradient-to-b from-red-500 to-red-700 rounded-md text-white ms-10 mt-4"
-              >
-                Cancel
-              </button>
             </div>
           </div>
-          <div></div>
         </div>
-      </div>
+      ) : (
+        // transfer money
+        <div className="p-4">
+          <h1 className="text-3xl font-bold text-primary mb-5">
+            Fund Transfer
+          </h1>
+          <div className="md:flex bg-slate-100 p-2">
+            <div className="w-2/3">
+              <div className="mb-5">
+                <h3 className="font-bold text-lg text-primary">From Account</h3>
+                <div className="md:flex items-center md:gap-10 ms-2 py-6">
+                  <p className="md:w-1/4">Transfer from</p>
+                  <select
+                    value={selectedAccount}
+                    onChange={handleAccountChange}
+                    className="select select-bordered md:w-2/4"
+                  >
+                    <option value="">Select an account</option>
+                    {user &&
+                      myAccounts?.map((info, index) => (
+                        <option
+                          key={index}
+                          onChange={handleBenificiaryChange}
+                          value={info.accountNumber}
+                        >
+                          {info.account_type} - {info.accountNumber}
+                        </option>
+                      ))}
+                  </select>
+                  {balance && (
+                    <p className="md:w-1/4">Drawable (BDT): {balance}</p>
+                  )}
+                </div>
+                <div className="border border-dashed border-blue-200 mb-5"></div>
+              </div>
+              <div className="mb-5">
+                <h3 className="font-bold text-lg text-primary">
+                  Beneficiary Details
+                </h3>
+                <div className="md:flex items-center md:gap-10 ms-2 py-6">
+                  <p className="md:w-1/4">Transfer to</p>
+                  <select
+                    value={transferToAccount}
+                    onChange={handleBenificiaryChange}
+                    className="select select-bordered md:w-3/4"
+                  >
+                    <option value="">Select an account</option>
+                    {user?.beneficiaryList?.map(
+                      ({ account_number, username }, index) => (
+                        <option key={index} value={account_number}>
+                          {username} - {account_number}
+                        </option>
+                      )
+                    )}
+                  </select>
+                </div>
+                <div className="border border-dashed border-blue-200 mb-5"></div>
+              </div>
+              <div className="mb-5">
+                <p className="font-bold text-lg text-primary">Transfer</p>
+                <div className="md:flex items-center md:gap-10 ms-2 py-6">
+                  <p className="md:w-1/4">Transfer amount</p>
+                  <div className="md:w-3/4">
+                    <input
+                      className="required border p-2 mt-2 border-black rounded-lg md:w-3/4"
+                      type="number"
+                      value={transferAmount}
+                      onChange={(e) => setTransferAmount(e.target.value)}
+                      required
+                    />{" "}
+                    BDT
+                  </div>
+                </div>
+                <div className="md:flex items-center md:gap-10 ms-2 py-6">
+                  <p className="md:w-1/4">Reason for transfer</p>
+                  <textarea
+                    onChange={handleReasonChange}
+                    className="border p-2 mt-2 border-black rounded-lg md:w-3/4"
+                    name=""
+                    id=""
+                    cols="30"
+                    rows="3"
+                  ></textarea>
+                </div>
+              </div>
+              <div>
+                <button
+                disabled={loading}
+                  onClick={handleTransfer}
+                  className={`btn bg-gradient-to-b from-primary to-blue-700 rounded-md text-white ms-10 mt-4 ${loading ? "disabled bg-gray-500" : "block" }`}
+                >
+                  {loading ? "Processing..." : "Transfer"}
+                </button>
+                <button
+                  onClick={handleCancel}
+                  className="btn bg-gradient-to-b from-red-500 to-red-700 rounded-md text-white ms-10 mt-4"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
