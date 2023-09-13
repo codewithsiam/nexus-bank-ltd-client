@@ -29,11 +29,10 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
-import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
+import CreditCardApply from "../Pages/UserDashboard/CreditCardApply/CreditCardApply";
 import Careers from "../Pages/Careers/Careers";
 import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
-
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -60,6 +59,10 @@ import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTran
 import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
 import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
 import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
+import Loan from "../Pages/Loan/Loan";
+import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
+import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
+import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 
 
 
@@ -78,8 +81,24 @@ const router = createBrowserRouter([
         element: <PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "aboutDetails",
+        path: "about-details",
         element: <AboutDetails></AboutDetails>,
+      },
+      {
+        path: "retail-loan",
+        element: <Loan></Loan>,
+      },
+      {
+        path: "student-loan",
+        element: <StudentLoan></StudentLoan>,
+      },
+      {
+        path: "personal-loan",
+        element: <PersonalLoan></PersonalLoan>,
+      },
+      {
+        path: "business-loan",
+        element: <BusinessLoan></BusinessLoan>,
       },
       {
         path: "registration",

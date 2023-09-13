@@ -1,4 +1,3 @@
-import Footer from "../Shared/Footer/Footer";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import ContactUs from "./ContactUs/ContactUs";
@@ -35,9 +34,13 @@ const Home = () => {
             <Testimonial ></Testimonial>
             <CreditCardPayment />
             <ContactUs />
+<<<<<<< HEAD
             <Footer />
           <div className="flex justify-center items-center">
           <Link to={'/chat'} className=" fixed bottom-5 right-10 z-50 text-red-500"><img
+=======
+            <Link to={'/chat'} className=" fixed bottom-5 right-10 z-50 text-red-500"><img
+>>>>>>> aec07abe07958b58d8702be6ae66e50ec530b520
             className="w-12"
             src="https://i.ibb.co/FxwYW6L/messenger-icon-free-png.webp" alt="" /></Link> 
             {

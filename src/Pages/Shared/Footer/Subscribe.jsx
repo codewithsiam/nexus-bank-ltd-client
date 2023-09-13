@@ -2,7 +2,6 @@ import React from 'react';
 import emailSend from '../../../assets/images/Footer/emailSent.png'
 
 const Subscribe = () => {
-    // bg-gradient-to-r from-[#1A4DBE] to-[#1A4DBE]
     return (
         <section className='absolute w-full -top-32 px-3'>
             <div className="container mx-auto my-btn rounded-lg ">

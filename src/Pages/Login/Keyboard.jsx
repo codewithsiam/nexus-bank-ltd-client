@@ -218,4 +218,121 @@ const Keyboard = () => {
   );
 };
 
+  const handleRegularKey = (key) => {
+    if (activeInput === "usernameInput") {
+      setInputValue(inputValue + (capsLockEnabled ? key.toUpperCase() : key));
+    } else {
+      setPasswordValue(
+        passwordValue + (capsLockEnabled ? key.toUpperCase() : key)
+      );
+    }
+  };
+
+  const handleSpace = () => {
+    if (activeInput === "usernameInput") {
+      setInputValue(inputValue + " ");
+    } else {
+      setPasswordValue(passwordValue + " ");
+    }
+  };
+
+  const handleBackspace = () => {
+    if (activeInput === "usernameInput") {
+      setInputValue(inputValue.slice(0, -1));
+    } else {
+      setPasswordValue(passwordValue.slice(0, -1));
+    }
+  };
+
+  const toggleActiveInput = () => {
+    setActiveInput(
+      activeInput === "usernameInput" ? "passwordInput" : "usernameInput"
+    );
+  };
+
+  const toggleCapsLock = () => {
+    setCapsLockEnabled(!capsLockEnabled);
+  };
+
+  const keyboardLayout = [
+    "1234$567890",
+    "qwertyuiop",
+    "@asdfghjkl",
+    "zxcvbnm.",
+    ["CapsLock", "Space", "Clear", "Backspace"],
+    ["Password"],
+  ];
+
+  return (
+    <div className="bg-[#EEEDEB]">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="bg-[#3E639F] flex items-center">
+          <input
+            {...register("username", { required: true })}
+            className="border"
+            type="text"
+            id="usernameInput"
+            placeholder="Type your username"
+          />
+          {errors.email?.type === "required" && (
+            <p className="text-red-400 mt-2">Email is required</p>
+          )}
+
+          <input
+            {...register("password", { required: true })}
+            className="border ml-2"
+            type="text"
+            // readOnly
+            placeholder="Type your password"
+            id="passwordInput"
+          />
+          {errors.password?.type === "required" && (
+            <p className="text-red-400 mt-2">Password is required</p>
+          )}
+          <button className="bg-[#E40100] text-white ml-2 px-3 py-1 mt-2 rounded mb-4">
+            Login
+          </button>
+        </div>
+        <p>{error}</p>
+      </form>
+
+      <div className="keyboard">
+        {keyboardLayout.map((row, rowIndex) => (
+          <div key={rowIndex} className="keyboard-row">
+            {Array.isArray(row) ? (
+              row.map((key, keyIndex) => (
+                <button
+                  key={keyIndex}
+                  className={`keyboard-key ${
+                    key === "Space" ? "space" : ""
+                  }border px-5 py-3`}
+                  onClick={() => handleKeyPress(key)}
+                >
+                  {key === "CapsLock"
+                    ? capsLockEnabled
+                      ? "Caps Lock ON"
+                      : "Caps Lock OFF"
+                    : key}
+                </button>
+              ))
+            ) : (
+              <div className="keyboard-key-row">
+                {row.split("").map((key, keyIndex) => (
+                  <button
+                    key={keyIndex}
+                    className={`keyboard-key ${key === "Space" ? "space" : ""}`}
+                    onClick={() => handleKeyPress(key)}
+                  >
+                    {key}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default Keyboard;
