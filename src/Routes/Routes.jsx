@@ -53,8 +53,9 @@ import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositA
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import CustomerService from "../Pages/CustomerService/CustomerService";
 import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
-
-
+import UserSecureRoute from "./UserSecureRoute";
+import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
+import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 
 const router = createBrowserRouter([
   {
@@ -98,7 +99,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <UserSecureRoute><Dashboard /></UserSecureRoute>,
     children: [
       // ..........User dashboard routes............
       {
@@ -116,22 +117,6 @@ const router = createBrowserRouter([
       {
         path: "change-password",
         element: <PasswordChange />
-      },
-      {
-        path: "saving-account",
-        element: <OpenAccount />
-      },
-      {
-        path: "current-account",
-        element: <CurrentAccount />
-      },
-      {
-        path: "student-account",
-        element: <StudentAccount />
-      },
-      {
-        path: "deposit-account",
-        element: <DepositAccount />
       },
       {
         path: "apply-loan",
@@ -256,7 +241,7 @@ const router = createBrowserRouter([
       },
       {
         path: "AddLatestNews",
-        element: <AddLatestNews />
+        element: <AddLatestNews />,
       },
       {
         path: "loan-request",
@@ -272,6 +257,31 @@ const router = createBrowserRouter([
         element: <CustomerSupport />
       }
     ],
+  },
+  // other routes 
+  {
+    path: "/payment-status/:success",
+    element: <PaymentStatusPage />,
+  },
+  {
+    path: "/admin-login",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/saving-account",
+    element: <OpenAccount />,
+  },
+  {
+    path: "/current-account",
+    element: <CurrentAccount />,
+  },
+  {
+    path: "/student-account",
+    element: <StudentAccount />,
+  },
+  {
+    path: "/deposit-account",
+    element: <DepositAccount />,
   },
 ]);
 
