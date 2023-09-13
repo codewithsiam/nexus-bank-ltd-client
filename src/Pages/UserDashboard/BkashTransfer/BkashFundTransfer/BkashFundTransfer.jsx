@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../../config/server';
 
 const BkashFundTransfer = () => {
   const { handleSubmit, register, formState: { errors } } = useForm();
@@ -9,7 +10,22 @@ const BkashFundTransfer = () => {
     e.preventDefault(e)
     console.log(data);
     // Handle the form submission logic here
+    
+    fetch(`${baseUrl}/ssl-payment`,{
+      method: 'POST',
+      headers: { 
+        'Content-Type': 'application/json' 
+    },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+        window.location.replace(result.url);
+      })
+
   };
+  
 
   return (
     <div className="bg-white rounded-lg my-20 p-8  border border-gray-300">
@@ -115,7 +131,7 @@ const BkashFundTransfer = () => {
         </div>
 
         <div className="mt-4 mr-16 flex justify-center space-x-4 pb-10">
-          <Link to={'/dashboard/verify-pin'}>
+         
           
           <button
             type="submit"
@@ -123,7 +139,6 @@ const BkashFundTransfer = () => {
           >
             Transfer
           </button>
-          </Link>
           <button
             type="button"
             className="bg-red-600 text-white font-semibold px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
