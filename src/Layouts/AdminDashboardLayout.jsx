@@ -25,6 +25,7 @@ import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
@@ -68,6 +69,11 @@ const adminMenu = [
     name: "Loan Request",
     icon: <AccountBalanceWalletIcon  />,
     route: "loan-request",
+  },
+  {
+    name: "Customer Support",
+    icon: <SupportAgentIcon  />,
+    route: "customer-support",
   },
 ];
 

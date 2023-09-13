@@ -51,6 +51,8 @@ import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTra
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import CustomerService from "../Pages/CustomerService/CustomerService";
+import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
 
 
 
@@ -65,8 +67,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/chat',
-        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
+        path: '/chat',
+        element: <PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "aboutDetails",
@@ -114,22 +116,22 @@ const router = createBrowserRouter([
       {
         path: "change-password",
         element: <PasswordChange />
-      },    
+      },
       {
         path: "saving-account",
         element: <OpenAccount />
       },
       {
-        path:"current-account",
-        element:<CurrentAccount/>
+        path: "current-account",
+        element: <CurrentAccount />
       },
       {
-        path:"student-account",
-        element:<StudentAccount/>
+        path: "student-account",
+        element: <StudentAccount />
       },
       {
-        path:"deposit-account",
-        element:<DepositAccount/>
+        path: "deposit-account",
+        element: <DepositAccount />
       },
       {
         path: "apply-loan",
@@ -137,31 +139,31 @@ const router = createBrowserRouter([
       },
       {
         path: "Fund-transfer",
-        element: <FundTransfer/>,
+        element: <FundTransfer />,
       },
       {
         path: "fund-transfer-pin-verification",
-        element: <FundTransferPin/>,
+        element: <FundTransferPin />,
       },
       {
         path: "topup-beneficiary-list",
-        element: <TopUpBeneficiaryList/>,
+        element: <TopUpBeneficiaryList />,
       },
       {
         path: "card-beneficiary-list",
-        element: <CardBeneficiaryList/>,
+        element: <CardBeneficiaryList />,
       },
       {
         path: "FundTransferBeneficiaryList",
-        element: <AccountBeneficiaryList/>,
+        element: <AccountBeneficiaryList />,
       },
       {
         path: "MobilTopUpHistory",
-        element: <MobilTopUpHistory/>,
+        element: <MobilTopUpHistory />,
       },
       {
         path: "FundTransferBeneficiaryList/AddBeneficiary",
-        element: <AddBeneficiary/>,
+        element: <AddBeneficiary />,
       },
       {
         path: "add-money",
@@ -210,6 +212,10 @@ const router = createBrowserRouter([
         path: "my-accounts",
         element: <MyAccounts />,
       },
+      {
+        path: "nexus-customer-service-portal",
+        element: <CustomerService />,
+      },
     ],
   },
   // admin dashboard 
@@ -229,20 +235,20 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
-        loader:() => fetch(`${baseUrl}/users`)
+        loader: () => fetch(`${baseUrl}/users`)
       },
       {
-        path:'users/:email',
-        element:<UserProfile></UserProfile>
+        path: 'users/:email',
+        element: <UserProfile></UserProfile>
 
       },
       {
-        path:"accounts",
-        element:<Accounts/>
+        path: "accounts",
+        element: <Accounts />
       },
       {
-        path:"account-request",
-        element:<AccountRequest/>
+        path: "account-request",
+        element: <AccountRequest />
       },
       {
         path: "analytics",
@@ -255,11 +261,15 @@ const router = createBrowserRouter([
       {
         path: "loan-request",
         element: <LoanRequest />,
-        loader:() => fetch(`${baseUrl}/loans`)
+        loader: () => fetch(`${baseUrl}/loans`)
       },
       {
         path: "feedback/:id",
-        element: <Feedback/>
+        element: <Feedback />
+      },
+      {
+        path: "customer-support",
+        element: <CustomerSupport />
       }
     ],
   },
