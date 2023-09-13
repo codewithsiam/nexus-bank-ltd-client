@@ -1199,38 +1199,11 @@ export default function MiniDrawer() {
 
           <Divider />
           <List>
-            {adminMenu.map((menu, index) => (
-              <ListItem key={index} disablePadding sx={{ display: "block" }}>
-                <Link to={menu.route}>
-                  <ListItemButton
-                    sx={{
-                      minHeight: 48,
-                      justifyContent: open ? "initial" : "center",
-                      px: 2.5,
-                    }}
-                  >
-                    <ListItemIcon
-                      sx={{
-                        minWidth: 0,
-                        mr: open ? 3 : "auto",
-                        justifyContent: "center",
-                      }}
-                    >
-                      {menu.icon}
-                    </ListItemIcon>
-                    <ListItemText
-                      primary={menu.name}
-                      sx={{ opacity: open ? 1 : 0 }}
-                    />
-                  </ListItemButton>
-                </Link>
-              </ListItem>
-            ))}
              <ListItem 
                   disablePadding
                   sx={{ display: "block" }}
                 >
-                  <div onClick={handleLogout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
+                  <div onClick={handleLogout} className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4" >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
