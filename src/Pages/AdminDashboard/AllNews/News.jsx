@@ -12,7 +12,7 @@ const News = ({ news ,handelDelete }) => {
     return (
         <>
         <div className=" px-4 cursor-pointer">
-            <div className="max-w-[370px] mx-auto mb-10">
+            <div className="max-w-[400px] mx-auto mb-10">
                 <div className="rounded overflow-hidden  mb-8">
                     <img
                         src={img}

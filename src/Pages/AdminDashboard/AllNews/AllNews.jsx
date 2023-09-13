@@ -39,14 +39,13 @@ const AllNews = () => {
                         'Your file has been deleted.',
                         'success'
                       )
-                    const newData=blogNews?.find(news=>news._id!==id)
-                    setBlogNews(newData)
+                  
                 }
                 })
              
             }
           })
-        console.log(id)
+    
         
     }
   
@@ -55,7 +54,7 @@ const AllNews = () => {
              <div className=' mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
              <div className="grid md:grid-cols-3 gap-5 mx-4">
                     {
-                        blogNews?.map((news,index) => <News
+                      blogNews&&  blogNews?.map((news,index) => <News
                         key={index}
                         handelDelete={handelDelete}
                             news={news}
