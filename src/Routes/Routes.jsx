@@ -55,6 +55,7 @@ import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 import AdminSecureRoute from "./AdminSecureRoute";
 import UserSecureRoute from "./UserSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
 
 
 
@@ -99,6 +100,7 @@ const router = createBrowserRouter([
       {
         path: "careers",
         element: <Careers />,
+        loader: () => fetch(`${baseUrl}/careers`)
       },
     ],
   },
@@ -274,12 +276,12 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element: 
-        (
-          <UserSecureRoute>
-            <EStatement />
-          </UserSecureRoute>
-        ),
+        element:
+          (
+            <UserSecureRoute>
+              <EStatement />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "bkash-fund-transfer",
@@ -307,17 +309,28 @@ const router = createBrowserRouter([
       },
       {
         path: "credit-card-apply",
-        element: (
-          <UserSecureRoute>
-            <CreditCardApply />
-          </UserSecureRoute>
-        ),
+        element:
+
+          (
+            <UserSecureRoute>
+              <CreditCardApply />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "my-accounts",
         element: (
           <UserSecureRoute>
             <MyAccounts />
+          </UserSecureRoute>
+        ),
+      },
+      {
+        path:`apply/:id`,
+        element: 
+        (
+          <UserSecureRoute>
+            <JobApply />
           </UserSecureRoute>
         ),
       },
