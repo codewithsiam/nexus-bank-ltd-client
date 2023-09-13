@@ -36,7 +36,7 @@ const CardRequestTable = () => {
           Swal.fire({
             position: "top-center",
             icon: "success",
-            title: `Account ${status} successfully`,
+            title: `Card ${status} successfully`,
             showConfirmButton: false,
             timer: 1500,
           });
@@ -111,7 +111,7 @@ const CardRequestTable = () => {
                         >
                           Deny
                         </button>
-                        <button className="bg-green-500 px-4 py-2 rounded text-white ">
+                        <button  onClick={() => handleStatus(card._id, "approved")} className="bg-green-500 px-4 py-2 rounded text-white ">
                           Approve
                         </button>
                       </div>

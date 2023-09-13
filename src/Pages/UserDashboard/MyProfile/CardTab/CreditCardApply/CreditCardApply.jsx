@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 const CreditCardApply = () => {
     const [userData,setUserData] = useState({});
     const [error,setError] = useState("");
+    const username = "Sarker2";
 
     const handleUserDataChange = (e)=>{
         const newUserData = {...userData};
@@ -20,7 +21,14 @@ const CreditCardApply = () => {
             headers:{
                 "content-type":"application/json"
             },
-            body:JSON.stringify(userData)
+            body:JSON.stringify({
+                username:username,
+                title:userData.title,
+                firstName:userData.firstName,
+                lastName:userData.lastName,
+                nidCardNumber:userData.nidCardNumber,
+                accountNumber:userData.accountNumber
+            })
         })
         .then(res=>res.json())
         .then(data=>{

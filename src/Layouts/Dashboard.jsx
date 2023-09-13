@@ -111,7 +111,7 @@ const userMenu = [
     icon: <BiTransfer />,
     route: "transfer-money",
   },
- 
+
   {
     name: "Transaction History",
     icon: <AiOutlineTransaction />,
@@ -260,7 +260,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
-  
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -268,8 +268,7 @@ export default function MiniDrawer() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
-  
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -296,8 +295,13 @@ export default function MiniDrawer() {
             </div>
             <div className="mr-4 flex gap-2 items-center">
               <div className="hidden  md:flex flex-col justify-center items-end">
-                <h3 className="text-xs">Welcome <span className="font-semibold text-[18px]">{user?.username}</span></h3>
-                 <p>Regular User</p>
+                <h3 className="text-xs">
+                  Welcome{" "}
+                  <span className="font-semibold text-[18px]">
+                    {user?.username}
+                  </span>
+                </h3>
+                <p>Regular User</p>
               </div>
               <img
                 className="w-10 h-10 rounded-full"
@@ -335,245 +339,123 @@ export default function MiniDrawer() {
           <List>
             {
               // todo :
-         
-                // userMenu.map((menuItem, index) => (
-                <ListItem
-                  key={"My Profile"}
-                  disablePadding
-                  sx={{ display: "block" }}
-                >
+
+              // userMenu.map((menuItem, index) => (
+              <ListItem
+                key={"My Profile"}
+                disablePadding
+                sx={{ display: "block" }}
+              >
                 {/* Account Details------------------------- */}
                 <div>
-                  {
-                    !open?  <div className="flex items-center justify-center">
-                      <FileOpenIcon className="opacity-60 "/>
-                    </div>:
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
+                    </div>
+                  ) : (
                     <h4 className="ml-5 font-semibold my-3">Dashboard</h4>
-                  }
+                  )}
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"account-overview"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                    <Link to={"account-overview"}>
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {<AiOutlineDashboard/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Internet Banking Dashboard"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AiOutlineDashboard />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Internet Banking Dashboard"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
                     </Link>
                   </div>
                 </div>
                 {/* account Information  */}
                 <div>
-                  {
-                    !open?  <div className="flex items-center justify-center">
-                      <FileOpenIcon className="opacity-60 "/>
-                    </div>:
-                    <h4 className="ml-5 font-semibold my-3">Account Information</h4>
-                  }
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
+                    </div>
+                  ) : (
+                    <h4 className="ml-5 font-semibold my-3">
+                      Account Information
+                    </h4>
+                  )}
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"my-accounts"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                    <Link to={"my-accounts"}>
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {<MdAccountTree/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"My Accounts"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<MdAccountTree />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"My Accounts"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
                     </Link>
                     {/* e-statement */}
-                    <Link to={"e-statement"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
+                    <Link to={"e-statement"}>
+                      <ListItemButton
                         sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
                         }}
                       >
-                        {<MdAccountTree/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"E-Statement"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<MdAccountTree />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"E-Statement"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
                     </Link>
                   </div>
                 </div>
 
-                  {/* Account Details------------------------- */}
-                  <div>
-                    {
-                      !open?  <div className="flex items-center justify-center">
-                        <FileOpenIcon className="opacity-60 "/>
-                      </div>:
-                      <h4 className="ml-5 font-semibold my-3">Open Accounts</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                    
-                    {/* if user have current account then he can not see this page because one user can create only one current account  */}
-                   { user?.accounts[0].account_type !== "Current Account" && <Link to={"current-account"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<AccountBalanceWalletOutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Current Account"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>}
-                    <Link to={"saving-account"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<EnergySavingsLeafOutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Saving Account"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                    <Link to={"deposit-account"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<EnergySavingsLeafOutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Deposit Account"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                    <Link to={"student-account"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<StickyNote2OutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Student Account"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
-                    <Link to={"credit-card-apply"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<StickyNote2OutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Apply For Credit Card"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
+                {/* Account Details------------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
                     </div>
-                  </div>
-                  
-                  {/* Transfer............................... */}
-                  <div>
-                    {
-                      !open ? <div className="flex items-center justify-center">
-                        <PaidIcon className="opacity-60" />
-                      </div>:
-                      <h4 className="font-semibold ml-5 my-2">Transfer</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                      <Link to={"Fund-transfer"} >
+                  ) : (
+                    <h4 className="ml-5 font-semibold my-3">Open Accounts</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    {/* if user have current account then he can not see this page because one user can create only one current account  */}
+                    {user?.accounts[0].account_type !== "Current Account" && (
+                      <Link to={"current-account"}>
                         <ListItemButton
                           sx={{
                             minHeight: 48,
@@ -588,16 +470,17 @@ export default function MiniDrawer() {
                               justifyContent: "center",
                             }}
                           >
-                            {<AccountBalanceWalletOutlinedIcon/>}
+                            {<AccountBalanceWalletOutlinedIcon />}
                           </ListItemIcon>
                           <ListItemText
-                            primary={"Make a transfer"}
+                            primary={"Current Account"}
                             sx={{ opacity: open ? 1 : 0 }}
                           />
                         </ListItemButton>
                       </Link>
-                      <Link to={"FundTransferBeneficiaryList"} >
-                        <ListItemButton
+                    )}
+                    <Link to={"saving-account"}>
+                      <ListItemButton
                         sx={{
                           minHeight: 48,
                           justifyContent: open ? "initial" : "center",
@@ -611,16 +494,144 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AccountBalanceWalletOutlinedIcon/>}
+                          {<EnergySavingsLeafOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Saving Account"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"deposit-account"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<EnergySavingsLeafOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Deposit Account"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"student-account"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<StickyNote2OutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Student Account"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"credit-card-apply"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<StickyNote2OutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Apply For Credit Card"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Transfer............................... */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <PaidIcon className="opacity-60" />
+                    </div>
+                  ) : (
+                    <h4 className="font-semibold ml-5 my-2">Transfer</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"Fund-transfer"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Make a transfer"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"FundTransferBeneficiaryList"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Transfer Beneficiary List"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
-                        </ListItemButton>
-                      </Link>
-                      
-                      {/* <Link to={"AddBeneficiary"} >
+                      </ListItemButton>
+                    </Link>
+
+                    {/* <Link to={"AddBeneficiary"} >
                         <ListItemButton
                           sx={{
                             minHeight: 48,
@@ -643,125 +654,20 @@ export default function MiniDrawer() {
                           />
                         </ListItemButton>
                       </Link> */}
-                    </div>
                   </div>
+                </div>
 
-                  {/* Loan Services------------------------- */}
-                  <div>
-                    {
-                      !open ? <div className="flex items-center justify-center">
-                        <PaidIcon className="opacity-60" />
-                      </div>:
-                      <h4 className="font-semibold ml-5 my-2">Loan Services</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                    <Link to={"apply-loan"} >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                        {<AccountBalanceWalletOutlinedIcon/>}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Apply Loan"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </Link>
+                {/* Loan Services------------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <PaidIcon className="opacity-60" />
                     </div>
-
-                  </div>
-                  
-                  {/* Card Services---------------------- */}
-                  <div>
-                    {!open ? (
-                      <div className="flex items-center justify-center">
-                        <PaidIcon className="opacity-60" />
-                      </div>
-                    ) : (
-                      <h4 className="font-semibold ml-5 my-2">Card Services</h4>
-                    )}
-                    <div className={`${open && "ml-3"}`}>
-                      <Link to={"my-credit-card"}>
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AccountBalanceWalletOutlinedIcon />}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"My Cards"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                      <Link to={"pay-credit-card-bill"}>
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AccountBalanceWalletOutlinedIcon />}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"Pay Credit Card Bill"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                      <Link to={"card-beneficiary-list"} >
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AccountBalanceWalletOutlinedIcon/>}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"Card Beneficiary List"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                      <Link to={"transfer-money"} >
+                  ) : (
+                    <h4 className="font-semibold ml-5 my-2">Loan Services</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"apply-loan"}>
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -776,15 +682,120 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AccountBalanceWalletOutlinedIcon/>}
+                          {<AccountBalanceWalletOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Apply Loan"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Card Services---------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <PaidIcon className="opacity-60" />
+                    </div>
+                  ) : (
+                    <h4 className="font-semibold ml-5 my-2">Card Services</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"my-credit-card"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"My Cards"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"pay-credit-card-bill"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Pay Credit Card Bill"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"card-beneficiary-list"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Card Beneficiary List"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"transfer-money"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountBalanceWalletOutlinedIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Transfer Money"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>
-                      </Link>
-                      <Link to={"transaction-history"} >
+                    </Link>
+                    <Link to={"transaction-history"}>
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -799,149 +810,150 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AiOutlineTransaction/>}
+                          {<AiOutlineTransaction />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Transition History"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>
-                      </Link>
-                    </div>
-                  </div> 
-
-                  {/* TopUp overview------------------------- */}
-                  <div>
-                    {
-                      !open?  
-                      <div className="flex items-center justify-center">
-                        <FileOpenIcon className="opacity-60 "/>
-                      </div>:
-                      <h4 className="ml-5 font-semibold my-3">Topup service</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                      <Link to={"MobilTopUpHistory"} >
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AiOutlineTransaction/>}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"Mobile Top-Up History"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                    </div>
+                    </Link>
                   </div>
-                  {/* other transfer------------------------- */}
-                  <div>
-                    {
-                      !open?  
-                      <div className="flex items-center justify-center">
-                        <FileOpenIcon className="opacity-60 "/>
-                      </div>:
-                      <h4 className="ml-5 font-semibold my-3">Other Transefer</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                      <Link to={"bkash-fund-transfer"} >
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AiOutlineTransaction/>}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"Bkash Fund Transfer"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                    </div>
-                  </div>
+                </div>
 
-                  {/* Profile overview------------------------- */}
-                  <div>
-                    {
-                      !open?  <div className="flex items-center justify-center">
-                        <FileOpenIcon className="opacity-60 "/>
-                      </div>:
-                      <h4 className="ml-5 font-semibold my-3">Profile Management</h4>
-                    }
-                    <div className={`${open && "ml-3"}`}>
-                      <Link to={"my-profile"} >
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<AccountCircleIcon/>}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"My Profile"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
-                      <Link to={"change-password"} >
-                        <ListItemButton
-                          sx={{
-                            minHeight: 48,
-                            justifyContent: open ? "initial" : "center",
-                            px: 2.5,
-                          }}
-                        >
-                          <ListItemIcon
-                            sx={{
-                              minWidth: 0,
-                              mr: open ? 3 : "auto",
-                              justifyContent: "center",
-                            }}
-                          >
-                            {<PiPasswordFill/>}
-                          </ListItemIcon>
-                          <ListItemText
-                            primary={"Change Password"}
-                            sx={{ opacity: open ? 1 : 0 }}
-                          />
-                        </ListItemButton>
-                      </Link>
+                {/* TopUp overview------------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
                     </div>
-
+                  ) : (
+                    <h4 className="ml-5 font-semibold my-3">Topup service</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"MobilTopUpHistory"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AiOutlineTransaction />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Mobile Top-Up History"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
                   </div>
-                </ListItem>
-                 
-                          }
+                </div>
+                {/* other transfer------------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
+                    </div>
+                  ) : (
+                    <h4 className="ml-5 font-semibold my-3">Other Transefer</h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"bkash-fund-transfer"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AiOutlineTransaction />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Bkash Fund Transfer"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </div>
+                </div>
+
+                {/* Profile overview------------------------- */}
+                <div>
+                  {!open ? (
+                    <div className="flex items-center justify-center">
+                      <FileOpenIcon className="opacity-60 " />
+                    </div>
+                  ) : (
+                    <h4 className="ml-5 font-semibold my-3">
+                      Profile Management
+                    </h4>
+                  )}
+                  <div className={`${open && "ml-3"}`}>
+                    <Link to={"my-profile"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<AccountCircleIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"My Profile"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"change-password"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<PiPasswordFill />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Change Password"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                  </div>
+                </div>
+              </ListItem>
+            }
           </List>
 
           <Divider />
@@ -973,34 +985,34 @@ export default function MiniDrawer() {
                 </Link>
               </ListItem>
             ))}
-             <ListItem 
-                  disablePadding
-                  sx={{ display: "block" }}
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <div
+                onClick={logout}
+                className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4"
+              >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? "initial" : "center",
+                    px: 2.5,
+                  }}
                 >
-                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
-                    <ListItemButton
-                      sx={{
-                        minHeight: 48,
-                        justifyContent: open ? "initial" : "center",
-                        px: 2.5,
-                      }}
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: 0,
-                          mr: open ? 3 : "auto",
-                          justifyContent: "center",
-                        }}
-                      >
-                      {/* icon  */}
-                      </ListItemIcon>
-                      <ListItemText
-                        primary={"Log Out"}
-                        sx={{ opacity: open ? 1 : 0 }}
-                      />
-                    </ListItemButton>
-                  </div>
-                </ListItem>
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : "auto",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {/* icon  */}
+                  </ListItemIcon>
+                  <ListItemText
+                    primary={"Log Out"}
+                    sx={{ opacity: open ? 1 : 0 }}
+                  />
+                </ListItemButton>
+              </div>
+            </ListItem>
           </List>
         </Drawer>
       </ThemeProvider>
