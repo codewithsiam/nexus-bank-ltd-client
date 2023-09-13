@@ -7,7 +7,6 @@ import { baseUrl } from "../../config/server";
 import axios from "axios";
 
 const Keyboard = () => {
-
   const {
     register,
     formState: { errors },
@@ -46,13 +45,12 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
-          loading(false);
-          navigate(from);
-          
+          setTimeout(() => {
+            navigate(from);
+          }, 1000);
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);
-          loading(false);
         }
       })
       .catch((error) => {
@@ -118,7 +116,7 @@ const Keyboard = () => {
   const handleToggleKeyboard = () => {
     setPasswordValue(passwordValue);
     setToggleKeyboardEnabled(!toggleKeyboardEnabled);
-  }
+  };
 
   const keyboardLayout = [
     "1234567890",
@@ -178,10 +176,7 @@ const Keyboard = () => {
         </div>
         <p>{error}</p>
       </form>
-      <button
-        onClick={() => handleToggleKeyboard() }
-        className="btn btn-info"
-      >
+      <button onClick={() => handleToggleKeyboard()} className="btn btn-info">
         Manual Keyboard for password
       </button>
       <div className="keyboard">
