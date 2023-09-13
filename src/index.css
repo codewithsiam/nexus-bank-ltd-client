@@ -34,11 +34,17 @@
   }
 }
 /* --------------lone page---------------- */
-/* .lone-service:hover img {
+/* .loan-service:hover img {
   transform: scale(1.1);
 } */
-.lone-service:hover .lone-btn {
+.loan-service:hover .loan-btn {
   display: block;
+}
+
+.bg-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 /* ----------------------profile page-------------------------- */
 .css-19kzrtu {

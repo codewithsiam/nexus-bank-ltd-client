@@ -1,19 +1,56 @@
-[
-  {
-    "id": 1111,
-    "company_logo": "https://raw.githubusercontent.com/Rukshanarupu/assignment-image-link/main/Assignment-9-img/Logo/google-1-1%201.png",
-    "job_title": "Software Engineer",
-    "company_name": "Google LLC",
-    "remote_or_onsite": "Remote",
-    "location": "San Francisco, CA",
-    "fulltime_or_partTime": "Full-time",
-    "salary": "$1000,00 - $120,000",
-    "job_description": "We are seeking a skilled software engineer to develop and maintain software solutions. The ideal candidate will have experience in web development using modern JavaScript frameworks and a passion for creating high-quality, scalable software.",
-    "job_responsibility": "Design, develop, and maintain software applications; Write well-designed, testable, and efficient code; Participate in code reviews; Troubleshoot and debug applications; Collaborate with cross-functional teams to identify and solve complex problems.",
-    "educational_requirements": "Bachelor's degree in Computer Science or related field",
-    "experiences": "3+ years of experience in software development",
-    "phone":  "+1 123-456-7890",
-    "email": "jobs@llc.com"
-    
-  }
-]
+{
+  "loans": [
+    {
+      "type": "Student Loan",
+      "features": [
+        "Loan amount from BDT 2 lacs to BDT 20 lacs",
+        "Loan tenure 12 to 60 months",
+        "No hidden charges",
+        "Competitive interest rate",
+        "Processing Fee - Please see the Schedule of Charges",
+        "Eligibility: Age 22 to 60 years",
+        "Experience:",
+        "- Minimum 2 years for students"
+      ],
+      "monthlyIncomeCriteria": "Not applicable for student loans",
+      "requiredDocumentsLink": "Link to download required documents for Student Loan"
+    },
+    {
+      "type": "Personal Loan",
+      "features": [
+        "Loan amount from BDT 2 lacs to BDT 20 lacs",
+        "Loan tenure 12 to 60 months",
+        "No hidden charges",
+        "Competitive interest rate",
+        "Processing Fee - Please see the Schedule of Charges",
+        "Eligibility: Age 22 to 60 years",
+        "Experience:",
+        "- Salaried Executive: Minimum 2 years",
+        "- Professionals: Minimum 2 years of practice",
+        "- Businessman: Minimum 3 years"
+      ],
+      "monthlyIncomeCriteria": [
+        "Salaried Executive (A/C Payee): BDT 40,000",
+        "Landlord: BDT 50,000",
+        "Professional: BDT 60,000",
+        "Business person: BDT 100,000"
+      ],
+      "requiredDocumentsLink": "Link to download required documents for Personal Loan"
+    },
+    {
+      "type": "Business Loan",
+      "features": [
+        "Loan amount from BDT 2 lacs to BDT 20 lacs",
+        "Loan tenure 12 to 60 months",
+        "No hidden charges",
+        "Competitive interest rate",
+        "Processing Fee - Please see the Schedule of Charges",
+        "Eligibility: Age 22 to 60 years",
+        "Experience:",
+        "- Businessman: Minimum 3 years"
+      ],
+      "monthlyIncomeCriteria": "Not applicable for business loans",
+      "requiredDocumentsLink": "Link to download required documents for Business Loan"
+    }
+  ]
+}

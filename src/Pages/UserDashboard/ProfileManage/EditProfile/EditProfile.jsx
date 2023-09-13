@@ -11,9 +11,9 @@ const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
 const EditProfile = () => {
   const [gender, setGender] = useState("Pick One");
   const {user}=useContext(AuthContext)
-  // const navigate = useNavigate();
-  // const location = useLocation();
-  // const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
   console.log(user)
   
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
@@ -79,26 +79,30 @@ const EditProfile = () => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const nickName = form.nickName.value;
+    const nick_name = form.nickName.value;
+    const name = form.profileName.value;
+    const email = form.email.value;
     const gender = form.gender.value;
-    const birthday = form.birthDate.value;
+    const birthday = form.birthday.value;
     const nationality = form.nationality.value;
     const number = form.number.value;
     const profession = form.profession.value;
-    const presentAddress = form.presentAddress.value;
-    const permanentAddress = form.permanentAddress.value;
+    const present_address = form.presentAddress.value;
+    const permanent_address = form.permanentAddress.value;
     const description = form.description.value;
 
     const updatedProfileInfo = {
       gender: gender,
-      nickname: nickName,
+      nick_name: nick_name,
+      email: email,
       number: number,
       nationality: nationality,
       profession: profession,
       birthday: birthday,
-      presentAddress: presentAddress,
-      permanentAddress: permanentAddress,
+      present_address: present_address,
+      permanent_address: permanent_address,
       description: description,
+      name: name,
     };
     console.log(updatedProfileInfo);
     Swal.fire({
@@ -122,8 +126,8 @@ const EditProfile = () => {
         .then((data) => {
           console.log(data);
           if (data.message === 'Profile updated successfully') {
-            let updatedUser = data.user;
-          if (updatedUser.success===true) {
+          //   const updatedUser = data.user;
+          // if (updatedUser.success===true) {
             Swal.fire({
               title: "success",
               text: "Profile Information Updated Successfully",
@@ -132,8 +136,8 @@ const EditProfile = () => {
               icon: "success",
               confirmButtonText: "Cool",
             });
-            // navigate("/");
-          }
+            navigate("/");
+          // }
           }
         })
         .catch((err) => {
@@ -192,22 +196,13 @@ const EditProfile = () => {
             <div className="grid md:grid-cols-2 gap-5 mb-4">
               {/* Profile Name */}
               <div>
-                <label
-                    htmlFor="profileName"
-                    className="block font-bold">
-                    Profile Name
-                  </label>
-                <TextField 
-                required
-                defaultValue={user?.displayName}
-                className="w-full" id="outlined-basic" variant="standard" />
+                <label htmlFor="profileName" className="block font-bold">Profile Name</label>
+                <TextField required className="w-full" id="outlined-basic" name="profileName" variant="standard" />
               </div>
               {/* email */}
               <div className="">
                 <label htmlFor="email" className="block font-bold">User's Email</label>
-                <TextField 
-                defaultValue={user?.email}
-                className="w-full" id="outlined-basic" variant="standard" />
+                <TextField className="w-full" id="outlined-basic" name="email" variant="standard" />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-5 mb-4">
@@ -231,7 +226,7 @@ const EditProfile = () => {
               {/* Birthday */}
               <div className="">
                 <label htmlFor="Birthday" className="block font-bold">Birthday</label>
-                <input name="birthDate" className="border px-3 py-3 rounded-md w-full" type="date" />
+                <input name="birthday" className="border px-3 py-3 rounded-md w-full" type="date" />
               </div>
             </div>
             <div className="grid md:grid-cols-2 gap-5 mb-4">
