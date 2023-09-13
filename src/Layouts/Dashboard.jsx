@@ -261,6 +261,11 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
   
+  const handleLogout = (user) => {
+    console.log("User logged out")
+    logout(user);
+  }
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -469,7 +474,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>}
-                    <Link to={"saving-account"} >
+                    <Link to={"/saving-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -492,7 +497,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"deposit-account"} >
+                    <Link to={"/deposit-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -515,7 +520,7 @@ export default function MiniDrawer() {
                       />
                     </ListItemButton>
                   </Link>
-                    <Link to={"student-account"} >
+                    <Link to={"/student-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
@@ -977,7 +982,7 @@ export default function MiniDrawer() {
                   disablePadding
                   sx={{ display: "block" }}
                 >
-                  <div onClick={logout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
+                  <div onClick={handleLogout} className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4" >
                     <ListItemButton
                       sx={{
                         minHeight: 48,

@@ -2,14 +2,14 @@
 import { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-import bankLoading from "/public/jsonAmination/bankLoading.json";
+import bankLoading from "../../public/jsonAmination/bankLoading.json";
 import Lottie from "lottie-react";
 
 const UserSecureRoute = ({ children }) => {
   const { user, loading, isAdmin } = useContext(AuthContext);
   const location = useLocation();
-  console.log("outside", loading);
-  console.log("from secure", user);
+  // console.log("outside", loading);
+  // console.log("from secure", user);
   if (loading) {
     return (
       <div className="h-screen w-full">
@@ -19,7 +19,7 @@ const UserSecureRoute = ({ children }) => {
   }
 
   if (user) {
-    console.log("inside", loading);
+    // console.log("inside", loading);
     return children;
   }
   return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
