@@ -53,6 +53,9 @@ import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositA
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import CustomerService from "../Pages/CustomerService/CustomerService";
 import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
+import UserSecureRoute from "./UserSecureRoute";
+import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
+import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 
 const router = createBrowserRouter([
   {

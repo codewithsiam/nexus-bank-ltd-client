@@ -455,7 +455,7 @@ export default function MiniDrawer() {
                     <div className={`${open && "ml-3"}`}>
                     
                     {/* if user have current account then he can not see this page because one user can create only one current account  */}
-                   { user?.accounts[0].account_type !== "Current Account" && <Link to={"current-account"} >
+                   { !user && <Link to={"current-account"} >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
