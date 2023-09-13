@@ -5,9 +5,9 @@ const CardBeneficiaryList = () => {
     return (
         <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-4'>
-                <h1 className='text-3xl font-bold text-primary'>Credit Card Bill Payment Beneficiary List</h1>
+                <h1 className='text-3xl font-bold text-primary'>Credit Card Bill Payment Beneficiary List </h1>
                 <div className='bg-slate-100 p-2 rounded-lg'>
-                    <p><Link className='text-primary '>Click Here</Link> To Add Beneficiary Credit Card </p>
+                    <p><Link to={'add-card-beneficiary'} className='text-primary '>Click Here</Link> To Add Beneficiary Credit Card </p>
 
                 </div>
                 <div className='bg-slate-100 p-2 rounded-lg mt-4 divide-y-2 divide-solid'>
@@ -19,9 +19,9 @@ const CardBeneficiaryList = () => {
                                 {/* head */}
                                 <thead className='bg-primary text-white font-bold'>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Job</th>
-                                        <th>Favorite Color</th>
+                                        <th>Nick Name</th>
+                                        <th>Beneficiary</th>
+                                        <th>Beneficiary Contact</th>
                                     </tr>
                                 </thead>
                                 <tbody >

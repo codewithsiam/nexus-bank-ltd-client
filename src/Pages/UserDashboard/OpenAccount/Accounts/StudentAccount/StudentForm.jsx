@@ -6,6 +6,7 @@ import BirthImage from "./BirthImage";
 import ProfilePhoto from "./ProfilePhoto";
 import { baseUrl } from "../../../../../config/server";
 import OtpModal from "../OtpModal/OtpModal";
+import Swal from "sweetalert2";
 
 const StudentForm = () => {
   const [userData, setUserData] = useState({});

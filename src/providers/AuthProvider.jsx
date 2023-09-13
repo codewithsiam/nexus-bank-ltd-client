@@ -53,6 +53,9 @@ const AuthProvider = ({ children }) => {
   // backend user
   useEffect(() => {
     const storedToken = localStorage.getItem("authToken");
+    if (!storedToken) {
+      setUser(null);
+    }
     if (storedToken) {
       axios
         .get(`${baseUrl}/profileMonitor`, {
@@ -61,23 +64,26 @@ const AuthProvider = ({ children }) => {
           },
         })
         .then((res) => {
+          // console.log(res.data);
           if (res.data) {
             setUser(res.data.result);
             setIsAdmin(res.data.isAdmin);
           } else {
             localStorage.removeItem("authToken");
+            setUser(null);
           }
         })
         .catch((error) => {
           console.error("Error:", error);
         })
         .finally(() => {
-          setLoading(false); 
+          setLoading(false);
         });
     } else {
       setLoading(false);
     }
   }, []);
+  // console.log("from auth state", user);
   const logout = () => {
     localStorage.removeItem("authToken");
     setUser(null);

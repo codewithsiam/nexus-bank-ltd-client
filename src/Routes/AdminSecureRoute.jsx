@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Navigate, useLocation } from "react-router-dom";
-import bankLoading from "/public/jsonAmination/bankLoading.json";
+import bankLoading from "../../public/jsonAmination/bankLoading.json";
 import Lottie from "lottie-react";
 
 const AdminSecureRoute = ({ children }) => {

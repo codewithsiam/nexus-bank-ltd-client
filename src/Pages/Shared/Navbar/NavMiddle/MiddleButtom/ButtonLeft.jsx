@@ -20,6 +20,7 @@ const ButtonLeft = () => {
         <Link>Cards</Link>
         <Link>Banking</Link>
         <Link>Lone</Link>
+        <Link to='/dashboard/nexus-customer-service-portal'>Customer Service</Link>
         
       </div>
       </div>

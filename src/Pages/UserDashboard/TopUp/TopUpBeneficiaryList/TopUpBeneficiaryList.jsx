@@ -8,7 +8,7 @@ const TopUpBeneficiaryList = () => {
     return (
         <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-green-200'>
             <div className='p-4'>
-                <h1 className='text-3xl font-bold text-green-600'>Beneficiary List</h1>
+                <h1 className='text-3xl font-bold text-green-600'>Beneficiary List </h1>
                 <div className='bg-slate-100 p-2 rounded-lg'>
                     <p><Link className='text-green-600 '>Click Here</Link> To Add Beneficiary Credit Card </p>
 
