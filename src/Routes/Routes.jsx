@@ -260,7 +260,7 @@ const router = createBrowserRouter([
   },
   // other routes 
   {
-    path: "/payment-status/:success",
+    path: "/payment-status/:status/:transactionId",
     element: <PaymentStatusPage />,
   },
   {
