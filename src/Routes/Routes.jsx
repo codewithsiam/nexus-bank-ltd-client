@@ -56,6 +56,13 @@ import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSup
 import UserSecureRoute from "./UserSecureRoute";
 import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
 import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
+import AdminSecureRoute from "./AdminSecureRoute";
+import UserSecureRoute from "./UserSecureRoute";
+import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
+import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
+
+
 
 const router = createBrowserRouter([
   {
@@ -241,7 +248,22 @@ const router = createBrowserRouter([
       },
       {
         path: "AddLatestNews",
-        element: <AddLatestNews />,
+        element:<AdminSecureRoute>
+          <AddLatestNews />
+          </AdminSecureRoute>
+      },
+      {
+        path: "AllNews",
+        element:<AdminSecureRoute>
+          <AllNews />
+          </AdminSecureRoute>
+      },
+      {
+        path: "AllNews/update/:id",
+        element:<AdminSecureRoute>
+          <UpdateNews />
+          </AdminSecureRoute>,
+          loader:(params)=>fetch(`${baseUrl}/AllNews/update/${params.id}`)
       },
       {
         path: "loan-request",

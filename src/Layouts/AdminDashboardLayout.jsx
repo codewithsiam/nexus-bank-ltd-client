@@ -51,8 +51,13 @@ const adminMenu = [
     route: "accounts",
   },
   {
+<<<<<<< HEAD
     name: "AddLatestNews",
     icon: <MdCreateNewFolder />,
+=======
+    name: "Add Latest News",
+    icon: <MdCreateNewFolder/>,
+>>>>>>> 14446112bc4c98dd9d4e425097ef46d7cb28aec5
     route: "AddLatestNews",
   },
   {
