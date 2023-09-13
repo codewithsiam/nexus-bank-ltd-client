@@ -61,7 +61,7 @@ const AddLatestNews = () => {
             <div className='p-4'>
                 <div className="flex justify-between">
                     <p className='text-3xl font-bold text-primary'>Add Latest News</p>
-                    <Link to={'/admin/allNews'}> <button className="btn btn-outline hover:bg-primary hover:text-white mb-2">View All News</button></Link>
+                    <Link to={'/admin/allNews'}> <button className="btn btn-outline hover:bg-primary hover:text-white text-slate-500 mb-2">View All News</button></Link>
                 </div>
                 <hr />
 
@@ -70,24 +70,24 @@ const AddLatestNews = () => {
 
                     <div className=" md:flex md:gap-14 w-full">
                         <div >
-                            <label className="text-1xl font-semibold text-primary "> News Title</label>
+                            <label className="text-1xl font-semibold text-slate-500 "> News Title</label>
                             <input {...register("title")} type="text" placeholder="Type here" className="input mt-2  border border-black   w-full  " />
 
                             {errors.title && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                         <div>
-                            <label className="text-1xl font-semibold text-primary">Photo Url</label>
+                            <label className="text-1xl font-semibold text-slate-500">Photo Url</label>
                             <input  {...register("Photo", { required: true })} type="file" className="file-input  border border-black   w-full my-2" />
 
                             {errors.photo && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                     </div>
-                    <label className="text-1xl font-semibold text-primary">Details</label><br />
+                    <label className="text-1xl font-semibold text-slate-500">Details</label><br />
                     <textarea {...register("detail", { required: true })} placeholder="Type Here News Details " className="textarea border border-black textarea-lg md:w-5/6 " ></textarea><br />
 
                     {errors.details && <span className="text-red-600">this field is required</span>} <br />
 
-                    <input disabled={loading} className="btn text-white hover:text-black bg-primary md:w-5/6 " type="submit" />
+                    <input disabled={loading} className="py-2 rounded-lg  text-white hover:bg-sky-600 hover:text-black bg-primary md:w-5/6 " type="submit" />
                 </form>
             </div>
          

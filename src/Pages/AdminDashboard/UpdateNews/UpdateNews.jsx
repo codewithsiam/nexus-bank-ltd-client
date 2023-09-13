@@ -77,7 +77,7 @@ const UpdateNews = () => {
 
                     <div className=" md:flex md:gap-14 w-full">
                         <div >
-                            <label className="text-1xl font-semibold text-primary "> News Title</label>
+                            <label className="text-1xl font-semibold text-slate-500 "> News Title</label>
                             <input
                                 defaultValue={newsData.title}
                                 onChange={(e) => setTitle(e.target.value)}
@@ -91,7 +91,7 @@ const UpdateNews = () => {
 
                         </div>
                         <div>
-                            <label className="text-1xl font-semibold text-primary">Photo Url</label>
+                            <label className="text-1xl font-semibold text-slate-500">Photo Url</label>
                             <input
                                 onChange={handelImgChange}
 
@@ -101,7 +101,7 @@ const UpdateNews = () => {
 
                         </div>
                     </div>
-                    <label className="text-1xl font-semibold text-primary">Details</label><br />
+                    <label className="text-1xl font-semibold text-slate-500">Details</label><br />
                     <textarea
                         defaultValue={newsData.detail}
                         placeholder="Type Here News Details " className="textarea border border-black textarea-lg md:w-5/6 " ></textarea><br />
