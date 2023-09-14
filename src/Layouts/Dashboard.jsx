@@ -960,7 +960,7 @@ export default function MiniDrawer() {
                   disablePadding
                   sx={{ display: "block" }}
                 >
-                  <div onClick={handleLogout} className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4" >
+                  <div onClick={() =>handleLogout()} className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4" >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
