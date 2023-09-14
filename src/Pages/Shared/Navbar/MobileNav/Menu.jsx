@@ -12,7 +12,7 @@ const Menu = () => {
   const [expendBlog, setExpendBlog] = useState(false);
   const [expendContact, setExpendContact] = useState(false);
   return (
-    <div className="mt-8 px-2">
+    <div data-testid="nav-menu" className="mt-8 px-2">
       <div className="flex justify-between border-b-2 py-2">
         <Link>Home</Link>
         {expendHome === true ? (
