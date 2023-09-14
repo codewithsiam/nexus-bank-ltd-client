@@ -1,4 +1,3 @@
-import Footer from "../Shared/Footer/Footer";
 import About from "./About/About";
 import Banner from "./Banner/Banner";
 import ContactUs from "./ContactUs/ContactUs";
@@ -35,7 +34,6 @@ const Home = () => {
             <Testimonial ></Testimonial>
             <CreditCardPayment />
             <ContactUs />
-            <Footer />
           <div className="flex justify-center items-center">
           <Link to={'/chat'} className=" fixed bottom-5 right-10 z-50 text-red-500"><img
             className="w-12"

@@ -25,17 +25,7 @@ const News = ({ news ,handelDelete }) => {
                    <span className="bg-gradient-to-r from-[#004F70] to-[#007C9C] rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white mb-5">
                         {moment(date).format("MMM Do YY")}
                     </span>
-                    <div className=' flex gap-2 items-center justify-center'>
-                      <Link to={`update/${_id}`}> 
-                       <FaEdit title='edit this news' className='w-6 h-6'></FaEdit></Link>
-
-
-                        <AiFillDelete
-                         onClick={()=>handelDelete(_id)}
-                        title='delete this news'
-                         className='w-6 h-6'>
-                         </AiFillDelete>
-                    </div>
+                  
                    </div>
 
                     <h3>

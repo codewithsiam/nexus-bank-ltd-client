@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const JobList = ({ job }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -11,9 +12,8 @@ const JobList = ({ job }) => {
     setIsHovered(false);
   };
 
-  const cardClasses = `bg-white rounded-lg shadow-lg p-6 mb-6 ${
-    isHovered ? 'transform scale-105 shadow-xl border-[#004F70] border-4' : ''
-  }`;
+  const cardClasses = `bg-white rounded-lg shadow-lg p-4 mb-4 ${isHovered ? 'transform scale-105 shadow-xl border-[#004F70]' : ''
+    }`;
 
   return (
     <div
@@ -27,12 +27,15 @@ const JobList = ({ job }) => {
       <p className="text-gray-600">Experience Required: {job.experience}</p>
       <p className="mt-4 text-gray-800">{job.description}</p>
       <div className="mt-4">
-        <a
-          href='#'
-          className="bg-gradient-to-r from-[#004F70] to-[#007C9C] rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white mb-5"
-        >
-          Apply Now
-        </a>
+
+        <Link to={`/dashboard/apply/${job._id}`} job={job}>
+          <button
+            className="bg-gradient-to-r from-[#004F70] to-[#007C9C] rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white mb-5"
+          >
+            Apply Now
+          </button>
+        </Link>
+
       </div>
     </div>
   );

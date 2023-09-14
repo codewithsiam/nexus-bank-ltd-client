@@ -29,11 +29,10 @@ import Accounts from "../Pages/AdminDashboard/Accounts/Accounts";
 import LoanRequest from "../Pages/AdminDashboard/LoanRequest/LoanRequest";
 import Feedback from "../Pages/AdminDashboard/LoanRequest/Feedback";
 import UserProfile from "../Pages/AdminDashboard/Users/UserProfile";
-import CreditCardApply from "../Pages/UserDashboard/MyProfile/CardTab/CreditCardApply/CreditCardApply";
+import CreditCardApply from "../Pages/UserDashboard/CreditCardApply/CreditCardApply";
 import Careers from "../Pages/Careers/Careers";
 import FundTransfer from "../Pages/UserDashboard/FundTransfer/FundTransfer/FundTransfer";
 import CardBeneficiaryList from "../Pages/UserDashboard/CardServices/CardBeneficiaryList/CardBeneficiaryList";
-
 import MobilTopUpHistory from "../Pages/UserDashboard/TopUp/MobilTopUpHistory/MobilTopUpHistory";
 import EStatement from "../Pages/UserDashboard/E-statement/EStatement";
 import PaymentPinVerification from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentPinVerification";
@@ -50,17 +49,23 @@ import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
-import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import CustomerService from "../Pages/CustomerService/CustomerService";
 import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
 import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
 import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 import AdminSecureRoute from "./AdminSecureRoute";
-import UserSecureRoute from "./UserSecureRoute";
 import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
-import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
 import BlogDetail from "../Pages/Blog/BlogDetail";
 import AddCardBeneficiary from "../Pages/UserDashboard/AddCardBeneficiary/AddCardBeneficiary";
+import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
+import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
+import Loan from "../Pages/Loan/Loan";
+import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
+import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
+import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
+import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
+import UserSecureRoute from "./UserSecureRoute";
 
 
 
@@ -79,8 +84,24 @@ const router = createBrowserRouter([
         element: <PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
-        path: "aboutDetails",
+        path: "about-details",
         element: <AboutDetails></AboutDetails>,
+      },
+      {
+        path: "retail-loan",
+        element: <Loan></Loan>,
+      },
+      {
+        path: "student-loan",
+        element: <StudentLoan></StudentLoan>,
+      },
+      {
+        path: "personal-loan",
+        element: <PersonalLoan></PersonalLoan>,
+      },
+      {
+        path: "business-loan",
+        element: <BusinessLoan></BusinessLoan>,
       },
       {
         path: "registration",
@@ -105,6 +126,7 @@ const router = createBrowserRouter([
       {
         path: "careers",
         element: <Careers />,
+        loader: () => fetch(`${baseUrl}/careers`)
       },
     ],
   },
@@ -188,7 +210,12 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element: <EStatement />,
+        element:
+          (
+            <UserSecureRoute>
+              <EStatement />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "bkash-fund-transfer",
@@ -204,7 +231,13 @@ const router = createBrowserRouter([
       },
       {
         path: "credit-card-apply",
-        element: <CreditCardApply />,
+        element:
+
+          (
+            <UserSecureRoute>
+              <CreditCardApply />
+            </UserSecureRoute>
+          ),
       },
 
 
@@ -216,12 +249,21 @@ const router = createBrowserRouter([
         path: "nexus-customer-service-portal",
         element: <CustomerService />,
       },
+      {
+        path:`apply/:id`,
+        element: 
+        (
+          <UserSecureRoute>
+            <JobApply />
+          </UserSecureRoute>
+        ),
+      },
     ],
   },
   // admin dashboard 
   {
     path: "/admin",
-    element: <AdminDashboardLayout />,
+    element: <AdminSecureRoute><AdminDashboardLayout /></AdminSecureRoute>,
     children: [
       // ..................admin dashboard routes........................
       {
@@ -286,7 +328,11 @@ const router = createBrowserRouter([
       {
         path: "customer-support",
         element: <CustomerSupport />
-      }
+      },
+      {
+        path: "change-password",
+        element: <AdminPasswordChange />
+      },
     ],
   },
   // other routes 

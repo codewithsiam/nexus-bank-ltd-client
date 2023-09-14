@@ -19,7 +19,7 @@ const Keyboard = () => {
   const [show, setShow] = useState(false);
   const [error, setError] = useState("");
   const [manualKeyboard, setManualKeyboard] = useState(false);
-  const { setUser, user, loading } = useContext(AuthContext);
+  const { setUser, user, setIsAdmin , loading } = useContext(AuthContext);
   // console.log(user);
 
   const [inputValue, setInputValue] = useState("");
@@ -37,7 +37,7 @@ const Keyboard = () => {
       .post(`${baseUrl}/user-login`, data)
       .then((res) => {
         if (res.data.success === true) {
-          const { token, result } = res.data;
+          const { token, result, isAdmin } = res.data;
           console.log("Login Successful!", res.data);
           console.log("User Data:", result);
           console.log("Token:", token);
@@ -45,6 +45,7 @@ const Keyboard = () => {
           // login(token);
           localStorage.setItem("authToken", token);
           setUser(result);
+          setIsAdmin(isAdmin)
           setTimeout(() => {
             navigate(from);
           }, 1000);
