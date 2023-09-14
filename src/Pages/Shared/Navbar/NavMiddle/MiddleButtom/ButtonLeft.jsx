@@ -9,7 +9,7 @@ const ButtonLeft = () => {
   // use defined ------------------------------------
   const {designation} = useDesignation();
   return (
-    <div className="flex gap-6 font-semibold">
+    <div className="flex gap-6 font-semibold mt-4">
       <Link>Home</Link>
       <Link to="/about-details">About Us</Link>
       <div className="relative group">
