@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
-import About from "../Pages/Home/About/About";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
@@ -64,6 +63,7 @@ import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
+import AccountsDetails from "../Pages/AccountsDetails/AccountsDetails";
 
 
 
@@ -92,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "student-loan",
         element: <StudentLoan></StudentLoan>,
+      },
+      {
+        path: "nexus-accounts",
+        element: <AccountsDetails></AccountsDetails>,
       },
       {
         path: "personal-loan",

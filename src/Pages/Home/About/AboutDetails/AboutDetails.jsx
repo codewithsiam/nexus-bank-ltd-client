@@ -84,9 +84,9 @@ const AboutDetails = () => {
           <Tab label={<span 
           className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Management 
             <BiSolidChevronsRight/></span>} {...a11yProps(3)} />
-          <Tab label={<span 
+          {/* <Tab label={<span 
           className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Gallery 
-            <BiSolidChevronsRight/></span>} {...a11yProps(4)} />
+            <BiSolidChevronsRight/></span>} {...a11yProps(4)} /> */}
           <Tab label={<span 
           className="text-white font-semibold my-3 text-xl flex gap-2 items-center"
            onClick={handleTabClick}>Organogram <BiSolidChevronsRight/></span>} {...a11yProps(4)} />

@@ -7,96 +7,14 @@ import AboutTab from "./AboutTab";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { baseUrl } from "../../../../config/server";
-import LoadingSpinner from "../../../Shared/LoadingSpinner/LoadingSpinner";
 import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
-
-const myAccountData=[
-    {
-      account_type: 'Current Account', 
-      balance: 1000,
-      email: "rupu.pharm@gmail.com",
-      status: "approved",
-      account_number:"1003465000788",
-    },
-    {
-        account_type: 'Millionaire', 
-        balance: 1000,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000788",
-    },
-    {
-        account_type: 'Payroll Card', 
-        balance: 5600,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000788",
-    },
-    {
-        account_type: 'Credit Card', 
-        balance: 946,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000788",
-    },
-    {
-        account_type: 'Savings Account', 
-        balance: 500,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000320",
-    },
-    {
-        account_type: 'Student Account', 
-        balance: 70,
-        email: "rupu.pharm@gmail.com",
-        status: "approved",
-        account_number:"1003465000320",
-    },
-]
 
 const MyProfile = () => {
     const {user}=useContext(AuthContext)
     // console.log(user)
-    
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-  function CustomTabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-      <div
-        role="tabpanel"
-        hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
-        {...other}
-      >
-        {value === index && (
-          <Box sx={{ p: 3 }}>
-            <Typography>{children}</Typography>
-          </Box>
-        )}
-      </div>
-    );
-  }
-  CustomTabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
-  function a11yProps(index) {
-    return {
-      id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
-    };
-  }
   
   return(
-    
     <div className=" pt-10 bg-gray-100">
       <div class="relative w-full text-white">
         <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" class="w-full h-[230px]" alt="Louvre" />

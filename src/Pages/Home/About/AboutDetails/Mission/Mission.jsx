@@ -3,15 +3,15 @@ import MainBanner from "../../../../../Components/Banner/MainBanner";
 
 const Mission = () => {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="">
       <MainBanner 
-      banner="https://i.ibb.co/L6S7yjZ/history-banner.webp" 
-      bannerTitle={"Mission & Vision"}>
+        banner="https://i.ibb.co/L6S7yjZ/history-banner.webp" 
+        bannerTitle={"Mission & Vision"}>
       </MainBanner>
-      <div>
+      <div className="">
         <div className="mb-3">
-          <h1 className="font-bold text-2xl mb-3">Our Vision</h1>
-          <p className="mb-3">Mutual Trust Bank’s vision is based on a philosophy known as MTB3V. We envision MTB to be:</p>
+            <h1 className="font-bold text-2xl mb-3">Our Vision</h1>
+            <p className="mb-3">Mutual Trust Bank’s vision is based on a philosophy known as MTB3V. We envision MTB to be:</p>
           <ul className="">
             <li className="flex gap-2 items-center"><AiOutlineCaretRight className="text-[rgb(1,87,155)]"/> One of the best performing banks in Bangladesh</li>
             <li className="flex gap-2 items-center"><AiOutlineCaretRight className="text-[rgb(1,87,155)]"/> The bank of choice</li>
