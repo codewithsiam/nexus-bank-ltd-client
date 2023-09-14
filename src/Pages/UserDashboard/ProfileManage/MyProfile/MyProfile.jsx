@@ -1,12 +1,7 @@
 import {FaPencilAlt} from "react-icons/fa";
 import * as React from "react";
-import Box from "@mui/material/Box";
-import PropTypes from "prop-types";
-import Typography from "@mui/material/Typography";
 import AboutTab from "./AboutTab";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { baseUrl } from "../../../../config/server";
 import { useContext } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 
@@ -27,30 +22,30 @@ const MyProfile = () => {
         </div>
       </div>
       <div className="mb-5 h-[230px] md:h-[90px] bg-white border-b-2 ">
-          <div className="w-full max-w-screen-xl mx-auto md:flex gap-20 items-center justify-center xl:justify-evenly">
-            <div className="flex justify-center">
-              <div className="relative w-[153px] h-[75px]">
-                <img
-                  className="absolute w-[150px] h-[150px] -top-[75px] md:-top-[80px] left-0 border-gray-300 border-[5px] rounded-full"
-                  src={user?user.photoURL: "https://i.ibb.co/7kT8phM/profile5.png"} alt="user"
-                />
-              </div>
-            </div>
-            <div className="md:flex gap-8 justify-around text-center">
-              <div className="mt-3">
-                <h4 className="text-xl md:text-2xl font-semibold">{user?user.name:"User Name"}</h4>
-                <h3 className="text-md md:text-lg text-gray-500">{user?user.profession:"User Profession"}</h3>
-              </div>
-              <div className="inline-block overflow-hidden mt-4">
-                <Link
-                to={`/dashboard/edit-profile`}
-                className="flex gap-1 items-center border-2 border-white bg-primary rounded text-white cursor-pointer px-3 py-2"
-                >
-                  <FaPencilAlt className="mr-1"></FaPencilAlt> Edit profile
-                </Link>
-              </div>
+        <div className="w-full max-w-screen-xl mx-auto md:flex gap-20 items-center justify-center xl:justify-evenly">
+          <div className="flex justify-center">
+            <div className="relative w-[153px] h-[75px]">
+              <img
+                className="absolute w-[150px] h-[150px] -top-[75px] md:-top-[80px] left-0 border-gray-300 border-[5px] rounded-full"
+                src={user?user.photoURL: "https://i.ibb.co/7kT8phM/profile5.png"} alt="user"
+              />
             </div>
           </div>
+          <div className="md:flex gap-8 justify-around text-center">
+            <div className="mt-3">
+              <h4 className="text-xl md:text-2xl font-semibold">{user?user.name:"User Name"}</h4>
+              <h3 className="text-md md:text-lg text-gray-500">{user?user.profession:"User Profession"}</h3>
+            </div>
+            <div className="inline-block overflow-hidden mt-4">
+              <Link
+              to={`/dashboard/edit-profile`}
+              className="flex gap-1 items-center border-2 border-white bg-primary rounded text-white cursor-pointer px-3 py-2"
+              >
+                <FaPencilAlt className="mr-1"></FaPencilAlt> Edit profile
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
       <div>
         {user ? 

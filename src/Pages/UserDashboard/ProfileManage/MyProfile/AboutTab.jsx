@@ -12,65 +12,65 @@ const AboutTab=({user})=> {
       <div className=" bg-base-100 shadow-lg rounded-xl p-5 md:p-10">
         <h2 className="text-2xl text-primary font-bold mb-5">General Information</h2>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-1 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-1 items-center">
             <BiUserCircle className="text-primary text-3xl"></BiUserCircle> User Name:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.username}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.username}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-1 items-center">
+          <h1 className="text-lg md:text-xl font-semibold flex gap-1 items-center">
             <PiGenderNeuterBold className="text-primary text-3xl"></PiGenderNeuterBold> Gender:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.gender?user.gender:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.gender?user.gender:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <FaBirthdayCake className="text-primary text-2xl"></FaBirthdayCake> Birthday
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.birthday?user.birthday:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.birthday?user.birthday:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <FaYandexInternational className="text-primary text-2xl"></FaYandexInternational> Nationality
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.nationality?user.nationality:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.nationality?user.nationality:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center"><FaUser className="text-primary text-2xl"></FaUser> About Me:</h1>
-          <p className="text-lg text-gray-500 mt-2">{user?.description? user.description:"Please update your profile"}</p>
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center"><FaUser className="text-primary text-2xl"></FaUser> About Me:</h1>
+          <p className="text-base md:text-lg text-gray-500 mt-2">{user?.description? user.description:"Please update your profile"}</p>
         </div>
       </div>
       <div className=" bg-base-100 shadow-xl rounded-xl p-5 md:p-10">
         <h2 className="text-2xl text-primary font-bold mb-5">Contacts</h2>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <BiLogoGmail className="text-primary text-2xl"></BiLogoGmail> Email:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user.email?user.email:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user.email?user.email:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <FaMobileAlt className="text-primary text-2xl"></FaMobileAlt> Telephone:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.number?user.number:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.number?user.number:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <ImLocation className="text-primary text-2xl"></ImLocation>Present Address:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.present_address?user.present_address:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.present_address?user.present_address:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <ImLocation className="text-primary text-2xl"></ImLocation>Permanent Address:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.permanent_address?user.permanent_address:"Please update your profile"}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.permanent_address?user.permanent_address:"Please update your profile"}</p>
         </div>
         <div className="flex gap-3 items-center mb-4">
-          <h1 className="text-xl font-semibold flex gap-2 items-center">
+          <h1 className="text-lg lg:text-xl font-semibold flex gap-2 items-center">
             <BsPersonVcardFill className="text-primary text-2xl"></BsPersonVcardFill>Nid Card Number:
           </h1>
-          <p className="text-lg text-gray-500 mt-1">{user?.nid_card_number}</p>
+          <p className="text-base md:text-lg text-gray-500 mt-1">{user?.nid_card_number}</p>
         </div>
       </div>
     </div>
