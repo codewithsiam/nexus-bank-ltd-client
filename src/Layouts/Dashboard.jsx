@@ -181,15 +181,16 @@ const HomeMenu = [
     route: "/",
   },
   {
-    name: "About",
-    icon: <InfoIcon />,
-    route: "/about",
+    name: "Retail Loan",
+    icon: <ConstructionIcon />,
+    route: "/retail-loan",
   },
   {
-    name: "Services",
-    icon: <ConstructionIcon />,
-    route: "/services",
+    name: "Contact",
+    icon: <InfoIcon />,
+    route: "/contact",
   },
+ 
 ];
 
 // find user rote ------------------------------------------
