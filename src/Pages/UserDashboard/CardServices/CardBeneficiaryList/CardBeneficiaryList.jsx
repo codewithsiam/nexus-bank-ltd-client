@@ -1,7 +1,38 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { baseUrl } from '../../../../config/server';
+import { AuthContext } from '../../../../providers/AuthProvider';
+import { useState } from 'react';
+import { AiFillDelete } from 'react-icons/ai';
+import Swal from 'sweetalert2';
+
 
 const CardBeneficiaryList = () => {
+    const { user } = useContext(AuthContext)
+    const [cardBeneficiary, setCardBeneficiary] = useState([])
+    useEffect(() => {
+        fetch(`${baseUrl}/CardBeneficiary?useName=${user?.username}`)
+            .then(res => res.json())
+            .then(data => setCardBeneficiary(data))
+    }, [cardBeneficiary])
+    const handelDelete = (id) => {
+        fetch(`${baseUrl}/deleteBeneficiary/${id}?username=${user.username}`, {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json"
+            }
+        }).then(res => res.json()).then(data => {
+            if (data.modifiedCount) {
+                
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
+        })
+
+    }
     return (
         <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-4'>
@@ -11,8 +42,8 @@ const CardBeneficiaryList = () => {
 
                 </div>
                 <div className='bg-slate-100 p-2 rounded-lg mt-4 divide-y-2 divide-solid'>
-                    <p className='text-lg font-bold text-primary'>MTB Cards</p>
-                    <p className='text-center mt-4'>Total number of Beneficiary : 2</p>
+                    <p className='text-lg font-bold text-primary'>NBL Cards</p>
+                    <p className='text-center mt-4'>Total number of Beneficiary : {cardBeneficiary.length}</p>
                     <div className=''>
                         <div className="overflow-x-auto ">
                             <table className="table table-zebra border border-primary">
@@ -22,32 +53,36 @@ const CardBeneficiaryList = () => {
                                         <th>Nick Name</th>
                                         <th>Beneficiary</th>
                                         <th>Beneficiary Contact</th>
+                                        <th>DELETE</th>
                                     </tr>
                                 </thead>
                                 <tbody >
                                     {/* row 1 */}
-                                    <tr>
-                                        <td >rupa</td>
-                                        <td>456664676xxxxx554 <br /> Rukshana Akter</td>
-                                        <td>014742555447 <br />rupu@gmail.com</td>
-                                    </tr>
+                                    {
+                                        cardBeneficiary.map((beneficiary, index) => <tr key={index}>
+                                            <td >{beneficiary.name}</td>
+                                            <td>{beneficiary.account_number} </td>
+                                            <td>{beneficiary.phone}<br />{beneficiary.email}</td>
+                                            <td onClick={() => handelDelete(beneficiary.id)}><button className='cursor-pointer hover:bg-slate-400 p-2 rounded-full '><AiFillDelete className='  h-6 w-6' ></AiFillDelete></button></td>
+                                        </tr>)
+                                    }
                                     {/* row 2 */}
-                                    <tr>
+                                    {/* <tr>
                                         <td>Prince</td>
                                         <td>456664676xxxxx554 <br />Rukshana Akter</td>
                                         <td>014742555447 <br />rupu@gmail.com</td>
-                                    </tr>
+                                    </tr> */}
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
                 <div className='bg-slate-100 p-2 rounded-lg mt-4'>
-                <p className='text-lg font-bold text-primary'>Other Bank Card</p>
+                    <p className='text-lg font-bold text-primary'>Other Bank Card</p>
 
                 </div>
             </div>
-        </div>        
+        </div>
     );
 };
 

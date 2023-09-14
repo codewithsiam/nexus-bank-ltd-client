@@ -4,6 +4,7 @@ import { baseUrl } from '../../../config/server';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import Swal from 'sweetalert2';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddCardBeneficiary = () => {
     const {user}=useContext(AuthContext)
@@ -16,7 +17,8 @@ const AddCardBeneficiary = () => {
         const account=form.account.value;
         const email=form.email.value;
         const phone=form.phone.value;
-        const data={name,account,email,phone}
+        
+        const data={name,account,email,phone,id:uuidv4()}
         fetch(`${baseUrl}/addcardbeneficiary?userName=${user?.username}`,{
             method:"PATCH",
             headers:{
