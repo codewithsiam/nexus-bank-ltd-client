@@ -16,22 +16,45 @@ const CardBeneficiaryList = () => {
             .then(data => setCardBeneficiary(data))
     }, [cardBeneficiary])
     const handelDelete = (id) => {
-        fetch(`${baseUrl}/deleteBeneficiary/${id}?username=${user.username}`, {
-            method: "DELETE",
-            headers: {
-                "content-type": "application/json"
-            }
-        }).then(res => res.json()).then(data => {
-            if (data.modifiedCount) {
-                
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
-        })
 
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                fetch(`${baseUrl}/deleteBeneficiary/${id}?username=${user.username}`, {
+                    method: "DELETE",
+                    headers: {
+                        "content-type": "application/json"
+                    }
+                }).then(res => res.json()).then(data => {
+                    if (data.modifiedCount) {
+                        
+                        Swal.fire({
+                            position: 'center',
+                            icon: 'success',
+                            title: 'Beneficiary Delete Success',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+        
+             
+            }
+          })
+
+
+
+
+
+        
     }
     return (
         <div className='mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
