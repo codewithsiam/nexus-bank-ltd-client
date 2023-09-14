@@ -63,6 +63,7 @@ import Loan from "../Pages/Loan/Loan";
 import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
+import CreditCardRequests from "../Pages/AdminDashboard/Account-Request/AccountRequest"
 
 
 
@@ -280,6 +281,10 @@ const router = createBrowserRouter([
       {
         path: "account-request",
         element: <AccountRequest />
+      },
+      {
+        path:"credit-card-requests",
+        element:<CreditCardRequests/>
       },
       {
         path: "analytics",
