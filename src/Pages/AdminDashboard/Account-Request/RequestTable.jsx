@@ -50,7 +50,7 @@ const RequestTable = ({
   const handleStatus = (id, status) => {
     axios.patch(`${baseUrl}/status/${id}/?status=${status}`).then((data) => {
       console.log(data)
-      if (data.data.modifiedCount > 0) {
+      if (data.data.success) {
         setControl(!control);
         Swal.fire({
           position: "top-center",

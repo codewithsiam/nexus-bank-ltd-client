@@ -26,7 +26,7 @@ const CurrentForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData)
+  console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -38,6 +38,7 @@ const CurrentForm = () => {
       .then((data) => console.log(data))
       .then((err) => console.log(err));
     setIsOpen(true);
+    e.target.reset();
     // const form = e.target;
   };
 
@@ -50,8 +51,8 @@ const CurrentForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.verified){
+        console.log(data);
+        if (data.verified) {
           fetch(`${baseUrl}/add-account`, {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -69,8 +70,8 @@ const CurrentForm = () => {
               nid_card_number: userData.nidCardNumber,
               profile_image: profileImage,
               present_address: userData.present_address,
-              profileImage:profileImage,
-              nidCardImage:nidCardImage,
+              profileImage: profileImage,
+              nidCardImage: nidCardImage,
               permanent_address: userData.permanent_address,
               status: "pending",
             }),
@@ -90,9 +91,8 @@ const CurrentForm = () => {
               }
             })
             .catch((error) => console.log(error));
-        }
-        else{
-          setError(data.message)
+        } else {
+          setError(data.message);
         }
       })
       .then((err) => console.log(err));

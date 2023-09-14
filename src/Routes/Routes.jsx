@@ -66,7 +66,7 @@ import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
 import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
-import CreditCardRequests from "../Pages/AdminDashboard/Account-Request/AccountRequest"
+import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests"
 import UserSecureRoute from "./UserSecureRoute";
 
 
