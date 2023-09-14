@@ -63,6 +63,7 @@ import Loan from "../Pages/Loan/Loan";
 import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
+import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
 
 
 
@@ -316,7 +317,11 @@ const router = createBrowserRouter([
       {
         path: "customer-support",
         element: <CustomerSupport />
-      }
+      },
+      {
+        path: "change-password",
+        element: <AdminPasswordChange />
+      },
     ],
   },
   // other routes 
