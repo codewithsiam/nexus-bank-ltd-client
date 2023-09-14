@@ -96,7 +96,7 @@ const NidCardImage = ({nidCardImage,setNidCardImage}) => {
       <p className="font-semibold">Nid Card Image*</p>
       <div>
      {
-        nidCardImage && <img className="w-full h-full image-full my-2 rounded border border-gray-400" src={nidCardImage} alt="" />
+        nidCardImage && <img className="w-full h-[250px] image-full my-2 rounded " src={nidCardImage} alt="" />
       }
      </div>
       <label
