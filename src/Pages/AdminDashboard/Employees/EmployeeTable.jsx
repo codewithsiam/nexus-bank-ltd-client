@@ -9,16 +9,16 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 import employeeData from "../../../constant/employees";
-
+import { baseUrl } from "../../../config/server";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 function createData(name, code, population, size) {
   const density = population / size;
   return { name, code, population, size, density };
 }
 
-
-
-const EmployeeTable = ({employees}) => {
+const EmployeeTable = ({ employees, setControl, control }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -31,39 +31,68 @@ const EmployeeTable = ({employees}) => {
     setPage(0);
   };
 
+  // handle employee delete ------------
+  const handleEmployeeDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${baseUrl}/delete-employee/${id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: `Employee deleted Successfully`,
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              setControl(!control);
+            }
+          });
+      }
+    });
+  };
+
+  // handle employee designation
+  const handleEmployeeDesignation = (id, designation) => {
+    axios
+      .patch(`${baseUrl}/designation/${id}/?designation=${designation}`)
+      .then((data) => {
+        if (data.data.modifiedCount > 0) {
+          setControl(!control);
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: `Make ${designation} successfully`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+  };
+
   return (
-    // <div className="overflow-x-auto   border border-gray-300 p-4 mt-4 shadow-sm">
-    //   <table className=" min-w-full text-lg">
-    //     <thead className="text-lg">
-    //       <tr>
-    //         <th>Employee Id</th>
-    //         <th>Full Name</th>
-    //         <th>Designation</th>
-    //         <th>Phone Number</th>
-    //         <th>Email</th>
-    //         <th>Action</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       <tr>
-    //         <th>1</th>
-    //         <td>Manik Sarker</td>
-    //         <td>Manager</td>
-    //         <td>01754545</td>
-    //         <td>amnik@gamilc.om</td>
-    //         <td>Delete</td>
-    //       </tr>
-    //     </tbody>
-    //   </table>
-    // </div>
     <div>
       <Paper sx={{ width: "100%", overflow: "hidden" }}>
         <div className="w-full overflow-x-auto">
-          <TableContainer sx={{ maxHeight: 800 }}>
+          <TableContainer sx={{ maxHeight: 800, minHeight: 400 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead sx={{ fontSize: "24" }}>
                 <TableRow>
-                  <TableCell>Id</TableCell>
+                  <TableCell>Serial</TableCell>
                   <TableCell>Full Name</TableCell>
                   <TableCell>Primary Email</TableCell>
                   <TableCell>Phone Number</TableCell>
@@ -72,20 +101,98 @@ const EmployeeTable = ({employees}) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {employees?.map((employee) => (
+                {employees?.map((employee, index) => (
                   <TableRow
                     key={employee.id}
                     hover
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell>{employee?._id}</TableCell>
-                    <TableCell>{employee?.firstName + " " + employee?.lastName}</TableCell>
-                    <TableCell>{employee?.primaryEmail}</TableCell>
+                    <TableCell>{index + 1}</TableCell>
+                    <TableCell>
+                      {employee?.firstName + " " + employee?.lastName}
+                    </TableCell>
+                    <TableCell>{employee?.email}</TableCell>
                     <TableCell>{employee?.phoneNumber}</TableCell>
                     <TableCell>{employee?.designation}</TableCell>
                     <TableCell>
-                      Delete
+                      <div className="flex gap-2 items-center justify-center ">
+                        <div>
+                          <details className="dropdown">
+                            <summary className="m-1 btn">
+                              Change Designation
+                            </summary>
+                            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Manager"
+                                    )
+                                  }
+                                >
+                                  Make Manager
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Risk Manager"
+                                    )
+                                  }
+                                >
+                                  Make Risk Manager
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Loan Officer"
+                                    )
+                                  }
+                                >
+                                  Make Loan Officer
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Helpline Representative"
+                                    )
+                                  }
+                                >
+                                  Make Helpline Representative
+                                </button>
+                              </li>
+                              <li>
+                                <button
+                                  onClick={() =>
+                                    handleEmployeeDesignation(
+                                      employee._id,
+                                      "Financial Advisor"
+                                    )
+                                  }
+                                >
+                                  Make Financial Advisor
+                                </button>
+                              </li>
+                            </ul>
+                          </details>
+                        </div>
+                        <button
+                          onClick={() => handleEmployeeDelete(employee._id)}
+                          className="bg-red-600 px-6 py-3 text-white font-semibold rounded"
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

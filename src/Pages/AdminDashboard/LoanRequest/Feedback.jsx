@@ -1,8 +1,5 @@
 
 const Feedback = () => {
-
-
-
     const handleFeedback = (event) => {
 
       };

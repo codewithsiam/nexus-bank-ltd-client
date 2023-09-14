@@ -49,11 +49,21 @@ import MyAccounts from "../Pages/UserDashboard/MyAccounts/MyAccounts";
 import BkashFundTransfer from "../Pages/UserDashboard/BkashTransfer/BkashFundTransfer/BkashFundTransfer";
 import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVerification/PaymentSuccessful";
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
+import CustomerService from "../Pages/CustomerService/CustomerService";
+import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
+import UserSecureRoute from "./UserSecureRoute";
+import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
+import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
+import AdminSecureRoute from "./AdminSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
+import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
+import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
+import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
 import Loan from "../Pages/Loan/Loan";
 import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
+import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
 
 
 
@@ -68,8 +78,8 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path:'/chat',
-        element:<PrivetRout><ChatUs></ChatUs></PrivetRout>
+        path: '/chat',
+        element: <PrivetRout><ChatUs></ChatUs></PrivetRout>
       },
       {
         path: "about-details",
@@ -110,12 +120,13 @@ const router = createBrowserRouter([
       {
         path: "careers",
         element: <Careers />,
+        loader: () => fetch(`${baseUrl}/careers`)
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <UserSecureRoute><Dashboard /></UserSecureRoute>,
     children: [
       // ..........User dashboard routes............
       {
@@ -133,22 +144,6 @@ const router = createBrowserRouter([
       {
         path: "change-password",
         element: <PasswordChange />
-      },    
-      {
-        path: "saving-account",
-        element: <OpenAccount />
-      },
-      {
-        path:"current-account",
-        element:<CurrentAccount/>
-      },
-      {
-        path:"student-account",
-        element:<StudentAccount/>
-      },
-      {
-        path:"deposit-account",
-        element:<DepositAccount/>
       },
       {
         path: "apply-loan",
@@ -156,31 +151,31 @@ const router = createBrowserRouter([
       },
       {
         path: "Fund-transfer",
-        element: <FundTransfer/>,
+        element: <FundTransfer />,
       },
       {
         path: "fund-transfer-pin-verification",
-        element: <FundTransferPin/>,
+        element: <FundTransferPin />,
       },
       {
         path: "topup-beneficiary-list",
-        element: <TopUpBeneficiaryList/>,
+        element: <TopUpBeneficiaryList />,
       },
       {
         path: "card-beneficiary-list",
-        element: <CardBeneficiaryList/>,
+        element: <CardBeneficiaryList />,
       },
       {
         path: "FundTransferBeneficiaryList",
-        element: <AccountBeneficiaryList/>,
+        element: <AccountBeneficiaryList />,
       },
       {
         path: "MobilTopUpHistory",
-        element: <MobilTopUpHistory/>,
+        element: <MobilTopUpHistory />,
       },
       {
         path: "FundTransferBeneficiaryList/AddBeneficiary",
-        element: <AddBeneficiary/>,
+        element: <AddBeneficiary />,
       },
       {
         path: "add-money",
@@ -205,7 +200,12 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element: <EStatement />,
+        element:
+          (
+            <UserSecureRoute>
+              <EStatement />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "bkash-fund-transfer",
@@ -221,7 +221,13 @@ const router = createBrowserRouter([
       },
       {
         path: "credit-card-apply",
-        element: <CreditCardApply />,
+        element:
+
+          (
+            <UserSecureRoute>
+              <CreditCardApply />
+            </UserSecureRoute>
+          ),
       },
 
 
@@ -229,12 +235,25 @@ const router = createBrowserRouter([
         path: "my-accounts",
         element: <MyAccounts />,
       },
+      {
+        path: "nexus-customer-service-portal",
+        element: <CustomerService />,
+      },
+      {
+        path:`apply/:id`,
+        element: 
+        (
+          <UserSecureRoute>
+            <JobApply />
+          </UserSecureRoute>
+        ),
+      },
     ],
   },
   // admin dashboard 
   {
     path: "/admin",
-    element: <AdminDashboardLayout />,
+    element: <AdminSecureRoute><AdminDashboardLayout /></AdminSecureRoute>,
     children: [
       // ..................admin dashboard routes........................
       {
@@ -248,20 +267,20 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
-        loader:() => fetch(`${baseUrl}/users`)
+        loader: () => fetch(`${baseUrl}/users`)
       },
       {
-        path:'users/:email',
-        element:<UserProfile></UserProfile>
+        path: 'users/:email',
+        element: <UserProfile></UserProfile>
 
       },
       {
-        path:"accounts",
-        element:<Accounts/>
+        path: "accounts",
+        element: <Accounts />
       },
       {
-        path:"account-request",
-        element:<AccountRequest/>
+        path: "account-request",
+        element: <AccountRequest />
       },
       {
         path: "analytics",
@@ -269,18 +288,66 @@ const router = createBrowserRouter([
       },
       {
         path: "AddLatestNews",
-        element: <AddLatestNews />
+        element:<AdminSecureRoute>
+          <AddLatestNews />
+          </AdminSecureRoute>
+      },
+      {
+        path: "AllNews",
+        element:<AdminSecureRoute>
+          <AllNews />
+          </AdminSecureRoute>
+      },
+      {
+        path: "AllNews/update/:id",
+        element:<AdminSecureRoute>
+          <UpdateNews />
+          </AdminSecureRoute>,
+          loader:(params)=>fetch(`${baseUrl}/AllNews/update/${params.id}`)
       },
       {
         path: "loan-request",
         element: <LoanRequest />,
-        loader:() => fetch(`${baseUrl}/loans`)
+        loader: () => fetch(`${baseUrl}/loans`)
       },
       {
         path: "feedback/:id",
-        element: <Feedback/>
-      }
+        element: <Feedback />
+      },
+      {
+        path: "customer-support",
+        element: <CustomerSupport />
+      },
+      {
+        path: "change-password",
+        element: <AdminPasswordChange />
+      },
     ],
+  },
+  // other routes 
+  {
+    path: "/payment-status/:status/:transactionId",
+    element: <PaymentStatusPage />,
+  },
+  {
+    path: "/admin-login",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/saving-account",
+    element: <OpenAccount />,
+  },
+  {
+    path: "/current-account",
+    element: <CurrentAccount />,
+  },
+  {
+    path: "/student-account",
+    element: <StudentAccount />,
+  },
+  {
+    path: "/deposit-account",
+    element: <DepositAccount />,
   },
 ]);
 
