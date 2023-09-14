@@ -238,7 +238,6 @@ const router = createBrowserRouter([
       {
         path: "credit-card-apply",
         element:
-
           (
             <UserSecureRoute>
               <CreditCardApply />
@@ -249,20 +248,21 @@ const router = createBrowserRouter([
 
       {
         path: "my-accounts",
-        element: <MyAccounts />,
+        element:
+          (
+            <UserSecureRoute>
+              <MyAccounts />
+            </UserSecureRoute>
+          ),
       },
       {
-        path: "nexus-customer-service-portal",
-        element: <CustomerService />,
-      },
-      {
-        path:`apply/:id`,
-        element: 
-        (
-          <UserSecureRoute>
-            <JobApply />
-          </UserSecureRoute>
-        ),
+        path: `apply/:id`,
+        element:
+          (
+            <UserSecureRoute>
+              <JobApply />
+            </UserSecureRoute>
+          ),
       },
     ],
   },

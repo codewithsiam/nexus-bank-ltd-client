@@ -43,7 +43,7 @@ const JobApply = () => {
 
     return (
         <div className="max-w-lg mx-auto p-4 my-20">
-            <h2 className="text-2xl font-semibold mb-4">Submit Your Application</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-primary">Submit Your Application</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Personal Information */}
                 <div className="mb-4">
@@ -156,7 +156,7 @@ const JobApply = () => {
                     </label>
                 </div>
 
-                <button type="submit" className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600">Submit</button>
+                <button type="submit" className="bg-primary text-white rounded px-4 py-2 hover:bg-blue-600 w-full font-semibold">Submit</button>
             </form>
             {submitted && (
                 <div className="mt-4 text-green-600">
