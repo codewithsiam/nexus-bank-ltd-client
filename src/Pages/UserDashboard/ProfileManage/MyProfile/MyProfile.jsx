@@ -27,7 +27,7 @@ const MyProfile = () => {
             <div className="relative w-[153px] h-[75px]">
               <img
                 className="absolute w-[150px] h-[150px] -top-[75px] md:-top-[80px] left-0 border-gray-300 border-[5px] rounded-full"
-                src={user?user.photoURL: "https://i.ibb.co/7kT8phM/profile5.png"} alt="user"
+                src={user?user.img: "https://i.ibb.co/7kT8phM/profile5.png"} alt="user"
               />
             </div>
           </div>

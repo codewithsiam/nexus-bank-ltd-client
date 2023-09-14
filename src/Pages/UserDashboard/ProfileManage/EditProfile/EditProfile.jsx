@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import { baseUrl } from "../../../../config/server";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Box, FormControl, FormHelperText, Input, InputAdornment, InputLabel, TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
 
@@ -17,65 +16,32 @@ const EditProfile = () => {
   console.log(user)
   
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
-  const img_key = "c694c4abb3bcf601b0b79494e815c533";
 
-  const uploadImage = (e) => {
+  let imageUrl;
+  const uploadImage = async (e) => {
     const image = e.target.files[0];
     const formData = new FormData();
     formData.append("image", image);
 
-    // Step 1: Upload the image to ImgBB using the Fetch
-    fetch(imageHostingUrl, {
-      method: "POST",
-      body: formData,
-    })
-      // .then((response) => {
-      //   if (!response.ok) {
-      //     throw new Error("Failed to upload image to ImgBB");
-      //   }
-      //   return response.json();
-      // })
-      .then((data) => {
-        if (data.success) {
-          const img = data.data.url;
-          const updateImage = {
-            img: img,
-          };
-
-          // Step 2: Update the user's image using Fetch API
-          fetch(`/user/image/${user?.email}`, {
-            method: "PATCH",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(updateImage),
-          })
-            // .then((response) => {
-            //   if (!response.ok) {
-            //     throw new Error("Failed to update user image");
-            //   }
-            //   return response.json();
-            // })
-            .then((responseData) => {
-              console.log(responseData);
-              if (responseData.matchedCount > 0) {
-                refetch();
-              }
-            })
-            .catch((err) => {
-              if (err.response.status === 401 || err.response.status === 403) {
-                signOut(auth);
-                Navigate("/");
-                localStorage.removeItem("userToken");
-              }
-            });
-        }
-      })
-      .catch((error) => {
-        console.error(error);
+    try {
+      const response = await fetch(imageHostingUrl, {
+        method: "POST",
+        body: formData,
       });
-  };
+      const data = await response.json();
 
+      if (data.success) {
+        imageUrl = data.data.url;
+        return imageUrl; // Return the imageUrl
+      } else {
+        throw new Error("Image upload failed");
+      }
+    } catch (error) {
+      console.error("Image upload error:", error);
+      throw error;
+    }
+  };
+  
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -103,6 +69,7 @@ const EditProfile = () => {
       permanent_address: permanent_address,
       description: description,
       name: name,
+      img: imageUrl
     };
     console.log(updatedProfileInfo);
     Swal.fire({
@@ -126,18 +93,12 @@ const EditProfile = () => {
         .then((data) => {
           console.log(data);
           if (data.message === 'Profile updated successfully') {
-          //   const updatedUser = data.user;
-          // if (updatedUser.success===true) {
-            Swal.fire({
-              title: "success",
-              text: "Profile Information Updated Successfully",
-              showDenyButton: true,
-              showCancelButton: true,
-              icon: "success",
-              confirmButtonText: "Cool",
-            });
-            navigate("/");
-          // }
+            Swal.fire(
+              'Good job!',
+              'Your Profile updated successfully',
+              'success'
+            )
+            navigate("/dashboard/my-profile");
           }
         })
         .catch((err) => {
@@ -152,128 +113,114 @@ const EditProfile = () => {
       <h1 className="text-primary mb-12 text-center text-2xl font-extrabold leading-none tracking-tight md:text-3xl lg:text-4xl ">
         Update your Profile page {" "}
       </h1>
-      <div className=" md:flex gap-10  ">
-        <div class="mt-5 w-1/3 bg-white py-10 overflow-hidden h-[300px] ">
-          <div>
-            {user? (
+      <form onSubmit={handleOnSubmit}>
+        <div className="md:flex gap-10  ">
+          <div class=" my-5 w-full md:w-1/3 bg-white py-5 overflow-hidden h-[320px] ">
+            <div className="flex justify-center">
+              <img
+              className="w-[200px] rounded-full"
+              src="https://i.ibb.co/7kT8phM/profile5.png"
+              alt="profile"
+              ></img>
+            </div>
+            <div>
+              <label htmlFor='image' className='text-center block my-2 font-bold'>
+                Upload Photo
+              </label>
               <div className="flex justify-center">
-                <div class="avatar ml-3">
-                <div class="w-32 mx-auto text-center border-2 border-gray-300 rounded-full ring ring-offset-base-100 ring-offset-2">
-                  <img className="" src={user?.img} />
+              <input
+                type='file'
+                id='image'
+                name='image'
+                accept='image/*'
+                onChange={(e) => uploadImage(e)}
+                class="input input-bordered"
+              />
+              </div>
+            </div>
+          </div>
+          <div className="w-2/3">
+            <Box>
+              <div className="grid md:grid-cols-2 gap-5 mb-4">
+                {/* Profile Name */}
+                <div>
+                  <label htmlFor="profileName" className="block font-bold">First Name</label>
+                  <TextField required className="w-full" id="outlined-basic" name="profileName" variant="standard" />
+                </div>
+                {/* Nick Name */}
+                <div>
+                  <label htmlFor="nickName" className="block font-bold">Last Name</label>
+                  <TextField className="w-full" id="outlined-basic" name="nickName" variant="standard" />
                 </div>
               </div>
+              <div className="grid md:grid-cols-2 gap-5 mb-4">
+                {/* email */}
+                <div className="">
+                  <label htmlFor="email" className="block font-bold">User's Email</label>
+                  <TextField className="w-full" id="outlined-basic" name="email" variant="standard" />
+                </div>
+                {/* number */}
+                <div>
+                  <label htmlFor="number" className="block font-bold">Number</label>
+                  <TextField className="w-full" id="outlined-basic" name="number" variant="standard" />
+                </div>
               </div>
-
-            ) : (
-              <img
-                className="w-[200px] rounded-full"
-                src="https://i.ibb.co/7kT8phM/profile5.png"
-                alt="profile"
-              ></img>
-            )}
-          </div>
-          <div className=" ">
-            <label htmlFor="img" class="label">
-              <span class="label-text mx-auto  font-[500] text-xl">
-                <p className="cursor-pointer my-btn px-5 py-3 btn-primary rounded-md mt-5">
-                  Upload Photo
-                </p>
-              </span>
-            </label>
-            <input
-              id="img"
-              type="file"
-              placeholder="Name"
-              hidden
-              class="input input-bordered"
-              onChange={(e) => uploadImage(e)}
-            />
+              <div className="grid md:grid-cols-2 gap-5 mb-4">
+                {/* Profession */}
+                <div>
+                  <label htmlFor="profession" className="block font-bold">Profession</label>
+                  <TextField className="w-full" id="outlined-basic" name="profession" variant="standard" />
+                </div>
+                {/* Birthday */}
+                <div className="">
+                  <label htmlFor="Birthday" className="block font-bold">Birthday</label>
+                  <input name="birthday" className="border px-3 py-3 rounded-md w-full" type="date" />
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5 mb-4">
+                {/* Nationality */}
+                <div>
+                  <label htmlFor="nationality" className="block font-bold">Nationality</label>
+                  <TextField className="w-full" id="outlined-basic" name="nationality" variant="standard" />
+                </div>
+                {/* Gender */}
+                <div className="">
+                  <label htmlFor="profileName" className="block font-bold">Gender</label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    className="select select-bordered"
+                    onChange={(e) => setGender(e.target.value)}
+                    value={gender}
+                  >
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Transgender">Transgender</option>
+                  </select>
+                </div>
+              </div>
+              <div className="grid md:grid-cols-2 gap-5 mb-4">
+                {/* present Address */}
+                <div>
+                  <label htmlFor="present_address" className="block font-bold">Present Address</label>
+                  <TextField className="w-full" id="outlined-basic" name="presentAddress" variant="standard" />
+                </div>
+                {/* Permanent Address */}
+                <div>
+                  <label htmlFor="permanent_address" className="block font-bold">Permanent Address</label>
+                  <TextField className="w-full" id="outlined-basic" name="permanentAddress" variant="standard" />
+                </div>
+              </div>
+              {/* About Me */}
+              <div className="">
+                <label htmlFor="description" className="block font-bold">About Yourself</label>
+                <input type="textarea"  name="description" className="border px-3 py-3 rounded-md w-full"/>
+              </div>
+              <button type="submit"className="text-white my-btn px-5 py-2.5 rounded mt-4">Submit</button>
+            </Box>
           </div>
         </div>
-        <div className="w-2/3">
-        <form onSubmit={handleOnSubmit}>
-          <Box>
-            <div className="grid md:grid-cols-2 gap-5 mb-4">
-              {/* Profile Name */}
-              <div>
-                <label htmlFor="profileName" className="block font-bold">Profile Name</label>
-                <TextField required className="w-full" id="outlined-basic" name="profileName" variant="standard" />
-              </div>
-              {/* email */}
-              <div className="">
-                <label htmlFor="email" className="block font-bold">User's Email</label>
-                <TextField className="w-full" id="outlined-basic" name="email" variant="standard" />
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5 mb-4">
-              {/* Nick Name */}
-              <div>
-                <label htmlFor="nickName" className="block font-bold">Nick Name</label>
-                <TextField className="w-full" id="outlined-basic" name="nickName" variant="standard" />
-              </div>
-              {/* number */}
-              <div>
-                <label htmlFor="number" className="block font-bold">Number</label>
-                <TextField className="w-full" id="outlined-basic" name="number" variant="standard" />
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5 mb-4">
-              {/* Profession */}
-              <div>
-                <label htmlFor="profession" className="block font-bold">Profession</label>
-                <TextField className="w-full" id="outlined-basic" name="profession" variant="standard" />
-              </div>
-              {/* Birthday */}
-              <div className="">
-                <label htmlFor="Birthday" className="block font-bold">Birthday</label>
-                <input name="birthday" className="border px-3 py-3 rounded-md w-full" type="date" />
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5 mb-4">
-              {/* Nationality */}
-              <div>
-                <label htmlFor="nationality" className="block font-bold">Nationality</label>
-                <TextField className="w-full" id="outlined-basic" name="nationality" variant="standard" />
-              </div>
-              {/* Gender */}
-              <div className="">
-                <label htmlFor="profileName" className="block font-bold">Gender</label>
-                <select
-                  id="gender"
-                  name="gender"
-                  className="select select-bordered"
-                  onChange={(e) => setGender(e.target.value)}
-                  value={gender}
-                >
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Transgender">Transgender</option>
-                </select>
-              </div>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5 mb-4">
-              {/* present Address */}
-              <div>
-                <label htmlFor="present_address" className="block font-bold">Present Address</label>
-                <TextField className="w-full" id="outlined-basic" name="presentAddress" variant="standard" />
-              </div>
-              {/* Permanent Address */}
-              <div>
-                <label htmlFor="permanent_address" className="block font-bold">Permanent Address</label>
-                <TextField className="w-full" id="outlined-basic" name="permanentAddress" variant="standard" />
-              </div>
-            </div>
-            {/* About Me */}
-            <div className="">
-              <label htmlFor="description" className="block font-bold">About Yourself</label>
-              <input type="textarea"  name="description" className="border px-3 py-3 rounded-md w-full"/>
-            </div>
-            <button type="submit"className="text-white my-btn px-5 py-2.5 rounded mt-4">Submit</button>
-          </Box>
-        </form>
-        </div>
-        
-      </div>
+      </form>
     </div>
   );
 };
