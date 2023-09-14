@@ -266,7 +266,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
   
-  const handleLogout = (user) => {
+  const handleLogout = () => {
     console.log("User logged out")
     logout(user);
   }
@@ -865,7 +865,7 @@ export default function MiniDrawer() {
                       <h4 className="ml-5 font-semibold my-3">Other Transefer</h4>
                   }
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"bkash-fund-transfer"} >
+                    <Link to={"sslcommerz-fund-transfer"} >
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -883,7 +883,7 @@ export default function MiniDrawer() {
                           {<AiOutlineTransaction />}
                         </ListItemIcon>
                         <ListItemText
-                          primary={"Bkash Fund Transfer"}
+                          primary={"sslcommerz Fund Transfer"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>

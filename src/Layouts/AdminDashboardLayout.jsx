@@ -150,6 +150,10 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(true);
   const { user, isAdmin, logout } = React.useContext(AuthContext);
 
+  const handleLogout = () => {
+    logout(user);
+  }
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -287,7 +291,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
               </Link>
               <div
-                onClick={logout}
+                onClick={handleLogout}
                 className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4"
               >
                 <ListItemButton

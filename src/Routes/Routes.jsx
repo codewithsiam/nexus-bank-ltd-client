@@ -64,6 +64,7 @@ import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
+import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
 
 
 
@@ -208,8 +209,8 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "bkash-fund-transfer",
-        element: <BkashFundTransfer />,
+        path: "sslcommerz-fund-transfer",
+        element: <SslCommerzPayment />,
       },
       {
         path: "verify-pin",
