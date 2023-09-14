@@ -86,7 +86,7 @@ const StudentAcc = () => {
                 <div className='p-2 md:flex justify-center items-center my-5 md:my-10'>
                     <h1 className='text-3xl md:text-5xl text-center'>Interested to open an account?</h1>
                     <div className='flex justify-center'>
-                        <Link to="/current-account"
+                        <Link to="/student-account"
                         className='btn w-[270px] flex items-center gap-2 mt-2 ml-3 px-5 py-2 border-spacing-2 border-2 text-xl md:text-2xl rounded-lg text-white bg-primary font-bold hover:text-white hover:bg-primary hover:shadow-md'>
                             <p className=''>Get in touch</p> 
                             <img className='w-[30px]' src="https://i.ibb.co/gM9BjSZ/apply-icon.png" alt="" />

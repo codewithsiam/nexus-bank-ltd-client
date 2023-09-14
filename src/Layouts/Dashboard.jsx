@@ -266,7 +266,7 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
   
-  const handleLogout = (user) => {
+  const handleLogout = () => {
     console.log("User logged out")
     logout(user);
   }
@@ -702,52 +702,8 @@ export default function MiniDrawer() {
                     <h4 className="font-semibold ml-5 my-2">Card Services</h4>
                   )}
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"my-credit-card"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"My Cards"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                    <Link to={"pay-credit-card-bill"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"Pay Credit Card Bill"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
+                
+                   
                     <Link to={"card-beneficiary-list"} >
                       <ListItemButton
                         sx={{
@@ -865,7 +821,7 @@ export default function MiniDrawer() {
                       <h4 className="ml-5 font-semibold my-3">Other Transefer</h4>
                   }
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"bkash-fund-transfer"} >
+                    <Link to={"sslcommerz-fund-transfer"} >
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -883,7 +839,7 @@ export default function MiniDrawer() {
                           {<AiOutlineTransaction />}
                         </ListItemIcon>
                         <ListItemText
-                          primary={"Bkash Fund Transfer"}
+                          primary={"sslcommerz Fund Transfer"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>
@@ -960,7 +916,7 @@ export default function MiniDrawer() {
                   disablePadding
                   sx={{ display: "block" }}
                 >
-                  <div onClick={handleLogout} className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4" >
+                  <div onClick={() =>handleLogout()} className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4" >
                     <ListItemButton
                       sx={{
                         minHeight: 48,
