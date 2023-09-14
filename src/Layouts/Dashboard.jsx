@@ -702,52 +702,8 @@ export default function MiniDrawer() {
                     <h4 className="font-semibold ml-5 my-2">Card Services</h4>
                   )}
                   <div className={`${open && "ml-3"}`}>
-                    <Link to={"my-credit-card"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"My Cards"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                    <Link to={"pay-credit-card-bill"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"Pay Credit Card Bill"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
+                
+                   
                     <Link to={"card-beneficiary-list"} >
                       <ListItemButton
                         sx={{
