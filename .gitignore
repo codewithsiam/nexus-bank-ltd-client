@@ -12,6 +12,7 @@ node2
 dist
 dist-ssr
 *.local
+*test.jsx
 
 # Editor directories and files
 .vscode/*

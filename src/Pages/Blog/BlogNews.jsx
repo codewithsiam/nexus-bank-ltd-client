@@ -1,14 +1,15 @@
 
 import moment from 'moment/moment';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const BlogNews = ({ news }) => {
-    const { date, img, detail, title } = news
+    const { date, img, detail, title,_id } = news
     const [showText, setShowText] = useState(true)
-    console.log(title)
+    console.log(_id)
     return (
         <>
-            <div className=" px-4 cursor-pointer">
+            <div data-testid="testNews" className=" px-4 cursor-pointer">
                 <div className="max-w-[400px] mx-auto mb-10">
                     <div className="rounded overflow-hidden  mb-8">
                         <img
@@ -22,17 +23,12 @@ const BlogNews = ({ news }) => {
                             {moment(date).format("MMM Do YY")}
                         </span>
                         <h3>
-                            <a
-                                href=""
-                                className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary">
-                                {title}
-                            </a>
+                            <Link  to={`detail/${_id}`}  className="font-semibold text-xl sm:text-2xl lg:text-xl xl:text-2xl mb-4 inline-block text-dark hover:text-primary">{title.slice(0,70)}</Link>
+                           
                         </h3>
                        
-                        <p className="text-base text-body-color overflow-y-auto scrollbar-hide h-40">
-                            {showText ? detail.slice(0, 100) : detail} <p className='font-bold' onClick={() => setShowText(!showText)}> {
-                                detail.length>100?<>{showText ? <span>see more...</span> : <span>see less ..</span>}</>:<></>
-                            }</p>
+                        <p className="text-base text-body-color overflow-y-auto scrollbar-hide ">
+                            { detail.slice(0, 100) } ....
                         </p>
                         
                     </div>

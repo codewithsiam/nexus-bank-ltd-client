@@ -25,12 +25,12 @@ import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 import { PiPasswordFill } from "react-icons/pi";
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 const drawerWidth = 300;
 
@@ -53,7 +53,7 @@ const adminMenu = [
   },
   {
     name: "Add Latest News",
-    icon: <MdCreateNewFolder/>,
+    icon: <MdCreateNewFolder />,
     route: "AddLatestNews",
   },
   {
@@ -62,9 +62,9 @@ const adminMenu = [
     route: "account-request",
   },
   {
-    name:"Credit Card Requests",
-    icon:<CreditCardIcon/>,
-    route:"credit-card-requests"
+    name: "Credit Card Requests",
+    icon: <CreditCardIcon />,
+    route: "credit-card-requests",
   },
   {
     name: "Users",
@@ -78,7 +78,7 @@ const adminMenu = [
   },
   {
     name: "Customer Support",
-    icon: <SupportAgentIcon  />,
+    icon: <SupportAgentIcon />,
     route: "customer-support",
   },
 ];
@@ -155,6 +155,10 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const { user, isAdmin, logout } = React.useContext(AuthContext);
+
+  const handleLogout = () => {
+    logout(user);
+  };
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -293,7 +297,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
               </Link>
               <div
-                onClick={logout}
+                onClick={() => handleLogout()}
                 className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4"
               >
                 <ListItemButton

@@ -14,7 +14,7 @@ const Contact = () => {
         dispatch(fetchUserData(storedToken));
     }, [dispatch]);
 
-    console.log(user, loading, isAdmin);
+    console.log("from redux", user, loading, isAdmin);
     return (
         <div className='my-16 max-w-screen-xl mx-auto'>
             <ContactUs/>
