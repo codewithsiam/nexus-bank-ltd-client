@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 import { AuthContext } from '../../providers/AuthProvider';
+import { baseUrl } from '../../config/server';
 
 const CustomerServiceForm = () => {
 
@@ -18,7 +19,7 @@ const CustomerServiceForm = () => {
     const onSubmit = async (data) => {
         console.log(data)
         try {
-            const res = await axios.post('http://localhost:5000/support-customers', data)
+            const res = await axios.post(`${baseUrl}/support-customers`, data)
             if (res.data.insertedId) {
                 notify
             }

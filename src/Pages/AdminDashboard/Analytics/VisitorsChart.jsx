@@ -7,12 +7,13 @@ import {
     Tooltip,
     ResponsiveContainer,
 } from 'recharts';
+import { baseUrl } from '../../../config/server';
 
 const VisitorsChart = () => {
     const [visitors, setVisitors] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch(`${baseUrl}/users`)
             .then((res) => res.json())
             .then((data) => {
                 setVisitors(data);

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import CustomerSupportTable from './CustomerSupportTable';
 import axios from 'axios'
+import { baseUrl } from '../../../config/server';
 
 const CustomerSupport = () => {
 
     const [details, setDetails] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/support-customers')
+        fetch(`${baseUrl}/support-customers`)
             .then(res => res.json())
             .then(data => setDetails(data))
     }, [])

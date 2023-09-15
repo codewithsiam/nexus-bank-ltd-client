@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 import AnalyticsCardReach from '../../../../components/AnalyticsCardTitle/AnalyticsCardReach';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import { baseUrl } from '../../../../config/server';
 
 const TotalBlogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -10,7 +11,7 @@ const TotalBlogs = () => {
     console.log(single)
 
     useEffect(() => {
-        fetch('http://localhost:5000/getBlogs')
+        fetch(`${baseUrl}/getBlogs`)
             .then(res => res.json())
             .then(data => {
                 setBlogs(data);
