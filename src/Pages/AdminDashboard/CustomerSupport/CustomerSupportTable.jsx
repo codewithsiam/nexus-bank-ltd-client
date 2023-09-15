@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const CustomerSupportTable = ({ detail, index }) => {
     const { customerName, mobileNo, emailAddress, accountType, details } = detail;
@@ -12,6 +13,9 @@ const CustomerSupportTable = ({ detail, index }) => {
                 <td>{emailAddress}</td>
                 <td>{accountType}</td>
                 <td>{details}</td>
+                <Link className='bg-[#3E639F] px-3 py-2 rounded text-white'>
+                    <button>Details</button>
+                </Link>
             </tr>
         </>
     );
