@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import { baseUrl } from '../../../../config/server';
 
 const StudentAccount = () => {
 
     const [studentsAccounts, setStudentsAccounts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/student-user-account')
+        fetch(`${baseUrl}/student-user-account`)
             .then(res => res.json())
             .then(data => {
                 setStudentsAccounts(data)

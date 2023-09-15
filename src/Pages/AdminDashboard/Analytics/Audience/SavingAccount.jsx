@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import { baseUrl } from '../../../../config/server';
 
 const SavingAccount = () => {
 
     const [savingAccounts, setSavingAccounts] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/saving-user-account')
+        fetch(`${baseUrl}/saving-user-account`)
             .then(res => res.json())
             .then(data => {
                 setSavingAccounts(data)
