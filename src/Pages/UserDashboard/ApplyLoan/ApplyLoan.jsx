@@ -1,17 +1,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import {
-  Button,
-  Card,
-  CardContent,
-  TextField,
-  Typography,
-  Container,
-} from "@mui/material";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useContext } from "react";
 import { baseUrl } from "../../../config/server";
-// import Swal from "sweetalert2";
+import Swal from "sweetalert2";
 
 const ApplyLoan = () => {
   const { handleSubmit, register, reset } = useForm();
@@ -21,8 +13,7 @@ const ApplyLoan = () => {
     try {
       data.status = "pending";
       data.email = user.email;
-      const response = await fetch(
-        `${baseUrl}/apply-loan`,
+      const response = await fetch(`${baseUrl}/apply-loan`,
         {
           method: "POST",
           headers: {
@@ -57,8 +48,8 @@ const ApplyLoan = () => {
 
   return (
     <>
-      <section className=" gradient-form h-full bg-neutral-200 dark:bg-neutral-700">
-        <div className="container h-[400px]">
+      <section className=" gradient-form bg-neutral-200 dark:bg-neutral-700">
+        <div className="container h-screen">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
               <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
@@ -73,18 +64,18 @@ const ApplyLoan = () => {
                           src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
                           alt="logo"
                         />
-                        <h4 className="mt-1 text-xl font-semibold">
+                        <h4 className="mt-1 text-xl font-semibold text-primary text-center">
                           Request for apply loan!
                         </h4>
                       </div>
 
                       {/* Form */}
-                      <form onSubmit={handleSubmit(onSubmit)} className="text-black py-10 ml-20 -mt-10">
+                      <form onSubmit={handleSubmit(onSubmit)} className="text-black py-10 -mt-10">
                         <div className="relative">
                           <input
                             {...register("name", { required: true })}
                             type="text"
-                            className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
+                            className="w-full border outline-none rounded-lg border-white bg-base text-sm shadow-sm"
                             defaultValue={user?.displayName}
                             readOnly
                           />
@@ -94,7 +85,7 @@ const ApplyLoan = () => {
                           <input
                             {...register("email")}
                             type="email"
-                            className="w-full border outline-none rounded-lg border-white bg-base p-4 pe-12 text-sm shadow-sm"
+                            className="w-full border outline-none rounded-lg border-white bg-base text-sm shadow-sm"
                             defaultValue={user?.email}
                             readOnly
                           />
@@ -117,7 +108,8 @@ const ApplyLoan = () => {
                             placeholder="Enter loan purpose"
                           />
                         </div>
-                        <button type="submit" className="bg-gradient-to-r  from-[#004D6E] to-[#00ACCC] py-2 px-2 rounded text-white mt-6">
+                        
+                        <button type="submit" className="bg-gradient-to-r  from-[#004D6E] to-[#00ACCC] py-2 px-2 rounded text-white mt-6 w-full">
                         Apply for Loan
                         </button>
                       </form>

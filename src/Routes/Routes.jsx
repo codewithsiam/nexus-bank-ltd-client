@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layouts/Main";
 import Home from "../Pages/Home/Home";
-import About from "../Pages/Home/About/About";
 import Login from "../Pages/Login/Login";
 import Registration from "../Pages/Registration/Registration";
 import OpenAccount from "../Pages/UserDashboard/OpenAccount/OpenAccount";
@@ -51,12 +50,13 @@ import PaymentSuccessful from "../Pages/UserDashboard/CardServices/PaymentPinVer
 import DepositAccount from "../Pages/UserDashboard/OpenAccount/Accounts/DepositAccount/DepositAccount";
 import CustomerService from "../Pages/CustomerService/CustomerService";
 import CustomerSupport from "../Pages/AdminDashboard/CustomerSupport/CustomerSupport";
-import UserSecureRoute from "./UserSecureRoute";
 import PaymentStatusPage from "../Pages/UserDashboard/BkashTransfer/PaymentStatus/PaymentStatusPage";
 import AdminLogin from "../Pages/AdminDashboard/AdminLogin/AdminLogin";
 import AdminSecureRoute from "./AdminSecureRoute";
-import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import AllNews from "../Pages/AdminDashboard/AllNews/AllNews";
+import BlogDetail from "../Pages/Blog/BlogDetail";
+import AddCardBeneficiary from "../Pages/UserDashboard/AddCardBeneficiary/AddCardBeneficiary";
+import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import UpdateNews from "../Pages/AdminDashboard/UpdateNews/UpdateNews";
 import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
 import Loan from "../Pages/Loan/Loan";
@@ -64,6 +64,10 @@ import StudentLoan from "../Pages/Loan/LoanDetails/StudentLoan/StudentLoan";
 import BusinessLoan from "../Pages/Loan/LoanDetails/BusinessLoan/BusinessLoan";
 import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
+import AccountsDetails from "../Pages/AccountsDetails/AccountsDetails";
+import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
+import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests"
+import UserSecureRoute from "./UserSecureRoute";
 
 
 
@@ -94,6 +98,10 @@ const router = createBrowserRouter([
         element: <StudentLoan></StudentLoan>,
       },
       {
+        path: "nexus-accounts",
+        element: <AccountsDetails></AccountsDetails>,
+      },
+      {
         path: "personal-loan",
         element: <PersonalLoan></PersonalLoan>,
       },
@@ -116,6 +124,10 @@ const router = createBrowserRouter([
       {
         path: "blogs",
         element: <BlogPage />,
+      },
+      {
+        path: "blogs/detail/:id",
+        element: <BlogDetail />,
       },
       {
         path: "careers",
@@ -166,6 +178,10 @@ const router = createBrowserRouter([
         element: <CardBeneficiaryList />,
       },
       {
+        path: "card-beneficiary-list/add-card-beneficiary",
+        element: <AddCardBeneficiary />,
+      },
+      {
         path: "FundTransferBeneficiaryList",
         element: <AccountBeneficiaryList />,
       },
@@ -208,8 +224,8 @@ const router = createBrowserRouter([
           ),
       },
       {
-        path: "bkash-fund-transfer",
-        element: <BkashFundTransfer />,
+        path: "sslcommerz-fund-transfer",
+        element: <SslCommerzPayment />,
       },
       {
         path: "verify-pin",
@@ -222,7 +238,6 @@ const router = createBrowserRouter([
       {
         path: "credit-card-apply",
         element:
-
           (
             <UserSecureRoute>
               <CreditCardApply />
@@ -233,7 +248,12 @@ const router = createBrowserRouter([
 
       {
         path: "my-accounts",
-        element: <MyAccounts />,
+        element:
+          (
+            <UserSecureRoute>
+              <MyAccounts />
+            </UserSecureRoute>
+          ),
       },
       {
         path: "nexus-customer-service-portal",
@@ -283,6 +303,10 @@ const router = createBrowserRouter([
         element: <AccountRequest />
       },
       {
+        path:"credit-card-requests",
+        element:<CreditCardRequests/>
+      },
+      {
         path: "analytics",
         element: <Analytics />
       },
@@ -303,7 +327,7 @@ const router = createBrowserRouter([
         element: <AdminSecureRoute>
           <UpdateNews />
         </AdminSecureRoute>,
-        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)
+        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)      
       },
       {
         path: "loan-request",

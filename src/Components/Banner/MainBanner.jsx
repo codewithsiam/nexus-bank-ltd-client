@@ -8,12 +8,11 @@ const MainBanner = ({banner, subBannerTitle, bannerTitle}) => {
         height: '250px', // Adjust the height as needed
         display: 'flex',
         alignItems: 'center',
-        padding: '10px',
     };
     
     return (
       <div style={bannerStyle} className="mb-5 md:mb-10 cover">
-        <div className="">
+        <div className="p-10 md:p-15">
           <h1 className="text-md">{subBannerTitle? subBannerTitle: "NBL"}</h1>
           <h2 className="text-3xl text-primary font-bold">{bannerTitle}</h2>
         </div>

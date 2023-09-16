@@ -30,12 +30,12 @@ const BkashFundTransfer = () => {
   return (
     <div className="bg-white rounded-lg my-20 p-8  border border-gray-300">
       <div className='flex justify-between items-center'>
-      <h2 className="text-2xl font-bold mb-4 text-green-700">Fund Transfer Form</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary">Fund Transfer Form</h2>
       <img className='h-20 w-auto' src="https://markedium.com/wp-content/uploads/2018/04/Bkash-2.png" alt="" />
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="m-8 border border-gray-200">
         <div className=" rounded px-4 py-5">
-          <h2 className="text-xl font-semibold py-4 text-green-600">Transfer From</h2>
+          <h2 className="text-xl font-semibold py-4 text-primary">Transfer From</h2>
           <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="fromAccountNum" className="block text-gray-700 font-semibold w-1/3">
@@ -55,7 +55,7 @@ const BkashFundTransfer = () => {
         </div>
 
         <div className="rounded px-4 py-4">
-          <h2 className="text-xl font-semibold py-5 text-green-600">Transfer To</h2>
+          <h2 className="text-xl font-semibold py-5 text-primary">Transfer To</h2>
           <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="beneficiary" className="block text-gray-700 font-semibold w-1/3">
@@ -95,7 +95,7 @@ const BkashFundTransfer = () => {
         </div>
 
         <div className="rounded px-4">
-          <h2 className="text-xl font-semibold py-5 text-green-600">Transfer</h2>
+          <h2 className="text-xl font-semibold py-5 text-primary">Transfer</h2>
           <hr className='text-gray-500' />
           <div className="mt-4 flex gap-4 items-center">
             <label htmlFor="transferAmount" className="block text-gray-700 font-semibold w-1/3">
@@ -135,7 +135,7 @@ const BkashFundTransfer = () => {
           
           <button
             type="submit"
-            className="bg-green-600 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
+            className="bg-primary text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           >
             Transfer
           </button>

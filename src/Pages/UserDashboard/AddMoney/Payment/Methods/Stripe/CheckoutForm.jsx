@@ -7,7 +7,7 @@ import { AuthContext } from "../../../../../../providers/AuthProvider";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
 import { baseUrl } from "../../../../../../config/server";
 
-const CheckoutForm = ({ amount }) => {
+const CheckoutForm = ({ amount, accountNumber, reason }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -63,8 +63,9 @@ const CheckoutForm = ({ amount }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.displayName || "anonymous",
-            email: user?.email || "anonymous",
+            name: user?.username || "anonymous",
+            accountNumber: accountNumber || "anonymous",
+            reason: reason || "reason",
           },
         },
       });
@@ -80,15 +81,15 @@ const CheckoutForm = ({ amount }) => {
       setTransactionId(transactionId);
 
       const paymentData = {
-        userName: user?.displayName,
-        userEmail: user?.email,
+        reason,
+        accountNumber,
         transactionId,
         amount,
         date: new Date(),
       };
 
       axios
-        .post(`https://nexus-bank-ltd-server-siam-wd.vercel.app/payments`, paymentData)
+        .post(`${baseUrl}/payments`, paymentData)
         .then((res) => {
           console.log("Payment successful:", res.data.insertedId);
           if (res.data.insertedId) {
@@ -149,11 +150,11 @@ const CheckoutForm = ({ amount }) => {
           <p className="text-semibold text-[#319cca]">{transactionId}</p> . You
           will be redirected to{" "}
           <Link
-            to="/dashboard/my-profile"
+            to="/dashboard/account-overview"
             className="text-[#2a7b9e] underline font-semibold"
           >
-            your profile
-          </Link>{" "}
+            account overview
+          </Link>
           in {countdown} {countdown === 1 ? "second" : "seconds"}.
         </div>
       )}
@@ -215,8 +216,6 @@ const CheckoutForm = ({ amount }) => {
       </form>
 
       {cardError && <p className="text-red-600 ml-8 mt-2">{cardError}</p>}
-
-    
     </div>
   );
 };

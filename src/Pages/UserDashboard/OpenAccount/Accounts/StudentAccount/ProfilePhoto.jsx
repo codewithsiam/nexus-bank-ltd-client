@@ -70,26 +70,26 @@ const ProfilePhoto = ({profileImage,setProfileImage}) => {
     );
   };
 
-  const handleAspectRatioChange = (e) => {
-    setCropAspectRatio(parseFloat(e.target.value));
-  };
+  // const handleAspectRatioChange = (e) => {
+  //   setCropAspectRatio(parseFloat(e.target.value));
+  // };
 
-  ////
-  const handleCropBoxDataChange = (e) => {
-    const { width, height } = e.detail;
-    console.log(width, height);
-    setCropAspectRatio(width / height);
-  };
+  // ////
+  // const handleCropBoxDataChange = (e) => {
+  //   const { width, height } = e.detail;
+  //   console.log(width, height);
+  //   setCropAspectRatio(width / height);
+  // };
 
   // cropper option
   const cropperOptions = {
-    aspectRatio: cropAspectRatio,
-    guides: true,
-    dragMode: "crop",
-    cropBoxResizable: true,
-    cropBoxMovable: true,
-    cropBoxData: { width: "100%", height: "100%" }, // Initial crop area size
-    crop: handleCropBoxDataChange, // To update the aspect ratio when crop area is resized
+    // aspectRatio: cropAspectRatio,
+    // guides: true,
+    // dragMode: "crop",
+    // cropBoxResizable: true,
+    // cropBoxMovable: true,
+    // cropBoxData: { width: "100%", height: "100%" }, // Initial crop area size
+    // crop: handleCropBoxDataChange, // To update the aspect ratio when crop area is resized
     zoomOnWheel: false, // Disable zoom on wheel
   };
 
@@ -98,7 +98,7 @@ const ProfilePhoto = ({profileImage,setProfileImage}) => {
       <p className="font-semibold">Your Photo*</p>
      <div>
      {
-        profileImage && <img className="w-full h-full image-full my-2 rounded border border-gray-400" src={profileImage} alt="" />
+        profileImage && <img className="w-full h-[250px] image-full my-2 rounded " src={profileImage} alt="" />
       }
      </div>
       <label

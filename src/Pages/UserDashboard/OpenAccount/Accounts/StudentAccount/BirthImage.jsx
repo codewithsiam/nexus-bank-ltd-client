@@ -56,26 +56,8 @@ const BirthImage = ({birthImage,setBirthImage}) => {
   };
   
 
-   const handleAspectRatioChange = (e) => {
-    setCropAspectRatio(parseFloat(e.target.value));
-  };
-
-  ////
-  const handleCropBoxDataChange = (e) => {
-    const { width, height } = e.detail;
-    console.log(width,height)
-    setCropAspectRatio(width / height);
-  };
-
   // cropper option
   const cropperOptions = {
-    aspectRatio: cropAspectRatio,
-    guides: true,
-    dragMode: "crop",
-    cropBoxResizable: true,
-    cropBoxMovable: true,
-    cropBoxData: { width: "100%", height: "100%" }, // Initial crop area size
-    crop: handleCropBoxDataChange, // To update the aspect ratio when crop area is resized
     zoomOnWheel: false, // Disable zoom on wheel
   };
 
@@ -84,7 +66,7 @@ const BirthImage = ({birthImage,setBirthImage}) => {
       <p className="font-semibold">Birth Certificate *</p>
       <div>
         {
-          birthImage && <img className="w-full h-full image-full my-2 rounded" src={birthImage} alt="" />
+          birthImage && <img className="w-full h-[250px] image-full my-2 rounded" src={birthImage} alt="" />
         }
       </div>
       <label

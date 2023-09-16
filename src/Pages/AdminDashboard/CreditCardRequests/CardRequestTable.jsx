@@ -17,6 +17,7 @@ const CardRequestTable = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [control, setControl] = useState(false);
   const [feedId, setFeedId] = useState(null);
+
   useEffect(() => {
     fetch(`${baseUrl}/credit-card-requests`)
       .then((res) => res.json())
@@ -87,6 +88,7 @@ const CardRequestTable = () => {
                   <TableCell>Full Name</TableCell>
                   <TableCell>Nid Card Number</TableCell>
                   <TableCell>Account Number</TableCell>
+                  <TableCell>Status</TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -103,6 +105,7 @@ const CardRequestTable = () => {
                     </TableCell>
                     <TableCell>{card.nidCardNumber}</TableCell>
                     <TableCell>{card?.accountNumber}</TableCell>
+                    <TableCell>{card?.status}</TableCell>
                     <TableCell>
                       <div className="flex gap-3 items-center">
                         <button
@@ -111,7 +114,10 @@ const CardRequestTable = () => {
                         >
                           Deny
                         </button>
-                        <button  onClick={() => handleStatus(card._id, "approved")} className="bg-green-500 px-4 py-2 rounded text-white ">
+                        <button
+                          onClick={() => handleStatus(card._id, "approved")}
+                          className="bg-green-500 px-4 py-2 rounded text-white "
+                        >
                           Approve
                         </button>
                       </div>

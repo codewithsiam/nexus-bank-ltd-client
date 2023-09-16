@@ -1,4 +1,4 @@
-import CenterTitle from "../../../../../Components/Title/CenterTitle";
+import Heading from "../../../../../Components/Title/Heading";
 
 const WhyChooseUs = () => {
   const chooseData = [
@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
     <section className="py-12">
       <div className="">
         <div className="container mx-auto">
-          <CenterTitle heading={"Why Choose Us?"} ></CenterTitle>
+          <Heading heading={"Why Choose Us?"} ></Heading>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {
@@ -46,8 +46,7 @@ const WhyChooseUs = () => {
 
 const CardWhyChooseUs = ({ data }) => {
   return (
-      <div className="bg-white rounded-lg p-8 shadow-md transform transition-transform hover:scale-105 hover:bg-blue-100">
-          
+      <div className="bg-white rounded-lg p-8 shadow-md transform transition-transform hover:scale-105 hover:bg-blue-100">         
           <div className="flex gap-2 items-center">
               <img className="w-12 h-12 rounded-full p-1 my-btn" src={data?.img} alt="" />
               <h3 className="text-2xl font-semibold mb-2 text-gray-800">{data?.title}</h3>

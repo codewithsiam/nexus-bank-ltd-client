@@ -22,21 +22,21 @@ const Login = () => {
                 <p className="bg-[#00A7C7] p-2 text-[#fff]">Accounts</p>
                 <div className='mt-5'>
 
-                    <Link to="/dashboard/student-account" className='flex items-center justify-between w-full mt-2'>
+                    <Link to="/student-account" className='flex items-center justify-between w-full mt-2'>
                         <button>Student Account</button>
                         <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
                             Register
                         </span>
                     </Link>
 
-                    <Link to='/dashboard/saving-account' className='flex items-center justify-between w-full mt-2'>
+                    <Link to='/saving-account' className='flex items-center justify-between w-full mt-2'>
                         <button>Saving Account</button>
                         <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
                             Register
                         </span>
                     </Link>
 
-                    <Link to="/dashboard/current-account" className='flex items-center justify-between w-full mt-2'>
+                    <Link to="/current-account" className='flex items-center justify-between w-full mt-2'>
                         <button>Current Account</button>
                         <span className="bg-[#00A7C7] text-white px-5 py-2 rounded">
                             Register

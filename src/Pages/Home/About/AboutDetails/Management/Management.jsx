@@ -72,7 +72,7 @@ const Management = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto mt-10">
+    <div className=" mt-10">
       <MainBanner 
       banner="https://i.ibb.co/fXKszF9/management-bg.webp" 
       subBannerTitle="Leading the way in business transformation"

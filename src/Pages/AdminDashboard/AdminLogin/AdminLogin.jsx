@@ -41,9 +41,9 @@ const AdminLogin = () => {
           // console.log("Admin:", isAdmin);
 
           // login(token);
-          localStorage.setItem("authToken", token);
           setUser(result);
           setIsAdmin(isAdmin);
+          localStorage.setItem("authToken", token);
           navigate(from);
         } else {
           console.error("Login Failed:", res.data.message);

@@ -30,9 +30,9 @@ const EStatement = () => {
   };
   return (
     <div className="p-4 bg-gray-100 rounded-lg py-10 mt-20 border border-gray-300 shadow-sm">
-      <h2 className="text-2xl font-bold mb-4 text-green-700 ml-4">E-Statement</h2>
+      <h2 className="text-2xl font-bold mb-4 text-primary ml-4">E-Statement</h2>
       <div className='border border-gray-300 p-8 m-10'>
-        <span className='text-lg font-semibold text-green-600'>E-Statement Generation</span>
+        <span className='text-lg font-semibold text-primary'>E-Statement Generation</span>
         <hr className='text-gray-400 mt-4' />
         <form onSubmit={(e) => handleSubmit(onSubmit)(e)}>
           <div className="flex flex-wrap -mx-2 my-10">
@@ -117,7 +117,7 @@ const EStatement = () => {
             <div className="w-full md:w-1/2 px-2 mb-4 flex items-center justify-start mt-4">
               <button
                 type="submit"
-                className="bg-green-600 hover:bg-blue-600 text-white p-2 rounded-md"
+                className="mt-3 bg-gradient-to-r from-[#004F70] to-[#007C9C] rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white"
               >
                 Download
               </button>

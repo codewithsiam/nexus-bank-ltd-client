@@ -23,7 +23,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  // console.log(user)
+  console.log("User", user);
+  console.log("Is admin", isAdmin);
 
   // google sign in
   const googleSignIn = () => {
@@ -82,7 +83,12 @@ const AuthProvider = ({ children }) => {
       setLoading(false);
     }
   }, []);
-  const logout = () => {
+
+  const logout = (user) => {
+    console.log("Logout called");
+    if (!user) {
+      return;
+    }
     localStorage.removeItem("authToken");
     setUser(null);
   };
@@ -106,6 +112,7 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    setLoading,
     setUser,
     isAdmin,
     setIsAdmin,
