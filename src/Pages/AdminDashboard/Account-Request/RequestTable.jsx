@@ -50,7 +50,7 @@ const RequestTable = ({
   const handleStatus = (id, status) => {
     axios.patch(`${baseUrl}/status/${id}/?status=${status}`).then((data) => {
       console.log(data)
-      if (data.data.success) {
+      if (data.data.modifiedCount > 0) {
         setControl(!control);
         Swal.fire({
           position: "top-center",
@@ -64,6 +64,16 @@ const RequestTable = ({
           setIsOpen(true);
           setFeedId(id);
         }
+      }
+      if(data.data.success){
+        setControl(!control);
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: `Account ${status} successfully`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     });
   };

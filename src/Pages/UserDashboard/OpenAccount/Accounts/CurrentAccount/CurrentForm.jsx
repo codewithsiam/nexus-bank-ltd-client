@@ -38,7 +38,6 @@ const CurrentForm = () => {
       .then((data) => console.log(data))
       .then((err) => console.log(err));
     setIsOpen(true);
-    e.target.reset();
     // const form = e.target;
   };
 
@@ -87,6 +86,7 @@ const CurrentForm = () => {
                   showConfirmButton: false,
                   timer: 1500,
                 });
+                
                 // form.reset();
               }
             })
