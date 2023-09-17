@@ -7,6 +7,7 @@ import AuthProvider, {
 import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
 import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
+import { useEffect } from "react";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
@@ -16,7 +17,20 @@ const Form = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const [userLocation, setUserLocation] = useState(null);
 
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        setUserLocation({ latitude, longitude });
+      });
+    } else {
+      console.error("Geolocation is not available in this browser.");
+    }
+  }, []);
+  
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
     newUserData[e.target.name] = e.target.value;
@@ -36,7 +50,6 @@ const Form = () => {
     setIsOpen(true);
     // const form = e.target;
   };
-
   const handleOpenAccount = () => {
     fetch(`${baseUrl}/verify-otp?email=${userData.email}&otp=${otpDigit}`, {
       method: "Post",
@@ -65,6 +78,7 @@ const Form = () => {
               present_address: userData.present_address,
               permanent_address: userData.permanent_address,
               status: "pending",
+              userLocation,
             }),
           })
             .then((res) => res.json())
