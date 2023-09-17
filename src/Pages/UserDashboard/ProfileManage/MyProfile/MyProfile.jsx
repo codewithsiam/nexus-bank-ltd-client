@@ -27,7 +27,7 @@ const MyProfile = () => {
             <div className="relative w-[153px] h-[75px]">
               <img
                 className="absolute w-[150px] h-[150px] -top-[75px] md:-top-[80px] left-0 border-gray-300 border-[5px] rounded-full"
-                src={user?user.profile_image : "https://img.freepik.com/free-psd/3d-icon-social-media-app_23-2150049569.jpg?w=740&t=st=1694713776~exp=1694714376~hmac=e279aefd26ac30b2c7f21af4a1dfac90bb75b0e82176b3ebbf8fbb05ab47c3bb"} alt="user"
+                src={user.profile_image ? user.profile_image : "https://img.freepik.com/free-psd/3d-icon-social-media-app_23-2150049569.jpg?w=740&t=st=1694713776~exp=1694714376~hmac=e279aefd26ac30b2c7f21af4a1dfac90bb75b0e82176b3ebbf8fbb05ab47c3bb"} alt="user"
               />
             </div>
           </div>

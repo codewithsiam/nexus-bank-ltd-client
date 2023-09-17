@@ -47,7 +47,7 @@ const adminMenu = [
     route: "employees",
   },
   {
-    name: "Accounts",
+    name: "All Accounts",
     icon: <AccountTreeIcon />,
     route: "accounts",
   },
@@ -208,7 +208,7 @@ export default function MiniDrawer() {
               </div>
               <img
                 className="w-10 h-10 rounded-full"
-                src={user?.photoURL}
+                src={user.profile_photo ? user.profile_photo : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"}
                 alt=""
               />
             </div>
@@ -232,10 +232,10 @@ export default function MiniDrawer() {
             <div className="flex flex-col items-center justify-center my-6 ">
               <img
                 className="w-20 h-20 rounded-full"
-                src={user?.photoURL}
+                src={user.profile_photo ? user.profile_photo : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"}
                 alt=""
               />
-              <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
+              <h2 className=" mt-4 font-semibold">{user?.username}</h2>
               <p>{user?.email}</p>
             </div>
           )}

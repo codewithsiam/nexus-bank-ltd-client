@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StripePayment from "./Payment/Methods/Stripe/StripePayment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoAddMoney from "./InfoAddMoney";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import axios from "axios";
+import { baseUrl } from "../../../config/server";
 
 
 const AddMoney = () => {
@@ -12,11 +14,23 @@ const AddMoney = () => {
   const [showStripePayment, setShowStripePayment] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [amount, setAmount] = useState("");
-  const [accountNumber, setAccountNumber] = useState(""); // New state for the account select
+  const [accountNumber, setAccountNumber] = useState(""); 
   const [reason, setReason] = useState("");   // New state for the reason
+  const [myAccounts, setMyAccounts] = useState(""); 
 
   const {user} = useContext(AuthContext)
 
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/myAccounts?nidNumber=${user?.nid_card_number}`)
+      .then((response) => {
+        setMyAccounts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+console.log("my account", myAccounts);
   const handlePayClick = (event) => {
     event.preventDefault();
 
@@ -59,7 +73,7 @@ const AddMoney = () => {
             >
               <option value="">Select an account</option>
               {
-                user?.accounts?.map(account => <option value={account.accountNumber}>  {account.account_type} - {account.account_number}</option> )
+               myAccounts && myAccounts?.map(account => <option value={account.accountNumber}>  {account.account_type} - {account.accountNumber}</option> )
               }
               
             </select>

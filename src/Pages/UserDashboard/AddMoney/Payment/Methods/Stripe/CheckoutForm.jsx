@@ -64,8 +64,6 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
           card: card,
           billing_details: {
             name: user?.username || "anonymous",
-            accountNumber: accountNumber || "anonymous",
-            reason: reason || "reason",
           },
         },
       });
@@ -99,6 +97,7 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
               showConfirmButton: false,
               timer: 2000,
             });
+            setProcessing(false);
             // call a countdown function and redirect to profile
             startCountdown();
           }
@@ -136,7 +135,7 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
       )}
 
       <h1 className="text-2xl font-bold mb-4 text-[#004D6E]">
-        Hello, {user?.displayName}!{" "}
+        Hello, {user?.lastname}!{" "}
         <SentimentVerySatisfiedIcon fontSize="large" color="" />
       </h1>
       {!showCountdown && (
@@ -148,14 +147,14 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
         <div className="text-center text-gray-600">
           Your payment complete with transaction id :{" "}
           <p className="text-semibold text-[#319cca]">{transactionId}</p> . You
-          will be redirected to{" "}
+          will be redirected to
           <Link
             to="/dashboard/account-overview"
             className="text-[#2a7b9e] underline font-semibold"
           >
-            account overview
+            account overview {" "}
           </Link>
-          in {countdown} {countdown === 1 ? "second" : "seconds"}.
+          in - {countdown} {countdown === 1 ? "second" : "seconds"}.
         </div>
       )}
       <form onSubmit={handleSubmit}>
