@@ -342,14 +342,6 @@ const DepositForm = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-2 items-center my-4">
-          <input
-            name="condition"
-            onChange={handleUserDataOnChange}
-            type="checkbox"
-          />
-          <p>accept our terms and conditions</p>
-        </div>
         <div className="flex justify-end">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
