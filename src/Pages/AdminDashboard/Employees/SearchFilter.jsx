@@ -66,19 +66,19 @@ const SearchFilter = ({handleOpen,setEmployees}) => {
             </button>
           </div>
         </div>
-        <div className="md:flex gap-4 items-center ">
+        <div className="md:flex gap-4 items-center">
           <div className="form-control w-full max-w-xs mb-4 md:mb-0">
             <select onChange={handleFilter} name="filter" className="select select-bordered">
               <option disabled selected>
                 Pick one
               </option>
-              <option>Bank Teller</option>
+              <option>Manager</option>
               <option>Loan Officer</option>
               <option>Relationship Manager</option>
               <option>Financial Advisor</option>
               <option>Credit Analyst</option>     
               <option>Risk Manager</option> 
-              <option>Collections Officer</option>
+              <option>Helpline Representative</option>
             </select>
           </div>
           <button onClick={handleOpen} className="my-btn px-6 py-3 rounded text-white font-semibold w-full">

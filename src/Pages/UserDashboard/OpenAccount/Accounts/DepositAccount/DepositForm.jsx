@@ -6,6 +6,7 @@ import SharedNidCardImage from "./SharedNidCardImage";
 import SharedProfileImage from "./SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const DepositForm = () => {
   const [userData, setUserData] = useState({});
@@ -15,6 +16,7 @@ const DepositForm = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
@@ -74,14 +76,13 @@ const DepositForm = () => {
             .then((data) => {
               console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                // form.reset();
+                Swal.fire(
+                  'Successful',
+                  'Your application for opening account is successful.Please wait for response',
+                  'success'
+                )
+
+                navigate("/")
               }
             })
             .catch((error) => console.log(error));

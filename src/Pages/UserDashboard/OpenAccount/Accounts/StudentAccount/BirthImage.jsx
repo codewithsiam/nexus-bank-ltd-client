@@ -1,73 +1,31 @@
-import React, { useRef } from "react";
-import { useState } from "react";
+import React from "react";
 import { FaPlus } from "react-icons/fa";
-import Cropper from "react-cropper";
-import 'cropperjs/dist/cropper.css';
+import { compressAndConvertToBase64 } from "../../../../../config/base64";
 
-const BirthImage = ({birthImage,setBirthImage}) => {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [cropAspectRatio, setCropAspectRatio] = useState(3);
-  const [croppedImage, setCroppedImage] = useState(null);
-
-  const cropperRef2 = useRef(null);
+const BirthImage = ({ birthImage, setBirthImage }) => {
   console.log(birthImage);
-
-  // handle file changes ----------------------
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-    setSelectedImage(URL.createObjectURL(file));
-  };
-  
-  // handle crop--------------
-  const handleCrop = () => {
-    if (typeof window === 'undefined') {
-      // Server-side rendering, do nothing
-      return null;
-    }
-    if (!cropperRef2.current || typeof cropperRef2.current.cropper.getCroppedCanvas() === 'undefined') {
-      return;
-    }
-
-    const croppedCanvas = cropperRef2.current.cropper.getCroppedCanvas({
-      minWidth: 200,
-      minHeight: 200,
-      maxWidth: 800,
-      maxHeight: 800,
-      fillColor: '#fff',
-    });
-
-    croppedCanvas.toBlob(
-      (blob) => {
-        if (blob) {
-          // Convert blob to base64
-          const reader = new FileReader();
-          reader.onload = () => {
-            const base64String = reader.result;
-            setCroppedImage(base64String);
-            setBirthImage(base64String)
-          };
-          reader.readAsDataURL(blob);
-        }
-      },
-      'image/jpeg', // Use 'image/webp' for WebP format
-      0.8 // Adjust the compression quality as needed
+  const handleBirthImage = async (e) => {
+    const image = e.target.files[0];
+    const compressBase64 = await compressAndConvertToBase64(
+      image,
+      300,
+      200,
+      0.8
     );
-   
-  };
-  
-
-  // cropper option
-  const cropperOptions = {
-    zoomOnWheel: false, // Disable zoom on wheel
+    setBirthImage(compressBase64);
   };
 
   return (
     <div className="w-full">
       <p className="font-semibold">Birth Certificate *</p>
       <div>
-        {
-          birthImage && <img className="w-full h-[250px] image-full my-2 rounded" src={birthImage} alt="" />
-        }
+        {birthImage && (
+          <img
+            className="w-full h-56 image-full my-2 rounded"
+            src={birthImage}
+            alt=""
+          />
+        )}
       </div>
       <label
         htmlFor="birth-image"
@@ -78,40 +36,11 @@ const BirthImage = ({birthImage,setBirthImage}) => {
       </label>
       <input
         id="birth-image"
-        onChange={handleFileChange}
+        onChange={handleBirthImage}
         accept="image/*"
         className="hidden"
         type="file"
       />
-      {selectedImage && !croppedImage && (
-        <div className="mt-2 absolute w-[600px] ">
-          <Cropper
-            ref={cropperRef2}
-            src={selectedImage}
-            style={{ height: "100%", width: "100%" }}
-            {...cropperOptions}
-          />
-
-          <div className="mt-2">
-            <button
-              onClick={() => {
-                setCroppedImage(null);
-                setBirthImage(null);
-                setSelectedImage(null);
-              }}
-              className="px-4 py-2 bg-gray-400 mr-2 rounded"
-            >
-              cancel
-            </button>
-            <button
-              onClick={handleCrop}
-              className="bg-[#EE490C] px-5 py-2 rounded text-white"
-            >
-              Add Media
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

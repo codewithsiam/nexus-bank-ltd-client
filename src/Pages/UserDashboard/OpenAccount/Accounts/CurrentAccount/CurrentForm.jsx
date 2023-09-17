@@ -9,6 +9,7 @@ import NidCardImage from "./NidCardImage";
 import ProfilePhoto from "../StudentAccount/ProfilePhoto";
 import OtpModal from "../OtpModal/OtpModal";
 import { ElectricScooterSharp } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 const CurrentForm = () => {
   const [userData, setUserData] = useState({});
@@ -18,6 +19,7 @@ const CurrentForm = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   // console.log(error)
 
   // handle user data change
@@ -79,18 +81,27 @@ const CurrentForm = () => {
             .then((data) => {
               console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+                Swal.fire(
+                  'Successful',
+                  'Your application for opening account is successful.Please wait for response',
+                  'success'
+                )
+
+                navigate("/")
+                
                 
                 // form.reset();
               }
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+              Swal.fire(
+                'Account Request',
+                'Something wrong.Please try again letter',
+                'error'
+              )
+
+              navigate("/")
+            });
         } else {
           setError(data.message);
         }
