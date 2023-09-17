@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import { AuthContext } from '../../providers/AuthProvider';
+import { baseUrl } from '../../config/server';
 
 const CustomerServiceForm = () => {
 
@@ -11,16 +13,15 @@ const CustomerServiceForm = () => {
         handleSubmit,
     } = useForm()
 
-    const notify = () => toast.success('added');
+
+    const notify = () => toast.success('Submitted');
 
     const onSubmit = async (data) => {
         console.log(data)
         try {
-            const res = await axios.post('http://localhost:5000/support-customers', data)
+            const res = await axios.post(`${baseUrl}/support-customers`, data)
             if (res.data.insertedId) {
-                notify()
-            } else {
-                alert('Post Unsuccessful')
+                notify
             }
         } catch (error) {
             console.log(error)
@@ -65,8 +66,8 @@ const CustomerServiceForm = () => {
                 <textarea {...register("details")} className='outline-none w-full p-2 rounded' name="details" id="details" cols="30" rows="5"></textarea>
 
                 <button onClick={notify} className='bg-[#CEEAF3] p-3 rounded mt-4'>Submit</button>
-                <Toaster />
             </form>
+            <Toaster />
         </div>
     );
 };

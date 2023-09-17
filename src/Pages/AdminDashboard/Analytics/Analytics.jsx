@@ -10,7 +10,7 @@ const Analytics = () => {
                 <AnalyticsTitle title="Analytics dashboard" subTitle="Monitor metrics, check reports and review performance" />
 
                 <div className='bg-[#1E293B] p-11 rounded-lg'>
-                    <AnalyticsTitle chartTitle="Visitors Overview" chartSubTitle="Number of unique visitors" />
+                    <AnalyticsTitle chartTitle="Total Users" />
                     <VisitorsChart />
                 </div>
 

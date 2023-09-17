@@ -5,7 +5,7 @@ import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/Analyt
 import { baseUrl } from '../../../../config/server';
 
 const TotalUsers = () => {
-    const [transactions, setTransactions] = useState([]);
+    const [transactions, setTransactions] = useState(0); // Initialize transactions as 0
     const [data, setData] = useState([]);
 
     useEffect(() => {
@@ -13,12 +13,18 @@ const TotalUsers = () => {
             .then(res => res.json())
             .then(data => {
                 const money = data;
-                const totalAmount = money.reduce((acc, transaction) => {
-                    return acc + transaction.transferAmount;
-                }, 0);
-                setTransactions(totalAmount);
+
+                if (Array.isArray(money)) {
+                    const totalAmount = money.reduce((acc, transaction) => {
+                        return acc + (transaction.transferAmount || 0); 
+                    }, 0);
+                    setTransactions(totalAmount);
+                }
                 setData(data);
             })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }, []);
 
     return (

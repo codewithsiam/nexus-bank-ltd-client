@@ -134,6 +134,14 @@ const router = createBrowserRouter([
         element: <Careers />,
         loader: () => fetch(`${baseUrl}/careers`)
       },
+      {
+        path: "customer-service",
+        element: <CustomerSupport />
+      },
+      {
+        path: "customer",
+        element: <CustomerService />
+      },
     ],
   },
   {
@@ -334,10 +342,6 @@ const router = createBrowserRouter([
       {
         path: "feedback/:id",
         element: <Feedback />
-      },
-      {
-        path: "customer-support",
-        element: <CustomerSupport />
       },
       {
         path: "change-password",
