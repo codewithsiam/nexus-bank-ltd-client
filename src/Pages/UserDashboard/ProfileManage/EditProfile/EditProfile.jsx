@@ -45,8 +45,8 @@ const EditProfile = () => {
   const handleOnSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const nick_name = form.nickName.value;
-    const name = form.profileName.value;
+    const last_name = form.nickName.value;
+    const first_name = form.profileName.value;
     const email = form.email.value;
     const gender = form.gender.value;
     const birthday = form.birthday.value;
@@ -59,7 +59,7 @@ const EditProfile = () => {
 
     const updatedProfileInfo = {
       gender: gender,
-      nick_name: nick_name,
+      last_name: last_name,
       email: email,
       number: number,
       nationality: nationality,
@@ -68,8 +68,8 @@ const EditProfile = () => {
       present_address: present_address,
       permanent_address: permanent_address,
       description: description,
-      name: name,
-      img: imageUrl
+      first_name: first_name,
+      profile_image: imageUrl
     };
     console.log(updatedProfileInfo);
     Swal.fire({
@@ -162,7 +162,7 @@ const EditProfile = () => {
                 {/* number */}
                 <div>
                   <label htmlFor="number" className="block font-bold">Number</label>
-                  <TextField className="w-full" id="outlined-basic" name="number" variant="standard" />
+                  <TextField type="number" className="w-full" id="outlined-basic" name="number" variant="standard" />
                 </div>
               </div>
               <div className="grid md:grid-cols-2 gap-5 mb-4">

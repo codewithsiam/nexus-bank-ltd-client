@@ -68,6 +68,7 @@ import AccountsDetails from "../Pages/AccountsDetails/AccountsDetails";
 import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
 import CreditCardRequests from "../Pages/AdminDashboard/Account-Request/AccountRequest"
 import UserSecureRoute from "./UserSecureRoute";
+import UserReview from "../Pages/UserDashboard/ProfileManage/UserReview/UserReview";
 
 
 
@@ -144,18 +145,6 @@ const router = createBrowserRouter([
       {
         path: "account-overview",
         element: <AccountOverview />,
-      },
-      {
-        path: "my-profile",
-        element: <MyProfile />,
-      },
-      {
-        path: "edit-profile",
-        element: <EditProfile />
-      },
-      {
-        path: "change-password",
-        element: <PasswordChange />
       },
       {
         path: "apply-loan",
@@ -263,6 +252,22 @@ const router = createBrowserRouter([
             <JobApply />
           </UserSecureRoute>
         ),
+      },
+      {
+        path: "my-profile",
+        element: <MyProfile />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />
+      },
+      {
+        path: "change-password",
+        element: <PasswordChange />
+      },
+      {
+        path: "user-feedback",
+        element: <UserReview />
       },
     ],
   },
