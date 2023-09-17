@@ -23,8 +23,8 @@ const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
-  console.log("User", user);
-  console.log("Is admin", isAdmin);
+  // console.log("User", user);
+  // console.log("Is admin", isAdmin);
 
   // google sign in
   const googleSignIn = () => {

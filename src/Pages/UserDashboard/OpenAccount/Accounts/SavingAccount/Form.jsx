@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { baseUrl } from "../../../../../config/server";
 import Swal from "sweetalert2";
 import AuthProvider, {
@@ -16,23 +16,6 @@ const Form = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
-
-  const [userLocation, setUserLocation] = useState(null);
-
-  useEffect(() => {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const latitude = position.coords.latitude;
-        const longitude = position.coords.longitude;
-        setUserLocation({ latitude, longitude });
-      });
-    } else {
-     
-      console.error("Geolocation is not available in this browser.");
-    }
-  }, []);
-
-  // console.log("Geolocation is available", userLocation);
 
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
@@ -82,7 +65,6 @@ const Form = () => {
               present_address: userData.present_address,
               permanent_address: userData.permanent_address,
               status: "pending",
-              userLocation 
             }),
           })
             .then((res) => res.json())
