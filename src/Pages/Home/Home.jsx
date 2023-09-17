@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import Lottie from "lottie-react";
 import icon from '../../assets/animation/animation_lmhksght.json';
+import RightMenu from "../../components/RightMenu/RightMenu";
 
 const Home = () => {
     const ref = useRef(null);
@@ -25,6 +26,7 @@ const Home = () => {
     return (
       <div className="relative" >
         <Banner ></Banner>
+        <RightMenu/>
         <About></About>
         <OurServices></OurServices>
         <LatestNews></LatestNews>

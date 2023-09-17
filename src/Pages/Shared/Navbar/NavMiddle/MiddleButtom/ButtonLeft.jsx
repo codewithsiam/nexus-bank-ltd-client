@@ -20,7 +20,6 @@ const ButtonLeft = () => {
         <Link to="/aboutDetails">Cards</Link>
         <Link to="/aboutDetails">Banking</Link>
         <Link to="/retail-loan">Loan</Link>
-        <Link to="dashboard/nexus-customer-service-portal">Customer Service</Link>
         
       </div>
           <div className="absolute transform -translate-x-1/2 opacity-0 bg-white  rounded-md   w-40 px-4 pb-4 pt-8  transition-opacity duration-300 group-hover:opacity-100 z-30 left-20  flex flex-col space-y-3">

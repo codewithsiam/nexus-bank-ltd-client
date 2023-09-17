@@ -303,8 +303,8 @@ const router = createBrowserRouter([
         element: <AccountRequest />
       },
       {
-        path:"credit-card-requests",
-        element:<CreditCardRequests/>
+        path: "credit-card-requests",
+        element: <CreditCardRequests />
       },
       {
         path: "analytics",
@@ -327,7 +327,7 @@ const router = createBrowserRouter([
         element: <AdminSecureRoute>
           <UpdateNews />
         </AdminSecureRoute>,
-        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)      
+        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)
       },
       {
         path: "loan-request",
