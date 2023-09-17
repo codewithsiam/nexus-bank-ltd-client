@@ -8,6 +8,7 @@ import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
 import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
@@ -56,6 +57,7 @@ const ipUrl = "https://api.ipify.org?format=json";
       // }
     } ,[ipUrl])
 
+  const navigate = useNavigate();
 
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
@@ -112,13 +114,13 @@ const ipUrl = "https://api.ipify.org?format=json";
             .then((data) => {
               console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+                Swal.fire(
+                  'Successful',
+                  'Your application for opening account is successful.Please wait for response',
+                  'success'
+                )
+
+                navigate("/")
                 // form.reset();
               }
             })
