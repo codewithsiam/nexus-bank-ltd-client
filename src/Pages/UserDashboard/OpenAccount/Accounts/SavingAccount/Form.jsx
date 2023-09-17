@@ -33,7 +33,7 @@ const Form = () => {
   }, []);
   
   const handleTrack = (ip) => {
-    fetch(`https://ipinfo.io/${ip}?token=c31975ded3990c`)
+    fetch(`https://ipinfo.io/${ip}?token=${import.meta.env.VITE_ip_tracking_token}`)
       .then(res => res.json())
       .then(data => {
         setUserLocation(data)
