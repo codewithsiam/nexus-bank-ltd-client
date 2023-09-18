@@ -72,7 +72,7 @@ const UpdateNews = () => {
     return (
         <div className=' mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-6'>
-            <p className='text-3xl font-bold text-primary mb-4'>UpDate News</p>
+            <p className='text-3xl font-bold text-primary mb-4'>UpDate Blog</p>
                 <form onSubmit={handleSubmit}>
 
                     <div className=" md:flex md:gap-14 w-full">
