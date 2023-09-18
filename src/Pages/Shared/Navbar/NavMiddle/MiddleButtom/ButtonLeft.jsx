@@ -28,9 +28,9 @@ const ButtonLeft = () => {
         </div>
         {
           expendService && <div className="flex flex-col absolute z-30 bg-white px-6 py-3 rounded-lg space-y-2 ">
-          <Link to="/aboutDetails">Cards</Link>
-          <Link to="/aboutDetails">Banking</Link>
-          <Link to="/retail-loan">Loan</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/aboutDetails">Cards</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/aboutDetails">Banking</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/retail-loan">Loan</Link>
           
           </div>
         }

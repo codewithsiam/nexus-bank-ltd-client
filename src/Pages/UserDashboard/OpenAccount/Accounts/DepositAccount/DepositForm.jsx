@@ -342,7 +342,7 @@ const DepositForm = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"
