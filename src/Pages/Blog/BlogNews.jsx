@@ -1,7 +1,6 @@
 
 import moment from 'moment/moment';
 import React, { useState } from 'react';
-import { RemoveScrollBar } from 'react-remove-scroll-bar';
 
 const BlogNews = ({ news }) => {
     const { date, img, detail, title } = news

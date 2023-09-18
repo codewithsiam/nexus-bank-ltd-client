@@ -56,6 +56,8 @@ import AdminSecureRoute from "./AdminSecureRoute";
 import UserSecureRoute from "./UserSecureRoute";
 import AccountBeneficiaryList from "../Pages/UserDashboard/FundTransfer/FundTransferBeneficiary/AccountBeneficiaryList";
 import JobApply from "../Pages/UserDashboard/JobApply/JobApply";
+import AddACareer from "../Pages/AdminDashboard/AddACareer/AddACareer";
+import ManageAllCareers from "../Pages/AdminDashboard/ManageAllCareers/ManageAllCareers";
 
 
 
@@ -364,7 +366,8 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: (
+        element: 
+        (
           <AdminSecureRoute>
             <Users />
           </AdminSecureRoute>
@@ -415,6 +418,23 @@ const router = createBrowserRouter([
           </AdminSecureRoute>
         ),
         loader: () => fetch(`${baseUrl}/loans`),
+      },
+      {
+        path: "addacareer",
+        element: (
+          <AdminSecureRoute>
+            <AddACareer />,
+          </AdminSecureRoute>
+        ),
+      },
+      {
+        path: "manage-careers",
+        element: (
+          <AdminSecureRoute>
+            <ManageAllCareers />,
+          </AdminSecureRoute>
+        ),
+        loader : ()=> fetch(`${baseUrl}/careers`)
       },
       {
         path: "feedback/:id",

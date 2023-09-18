@@ -69,6 +69,11 @@ const adminMenu = [
     icon: <AccountBalanceWalletIcon />,
     route: "loan-request",
   },
+  {
+    name: "Add A Career",
+    icon: <AccountBalanceWalletIcon />,
+    route: "addacareer",
+  },
 ];
 
 // Styled components

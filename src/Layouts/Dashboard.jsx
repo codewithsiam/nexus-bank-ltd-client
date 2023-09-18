@@ -167,6 +167,11 @@ const adminMenu = [
     icon: <FcDebt></FcDebt>,
     route: "loan-request",
   },
+  {
+    name: "Add A Career",
+    icon: <FcDebt></FcDebt>,
+    route: "addacareer",
+  },
 ];
 
 const HomeMenu = [

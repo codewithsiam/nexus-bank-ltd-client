@@ -12,7 +12,6 @@ const CreditCardApply = () => {
         annualIncome: '',
         employmentStatus: '',
         employerInfo: '',
-        cardType: '',
         termsAndConditions: false,
     });
 
@@ -26,148 +25,145 @@ const CreditCardApply = () => {
             },
             body: JSON.stringify(data),
         })
-        .then((response) => response.json())
-        .then((responseData) => {
-            console.log('Response from MongoDB:', responseData);
-            setSubmitted(true);
-        })
-        .catch((error) => {
-            console.error('Error sending data to MongoDB:', error);
-        });
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log('Response from MongoDB:', responseData);
+                setSubmitted(true);
+            })
+            .catch((error) => {
+                console.error('Error sending data to MongoDB:', error);
+            });
     };
 
     return (
-        <div className="max-w-lg mx-auto p-4 my-20">
-            <h2 className="text-2xl font-semibold mb-4">Credit Card Application</h2>
+        <div className="w-full mx-auto p-4 my-20">
+            <h2 className="text-2xl font-semibold mb-4 text-primary">Credit Card Application</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Personal Information */}
-                <div className="mb-4">
-                    <label className="block mb-1">Full Name</label>
-                    <Controller
-                        name="fullName"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="text"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
+                <div className="mb-4 lg:flex">
+                    <div className="w-full lg:w-1/2 pr-0 lg:pr-2 mb-2 lg:mb-0">
+                        <label className="block mb-1">Full Name</label>
+                        <Controller
+                            name="fullName"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="text"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2">
+                        {/* Date of Birth */}
+                        <label className="block mb-1">Date of Birth</label>
+                        <Controller
+                            name="dateOfBirth"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="date"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
                 </div>
-
-                {/* Date of Birth */}
-                <div className="mb-4">
-                    <label className="block mb-1">Date of Birth</label>
-                    <Controller
-                        name="dateOfBirth"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="date"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
+                {/* Personal Information */}
+                <div className="mb-4 lg:flex">
+                    <div className="w-full lg:w-1/2 pr-0 lg:pr-2 mb-2 lg:mb-0">
+                        <label className="block mb-1">Social Security Number (SSN)</label>
+                        <Controller
+                            name="ssn"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="text"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2">
+                        <label className="block mb-1">Permanent Address</label>
+                        <Controller
+                            name="permanentaddress"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="text"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
                 </div>
-
-                {/* SSN */}
-                <div className="mb-4">
-                    <label className="block mb-1">Social Security Number (SSN)</label>
-                    <Controller
-                        name="ssn"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="text"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
+                {/* Personal Information */}
+                <div className="mb-4 lg:flex">
+                    <div className="w-full lg:w-1/2 pr-0 lg:pr-2 mb-2 lg:mb-0">
+                        <label className="block mb-1">Annual Income</label>
+                        <Controller
+                            name="annualIncome"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="number"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2">
+                        <label className="block mb-1">Employment Status</label>
+                        <Controller
+                            name="employmentStatus"
+                            control={control}
+                            render={({ field }) => (
+                                <select {...field} className="w-full rounded border p-2">
+                                    <option value="">Select</option>
+                                    <option value="employed">Employed</option>
+                                    <option value="unemployed">Unemployed</option>
+                                    <option value="self-employed">Self-Employed</option>
+                                </select>
+                            )}
+                        />
+                    </div>
                 </div>
-
-                {/* Permanent Address */}
-                <div className="mb-4">
-                    <label className="block mb-1">Permanent Address</label>
-                    <Controller
-                        name="permanentaddress"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="text"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
-                </div>
-
-                {/* Financial Information */}
-                <div className="mb-4">
-                    <label className="block mb-1">Annual Income</label>
-                    <Controller
-                        name="annualIncome"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="number"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
-                </div>
-
-                {/* Employment Status */}
-                <div className="mb-4">
-                    <label className="block mb-1">Employment Status</label>
-                    <Controller
-                        name="employmentStatus"
-                        control={control}
-                        render={({ field }) => (
-                            <select {...field} className="w-full rounded border p-2">
-                                <option value="">Select</option>
-                                <option value="employed">Employed</option>
-                                <option value="unemployed">Unemployed</option>
-                                <option value="self-employed">Self-Employed</option>
-                            </select>
-                        )}
-                    />
-                </div>
-
-                {/* Employer Info */}
-                <div className="mb-4">
-                    <label className="block mb-1">Employer Information</label>
-                    <Controller
-                        name="employerInfo"
-                        control={control}
-                        render={({ field }) => (
-                            <input
-                                type="text"
-                                {...field}
-                                className="w-full rounded border p-2"
-                            />
-                        )}
-                    />
-                </div>
-
-                {/* Card Preferences */}
-                <div className="mb-4">
-                    <label className="block mb-1">Type of Credit Card</label>
-                    <Controller
-                        name="cardType"
-                        control={control}
-                        render={({ field }) => (
-                            <select {...field} className="w-full rounded border p-2">
-                                <option value="">Select</option>
-                                <option value="rewards">Rewards</option>
-                                <option value="cashback">Cashback</option>
-                                <option value="travel">Travel</option>
-                            </select>
-                        )}
-                    />
+                {/* Personal Information */}
+                <div className="mb-4 lg:flex">
+                    <div className="w-full lg:w-1/2 pr-0 lg:pr-2 mb-2 lg:mb-0">
+                        <label className="block mb-1">Employer Information</label>
+                        <Controller
+                            name="employerInfo"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="text"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2">
+                        <label className="block mb-1">Employer Information</label>
+                        <Controller
+                            name="employerInfo"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="text"
+                                    {...field}
+                                    className="w-full rounded border p-2"
+                                />
+                            )}
+                        />
+                    </div>
                 </div>
 
                 {/* Terms and Conditions */}
@@ -185,7 +181,7 @@ const CreditCardApply = () => {
                     </label>
                 </div>
 
-                <button type="submit" className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600">Submit</button>
+                <button type="submit" className="bg-gradient-to-r from-[#004F70] to-[#007C9C] text-white rounded px-4 py-2 hover:bg-blue-600 w-full">Submit</button>
             </form>
             {submitted && (
                 <div className="mt-4 text-green-600">
