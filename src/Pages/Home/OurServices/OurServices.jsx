@@ -6,24 +6,28 @@ const OurServices = () => {
 
     const servicesData = [
         {
-            title: 'Personal Savings',
+            title: 'savings accounts',
             description: 'Start saving for your future with our high-interest savings accounts.',
             icon: 'https://html-template.spider-themes.net/banca/img/feature/icon-2.svg',
-        },
-        {
-            title: 'Mortgage Loans',
-            description: 'Get your dream home with our flexible and affordable mortgage options.',
-            icon: 'https://html-template.spider-themes.net/banca/img/feature/icon-4.svg',
+            link: "/personal-account"
         },
         {
             title: 'Online Banking',
             description: 'Manage your accounts online, anytime, anywhere.',
             icon: 'https://html-template.spider-themes.net/banca/img/feature/icon-3.svg',
+            link: "/login"
         },
         {
-            title: 'Investment Planning',
+            title: 'Personal Loans',
+            description: 'Get your dream home with our flexible and affordable mortgage options.',
+            icon: 'https://html-template.spider-themes.net/banca/img/feature/icon-4.svg',
+            link: "/personal-loan"
+        },
+        {
+            title: 'Business Loan',
             description: 'Grow your wealth with expert investment strategies.',
             icon: 'https://html-template.spider-themes.net/banca/img/feature/icon-1.svg',
+            link: "/business-loan"
         }
     ];
     return (
@@ -45,6 +49,7 @@ const OurServices = () => {
                             title={service.title}
                             description={service.description}
                             icon={service.icon}
+                            link={service.link}
                         />
                     ))}
                 </div>

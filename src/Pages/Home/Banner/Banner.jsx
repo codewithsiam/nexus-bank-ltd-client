@@ -27,13 +27,20 @@ const Banner = () => {
     <Carousel {...carouselSettings}>
       {banners.map((slide, index) => (
         <div key={index} className='relative '>
-          <img className='h-[200px] md:h-[400px] lg:h-[600px]' src={slide.banner} alt={`Slide ${index}`} />
-          <div className='absolute bottom-[11.25rem] left-[23.25rem]'>
-            {/* <h1>{slide.banner_text}</h1> */}
-            {
-                slide.banner_btn_text?<Link className="btn hover:bg-slate-300 ">{slide.banner_btn_text}</Link>:""
-            }
-            
+          <img className='h-[200px] md:h-[400px] lg:h-[500px]' src={slide.banner_img} alt={`Slide ${index}`} />
+          <div className='text-left absolute top-[20%] left-0 text-white w-full lg:w-2/3 pl-14'>
+            <div>
+              {
+                  slide.banner_text?<p className="text-[50px] ">{slide.banner_text}</p>:""
+              }
+              {
+                  slide.banner_btn_text?
+                  <Link to={slide.btn_link} target="_blank"
+                  className="mt-5 btn hover:bg-slate-300 ">
+                    {slide.banner_btn_text}
+                  </Link>:""
+              }
+            </div>
           </div>
         </div>
       ))}

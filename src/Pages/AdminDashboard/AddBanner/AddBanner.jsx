@@ -15,49 +15,11 @@ const AddBanner = () => {
         formState: { errors },
     } = useForm()
 
-    const uploadImage = async (e) => {
-        const image = e.target.files[0];
-        const formData = new FormData();
-        formData.append("image", image);
-    
-        try {
-          const response = await fetch(imageHostingUrl, {
-            method: "POST",
-            body: formData,
-          });
-          const data = await response.json();
-          const imageUrl = {img: data.data.url};
-          if (data.success) {
-            fetch(`${baseUrl}/addBlogs`, {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify(info)
-            }).then(res => res.json()).then(data => {
-                if (data.acknowledged) {
-                    setLoading(false)
-                    e.target.reset()
-                    Swal.fire({
-                        position: 'center',
-                        icon: 'success',
-                        title: 'News Added Successfully.',
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                }
-            })
-          } else {
-            throw new Error("Image upload failed");
-          }
-        } catch (error) {
-          console.error("Image upload error:", error);
-          throw error;
-        }
-      };
-
     const onSubmit = (data, e) => {
         console.log(data.Photo[0])
      setLoading(true)
         const img = data.Photo[0]
+
         const formData = new FormData();
         formData.append('image', img);
         fetch(imageHostingUrl, {
@@ -65,21 +27,28 @@ const AddBanner = () => {
             body: formData
         })
         .then(res => res.json())
-        .then(imgResponse => {
-            const info = { img: imgResponse.data.display_url}
-            if (imgResponse.success) {
-                fetch(`${baseUrl}/addBlogs`, {
+        .then(imgRes => {
+            const banner_info = { 
+                banner_img: imgRes.data.url,
+                banner_text: data.banner_text,
+                banner_btn_text: data.banner_btn_text,
+                btn_link: data.btn_link
+            }
+            if (imgRes.success) {
+                fetch(`${baseUrl}/add-banner`, {
                     method: "POST",
                     headers: { "content-type": "application/json" },
-                    body: JSON.stringify(info)
-                }).then(res => res.json()).then(data => {
+                    body: JSON.stringify(banner_info)
+                })
+                .then(res => res.json())
+                .then(data => {
                     if (data.acknowledged) {
                         setLoading(false)
                         e.target.reset()
                         Swal.fire({
                             position: 'center',
                             icon: 'success',
-                            title: 'News Added Successfully.',
+                            title: 'Banner Added Successfully.',
                             showConfirmButton: false,
                             timer: 1500
                         });
@@ -94,34 +63,47 @@ const AddBanner = () => {
         <div className=' mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-4'>
                 <div className="flex justify-between">
-                    <p className='text-3xl font-bold text-primary'>Add Latest News</p>
-                    <Link to={'/admin/allNews'}> <button className="btn btn-outline hover:bg-primary hover:text-white text-slate-500 mb-2">View All News</button></Link>
+                    <p className='text-3xl font-bold text-primary'>Add Banner</p>
                 </div>
                 <hr />
-
-
                 <form onSubmit={handleSubmit(onSubmit)}>
-
-                    <div className=" md:flex md:gap-14 w-full">
+                    <div className="grid md:grid-cols-2 md:gap-5 lg:gap-14 w-full  my-5">
                         <div >
-                            <label className="text-1xl font-semibold text-slate-500 "> News Title</label>
-                            <input {...register("title")} type="text" placeholder="Type here" className="input mt-2  border border-black   w-full  " />
+                            <label className="text-1xl font-semibold text-slate-500 "> Banner Title</label>
 
-                            {errors.title && <span className="text-red-600">this field is required</span>} <br />
+                            <input {...register("banner_text")} type="text" placeholder="Description" 
+                            className="input mt-2  border border-black   w-full  " />
+                            {errors.banner_text && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                         <div>
-                            <label className="text-1xl font-semibold text-slate-500">Photo Url</label>
-                            <input  {...register("Photo", { required: true })} type="file" className="file-input  border border-black   w-full my-2" />
+                            <label className="text-1xl font-semibold text-slate-500">Banner Photo</label>
 
+                            <input  {...register("Photo", { required: true })} type="file" 
+                            className="file-input  border border-primary   w-full my-2" />
                             {errors.photo && <span className="text-red-600">this field is required</span>} <br />
                         </div>
                     </div>
-                    <label className="text-1xl font-semibold text-slate-500">Details</label><br />
-                    <textarea {...register("detail", { required: true })} placeholder="Type Here News Details " className="textarea border border-black textarea-lg md:w-5/6 " ></textarea><br />
+                    <div className="grid md:grid-cols-2 md:gap-5 lg:gap-14 w-full mb-5">
+                        <div >
+                            <label className="text-1xl font-semibold text-slate-500 "> Banner Button Title</label>
 
-                    {errors.details && <span className="text-red-600">this field is required</span>} <br />
+                            <input {...register("banner_btn_text")} type="text" placeholder="Button title" 
+                            className="input mt-2  border border-black   w-full  " />
+                            {errors.banner_btn_text && <span className="text-red-600">this field is required</span>} <br />
+                        </div>
+                        <div >
+                            <label className="text-1xl font-semibold text-slate-500 "> Button Link</label>
 
-                    <input disabled={loading} className="py-2 rounded-lg  text-white hover:bg-sky-600 hover:text-black bg-primary md:w-5/6 " type="submit" />
+                            <input {...register("btn_link")} type="text" placeholder="Url link" 
+                            className="input mt-2  border border-black   w-full  " />
+                            {errors.btn_link && <span className="text-red-600">this field is required</span>} <br />
+                        </div>
+                    </div>
+                    <div>
+                        <button className="bg-primary border font-bold border-primary rounded text-white hover:text-primary px-5 py-1 hover:bg-white">
+                            Add
+                        </button>
+                    </div>
                 </form>
             </div>
          
