@@ -28,8 +28,8 @@ const Banner = () => {
       {banners.map((slide, index) => (
         <div key={index} className='relative '>
           <img className='h-[200px] md:h-[400px] lg:h-[600px]' src={slide.banner} alt={`Slide ${index}`} />
-          <div className='absolute bottom-[12.25rem] left-[9.25rem]'>
-            <h1>{slide.banner_text}</h1>
+          <div className='absolute bottom-[11.25rem] left-[23.25rem]'>
+            {/* <h1>{slide.banner_text}</h1> */}
             {
                 slide.banner_btn_text?<Link className="btn hover:bg-slate-300 ">{slide.banner_btn_text}</Link>:""
             }
@@ -48,3 +48,6 @@ export default Banner;
 // https://i.ibb.co/HF8vGXS/slide-2-without-text.jpg
 // https://i.ibb.co/LSGHCt1/slide-3-without-text.jpg
 // https://i.ibb.co/hBCgmrx/slide-4-without-text.jpg
+// https://i.ibb.co/Bc4LqZS/6f0a5807-efbc-4b5c-ae7e-e37e6b9e0c1b.jpg
+// https://i.ibb.co/QdJTXdc/14804b17-77db-4707-9f12-fd6f277fd416.jpg
+// https://i.ibb.co/Sr4qtFB/aa92ba17-7633-47bb-8480-0be627f52c58.jpg

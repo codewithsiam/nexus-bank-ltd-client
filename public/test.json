@@ -59,15 +59,15 @@
     "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg"
   },
   {
-    "banner": "https://i.ibb.co/PM18xhX/slide-2.jpg",
+    "banner": "blob:https://web.whatsapp.com/14804b17-77db-4707-9f12-fd6f277fd416",
     "banner_btn_text":"Learn more"
   },
   {
-    "banner": "https://i.ibb.co/0qK4jnm/slide-3.jpg",
+    "banner": "blob:https://web.whatsapp.com/6f0a5807-efbc-4b5c-ae7e-e37e6b9e0c1b",
     "banner_btn_text":"See Details"
   },
   {
-    "banner": "https://i.ibb.co/xJf4D25/slide-4.jpg",
+    "banner": "blob:https://web.whatsapp.com/aa92ba17-7633-47bb-8480-0be627f52c58",
     "banner_btn_text":"See Details"
   }
 ]
@@ -75,7 +75,7 @@
 [
   {
     "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg",
-    "banner_btn_text":"Welcome to nexus bank Ltd.",
+    "banner_text":"Welcome to nexus bank Ltd.",
   },
   {
     "banner":"https://i.ibb.co/PM18xhX/slide-2.jpg",

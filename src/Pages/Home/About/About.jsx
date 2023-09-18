@@ -43,7 +43,7 @@ const About = () => {
                         <TbSquareRounded /> <p>Our Startup industry Here</p>
                     </div>
                 </div>
-                <Link to={`aboutDetails`} className="my-btn text-white px-4 py-2 rounded">Read More</Link>
+                <Link to={`about-details`} className="my-btn text-white px-4 py-2 rounded">Read More</Link>
             </div>
         </div>
     );
