@@ -182,12 +182,12 @@ const Keyboard = () => {
       </button>
       <div className="keyboard">
         {keyboardLayout.map((row, rowIndex) => (
-          <div key={rowIndex} className="keyboard-row">
+          <div key={rowIndex} className="keyboard-row flex">
             {Array.isArray(row) ? (
               row.map((key, keyIndex) => (
                 <button
                   key={keyIndex}
-                  className={`keyboard-key ${
+                  className={`keyboard-key text-sm text-center ${
                     key === "Space" ? "space" : ""
                   }border px-5 py-3`}
                   onClick={() => handleKeyPress(key)}
@@ -200,7 +200,7 @@ const Keyboard = () => {
                 </button>
               ))
             ) : (
-              <div className="keyboard-key-row">
+              <div className="keyboard-key-row" style={{width:'100%'}}>
                 {row.split("").map((key, keyIndex) => (
                   <button
                     key={keyIndex}

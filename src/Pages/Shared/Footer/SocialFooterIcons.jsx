@@ -10,22 +10,22 @@ const SocialFooterIcons = () => {
         <div>
             <ul className='flex gap-5 mt-3'>
                 <li className='cursor-pointer'>
-                    <Link to="https://www.facebook.com" className=''>
+                    <Link target='_blank' to="https://www.facebook.com" className=''>
                         <FaFacebookF className='text-2xl' />
                     </Link>
                 </li>
                 <li className='cursor-pointer'>
-                    <Link to="https://www.instagram.com" className=''>
+                    <Link target='_blank' to="https://www.instagram.com" className=''>
                         <AiFillInstagram className='text-2xl' />
                     </Link>
                 </li>
                 <li className='cursor-pointer'>
-                    <Link to="https://www.linkedin.com" className=''>
+                    <Link target='_blank' to="https://www.linkedin.com" className=''>
                         <BsLinkedin className='text-2xl' />
                     </Link>
                 </li>
                 <li className='cursor-pointer'>
-                    <Link to="https://www.youtube.com" className=''>
+                    <Link target='_blank' to="https://www.youtube.com" className=''>
                         <BsYoutube className='text-2xl' />
                     </Link>
                 </li>

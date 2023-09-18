@@ -3,6 +3,7 @@ import loginImage from '../../assets/images/Registration/login-img.png'
 import LoginForm from './LoginForm';
 import Keyboard from './Keyboard';
 import { Link } from 'react-router-dom';
+import Video from './Video';
 
 
 const Login = () => {
@@ -42,6 +43,11 @@ const Login = () => {
                 </div>
 
                 <div className='md:px-7'>
+
+                    {/* video */}
+                    <Video/>
+
+
                     {/* help support */}
                     <div className="bg-[#F8F8F8] p-4 h-[150px] flex flex-col justify-center">
                         <h2 className='font-bold text-[#EA0E17]'>Help & Support</h2>
