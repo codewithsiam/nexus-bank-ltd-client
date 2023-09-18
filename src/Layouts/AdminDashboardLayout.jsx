@@ -53,7 +53,7 @@ const adminMenu = [
   },
   {
     name: "Add Blog",
-    icon: <MdCreateNewFolder/>,
+    icon: <MdCreateNewFolder />,
     route: "AddLatestNews",
   },
   {
@@ -80,6 +80,11 @@ const adminMenu = [
     name: "Customer Support",
     icon: <SupportAgentIcon />,
     route: "customer-support",
+  },
+  {
+    name: "Add A Career",
+    icon: <AccountBalanceWalletIcon />,
+    route: "addacareer",
   },
 ];
 
@@ -208,7 +213,11 @@ export default function MiniDrawer() {
               </div>
               <img
                 className="w-10 h-10 rounded-full"
-                src={user.profile_photo ? user.profile_photo : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"}
+                src={
+                  user.profile_photo
+                    ? user.profile_photo
+                    : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"
+                }
                 alt=""
               />
             </div>
@@ -232,7 +241,11 @@ export default function MiniDrawer() {
             <div className="flex flex-col items-center justify-center my-6 ">
               <img
                 className="w-20 h-20 rounded-full"
-                src={user.profile_photo ? user.profile_photo : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"}
+                src={
+                  user.profile_photo
+                    ? user.profile_photo
+                    : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"
+                }
                 alt=""
               />
               <h2 className=" mt-4 font-semibold">{user?.username}</h2>

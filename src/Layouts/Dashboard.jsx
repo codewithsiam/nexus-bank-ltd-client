@@ -172,6 +172,11 @@ const adminMenu = [
     name: "Customers Support",
     icon: <FcDebt></FcDebt>,
     route: "/admin/customer-support",
+    name: "Add A Career",
+  },
+  {
+    icon: <FcDebt></FcDebt>,
+    route: "addacareer",
   },
 ];
 
@@ -191,7 +196,6 @@ const HomeMenu = [
     icon: <InfoIcon />,
     route: "/contact",
   },
- 
 ];
 
 // find user rote ------------------------------------------
@@ -343,7 +347,8 @@ export default function MiniDrawer() {
                         Edit Profile
                       </Link>
                     </li>
-                    <li className="cursor-pointer"
+                    <li
+                      className="cursor-pointer"
                       onClick={() => {
                         setIsModalOpen(!isModalOpen);
                         handleLogout();

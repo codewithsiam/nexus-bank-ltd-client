@@ -24,7 +24,7 @@ const JobList = ({ job }) => {
       <h2 className="text-2xl font-semibold text-[#004F70]">{job.title}</h2>
       <p className="text-gray-600">Vacancy: {job.vacancy}</p>
       <p className="text-gray-600">Salary Range: {job.salaryRange}</p>
-      <p className="text-gray-600">Experience Required: {job.experience}</p>
+      <p className="text-gray-600">Experience : {job.experience}</p>
       <p className="mt-4 text-gray-800">{job.description}</p>
       <div className="mt-4">
 

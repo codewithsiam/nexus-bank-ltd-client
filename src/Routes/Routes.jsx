@@ -68,6 +68,8 @@ import AccountsDetails from "../Pages/AccountsDetails/AccountsDetails";
 import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
 import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests"
 import UserSecureRoute from "./UserSecureRoute";
+import AddACareer from "../Pages/AdminDashboard/AddACareer/AddACareer";
+import ManageAllCareers from "../Pages/AdminDashboard/ManageAllCareers/ManageAllCareers";
 
 
 
@@ -294,8 +296,13 @@ const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />,
-        loader: () => fetch(`${baseUrl}/users`)
+        element: 
+        (
+          <AdminSecureRoute>
+            <Users />
+          </AdminSecureRoute>
+        ),
+        loader: () => fetch(`${baseUrl}/users`),
       },
       {
         path: 'users/:email',
@@ -341,6 +348,23 @@ const router = createBrowserRouter([
         path: "loan-request",
         element: <LoanRequest />,
         loader: () => fetch(`${baseUrl}/loans`)
+      },
+      {
+        path: "addacareer",
+        element: (
+          <AdminSecureRoute>
+            <AddACareer />,
+          </AdminSecureRoute>
+        ),
+      },
+      {
+        path: "manage-careers",
+        element: (
+          <AdminSecureRoute>
+            <ManageAllCareers />,
+          </AdminSecureRoute>
+        ),
+        loader : ()=> fetch(`${baseUrl}/careers`)
       },
       {
         path: "feedback/:id",
