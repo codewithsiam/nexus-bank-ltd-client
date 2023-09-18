@@ -103,3 +103,8 @@ const AboutDetails = () => {
 }
 
 export default AboutDetails;
+
+// https://i.ibb.co/5jCz6N7/hasan-emplyee.jpg
+// https://i.ibb.co/M5y086D/mahdee.jpg
+// https://i.ibb.co/G27pq0J/shuvo-employee.jpg
+// https://i.ibb.co/jJQBg2n/siam-employee.png

@@ -1,56 +1,99 @@
-{
-  "loans": [
-    {
-      "type": "Student Loan",
-      "features": [
-        "Loan amount from BDT 2 lacs to BDT 20 lacs",
-        "Loan tenure 12 to 60 months",
-        "No hidden charges",
-        "Competitive interest rate",
-        "Processing Fee - Please see the Schedule of Charges",
-        "Eligibility: Age 22 to 60 years",
-        "Experience:",
-        "- Minimum 2 years for students"
-      ],
-      "monthlyIncomeCriteria": "Not applicable for student loans",
-      "requiredDocumentsLink": "Link to download required documents for Student Loan"
-    },
-    {
-      "type": "Personal Loan",
-      "features": [
-        "Loan amount from BDT 2 lacs to BDT 20 lacs",
-        "Loan tenure 12 to 60 months",
-        "No hidden charges",
-        "Competitive interest rate",
-        "Processing Fee - Please see the Schedule of Charges",
-        "Eligibility: Age 22 to 60 years",
-        "Experience:",
-        "- Salaried Executive: Minimum 2 years",
-        "- Professionals: Minimum 2 years of practice",
-        "- Businessman: Minimum 3 years"
-      ],
-      "monthlyIncomeCriteria": [
-        "Salaried Executive (A/C Payee): BDT 40,000",
-        "Landlord: BDT 50,000",
-        "Professional: BDT 60,000",
-        "Business person: BDT 100,000"
-      ],
-      "requiredDocumentsLink": "Link to download required documents for Personal Loan"
-    },
-    {
-      "type": "Business Loan",
-      "features": [
-        "Loan amount from BDT 2 lacs to BDT 20 lacs",
-        "Loan tenure 12 to 60 months",
-        "No hidden charges",
-        "Competitive interest rate",
-        "Processing Fee - Please see the Schedule of Charges",
-        "Eligibility: Age 22 to 60 years",
-        "Experience:",
-        "- Businessman: Minimum 3 years"
-      ],
-      "monthlyIncomeCriteria": "Not applicable for business loans",
-      "requiredDocumentsLink": "Link to download required documents for Business Loan"
-    }
-  ]
-}
+
+[
+  {
+    "type": "Student Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Minimum 2 years for students"
+    ],
+    "monthlyIncomeCriteria": "Not applicable for student loans",
+    "requiredDocumentsLink": "Link to download required documents for Student Loan"
+  },
+  {
+    "type": "Personal Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Salaried Executive: Minimum 2 years",
+      "- Professionals: Minimum 2 years of practice",
+      "- Businessman: Minimum 3 years"
+    ],
+    "monthlyIncomeCriteria": [
+      "Salaried Executive (A/C Payee): BDT 40,000",
+      "Landlord: BDT 50,000",
+      "Professional: BDT 60,000",
+      "Business person: BDT 100,000"
+    ],
+    "requiredDocumentsLink": "Link to download required documents for Personal Loan"
+  },
+  {
+    "type": "Business Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Businessman: Minimum 3 years"
+    ],
+    "monthlyIncomeCriteria": "Not applicable for business loans",
+    "requiredDocumentsLink": "Link to download required documents for Business Loan"
+  }
+]
+
+[
+  {
+    "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg"
+  },
+  {
+    "banner": "https://i.ibb.co/PM18xhX/slide-2.jpg",
+    "banner_btn_text":"Learn more"
+  },
+  {
+    "banner": "https://i.ibb.co/0qK4jnm/slide-3.jpg",
+    "banner_btn_text":"See Details"
+  },
+  {
+    "banner": "https://i.ibb.co/xJf4D25/slide-4.jpg",
+    "banner_btn_text":"See Details"
+  }
+]
+
+[
+  {
+    "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg",
+    "banner_btn_text":"Welcome to nexus bank Ltd.",
+  },
+  {
+    "banner":"https://i.ibb.co/PM18xhX/slide-2.jpg",
+    "banner_btn_text":"Learn more",
+    "banner_text":"What we are doing to spread Financial Literacy"
+  },
+  {
+    "banner":"https://i.ibb.co/0qK4jnm/slide-3.jpg",
+    "banner_btn_text":"See Details",
+    "banner_text":""
+  },
+  {
+    "banner":"https://i.ibb.co/xJf4D25/slide-4.jpg",
+    "banner_btn_text":"See Details",
+    "banner_text":""
+  }
+]
+
+
+
+

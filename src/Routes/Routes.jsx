@@ -69,6 +69,7 @@ import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslComme
 import CreditCardRequests from "../Pages/AdminDashboard/Account-Request/AccountRequest"
 import UserSecureRoute from "./UserSecureRoute";
 import UserReview from "../Pages/UserDashboard/ProfileManage/UserReview/UserReview";
+import AddBanner from "../Pages/AdminDashboard/AddBanner/AddBanner";
 
 
 
@@ -347,6 +348,10 @@ const router = createBrowserRouter([
       {
         path: "change-password",
         element: <AdminPasswordChange />
+      },
+      {
+        path: "add-banner",
+        element: <AddBanner />
       },
     ],
   },

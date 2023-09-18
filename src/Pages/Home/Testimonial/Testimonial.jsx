@@ -6,7 +6,6 @@ import './CustomSwiper.css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { FaStar, FaStarHalf } from 'react-icons/fa';
-import TitleGroup from '../../../Components/Title/TitleGroup';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { baseUrl } from '../../../config/server';
 import CenterTitle from '../../../Components/Title/CenterTitle';
@@ -22,7 +21,7 @@ const Testimonial = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  console.log(reviews)
+  // console.log(reviews)
   const renderStars = (rating) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;

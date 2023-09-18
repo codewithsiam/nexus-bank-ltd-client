@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../../providers/AuthProvider';
 import { baseUrl } from '../../../../config/server';
 import Swal from "sweetalert2";
-import reviewPic from "../../../../assets/images/User-Dash/reviewPic.png"
 import { useNavigate } from 'react-router';
 
 const UserReview=()=> {
@@ -30,12 +29,10 @@ const UserReview=()=> {
   };
 
   const submitFeedback = () => {
-    // event.preventDefault();
-    // const form = event.target;
     const date = document.getElementsByName("date")[0].value;
     const name = user.first_name ?`${user.first_name} ${user.last_name}`: form.first_name.value;
     const profession = user.profession ? user.profession: form.profession.value;
-    const image=user?.profile_image || reviewPic
+    const image=user?.profile_image || "https://i.ibb.co/crZxsPm/review-Pic.png"
   
     if (rating === null) {
       alert("Please select a rating before submitting.");

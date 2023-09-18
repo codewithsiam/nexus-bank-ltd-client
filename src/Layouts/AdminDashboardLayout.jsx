@@ -19,17 +19,15 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link, Outlet } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import { darkTheme, lightTheme } from "../config/ThemeConfig";
-import FileOpenIcon from "@mui/icons-material/FileOpen";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import useDesignation from "../Hooks/useDesignation";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 import { PiPasswordFill } from "react-icons/pi";
+import { GiKnightBanner } from "react-icons/gi";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 const drawerWidth = 300;
@@ -80,6 +78,11 @@ const adminMenu = [
     name: "Customer Support",
     icon: <SupportAgentIcon />,
     route: "customer-support",
+  },
+  {
+    name: "Add Banner",
+    icon: <GiKnightBanner />,
+    route: "add-banner",
   },
 ];
 
