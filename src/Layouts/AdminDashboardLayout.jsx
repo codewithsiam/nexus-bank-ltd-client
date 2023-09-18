@@ -52,8 +52,8 @@ const adminMenu = [
     route: "accounts",
   },
   {
-    name: "Add Latest News",
-    icon: <MdCreateNewFolder />,
+    name: "Add Blog",
+    icon: <MdCreateNewFolder/>,
     route: "AddLatestNews",
   },
   {

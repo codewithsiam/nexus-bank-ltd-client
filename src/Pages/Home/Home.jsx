@@ -54,9 +54,6 @@ const Home = () => {
         <CreditCardPayment />
         <ContactUs />
         <div className="flex justify-center items-center">
-        <Link to="/chat" className="fixed bottom-5 right-10 z-50 text-red-500">
-          <img className="w-12" src="https://i.ibb.co/FxwYW6L/messenger-icon-free-png.webp" alt="" />
-        </Link>
         {showTopBtn && (
           <button className="fixed bottom-5 right-24 z-50 h-12 w-12" onClick={scrollToTop}>
             <Lottie animationData={icon} />
