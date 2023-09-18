@@ -22,6 +22,25 @@ const Home = () => {
       window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };
 
+    useEffect(() => {
+      const handleScroll = () => {
+        // Check if the user has scrolled down more than a certain threshold (e.g., 100 pixels)
+        if (window.scrollY > 150) {
+          setShowTopBtn(true);
+        } else {
+          setShowTopBtn(false);
+        }
+      };
+  
+      // Attach the event listener
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+    
     return (
       <div className="relative" >
         <Banner ></Banner>
@@ -33,14 +52,16 @@ const Home = () => {
         <CreditCardPayment />
         <ContactUs />
         <div className="flex justify-center items-center">
-          <Link to={'/chat'} className=" fixed bottom-5 right-10 z-50 text-red-500"><img
-            className="w-12"
-            src="https://i.ibb.co/FxwYW6L/messenger-icon-free-png.webp" alt="" /></Link> 
-            {
-            <button className="fixed bottom-5 right-24 z-50 h-12 w-12" onClick={scrollToTop}><Lottie animationData={icon}></Lottie></button>
-            }
-        </div>
+        <Link to="/chat" className="fixed bottom-5 right-10 z-50 text-red-500">
+          <img className="w-12" src="https://i.ibb.co/FxwYW6L/messenger-icon-free-png.webp" alt="" />
+        </Link>
+        {showTopBtn && (
+          <button className="fixed bottom-5 right-24 z-50 h-12 w-12" onClick={scrollToTop}>
+            <Lottie animationData={icon} />
+          </button>
+        )}
       </div>
+    </div>
     );
 };
 
