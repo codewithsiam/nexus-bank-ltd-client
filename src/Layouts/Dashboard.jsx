@@ -46,6 +46,7 @@ import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import PaidIcon from "@mui/icons-material/Paid";
 import { PiPasswordFill } from "react-icons/pi";
 import { MdAccountTree } from "react-icons/md";
+import { useScroll } from "framer-motion";
 
 const drawerWidth = 300;
 
@@ -266,6 +267,7 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const { user, logout } = React.useContext(AuthContext);
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleLogout = () => {
     console.log("User logged out");
@@ -280,6 +282,7 @@ export default function MiniDrawer() {
     setOpen(false);
   };
   const { designation } = useDesignation();
+
   return (
     <Box data-testid="dashboard-test" sx={{ display: "flex" }}>
       <CssBaseline />
@@ -315,10 +318,42 @@ export default function MiniDrawer() {
                 {designation ? <p> {designation}</p> : <p>Regular User</p>}
               </div>
               <img
-                className="w-10 h-10 rounded-full"
+                onClick={() => setIsModalOpen(!isModalOpen)}
+                className="w-10 h-10 rounded-full cursor-pointer"
                 src={user?.profile_image}
                 alt=""
               />
+              {isModalOpen && (
+                <div className="absolute shadow-lg top-14 right-8 bg-white p-6 rounded-md ">
+                  <ul className="space-y-3 font-semibold">
+                    <li>
+                      <Link
+                        to="my-profile"
+                        onClick={() => setIsModalOpen(!isModalOpen)}
+                      >
+                        {" "}
+                        My Profile
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        to="edit-profile"
+                        onClick={() => setIsModalOpen(!isModalOpen)}
+                      >
+                        Edit Profile
+                      </Link>
+                    </li>
+                    <li className="cursor-pointer"
+                      onClick={() => {
+                        setIsModalOpen(!isModalOpen);
+                        handleLogout();
+                      }}
+                    >
+                      Log Out
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </Toolbar>
         </AppBar>
@@ -940,39 +975,6 @@ export default function MiniDrawer() {
               </ListItem>
             }
           </List>
-
-          <Divider />
-          {HomeMenu.map((menuItem, index) => (
-            <ListItem
-              key={menuItem.name}
-              disablePadding
-              sx={{ display: "block" }}
-            >
-              <Link to={menuItem.route}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {menuItem.icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={menuItem.name}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </Link>
-            </ListItem>
-          ))}
 
           <Divider />
           <List>

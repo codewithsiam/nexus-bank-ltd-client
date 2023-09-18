@@ -341,15 +341,7 @@ const ipUrl = "https://api.ipify.org?format=json";
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-2 items-center my-4">
-          <input
-            name="condition"
-            onChange={handleUserDataOnChange}
-            type="checkbox"
-          />
-          <p>accept our terms and conditions</p>
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"

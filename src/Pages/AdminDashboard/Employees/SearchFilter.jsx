@@ -72,6 +72,8 @@ const SearchFilter = ({handleOpen,setEmployees}) => {
               <option disabled selected>
                 Pick one
               </option>
+
+              <option>All</option>
               <option>Manager</option>
               <option>Loan Officer</option>
               <option>Relationship Manager</option>
