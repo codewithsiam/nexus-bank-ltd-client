@@ -10,6 +10,8 @@ import ProfilePhoto from "../StudentAccount/ProfilePhoto";
 import OtpModal from "../OtpModal/OtpModal";
 import { ElectricScooterSharp } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
+import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 
 const CurrentForm = () => {
   const [userData, setUserData] = useState({});
@@ -246,11 +248,11 @@ const CurrentForm = () => {
           </div>
         </div>
         <div className="flex gap-4 mt-4 mb-2">
-          <NidCardImage
+          <SharedNidCardImage
             nidCardImage={nidCardImage}
             setNidCardImage={setNidCardImage}
           />
-          <ProfilePhoto
+          <SharedProfileImage
             profileImage={profileImage}
             setProfileImage={setProfileImage}
           />
