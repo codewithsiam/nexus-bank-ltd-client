@@ -177,7 +177,7 @@ const Keyboard = () => {
         </div>
         <p>{error}</p>
       </form>
-      <button onClick={() => handleToggleKeyboard()} className="btn btn-info">
+      <button onClick={() => handleToggleKeyboard()} className="bg-gradient-to-r from-[#004F70] to-[#007C9C] px-3 py-1 mt-2 rounded text-white text-sm">
         Manual Keyboard for password
       </button>
       <div className="keyboard">
