@@ -21,11 +21,18 @@ const ButtonLeft = () => {
         <Link to="/retail-loan">Loan</Link>
         
       </div>
-          <div className="absolute transform -translate-x-1/2 opacity-0 bg-white  rounded-md   w-40 px-4 pb-4 pt-8  transition-opacity duration-300 group-hover:opacity-100 z-30 left-20  flex flex-col space-y-3">
-            <Link to="/nexus-cards">Cards</Link>
-            <Link to="/nexus-accounts">Banking</Link>
-            <Link to="/retail-loan">Loan</Link>
+      </div> */}
+      <div className="relative">
+      <div onClick={()=>setExpendService(!expendService)} className="flex gap-1 items-center cursor-pointer">
+          Services <FaAngleDown />
+        </div>
+        {
+          expendService && <div className="flex flex-col absolute z-30 bg-white px-6 py-3 rounded-lg space-y-2 ">
+          <Link onClick={()=>setExpendService(!expendService)} to="/about-details">Cards</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/retail-loan">Loan</Link>
+          
           </div>
+        }
       </div>
       <div className="relative group">
         {
