@@ -177,17 +177,17 @@ const Keyboard = () => {
         </div>
         <p>{error}</p>
       </form>
-      <button onClick={() => handleToggleKeyboard()} className="btn btn-info">
+      <button onClick={() => handleToggleKeyboard()} className="bg-gradient-to-r from-[#004F70] to-[#007C9C] px-3 py-1 mt-2 rounded text-white text-sm">
         Manual Keyboard for password
       </button>
       <div className="keyboard">
         {keyboardLayout.map((row, rowIndex) => (
-          <div key={rowIndex} className="keyboard-row">
+          <div key={rowIndex} className="keyboard-row flex">
             {Array.isArray(row) ? (
               row.map((key, keyIndex) => (
                 <button
                   key={keyIndex}
-                  className={`keyboard-key ${
+                  className={`keyboard-key text-sm text-center ${
                     key === "Space" ? "space" : ""
                   }border px-5 py-3`}
                   onClick={() => handleKeyPress(key)}
@@ -200,7 +200,7 @@ const Keyboard = () => {
                 </button>
               ))
             ) : (
-              <div className="keyboard-key-row">
+              <div className="keyboard-key-row" style={{width:'100%'}}>
                 {row.split("").map((key, keyIndex) => (
                   <button
                     key={keyIndex}

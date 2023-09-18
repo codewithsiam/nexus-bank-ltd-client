@@ -264,6 +264,10 @@ const router = createBrowserRouter([
           ),
       },
       {
+        path: "nexus-customer-service-portal",
+        element: <CustomerService />,
+      },
+      {
         path: `apply/:id`,
         element:
           (
@@ -307,8 +311,8 @@ const router = createBrowserRouter([
         element: <AccountRequest />
       },
       {
-        path:"credit-card-requests",
-        element:<CreditCardRequests/>
+        path: "credit-card-requests",
+        element: <CreditCardRequests />
       },
       {
         path: "analytics",
@@ -316,23 +320,22 @@ const router = createBrowserRouter([
       },
       {
         path: "AddLatestNews",
-        element:<AdminSecureRoute>
+        element: <AdminSecureRoute>
           <AddLatestNews />
-          </AdminSecureRoute>
+        </AdminSecureRoute>
       },
       {
         path: "AllNews",
-        element:<AdminSecureRoute>
+        element: <AdminSecureRoute>
           <AllNews />
-          </AdminSecureRoute>
+        </AdminSecureRoute>
       },
       {
         path: "AllNews/update/:id",
-        element:<AdminSecureRoute>
+        element: <AdminSecureRoute>
           <UpdateNews />
-          </AdminSecureRoute>,
-          loader:(params)=>fetch(`${baseUrl}/AllNews/update/${params.id}`)
-      
+        </AdminSecureRoute>,
+        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)
       },
       {
         path: "loan-request",
@@ -342,6 +345,10 @@ const router = createBrowserRouter([
       {
         path: "feedback/:id",
         element: <Feedback />
+      },
+      {
+        path: "customer-support",
+        element: <CustomerSupport />,
       },
       {
         path: "change-password",

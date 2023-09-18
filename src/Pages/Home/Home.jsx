@@ -13,14 +13,16 @@ import { useEffect } from "react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import Lottie from "lottie-react";
 import icon from '../../assets/animation/animation_lmhksght.json';
+import RightMenu from "../../components/RightMenu/RightMenu";
+import Footer from "../Shared/Footer/Footer";
 
 const Home = () => {
-    const ref = useRef(null);
-    const [showTopBtn, setShowTopBtn] = useState(false);
+  const ref = useRef(null);
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
-    const scrollToTop = () => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    };
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
 
     useEffect(() => {
       const handleScroll = () => {
