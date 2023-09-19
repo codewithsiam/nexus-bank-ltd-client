@@ -41,6 +41,7 @@ const AccountBeneficiaryList = () => {
           Fund Transfer Beneficiary List
         </h1>
         <div className="bg-slate-100 p-2 rounded-lg">
+          <title></title>
           <p>
             <Link to="AddBeneficiary" className="text-primary ">
               Click Here
