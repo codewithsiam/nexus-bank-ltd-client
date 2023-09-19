@@ -11,16 +11,26 @@ import { useState } from "react";
 import { baseUrl } from "../../../config/server";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import SerarchAndFilter from "./SerarchAndFilter";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
 
 const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
   const [control,setControl] = useState(false);
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
+    setLoading(true)
     fetch(`${baseUrl}/approved-accounts`)
       .then((res) => res.json())
-      .then((data) => setAccounts(data));
+      .then((data) => {
+        setAccounts(data)
+        setLoading(false)
+      });
   }, []);
+
+  if(loading){
+    return <LoadingComponent/>
+  }
 
 
   return (

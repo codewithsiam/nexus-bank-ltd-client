@@ -3,23 +3,27 @@ import { Link } from "react-router-dom";
 import { baseUrl } from "../../../../config/server";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../../../../providers/AuthProvider";
 
 const AccountBeneficiaryList = () => {
   const [beneficiaryList, setBeneficiaryList] = useState([]);
   const [control,setControl] = useState(true)
-  const username = "test1";
+  const {user} = useContext(AuthContext);
+  console.log(user.username)
+  // const username = "test1";
   useEffect(() => {
-    fetch(`${baseUrl}/beneficiaryList/${username}`)
+    fetch(`${baseUrl}/beneficiaryList/${user && user?.username}`)
       .then((res) => res.json())
       .then((data) => setBeneficiaryList(data))
       .then((err) => console.log(err));
-  }, [username,control]);
+  }, [user,control]);
 
   //
   const handleStatus = (name, status) => {
     axios
       .patch(`${baseUrl}/beneficiary-status/${name}/?status=${status}`,{
-       username
+       username:user?.username
       })
       .then((data) => {
         if (data.data.modifiedCount > 0) {

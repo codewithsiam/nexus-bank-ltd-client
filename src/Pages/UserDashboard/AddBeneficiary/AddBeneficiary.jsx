@@ -2,10 +2,12 @@ import React from "react";
 import Swal from "sweetalert2";
 import { useState } from "react";
 import { baseUrl } from "../../../config/server";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const AddBeneficiary = () => {
  const [error,setError] = useState(null)
-  const selfUserName = "test1";
+ const {user} = useContext(AuthContext);
   const handleOnSubmit = (e) => {
     e.preventDefault();
     const username = e.target.userName.value;
@@ -15,7 +17,7 @@ const AddBeneficiary = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify({ username, account_number, selfUserName }),
+      body: JSON.stringify({ username, account_number, selfUserName:user?.username }),
     })
       .then((res) => res.json())
       .then((data) => {
