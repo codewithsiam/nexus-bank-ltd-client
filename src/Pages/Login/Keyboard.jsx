@@ -131,7 +131,7 @@ const Keyboard = () => {
   return (
     <div className="bg-[#EEEDEB]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-[#3E639F] flex items-center">
+        <div className="bg-[#3E639F] flex items-center px-4">
           <input
             {...register("username", { required: true })}
             className="border"

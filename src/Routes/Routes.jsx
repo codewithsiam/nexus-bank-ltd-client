@@ -9,8 +9,8 @@ import ApplyLoan from "../Pages/UserDashboard/ApplyLoan/ApplyLoan";
 import Contact from "../Pages/Contact/Contact";
 import TransactionHistory from "../Pages/UserDashboard/TransactionHistory/TransactionHistory";
 import AddMoney from "../Pages/UserDashboard/AddMoney/AddMoney";
-import Dashboard from '../Layouts/Dashboard'
-import AdminDashboard from '../Pages/AdminDashboard/Dashboard/AdminDashboard'
+import Dashboard from "../Layouts/Dashboard";
+import AdminDashboard from "../Pages/AdminDashboard/Dashboard/AdminDashboard";
 import Employees from "../Pages/AdminDashboard/Employees/Employees";
 import Users from "../Pages/AdminDashboard/Users/Users";
 import Analytics from "../Pages/AdminDashboard/Analytics/Analytics";
@@ -66,15 +66,13 @@ import PersonalLoan from "../Pages/Loan/LoanDetails/PersonalLoan/PersonalLoan";
 import AdminPasswordChange from "../Pages/AdminDashboard/AdminPasswordChange/AdminPasswordChange";
 import AccountsDetails from "../Pages/AccountsDetails/AccountsDetails";
 import SslCommerzPayment from "../Pages/UserDashboard/SslCommerzPayment/SslCommerzPayment";
-import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests"
+import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/CreditCardRequests";
 import UserSecureRoute from "./UserSecureRoute";
 import AddACareer from "../Pages/AdminDashboard/AddACareer/AddACareer";
 import ManageAllCareers from "../Pages/AdminDashboard/ManageAllCareers/ManageAllCareers";
 import StripeTermsAndConditions from "../Pages/Shared/StripeTermsAndCondition/StripeTermsAndCondition";
 import UserReview from "../Pages/UserDashboard/ProfileManage/UserReview/UserReview";
 import AddBanner from "../Pages/AdminDashboard/AddBanner/AddBanner";
-
-
 
 const router = createBrowserRouter([
   {
@@ -87,8 +85,12 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: '/chat',
-        element: <PrivetRout><ChatUs></ChatUs></PrivetRout>
+        path: "/chat",
+        element: (
+          <PrivetRout>
+            <ChatUs></ChatUs>
+          </PrivetRout>
+        ),
       },
       {
         path: "about-details",
@@ -137,34 +139,37 @@ const router = createBrowserRouter([
       {
         path: "careers",
         element: <Careers />,
-        loader: () => fetch(`${baseUrl}/careers`)
+        loader: () => fetch(`${baseUrl}/careers`),
       },
       {
         path: "customer-service",
-        element: <CustomerSupport />
+        element: <CustomerSupport />,
       },
       {
         path: "customer",
-        element: <CustomerService />
+        element: <CustomerService />,
       },
       {
         path: "stripe-terms-and-conditions",
-        element: <StripeTermsAndConditions />
-      },  
+        element: <StripeTermsAndConditions />,
+      },
+      {
+        path: "nexus-customer-service-portal",
+        element: <CustomerService />,
+      },
       {
         path: `apply/:id`,
-        element:
-          (
-            <UserSecureRoute>
-              <JobApply />
-            </UserSecureRoute>
-          ),
+        element: <JobApply />,
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <UserSecureRoute><Dashboard /></UserSecureRoute>,
+    element: (
+      <UserSecureRoute>
+        <Dashboard />
+      </UserSecureRoute>
+    ),
     children: [
       // ..........User dashboard routes............
       {
@@ -216,8 +221,8 @@ const router = createBrowserRouter([
         element: <TransferMoney />,
       },
       {
-        path: 'saving-account',
-        element: <SavingAccountForm />
+        path: "saving-account",
+        element: <SavingAccountForm />,
       },
 
       // {
@@ -230,12 +235,11 @@ const router = createBrowserRouter([
       },
       {
         path: "e-statement",
-        element:
-          (
-            <UserSecureRoute>
-              <EStatement />
-            </UserSecureRoute>
-          ),
+        element: (
+          <UserSecureRoute>
+            <EStatement />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "sslcommerz-fund-transfer",
@@ -251,27 +255,20 @@ const router = createBrowserRouter([
       },
       {
         path: "credit-card-apply",
-        element:
-          (
-            <UserSecureRoute>
-              <CreditCardApply />
-            </UserSecureRoute>
-          ),
+        element: (
+          <UserSecureRoute>
+            <CreditCardApply />
+          </UserSecureRoute>
+        ),
       },
-
 
       {
         path: "my-accounts",
-        element:
-          (
-            <UserSecureRoute>
-              <MyAccounts />
-            </UserSecureRoute>
-          ),
-      },
-      {
-        path: "nexus-customer-service-portal",
-        element: <CustomerService />,
+        element: (
+          <UserSecureRoute>
+            <MyAccounts />
+          </UserSecureRoute>
+        ),
       },
       {
         path: "my-profile",
@@ -279,36 +276,39 @@ const router = createBrowserRouter([
       },
       {
         path: "edit-profile",
-        element: <EditProfile />
+        element: <EditProfile />,
       },
       {
         path: "change-password",
-        element: <PasswordChange />
+        element: <PasswordChange />,
       },
       {
         path: "user-feedback",
-        element: <UserReview />
+        element: <UserReview />,
       },
     ],
   },
-  // admin dashboard 
+  // admin dashboard
   {
     path: "/admin",
-    element: <AdminSecureRoute><AdminDashboardLayout /></AdminSecureRoute>,
+    element: (
+      <AdminSecureRoute>
+        <AdminDashboardLayout />
+      </AdminSecureRoute>
+    ),
     children: [
       // ..................admin dashboard routes........................
       {
         path: "adminDashboard",
-        element: <AdminDashboard />
+        element: <AdminDashboard />,
       },
       {
         path: "employees",
-        element: <Employees />
+        element: <Employees />,
       },
       {
         path: "users",
-        element: 
-        (
+        element: (
           <AdminSecureRoute>
             <Users />
           </AdminSecureRoute>
@@ -316,49 +316,54 @@ const router = createBrowserRouter([
         loader: () => fetch(`${baseUrl}/users`),
       },
       {
-        path: 'users/:email',
-        element: <UserProfile></UserProfile>
-
+        path: "users/:email",
+        element: <UserProfile></UserProfile>,
       },
       {
         path: "accounts",
-        element: <Accounts />
+        element: <Accounts />,
       },
       {
         path: "account-request",
-        element: <AccountRequest />
+        element: <AccountRequest />,
       },
       {
         path: "credit-card-requests",
-        element: <CreditCardRequests />
+        element: <CreditCardRequests />,
       },
       {
         path: "analytics",
-        element: <Analytics />
+        element: <Analytics />,
       },
       {
         path: "AddLatestNews",
-        element: <AdminSecureRoute>
-          <AddLatestNews />
-        </AdminSecureRoute>
+        element: (
+          <AdminSecureRoute>
+            <AddLatestNews />
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "AllNews",
-        element: <AdminSecureRoute>
-          <AllNews />
-        </AdminSecureRoute>
+        element: (
+          <AdminSecureRoute>
+            <AllNews />
+          </AdminSecureRoute>
+        ),
       },
       {
         path: "AllNews/update/:id",
-        element: <AdminSecureRoute>
-          <UpdateNews />
-        </AdminSecureRoute>,
-        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`)
+        element: (
+          <AdminSecureRoute>
+            <UpdateNews />
+          </AdminSecureRoute>
+        ),
+        loader: (params) => fetch(`${baseUrl}/AllNews/update/${params.id}`),
       },
       {
         path: "loan-request",
         element: <LoanRequest />,
-        loader: () => fetch(`${baseUrl}/loans`)
+        loader: () => fetch(`${baseUrl}/loans`),
       },
       {
         path: "addacareer",
@@ -375,11 +380,11 @@ const router = createBrowserRouter([
             <ManageAllCareers />,
           </AdminSecureRoute>
         ),
-        loader : ()=> fetch(`${baseUrl}/careers`)
+        loader: () => fetch(`${baseUrl}/careers`),
       },
       {
         path: "feedback/:id",
-        element: <Feedback />
+        element: <Feedback />,
       },
       {
         path: "customer-support",
@@ -387,15 +392,15 @@ const router = createBrowserRouter([
       },
       {
         path: "change-password",
-        element: <AdminPasswordChange />
+        element: <AdminPasswordChange />,
       },
       {
         path: "add-banner",
-        element: <AddBanner />
+        element: <AddBanner />,
       },
     ],
   },
-  // other routes 
+  // other routes
   {
     path: "/payment-status/:status/:transactionId",
     element: <PaymentStatusPage />,

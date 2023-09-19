@@ -45,7 +45,7 @@ const adminMenu = [
     route: "employees",
   },
   {
-    name: "All Accounts",
+    name: "Accounts",
     icon: <AccountTreeIcon />,
     route: "accounts",
   },

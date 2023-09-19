@@ -31,7 +31,8 @@ const UserReview=()=> {
   const submitFeedback = () => {
     const date = document.getElementsByName("date")[0].value;
     const name = user.first_name ?`${user.first_name} ${user.last_name}`: form.first_name.value;
-    const profession = user.profession ? user.profession: form.profession.value;
+    // todo 
+    const profession = user.profession ? user.profession: form.profession.value || "Doctor";
     const image=user?.profile_image || "https://i.ibb.co/crZxsPm/review-Pic.png"
   
     if (rating === null) {

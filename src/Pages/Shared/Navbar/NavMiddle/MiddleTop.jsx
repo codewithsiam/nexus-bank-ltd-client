@@ -12,14 +12,14 @@ const MiddleTop = () => {
                 <Link to="">19625 | +8809068261960</Link>
             </div>
             <div className="flex gap-4">
-                <Link to=""
+                <Link to="/nexus-customer-service-portal"
                 className="flex gap-2 items-center text-sm hover:text-primary">
                     <RiCustomerService2Fill className="font-bold text-lg"/> Customer Service Portal
                 </Link>
-                <Link to=""
+                {/* <Link to=""
                 className="flex gap-2 items-center text-sm hover:text-primary">
                     <GrCompliance className="font-bold text-lg hover:text-primary"/> Customer Complaint
-                </Link>
+                </Link> */}
             </div>
         </div>
     );
