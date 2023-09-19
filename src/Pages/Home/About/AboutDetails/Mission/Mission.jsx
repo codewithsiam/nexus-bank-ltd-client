@@ -5,7 +5,7 @@ const Mission = () => {
   return (
     <div className="">
       <MainBanner 
-        banner="https://i.ibb.co/L6S7yjZ/history-banner.webp" 
+        banner="https://i.ibb.co/8YzC4Hm/mission-vission.webp" 
         bannerTitle={"Mission & Vision"}>
       </MainBanner>
       <div className="">

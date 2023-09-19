@@ -71,6 +71,8 @@ import UserSecureRoute from "./UserSecureRoute";
 import AddACareer from "../Pages/AdminDashboard/AddACareer/AddACareer";
 import ManageAllCareers from "../Pages/AdminDashboard/ManageAllCareers/ManageAllCareers";
 import StripeTermsAndConditions from "../Pages/Shared/StripeTermsAndCondition/StripeTermsAndCondition";
+import UserReview from "../Pages/UserDashboard/ProfileManage/UserReview/UserReview";
+import AddBanner from "../Pages/AdminDashboard/AddBanner/AddBanner";
 
 
 
@@ -159,18 +161,6 @@ const router = createBrowserRouter([
       {
         path: "account-overview",
         element: <AccountOverview />,
-      },
-      {
-        path: "my-profile",
-        element: <MyProfile />,
-      },
-      {
-        path: "edit-profile",
-        element: <EditProfile />
-      },
-      {
-        path: "change-password",
-        element: <PasswordChange />
       },
       {
         path: "apply-loan",
@@ -283,6 +273,22 @@ const router = createBrowserRouter([
             </UserSecureRoute>
           ),
       },
+      {
+        path: "my-profile",
+        element: <MyProfile />,
+      },
+      {
+        path: "edit-profile",
+        element: <EditProfile />
+      },
+      {
+        path: "change-password",
+        element: <PasswordChange />
+      },
+      {
+        path: "user-feedback",
+        element: <UserReview />
+      },
     ],
   },
   // admin dashboard 
@@ -382,6 +388,10 @@ const router = createBrowserRouter([
       {
         path: "change-password",
         element: <AdminPasswordChange />
+      },
+      {
+        path: "add-banner",
+        element: <AddBanner />
       },
     ],
   },

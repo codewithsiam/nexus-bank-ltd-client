@@ -15,7 +15,7 @@ const Feedback = () => {
                         placeholder="Write Feedback"
                     ></textarea>
                     <div className="text-end">
-                        <button type="submit" className="btn bg-green-500 border-0 ">
+                        <button type="submit" className="btn bg-primary border-0 ">
                             Send
                         </button>
                     </div>
