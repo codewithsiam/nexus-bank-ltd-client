@@ -50,7 +50,8 @@ const CurrentAcc = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='lg:flex w-full justify-center'>
+                <div className='flex-col lg:w-[50%] w-full justify-center'>
                     <div className='text-center'>
                     <Heading heading= "Overview"></Heading>
                     </div>
@@ -71,7 +72,7 @@ const CurrentAcc = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="collapse collapse-arrow">
+                    <div className="collapse collapse-plus">
                         <input type="radio" name="my-accordion-4" /> 
                         <div className="collapse-title text-xl font-medium">
                             Eligibility
@@ -83,7 +84,7 @@ const CurrentAcc = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="collapse collapse-plus">
+                    <div className="collapse collapse-arrow">
                         <input type="radio" name="my-accordion-4" /> 
                         <div className="collapse-title text-xl font-medium">
                             Interest Rate
@@ -124,6 +125,7 @@ const CurrentAcc = () => {
                             </ul>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div className='p-2 md:flex justify-center items-center my-5 md:my-10'>
                     <h1 className='text-3xl md:text-5xl text-center'>Interested to open an account?</h1>
