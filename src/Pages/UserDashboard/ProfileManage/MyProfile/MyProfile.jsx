@@ -14,7 +14,7 @@ const MyProfile = () => {
       <div classNames="relative w-full text-white">
         <img src="https://i.ibb.co/3rg7VGN/profile-banner.jpg" classNames="w-full h-[230px]" alt="Louvre" />
         <div classNames="absolute bottom-0 left-0 right-0 top-0 h-full w-full bg-gradient-to-r from-[rgb(1,87,155)] via-blue-600 to-blue-300 opacity-60"></div>
-        <div className="pl-5 md:pl-10 lg:pl-20 absolute top-12">
+        <div className="pl-5 md:pl-10 lg:pl-20 absolute top-12 pt-10">
           <h1 className="text-4xl mb-3">Hey  
             <span className="ml-3">{user?.last_name ?  user.last_name : " User"}</span>
           </h1>

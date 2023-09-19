@@ -67,6 +67,7 @@ const StudentForm = () => {
               nationality: userData.nationality,
               marital_status: userData.marital_status,
               job_title: userData.job_title,
+              birth_certificate_number: userData.birth_certificate_number,
               birth_certificate_image: birthImage,
               profile_image: profileImage,
               present_address: userData.present_address,
@@ -166,7 +167,7 @@ const StudentForm = () => {
             </label>
             <input
               type="text"
-              name="nidCardNumber"
+              name="birth_certificate_number"
               // value={user?.email}
               onChange={handleUserDataOnChange}
               required
