@@ -70,6 +70,7 @@ import CreditCardRequests from "../Pages/AdminDashboard/CreditCardRequests/Credi
 import UserSecureRoute from "./UserSecureRoute";
 import AddACareer from "../Pages/AdminDashboard/AddACareer/AddACareer";
 import ManageAllCareers from "../Pages/AdminDashboard/ManageAllCareers/ManageAllCareers";
+import StripeTermsAndConditions from "../Pages/Shared/StripeTermsAndCondition/StripeTermsAndCondition";
 
 
 
@@ -143,6 +144,10 @@ const router = createBrowserRouter([
       {
         path: "customer",
         element: <CustomerService />
+      },
+      {
+        path: "stripe-terms-and-conditions",
+        element: <StripeTermsAndConditions />
       },
     ],
   },

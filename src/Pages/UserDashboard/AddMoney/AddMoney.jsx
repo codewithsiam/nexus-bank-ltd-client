@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import axios from "axios";
 import { baseUrl } from "../../../config/server";
+import { Link } from "react-router-dom";
 
 
 const AddMoney = () => {
@@ -108,9 +109,9 @@ console.log("my account", myAccounts);
                 />
                 <span className="ml-2">
                   I agree to the{" "}
-                  <a href="/terms" className="underline">
+                  <Link to="/stripe-terms-and-conditions"  target="_blank" className="underline">
                     Terms and Conditions
-                  </a>
+                  </Link>
                 </span>
               </label>
               {errorMessage && (

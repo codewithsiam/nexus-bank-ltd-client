@@ -86,7 +86,7 @@ const AccountOverview = () => {
         </div>
       </div>
       <div className="h-[1px] w-full mt-6 mb-10 border border-dashed bg-primary"></div>
-      <div className="">
+      {/* <div className="">
         <h2 className="text-xl text-primary mb-3">Cards Details</h2>
         <div className="overflow-x-auto rounded border border-primary">
           <table className="table">
@@ -112,7 +112,7 @@ const AccountOverview = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

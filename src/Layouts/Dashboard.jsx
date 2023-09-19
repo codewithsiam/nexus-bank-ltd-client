@@ -468,7 +468,7 @@ export default function MiniDrawer() {
                       </ListItemButton>
                     </Link>
                     {/* e-statement */}
-                    <Link to={"e-statement"}>
+                    {/* <Link to={"e-statement"}>
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -490,7 +490,7 @@ export default function MiniDrawer() {
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>
-                    </Link>
+                    </Link> */}
                   </div>
                 </div>
 
@@ -774,7 +774,7 @@ export default function MiniDrawer() {
                         />
                       </ListItemButton>
                     </Link>
-                    <Link to={"transfer-money"}>
+                    {/* <Link to={"transfer-money"}>
                       <ListItemButton
                         sx={{
                           minHeight: 48,
@@ -796,7 +796,7 @@ export default function MiniDrawer() {
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>
-                    </Link>
+                    </Link> */}
                     <Link to={"transaction-history"}>
                       <ListItemButton
                         sx={{
