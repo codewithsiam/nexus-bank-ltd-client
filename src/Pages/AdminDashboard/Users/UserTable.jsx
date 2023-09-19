@@ -78,9 +78,9 @@ export default function UserTable({ usersTableData, setUsersTableData }) {
           <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete(params.row._id)}>
             <DeleteIcon />
           </IconButton>
-          <Link to={`${params.row.email}`}>
+          {/* <Link to={`${params.row.email}`}>
             <CgProfile className="h-6 w-6 cursor-pointer m-6" />
-          </Link>
+          </Link> */}
         </>
       ),
     },

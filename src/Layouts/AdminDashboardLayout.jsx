@@ -69,11 +69,11 @@ const adminMenu = [
     icon: <PeopleAltIcon />,
     route: "users",
   },
-  {
-    name: "Loan Request",
-    icon: <AccountBalanceWalletIcon />,
-    route: "loan-request",
-  },
+  // {
+  //   name: "Loan Request",
+  //   icon: <AccountBalanceWalletIcon />,
+  //   route: "loan-request",
+  // },
   {
     name: "Customer Support",
     icon: <SupportAgentIcon />,
