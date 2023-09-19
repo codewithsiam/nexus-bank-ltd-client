@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 import AnalyticsCardReach from '../../../../components/AnalyticsCardTitle/AnalyticsCardReach';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import { baseUrl } from '../../../../config/server';
 
 
 const TotalLoan = () => {
@@ -9,7 +10,7 @@ const TotalLoan = () => {
     const [data, setData] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/loans')
+        fetch(`${baseUrl}/loans`)
             .then(res => res.json())
             .then(data => {
                 const allData = data;

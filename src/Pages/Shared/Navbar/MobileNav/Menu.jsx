@@ -22,7 +22,7 @@ const Menu = () => {
         )}
       </div>
       <div className="border-b-2 py-2">
-        <Link to='/dashboard'>My Profile</Link>
+        <Link to='/dashboard'>Dashboard</Link>
       </div>
       <div className="flex justify-between border-b-2 py-2">
         <Link>About Us </Link>

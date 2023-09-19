@@ -15,6 +15,7 @@ const MyAccounts = () => {
     axios
       .get(`${baseUrl}/myAccounts?nidNumber=${user?.nid_card_number}`)
       .then((response) => {
+        console.log(response)
         setMyAccounts(response.data);
       })
       .catch((error) => {

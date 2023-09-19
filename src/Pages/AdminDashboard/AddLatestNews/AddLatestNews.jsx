@@ -60,8 +60,8 @@ const AddLatestNews = () => {
         <div className=' mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary'>
             <div className='p-4'>
                 <div className="flex justify-between">
-                    <p className='text-3xl font-bold text-primary'>Add Latest News</p>
-                    <Link to={'/admin/allNews'}> <button className="btn btn-outline hover:bg-primary hover:text-white text-slate-500 mb-2">View All News</button></Link>
+                    <p className='text-3xl font-bold text-primary'>Add New Blog</p>
+                    <Link to={'/admin/allNews'}> <button className="btn btn-outline hover:bg-primary hover:text-white text-slate-500 mb-2">View All Blogs</button></Link>
                 </div>
                 <hr />
 

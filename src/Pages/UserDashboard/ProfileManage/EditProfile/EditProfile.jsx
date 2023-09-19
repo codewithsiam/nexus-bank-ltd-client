@@ -115,7 +115,7 @@ const EditProfile = () => {
       </h1>
       <form onSubmit={handleOnSubmit}>
         <div className="md:flex gap-10  ">
-          <div class=" my-5 w-full md:w-1/3 bg-white py-5 overflow-hidden h-[320px] ">
+          <div classNames=" my-5 w-full md:w-1/3 bg-white py-5 overflow-hidden h-[320px] ">
             <div className="flex justify-center">
               <img
               className="w-[200px] rounded-full"
@@ -134,7 +134,7 @@ const EditProfile = () => {
                 name='image'
                 accept='image/*'
                 onChange={(e) => uploadImage(e)}
-                class="input input-bordered"
+                classNames="input input-bordered"
               />
               </div>
             </div>

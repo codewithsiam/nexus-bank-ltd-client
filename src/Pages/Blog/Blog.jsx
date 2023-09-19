@@ -30,8 +30,7 @@ const BlogPage = () => {
                                 heading={"Our Recent News"}>
                             </CenterTitle>
                             <p className="text-base text-body-color">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+                            The Bank Group is one of the world’s largest sources of funding and knowledge for developing countries.
                             </p>
                         </div>
                     </div>

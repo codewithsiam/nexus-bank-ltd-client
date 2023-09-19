@@ -1,16 +1,23 @@
 import React, { useContext, useState } from "react";
-import { FaUser, FaLock } from "react-icons/fa";
 import { baseUrl } from "../../../config/server";
 import axios from "axios";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { FaUser, FaLock, FaEye, FaEyeSlash } from "react-icons/fa"; // Import FaEye and FaEyeSlash
+import toast from "react-hot-toast";
 
 const AdminLogin = () => {
   const { setUser, setIsAdmin } = useContext(AuthContext);
   const [error, setError] = useState("");
-  let from =  "/admin/analytics";
+  let from = "/admin/analytics";
   let navigate = useNavigate();
-  
+
+  const [showPassword, setShowPassword] = useState(false); // State to track whether to show password
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword); // Toggle the showPassword state
+  };
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -35,12 +42,7 @@ const AdminLogin = () => {
         console.log(res.data);
         if (res.data.success) {
           const { token, result, isAdmin } = res.data;
-          console.log("Login Successful!", res.data);
-          // console.log("User Data:", result);
-          // console.log("Token:", token);
-          // console.log("Admin:", isAdmin);
-
-          // login(token);
+          toast.success("Login Success")
           setUser(result);
           setIsAdmin(isAdmin);
           localStorage.setItem("authToken", token);
@@ -48,6 +50,7 @@ const AdminLogin = () => {
         } else {
           console.error("Login Failed:", res.data.message);
           setError(res.data.message);
+          toast.error("Login Failed")
         }
       })
       .catch((error) => {
@@ -87,16 +90,27 @@ const AdminLogin = () => {
               <label className=" flex gap-2 items-center text-gray-700 text-sm font-bold mb-2">
                 <FaLock /> Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                placeholder="Enter your password"
-                className="border rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:border-blue-400"
-                required
-              />
+              <div className="flex">
+                {" "}
+                <input
+                  type={showPassword ? "text" : "password"} // Conditionally set the input type
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  className="border rounded-lg pl-10 pr-4 py-2 w-full focus:outline-none focus:border-blue-400"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="text-gray-500 focus:outline-none absolute right-3 bottom-3.5"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}{" "}
+                  {/* Show or hide password icon */}
+                </button>
+              </div>
             </div>
           </div>
           {error && <p className="text-red-400">{error}</p>}
