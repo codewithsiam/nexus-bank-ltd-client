@@ -37,7 +37,8 @@ const OurServices = () => {
                 <Heading
                     heading={"Our Services"}
                 ></Heading>
-                <p className="paragraph mb-11 md:w-3/6 mx-auto px-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, veniam reprehenderit cumque recusandae dolor nisi assumenda dolore voluptas ipsam </p>
+                {/* to do  */}
+                <p className="paragraph mb-11 md:w-3/6 mx-auto px-1"> </p>
             
                 </div>
             </div>
