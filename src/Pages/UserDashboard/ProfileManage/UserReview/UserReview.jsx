@@ -11,6 +11,8 @@ const UserReview=()=> {
   console.log(user)
   const [rating, setRating] = useState(null);
   const [feedback, setFeedback] = useState('');
+  const [name, setName] = useState('');
+  const [profession, setProfession] = useState('');
   const [isSendEnabled, setIsSendEnabled] = useState(false);
   const navigate = useNavigate();
 
@@ -23,16 +25,33 @@ const UserReview=()=> {
     setFeedback(newFeedback);
     setIsSendEnabled(newFeedback.trim() !== '');
   };
+  const handleNameChange = (event) => {
+    const newName = event.target.value;
+    setName(newName);
+    // setIsSendEnabled(newName.trim() !== '');
+  };
+  const handleProfessionChange = (event) => {
+    const newProfession = event.target.value;
+    setProfession(newProfession);
+    // setIsSendEnabled(newName.trim() !== '');
+  };
 
   const handleSendClick = () => {
     // console.log(`Rating: ${rating}, Feedback: ${feedback}`, );
   };
 
   const submitFeedback = () => {
-    const date = document.getElementsByName("date")[0].value;
-    const name = user.first_name ?`${user.first_name} ${user.last_name}`: form.first_name.value;
-    // todo 
-    const profession = user.profession ? user.profession: form.profession.value || "Doctor";
+    // e.preventDefault();
+    // const form = e.target;
+    // const date = document.getElementsByName("date")[0].value;
+    // const name = user.first_name ?`${user.first_name} ${user.last_name}`: name;
+    // const profession = user.profession ? user.profession: profession;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Month is zero-based, so add 1 and pad with '0' if needed.
+    const day = String(currentDate.getDate()).padStart(2, '0');
+
+    const formattedDate = `${year}-${month}-${day}`
     const image=user?.profile_image || "https://i.ibb.co/crZxsPm/review-Pic.png"
   
     if (rating === null) {
@@ -42,9 +61,10 @@ const UserReview=()=> {
   
     const userFeedback = {
       feedback: feedback,
-      name: name,
-      date: date,
-      profession: profession,
+      name: user.first_name ?`${user.first_name} ${user.last_name}`: name,
+      // date: date,
+      date: formattedDate,
+      profession: user.profession ? user.profession: profession,
       rating: rating,
       image:image
     };
@@ -116,20 +136,21 @@ const UserReview=()=> {
               onChange={handleFeedbackChange}
               className="textarea textarea-bordered textarea-xs w-full h-28"
             />
-            <div className='mt-5'>
-              {user.first_name? 
-                <input type="text" name="name" 
-                defaultValue={user.first_name && user.first_name? user.first_name+ ' '+ user.last_name:user.first_name} className="border input input-bordered w-full"/>:
-                <input type="text" name="first_name" placeholder="Your Name" className="input input-bordered w-full" />
-              }
-            </div>
             <div className='grid md:grid-cols-2 gap-5 my-5'>
-              {user.profession? 
-                <input type="text" name="name" defaultValue={user.profession} className="border input input-bordered w-full"/>:
-                <input type="text" name="profession" placeholder="Your profession" 
-                className="input input-bordered w-full" />
+              {user.first_name? 
+                <input type="text" className="border input input-bordered w-full"
+                defaultValue={user.first_name && user.first_name? user.first_name+ ' '+ user.last_name:user.first_name}/>:
+
+                <input type="text" name="first_name" placeholder="Your Name" value={name}
+                onChange={handleNameChange} className="input input-bordered w-full" />
               }
-              <input name="date" className="border px-3 py-3 rounded-md w-full" type="date" />
+              {user.profession? 
+                <input type="text" defaultValue={user.profession} 
+                className="border input input-bordered w-full"/>:
+
+                <input type="text" name="profession" placeholder="Your profession" value={profession} 
+                onChange={handleProfessionChange} className="input input-bordered w-full" />
+              }
             </div>
 
             <p className='my-5'>By submitting feedback, you agree Nexus Bank, its affiliates and any authorized parties may use, commercialize or reproduce the feedback without restriction or any compensation to you. 

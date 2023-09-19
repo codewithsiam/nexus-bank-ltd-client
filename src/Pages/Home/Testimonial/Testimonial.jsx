@@ -78,7 +78,7 @@ const Testimonial = () => {
             <SwiperSlide key={review._id}>
               <div className='lg:flex md:flex gap-5 items-center mt-5 bg-white rounded-xl overflow-hidden shadow-xl'>
                 <div className='flex justify-center flex-shrink-0'>
-                <img src={review.image} alt="alt" />
+                <img className='' src={review.image} alt="alt" />
                 </div>
                 <div className='px-5 w-full'>
                   <div className='text-primary mb-5'>
@@ -87,10 +87,10 @@ const Testimonial = () => {
                     </span>
                   </div>
                   <p>{review.feedback}</p>
-                  <h1 className='text-xl font-bold mt-4'>{review.name}</h1>
+                  <h1 className='text-[16px] font-bold mt-4'>{review.name}</h1>
                   <div className='flex justify-between w-full'>
                     <p>{review.profession}</p>
-                    <h1 className='font-bold'>{review.date}</h1>
+                    <h1 className='font-bold text-[14px]'>{review.date}</h1>
                   </div>
                 </div>
               </div>
