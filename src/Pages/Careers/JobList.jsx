@@ -28,7 +28,7 @@ const JobList = ({ job }) => {
       <p className="mt-4 text-gray-800">{job.description}</p>
       <div className="mt-4">
 
-        <Link to={`/dashboard/apply/${job._id}`} job={job}>
+        <Link to={`/apply/${job._id}`} job={job}>
           <button
             className="bg-gradient-to-r from-[#004F70] to-[#007C9C] rounded inline-block text-center py-1 px-4 text-xs leading-loose font-semibold text-white mb-5"
           >

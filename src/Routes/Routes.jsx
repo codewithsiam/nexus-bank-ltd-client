@@ -150,6 +150,15 @@ const router = createBrowserRouter([
       {
         path: "stripe-terms-and-conditions",
         element: <StripeTermsAndConditions />
+      },  
+      {
+        path: `apply/:id`,
+        element:
+          (
+            <UserSecureRoute>
+              <JobApply />
+            </UserSecureRoute>
+          ),
       },
     ],
   },
@@ -263,15 +272,6 @@ const router = createBrowserRouter([
       {
         path: "nexus-customer-service-portal",
         element: <CustomerService />,
-      },
-      {
-        path: `apply/:id`,
-        element:
-          (
-            <UserSecureRoute>
-              <JobApply />
-            </UserSecureRoute>
-          ),
       },
       {
         path: "my-profile",

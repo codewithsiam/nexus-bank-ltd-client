@@ -706,7 +706,7 @@ export default function MiniDrawer() {
                 </div>
 
                 {/* Loan Services------------------------- */}
-                <div>
+                {/* <div>
                   {!open ? (
                     <div className="flex items-center justify-center">
                       <PaidIcon className="opacity-60" />
@@ -739,92 +739,12 @@ export default function MiniDrawer() {
                       </ListItemButton>
                     </Link>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Card Services---------------------- */}
-                <div>
-                  {!open ? (
-                    <div className="flex items-center justify-center">
-                      <PaidIcon className="opacity-60" />
-                    </div>
-                  ) : (
-                    <h4 className="font-semibold ml-5 my-2">Card Services</h4>
-                  )}
-                  <div className={`${open && "ml-3"}`}>
-                    <Link to={"card-beneficiary-list"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"Card Beneficiary List"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                    {/* <Link to={"transfer-money"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AccountBalanceWalletOutlinedIcon />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"Transfer Money"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link> */}
-                    <Link to={"transaction-history"}>
-                      <ListItemButton
-                        sx={{
-                          minHeight: 48,
-                          justifyContent: open ? "initial" : "center",
-                          px: 2.5,
-                        }}
-                      >
-                        <ListItemIcon
-                          sx={{
-                            minWidth: 0,
-                            mr: open ? 3 : "auto",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {<AiOutlineTransaction />}
-                        </ListItemIcon>
-                        <ListItemText
-                          primary={"Transition History"}
-                          sx={{ opacity: open ? 1 : 0 }}
-                        />
-                      </ListItemButton>
-                    </Link>
-                  </div>
-                </div>
-
+               
                 {/* TopUp overview------------------------- */}
-                <div>
+                {/* <div>
                   {!open ? (
                     <div className="flex items-center justify-center">
                       <FileOpenIcon className="opacity-60 " />
@@ -857,7 +777,7 @@ export default function MiniDrawer() {
                       </ListItemButton>
                     </Link>
                   </div>
-                </div>
+                </div> */}
                 {/* other transfer------------------------- */}
                 <div>
                   {!open ? (

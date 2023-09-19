@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useDesignation from "../../../../../Hooks/useDesignation";
+import { AuthContext } from "../../../../../providers/AuthProvider";
 const ButtonLeft = () => {
   const [expendService, setExpendService] = useState(false);
-
+const {user} = useContext(AuthContext)
   // use defined ------------------------------------
-  const {designation} = useDesignation();
+
   return (
     <div className="flex gap-6 font-semibold mt-4">
       <Link>Home</Link>
@@ -36,7 +37,7 @@ const ButtonLeft = () => {
       </div>
       <div className="relative group">
         {
-          designation === "admin"? <Link to='/dashboard/analytics'>Dashboard</Link>:<Link to='/dashboard/account-overview'>Dashboard</Link>
+          user && <Link to='/dashboard/account-overview'>Dashboard</Link>
         }
       </div>
       {/* <div className="relative group">
