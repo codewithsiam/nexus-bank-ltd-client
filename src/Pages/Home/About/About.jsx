@@ -8,18 +8,18 @@ const About = () => {
             <div className="">
                 <div className="md:flex">
                     <div className='flex justify-center'>
-                    <img className="w-[70%]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
+                    <img className="w-[70%] md:w-[90%] lg:w-[80%]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
                     </div>
                     <div className='hidden md:block'>
-                        <div className=' md:flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
-                            <h1 className='lg:text-4xl text-xl'>5</h1>
-                            <p className='lg:text-2xl text-[10px]'>Years of Experience</p>
+                        <div className=' md:flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white md:w-[120px] lg:w-[180px] animate-fade-right animate-infinite my-custom-animation'>
+                            <h1 className='lg:text-3xl text-xl'>5</h1>
+                            <p className='lg:text-lg text-[10px]'>Years of Experience</p>
                         </div>
                         <img className="w-[50px] lg:w-[100px]" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
                     </div>
                 </div>
                 <div className="hidden md:flex md:-mt-20 lg:-mt-32 items-end">
-                    <img className="w-[100px] lg:w-[175px] mt-20 md:mr-5 lg:mr-10" src="https://i.ibb.co/BZx3JZn/about-left-shape-1.png" alt="" />
+                    <img className="w-[100px] lg:w-[175px] mt-10 md:mr-5 lg:ml-6" src="https://i.ibb.co/BZx3JZn/about-left-shape-1.png" alt="" />
                     <img className="md:w-[230px] lg:w-[300px]" src="https://i.ibb.co/sFZBGzh/about-two.jpg" alt="" />
                 </div>
             </div>
