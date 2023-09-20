@@ -182,6 +182,10 @@ const adminMenu = [
     icon: <FcDebt></FcDebt>,
     route: "addacareer",
   },
+  {
+    icon: <FcDebt></FcDebt>,
+    route: "manage-careers",
+  },
 ];
 
 const HomeMenu = [

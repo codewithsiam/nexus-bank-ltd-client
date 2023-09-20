@@ -3,8 +3,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Swal from 'sweetalert2';
-import { CgProfile } from 'react-icons/cg';
-import { Link } from 'react-router-dom';
 import { baseUrl } from '../../../config/server';
 
 export default function CareersTable({ careersData, setCareersData }) {
@@ -70,9 +68,6 @@ export default function CareersTable({ careersData, setCareersData }) {
                     >
                         <DeleteIcon />
                     </IconButton>
-                    <Link to={`/path-to-profile/${params.row._id}`}>
-                        <CgProfile className="h-6 w-6 cursor-pointer m-6" />
-                    </Link>
                 </>
             ),
         },

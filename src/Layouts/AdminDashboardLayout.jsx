@@ -85,6 +85,11 @@ const adminMenu = [
     route: "addacareer",
   },
   {
+    name: "Manage All Careers",
+    icon: <AccountBalanceWalletIcon />,
+    route: "manage-careers",
+  },
+  {
     name: "Add Banner",
     icon: <GiKnightBanner />,
     route: "add-banner",

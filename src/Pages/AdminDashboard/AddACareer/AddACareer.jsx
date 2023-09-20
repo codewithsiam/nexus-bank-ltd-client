@@ -10,7 +10,8 @@ const AddACareer = () => {
         title: '',
         vacancy: '',
         salary: '',
-        experience: ''
+        experience: '',
+        description: '',
     });
 
     const [submitted, setSubmitted] = useState(false);
@@ -38,9 +39,6 @@ const AddACareer = () => {
             <div className='flex justify-between'>
                 <div>
                 <h2 className="text-2xl font-semibold mb-4 text-primary">Add A Career</h2>
-                </div>
-                <div>
-                    <Link to={'/admin/manage-careers'} className='bg-primary text-white py-4 px-2 rounded font-semibold'>Manage All Careers</Link>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='border border-gray-300 p-8'>
@@ -97,6 +95,20 @@ const AddACareer = () => {
                             render={({ field }) => (
                                 <input
                                     type="experience"
+                                    {...field}
+                                    className="w-full rounded border border-gray-300 p-2"
+                                />
+                            )}
+                        />
+                    </div>
+                    <div className="w-full lg:w-1/2 pl-0 lg:pl-2">
+                        <label className="block mb-1">Description</label>
+                        <Controller
+                            name="description"
+                            control={control}
+                            render={({ field }) => (
+                                <input
+                                    type="description"
                                     {...field}
                                     className="w-full rounded border border-gray-300 p-2"
                                 />

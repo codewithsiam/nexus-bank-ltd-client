@@ -13,7 +13,6 @@ const JobApply = () => {
         dateOfBirth: '',
         workingexperiences: '',
         resumeurl: '',
-        termsAndConditions: false,
     });
 
     const [submitted, setSubmitted] = useState(false);
@@ -139,21 +138,6 @@ const JobApply = () => {
                             />
                         )}
                     />
-                </div>
-
-                {/* Terms and Conditions */}
-                <div className="mb-4">
-                    <label className="block mb-2">
-                        <Controller
-                            name="termsAndConditions"
-                            control={control}
-                            defaultValue={false}
-                            render={({ field }) => (
-                                <input type="checkbox" {...field} />
-                            )}
-                        />
-                        {' '}I agree to the terms and conditions
-                    </label>
                 </div>
 
                 <button type="submit" className="bg-primary text-white rounded px-4 py-2 hover:bg-blue-600 w-full font-semibold">Submit</button>
