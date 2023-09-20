@@ -24,7 +24,7 @@ const BlogDetail = () => {
                     {newsData.title}
 
                 </h3>
-                <img className='mx-auto w-full h-64 rounded-md' src={newsData.img} alt="" />
+                <img className='mx-auto w-full h-64 rounded-md'src={newsData.img} alt="" />
                   </div>
                   <p className='mx-2 md:mx-36 mt-4 text-center '>{newsData.detail}</p>
                
