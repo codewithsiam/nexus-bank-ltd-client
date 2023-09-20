@@ -7,10 +7,12 @@ const About = () => {
         <div className="w-full max-w-screen-xl mx-auto my-5 md:mb-10 md:mt-20 grid md:grid-cols-2 md:gap-10">
             <div className="">
                 <div className="md:flex">
+                    <div className='flex justify-center'>
                     <img className="w-[70%]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
+                    </div>
                     <div className='hidden md:block'>
                         <div className=' md:flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
-                            <h1 className='lg:text-5xl text-xl'>5</h1>
+                            <h1 className='lg:text-4xl text-xl'>5</h1>
                             <p className='lg:text-2xl text-[10px]'>Years of Experience</p>
                         </div>
                         <img className="w-[50px] lg:w-[100px]" src="https://i.ibb.co/5BMPfh5/about-right-shape-2.png" alt="" />
