@@ -83,6 +83,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () => fetch(`${baseUrl}/get-banner`),
       },
       {
         path: "/chat",
