@@ -96,6 +96,7 @@ const router = createBrowserRouter([
       {
         path: "about-details",
         element: <AboutDetails></AboutDetails>,
+        loader: () => fetch(`${baseUrl}/get-management`),
       },
       {
         path: "retail-loan",
