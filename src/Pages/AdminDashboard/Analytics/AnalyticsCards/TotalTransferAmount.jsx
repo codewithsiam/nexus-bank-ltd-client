@@ -2,22 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { Area, AreaChart, ResponsiveContainer, Tooltip } from 'recharts';
 import AnalyticsCardReach from '../../../../components/AnalyticsCardTitle/AnalyticsCardReach';
 import AnalyticsCardTitle from '../../../../components/AnalyticsCardTitle/AnalyticsCardTitle';
+import { baseUrl } from '../../../../config/server';
 
 const TotalUsers = () => {
-    const [transactions, setTransactions] = useState([]);
+    const [transactions, setTransactions] = useState(0); // Initialize transactions as 0
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/money-transfer')
+        fetch(`${baseUrl}/money-transfer`)
             .then(res => res.json())
             .then(data => {
                 const money = data;
-                const totalAmount = money.reduce((acc, transaction) => {
-                    return acc + transaction.transferAmount;
-                }, 0);
-                setTransactions(totalAmount);
+
+                if (Array.isArray(money)) {
+                    const totalAmount = money.reduce((acc, transaction) => {
+                        return acc + (transaction.transferAmount || 0); 
+                    }, 0);
+                    setTransactions(totalAmount);
+                }
                 setData(data);
             })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }, []);
 
     return (

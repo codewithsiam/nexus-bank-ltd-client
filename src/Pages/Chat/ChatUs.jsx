@@ -50,7 +50,7 @@ const ChatUs = () => {
         </div>)
 
     }
-    console.log(chats)
+    // console.log(chats)
     return (
         <div className='w-full'>
             <>

@@ -4,6 +4,7 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import ChatBot from "../Pages/Shared/ChatBot/ChatBot";
 
 const Main = () => {
+    //kdjkfdjk
     return (
         <div>
             <Navbar />

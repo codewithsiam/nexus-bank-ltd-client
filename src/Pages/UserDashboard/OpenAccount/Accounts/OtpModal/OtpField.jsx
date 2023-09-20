@@ -32,7 +32,7 @@ const OtpField = ({otp,setOtp}) => {
     }
   };
 
-  console.log(otp);
+  // console.log(otp);
   return (
     <div className="my-4 flex justify-center items-center space-x-2">
       {otp.map((_, index) => {

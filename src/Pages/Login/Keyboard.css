@@ -51,3 +51,7 @@
 .keyboard-key.password:hover {
   background-color: #2980b9;
 }
+
+.keyboard-key{
+  display: flex;
+}

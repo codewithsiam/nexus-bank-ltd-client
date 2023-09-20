@@ -2,11 +2,22 @@ import { useScroll } from 'framer-motion';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { baseUrl } from '../../../config/server';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { fetchUserData } from '../../../HandleState/actions/authActions';
 
 const CreditCardApply = () => {
     const [userData,setUserData] = useState({});
     const [error,setError] = useState("");
-    const username = "Sarker2";
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.auth.loading);
+    const user = useSelector(state => state.auth.user);
+    const isAdmin = useSelector(state => state.auth.isAdmin);
+
+    useEffect(() => {
+        const storedToken = localStorage.getItem('authToken');
+        dispatch(fetchUserData(storedToken));
+    }, [dispatch]);
 
     const handleUserDataChange = (e)=>{
         const newUserData = {...userData};
@@ -22,7 +33,7 @@ const CreditCardApply = () => {
                 "content-type":"application/json"
             },
             body:JSON.stringify({
-                username:username,
+                username:user?.username,
                 title:userData.title,
                 firstName:userData.firstName,
                 lastName:userData.lastName,

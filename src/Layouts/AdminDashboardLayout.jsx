@@ -19,18 +19,16 @@ import ListItemText from "@mui/material/ListItemText";
 import { Link, Outlet } from "react-router-dom";
 import { ThemeProvider } from "@emotion/react";
 import { darkTheme, lightTheme } from "../config/ThemeConfig";
-import FileOpenIcon from "@mui/icons-material/FileOpen";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountTreeIcon from "@mui/icons-material/AccountTree";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AccountBalanceWalletIcon from "@mui/icons-material/AccountBalanceWallet";
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
-import useDesignation from "../Hooks/useDesignation";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import { AuthContext } from "../providers/AuthProvider";
 import { MdCreateNewFolder, MdOutlineCreateNewFolder } from "react-icons/md";
 import { PiPasswordFill } from "react-icons/pi";
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+import { GiKnightBanner } from "react-icons/gi";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 const drawerWidth = 300;
 
@@ -53,7 +51,7 @@ const adminMenu = [
   },
   {
     name: "Add Blog",
-    icon: <MdCreateNewFolder/>,
+    icon: <MdCreateNewFolder />,
     route: "AddLatestNews",
   },
   {
@@ -62,24 +60,34 @@ const adminMenu = [
     route: "account-request",
   },
   {
-    name:"Credit Card Requests",
-    icon:<CreditCardIcon/>,
-    route:"credit-card-requests"
+    name: "Credit Card Requests",
+    icon: <CreditCardIcon />,
+    route: "credit-card-requests",
   },
   {
     name: "Users",
     icon: <PeopleAltIcon />,
     route: "users",
   },
-  {
-    name: "Loan Request",
-    icon: <AccountBalanceWalletIcon />,
-    route: "loan-request",
-  },
+  // {
+  //   name: "Loan Request",
+  //   icon: <AccountBalanceWalletIcon />,
+  //   route: "loan-request",
+  // },
   {
     name: "Customer Support",
-    icon: <SupportAgentIcon  />,
+    icon: <SupportAgentIcon />,
     route: "customer-support",
+  },
+  {
+    name: "Add A Career",
+    icon: <AccountBalanceWalletIcon />,
+    route: "addacareer",
+  },
+  {
+    name: "Add Banner",
+    icon: <GiKnightBanner />,
+    route: "add-banner",
   },
 ];
 
@@ -156,6 +164,10 @@ export default function MiniDrawer() {
   const [open, setOpen] = React.useState(true);
   const { user, isAdmin, logout } = React.useContext(AuthContext);
 
+  const handleLogout = () => {
+    logout(user);
+  };
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -204,7 +216,11 @@ export default function MiniDrawer() {
               </div>
               <img
                 className="w-10 h-10 rounded-full"
-                src={user?.photoURL}
+                src={
+                  user.profile_photo
+                    ? user.profile_photo
+                    : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"
+                }
                 alt=""
               />
             </div>
@@ -228,10 +244,14 @@ export default function MiniDrawer() {
             <div className="flex flex-col items-center justify-center my-6 ">
               <img
                 className="w-20 h-20 rounded-full"
-                src={user?.photoURL}
+                src={
+                  user.profile_photo
+                    ? user.profile_photo
+                    : "https://www.pngmart.com/files/21/Admin-Profile-Vector-PNG-Picture.png"
+                }
                 alt=""
               />
-              <h2 className=" mt-4 font-semibold">{user?.displayName}</h2>
+              <h2 className=" mt-4 font-semibold">{user?.username}</h2>
               <p>{user?.email}</p>
             </div>
           )}
@@ -293,7 +313,7 @@ export default function MiniDrawer() {
                 </ListItemButton>
               </Link>
               <div
-                onClick={logout}
+                onClick={() => handleLogout()}
                 className="bg-red-400 rounded-full px-4 mx-7 font-bold mt-4"
               >
                 <ListItemButton

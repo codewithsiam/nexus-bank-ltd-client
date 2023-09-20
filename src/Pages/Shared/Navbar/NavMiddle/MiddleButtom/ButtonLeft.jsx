@@ -1,18 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useDesignation from "../../../../../Hooks/useDesignation";
-
+import { AuthContext } from "../../../../../providers/AuthProvider";
 const ButtonLeft = () => {
   const [expendService, setExpendService] = useState(false);
-
+const {user} = useContext(AuthContext)
   // use defined ------------------------------------
-  const {designation} = useDesignation();
+
   return (
-    <div className="flex gap-6 font-semibold">
+    <div className="flex gap-6 font-semibold mt-4">
       <Link>Home</Link>
       <Link to="/about-details">About Us</Link>
-      <div className="relative group">
+      {/* <div className="relative group">
         <Link className="flex gap-1 items-center">
           Services <FaAngleDown />
         </Link>
@@ -22,10 +22,22 @@ const ButtonLeft = () => {
         <Link to="/retail-loan">Loan</Link>
         
       </div>
+      </div> */}
+      <div className="relative">
+      <div onClick={()=>setExpendService(!expendService)} className="flex gap-1 items-center cursor-pointer">
+          Services <FaAngleDown />
+        </div>
+        {
+          expendService && <div className="flex flex-col absolute z-30 bg-white px-6 py-3 rounded-lg space-y-2 ">
+          <Link onClick={()=>setExpendService(!expendService)} to="/nexus-accounts">Accounts</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/retail-loan">Loan</Link>
+          
+          </div>
+        }
       </div>
       <div className="relative group">
         {
-          designation === "admin"? <Link to='/dashboard/analytics'>Dashboard</Link>:<Link to='/dashboard/account-overview'>Dashboard</Link>
+          user && <Link to='/dashboard/account-overview'>Dashboard</Link>
         }
       </div>
       {/* <div className="relative group">

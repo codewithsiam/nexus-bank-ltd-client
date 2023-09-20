@@ -9,6 +9,9 @@ import NidCardImage from "./NidCardImage";
 import ProfilePhoto from "../StudentAccount/ProfilePhoto";
 import OtpModal from "../OtpModal/OtpModal";
 import { ElectricScooterSharp } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
+import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 
 const CurrentForm = () => {
   const [userData, setUserData] = useState({});
@@ -18,6 +21,7 @@ const CurrentForm = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
   // console.log(error)
 
   // handle user data change
@@ -26,7 +30,7 @@ const CurrentForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData)
+  // console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -50,8 +54,8 @@ const CurrentForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.verified){
+        // console.log(data);
+        if (data.verified) {
           fetch(`${baseUrl}/add-account`, {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -69,30 +73,39 @@ const CurrentForm = () => {
               nid_card_number: userData.nidCardNumber,
               profile_image: profileImage,
               present_address: userData.present_address,
-              profileImage:profileImage,
-              nidCardImage:nidCardImage,
+              profileImage: profileImage,
+              nidCardImage: nidCardImage,
               permanent_address: userData.permanent_address,
               status: "pending",
             }),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+                Swal.fire(
+                  'Successful',
+                  'Your application for opening account is successful.Please wait for response',
+                  'success'
+                )
+
+                navigate("/")
+                
+                
                 // form.reset();
               }
             })
-            .catch((error) => console.log(error));
-        }
-        else{
-          setError(data.message)
+            .catch((error) => {
+              Swal.fire(
+                'Account Request',
+                'Something wrong.Please try again letter',
+                'error'
+              )
+
+              navigate("/")
+            });
+        } else {
+          setError(data.message);
         }
       })
       .then((err) => console.log(err));
@@ -235,11 +248,11 @@ const CurrentForm = () => {
           </div>
         </div>
         <div className="flex gap-4 mt-4 mb-2">
-          <NidCardImage
+          <SharedNidCardImage
             nidCardImage={nidCardImage}
             setNidCardImage={setNidCardImage}
           />
-          <ProfilePhoto
+          <SharedProfileImage
             profileImage={profileImage}
             setProfileImage={setProfileImage}
           />
@@ -310,15 +323,7 @@ const CurrentForm = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-2 items-center my-4">
-          <input
-            name="condition"
-            onChange={handleUserDataOnChange}
-            type="checkbox"
-          />
-          <p>accept our terms and conditions</p>
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"

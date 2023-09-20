@@ -19,7 +19,7 @@ const SharedProfileImage = ({profileImage,setProfileImage}) => {
       <div>
         {profileImage && (
           <img
-            className="w-full min-h-42 max-h-56 image-full my-2 rounded border border-gray-400"
+            className="w-full h-56 image-full my-2 rounded border border-gray-400"
             src={profileImage}
             alt=""
           />

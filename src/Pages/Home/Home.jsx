@@ -13,35 +13,54 @@ import { useEffect } from "react";
 import { FaArrowAltCircleUp } from "react-icons/fa";
 import Lottie from "lottie-react";
 import icon from '../../assets/animation/animation_lmhksght.json';
+import RightMenu from "../../components/RightMenu/RightMenu";
+import Footer from "../Shared/Footer/Footer";
 
 const Home = () => {
-    const ref = useRef(null);
-    const [showTopBtn, setShowTopBtn] = useState(false);
+  const ref = useRef(null);
+  const [showTopBtn, setShowTopBtn] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
 
-
-    const scrollToTop = () => {
-        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    useEffect(() => {
+      const handleScroll = () => {
+        // Check if the user has scrolled down more than a certain threshold (e.g., 100 pixels)
+        if (window.scrollY > 150) {
+          setShowTopBtn(true);
+        } else {
+          setShowTopBtn(false);
+        }
       };
+  
+      // Attach the event listener
+      window.addEventListener('scroll', handleScroll);
+  
+      // Clean up the event listener when the component unmounts
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
+    }, []);
+    
     return (
-        <div className="relative" >
-
-            <Banner ></Banner>
-            <About></About>
-            <OurServices></OurServices>
-            <LatestNews></LatestNews>
-            <Comparison></Comparison>
-            <Testimonial ></Testimonial>
-            <CreditCardPayment />
-            <ContactUs />
-          <div className="flex justify-center items-center">
-          
-            {
-             <button className="fixed bottom-5 right-24 z-50 h-12 w-12" onClick={scrollToTop}><Lottie animationData={icon}></Lottie></button>
-            }
-          </div>
-           
-        </div>
+      <div className="relative" >
+        <Banner ></Banner>
+        <About></About>
+        <OurServices></OurServices>
+        <LatestNews></LatestNews>
+        <Comparison></Comparison>
+        <Testimonial ></Testimonial>
+        <CreditCardPayment />
+        <ContactUs />
+        <div className="flex justify-center items-center">
+        {showTopBtn && (
+          <button className="fixed bottom-5 right-24 z-50 h-12 w-12" onClick={scrollToTop}>
+            <Lottie animationData={icon} />
+          </button>
+        )}
+      </div>
+    </div>
     );
 };
 

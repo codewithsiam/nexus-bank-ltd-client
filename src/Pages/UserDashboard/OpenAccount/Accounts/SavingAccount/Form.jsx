@@ -7,6 +7,8 @@ import AuthProvider, {
 import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
 import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
   const [userData, setUserData] = useState({});
@@ -16,13 +18,53 @@ const Form = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const [geoLocation, setGeoLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        setGeoLocation({ latitude, longitude });
+      });
+    } else {
+      console.error("Geolocation is not available in this browser.");
+    }
+  }, []);
+  
+  const handleTrack = (ip) => {
+    fetch(`https://ipinfo.io/${ip}?token=${import.meta.env.VITE_ip_tracking_token}`)
+      .then(res => res.json())
+      .then(data => {
+        setUserLocation(data)
+        // console.log(data)
+      })
+      .catch(err => console.log(err))
+  }
+
+const ipUrl = "https://api.ipify.org?format=json";
+
+  useEffect(()=> {
+
+    // const getIpAddress = () => {
+      fetch(ipUrl)
+      .then(res => res.json())
+      .then(data => {
+        handleTrack(data.ip)
+      })
+      .catch(error => console.log(error))
+      // }
+    } ,[ipUrl])
+
+  const navigate = useNavigate();
 
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData);
+  // console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -31,12 +73,13 @@ const Form = () => {
       `${baseUrl}/send-otp?email=${userData.email}&userName=${userData.first_name}`
     )
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // console.log(data)
+      })
       .then((err) => console.log(err));
     setIsOpen(true);
     // const form = e.target;
   };
-
   const handleOpenAccount = () => {
     fetch(`${baseUrl}/verify-otp?email=${userData.email}&otp=${otpDigit}`, {
       method: "Post",
@@ -65,19 +108,21 @@ const Form = () => {
               present_address: userData.present_address,
               permanent_address: userData.permanent_address,
               status: "pending",
+              geoLocation,
+              userLocation,
             }),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+                Swal.fire(
+                  'Successful',
+                  'Your application for opening account is successful.Please wait for response',
+                  'success'
+                )
+
+                navigate("/")
                 // form.reset();
               }
             })
@@ -298,15 +343,7 @@ const Form = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-2 items-center my-4">
-          <input
-            name="condition"
-            onChange={handleUserDataOnChange}
-            type="checkbox"
-          />
-          <p>accept our terms and conditions</p>
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"

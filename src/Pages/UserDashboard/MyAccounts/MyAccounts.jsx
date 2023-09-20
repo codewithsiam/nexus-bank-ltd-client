@@ -15,13 +15,14 @@ const MyAccounts = () => {
     axios
       .get(`${baseUrl}/myAccounts?nidNumber=${user?.nid_card_number}`)
       .then((response) => {
+        // console.log(response)
         setMyAccounts(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, [user]);
-  console.log("sdfsfd", myAccounts);
+  // console.log("sdfsfd", myAccounts);
   return (
     <div>
       <div className="mt-20 border rounded-lg bg-white border-gray-400 shadow-md shadow-primary">

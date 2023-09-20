@@ -4,14 +4,15 @@ import useDesignation from '../../Hooks/useDesignation';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { baseUrl } from '../../config/server';
+import BlogNews from './BlogNews';
 
 const BlogPage = () => {
     const {designation} = useDesignation();
-    console.log(designation)
+    // console.log(designation)
     const [blogNews,setBlogNews]=useState([])
     useEffect(()=>{
         fetch(`${baseUrl}/getBlogs`).then(res=>res.json()).then(data=>{
-            console.log(data)
+            // console.log(data)
             setBlogNews(data)
         })
     },[])

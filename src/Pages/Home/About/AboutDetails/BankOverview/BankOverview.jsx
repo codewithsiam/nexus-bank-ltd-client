@@ -1,5 +1,4 @@
 import * as React from 'react';
-import CenterTitle from '../../../../../Components/Title/CenterTitle';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,6 +7,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import WhyChooseUs from '../WhyChooseUs/WhyChooseUs';
+import Heading from '../../../../../Components/Title/Heading';
 
 function createData(title, results) {
   return { title, results };
@@ -23,12 +23,12 @@ const rows = [
 const BankOverview = () => {
     return (
         <div className=''>
-            <CenterTitle heading={"Who We Are"}></CenterTitle>
+            <Heading heading={"Who We Are"}></Heading>
             <div>
                 <p className='text-[18px]'>From 2005 till date, Nexus Bank has been a case study in evolution, having transformed over time from a traditional organization to a critically acclaimed multi-faceted institution that embraces global best practices and chooses to be at the forefront of technological initiatives. Unlike many, the Bank's criteria for success are not only the bottom-line numbers but also the milestones set towards becoming the most complete bank in the country.</p>
             </div>
-            <div>
-                <CenterTitle heading={"Overview"}></CenterTitle>
+            <div className='mt-10'>
+                <Heading heading={"Overview"}></Heading>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>

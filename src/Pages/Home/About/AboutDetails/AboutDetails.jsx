@@ -54,11 +54,11 @@ const AboutDetails = () => {
   };
 
   return (
-    <div className="max-w-screen-xl mx-auto h-full mt-10">
+    <div className="max-w-screen-xl mx-auto h-full mt-10 bg-gray-300">
       <Box 
       className="md:flex lg:gap-10 md:gap-5 justify-between"
       sx={{ flexGrow: 1, bgcolor: 'background.paper' }}>
-        <Tabs className="bg-primary px-3 py-10 mb-4 md:w-1/4 w-full"
+        <Tabs className="bg-white px-3 py-10 mb-4 md:w-1/4 w-full border border-primary shadow-lg"
         orientation="vertical"
         variant="scrollable"
         value={value}
@@ -73,22 +73,22 @@ const AboutDetails = () => {
         }}
         >
           <Tab label={<span 
-          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Overview 
+          className="text-primary font-semibold my-3 text-xl flex gap-2 items-center">Overview 
             <BiSolidChevronsRight/> </span>} {...a11yProps(0)} />
           <Tab label={<span 
-          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">History 
+          className="text-primary font-semibold my-3 text-xl flex gap-2 items-center">History 
             <BiSolidChevronsRight/></span>} {...a11yProps(1)} />
           <Tab label={<span 
-          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Vision and Mission 
+          className="text-primary font-semibold my-3 text-xl flex gap-2 items-center">Vision and Mission 
             <BiSolidChevronsRight/></span>} {...a11yProps(2)} />
           <Tab label={<span 
-          className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Management 
+          className="text-primary font-semibold my-3 text-xl flex gap-2 items-center">Management 
             <BiSolidChevronsRight/></span>} {...a11yProps(3)} />
-          <Tab label={<span 
+          {/* <Tab label={<span 
           className="text-white font-semibold my-3 text-xl flex gap-2 items-center">Gallery 
-            <BiSolidChevronsRight/></span>} {...a11yProps(4)} />
+            <BiSolidChevronsRight/></span>} {...a11yProps(4)} /> */}
           <Tab label={<span 
-          className="text-white font-semibold my-3 text-xl flex gap-2 items-center"
+          className="text-primary font-semibold my-3 text-xl flex gap-2 items-center"
            onClick={handleTabClick}>Organogram <BiSolidChevronsRight/></span>} {...a11yProps(4)} />
         </Tabs>
         <TabPanel value={value} index={0} className="md:w-3/4 w-full"><BankOverview/></TabPanel>
@@ -103,3 +103,8 @@ const AboutDetails = () => {
 }
 
 export default AboutDetails;
+
+// https://i.ibb.co/5jCz6N7/hasan-emplyee.jpg
+// https://i.ibb.co/M5y086D/mahdee.jpg
+// https://i.ibb.co/G27pq0J/shuvo-employee.jpg
+// https://i.ibb.co/jJQBg2n/siam-employee.png

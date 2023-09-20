@@ -18,6 +18,24 @@
   background: linear-gradient(90deg, #004d6e 0%, #00accc 100%);
 }
 
+/*---------------------- Banner section -----------------------*/
+/* .slick-prev:before, .slick-next:before {
+  font-size: 50px !important;
+} */
+
+@media (min-width: 768px) {
+  .carousel .control-next.control-arrow:before {
+    border-left: 25px solid #fff !important;
+  }
+  .carousel .control-prev.control-arrow:before {
+    border-right: 25px solid #fff !important;
+  }
+  .carousel .control-arrow:before,
+  .carousel.carousel-slider .control-arrow:before {
+    border-top: 24px solid transparent !important;
+    border-bottom: 26px solid transparent !important;
+  }
+}
 /*---------------------- About us section -----------------------*/
 .my-custom-animation {
   animation: fade-right 2s infinite;

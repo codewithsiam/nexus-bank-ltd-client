@@ -61,7 +61,7 @@ const AdminPasswordChange = () => {
         body: JSON.stringify({ oldPassword, newPassword, isAdmin }),
       });
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (data.success) {
         setSuccess(data.message);
         Swal.fire("success", `${data.message}`);

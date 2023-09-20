@@ -12,7 +12,7 @@ const MobileMenu = ({ setShowMenu }) => {
             <div className="flex items-center gap-2">
               <img
                 className="w-10 h-10"
-                src="https://i.ibb.co/Xzt8GjV/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-w.png"
+                src="https://i.ibb.co/m5zVJR1/nexus-bank-logo.png"
                 alt=""
               />
               <h2 className="text-3xl font-semibold text-black">NEXUS</h2>

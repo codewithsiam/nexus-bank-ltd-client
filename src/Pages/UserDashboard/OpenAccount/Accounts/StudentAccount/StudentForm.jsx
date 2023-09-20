@@ -7,16 +7,19 @@ import ProfilePhoto from "./ProfilePhoto";
 import { baseUrl } from "../../../../../config/server";
 import OtpModal from "../OtpModal/OtpModal";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import SharedProfileImage from "../DepositAccount/SharedProfileImage";
 
 const StudentForm = () => {
   const [userData, setUserData] = useState({});
   const [nidCardImage, setNidCardImage] = useState("");
-  const [profileImage,setProfileImage] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [birthImage,setBirthImage] = useState(null);
-  const [error,setError] = useState("");
+  const [birthImage, setBirthImage] = useState(null);
+  const [error, setError] = useState("");
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
+  const navigate = useNavigate();
   // console.log(nidCardImage);
 
   // handle user data change
@@ -48,8 +51,8 @@ const StudentForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.verified){
+        // console.log(data);
+        if (data.verified) {
           fetch(`${baseUrl}/add-account`, {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -64,50 +67,45 @@ const StudentForm = () => {
               nationality: userData.nationality,
               marital_status: userData.marital_status,
               job_title: userData.job_title,
+              birth_certificate_number: userData.birth_certificate_number,
               birth_certificate_image: birthImage,
               profile_image: profileImage,
               present_address: userData.present_address,
-              profileImage:profileImage,
-              nidCardImage:nidCardImage,
+              profileImage: profileImage,
+              nidCardImage: nidCardImage,
               permanent_address: userData.permanent_address,
               status: "pending",
             }),
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
-                Swal.fire({
-                  position: "top-middle",
-                  icon: "success",
-                  title: "Your Account Successfully Created",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                // form.reset();
+                Swal.fire(
+                  "Successful",
+                  "Your application for opening account is successful.Please wait for response",
+                  "success"
+                );
+
+                navigate("/");
               }
             })
-            .catch((error) => console.log(error));
-        }
-        else{
-          setError(data.message)
+            .catch((error) => {
+              Swal.fire(
+                "Account Request",
+                "Something wrong.Please try again letter",
+                "error"
+              );
+
+              navigate("/");
+            });
+        } else {
+          setError(data.message);
         }
       })
       .then((err) => console.log(err));
   };
 
-
-  // handle nid card image
-  // const handleNidCardImageChange = async (e)=>{
-  //     const nidImage = e.target.files[0];
-  //     const compressBase64 = await compressAndConvertToBase64(nidImage,300,200,0.8);
-  //     setNidCardImage(compressBase64)
-  // }
-  // const handlePersonPhotoChange = async(e)=>{
-  //     const personPhoto = e.target.files[0];
-  //     const compressBase64 = await compressAndConvertToBase64(300,200,0.8);
-  //     setPersonPhoto(compressBase64)
-  // }
   return (
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
@@ -169,7 +167,7 @@ const StudentForm = () => {
             </label>
             <input
               type="text"
-              name="nidCardNumber"
+              name="birth_certificate_number"
               // value={user?.email}
               onChange={handleUserDataOnChange}
               required
@@ -278,9 +276,12 @@ const StudentForm = () => {
         </div>
         <div className="flex gap-4 mt-4 mb-2">
           <BirthImage birthImage={birthImage} setBirthImage={setBirthImage} />
-          <ProfilePhoto profileImage={profileImage} setProfileImage={setProfileImage} />
+          <SharedProfileImage
+            profileImage={profileImage}
+            setProfileImage={setProfileImage}
+          />
         </div>
-     
+
         <div className="flex gap-4">
           <div className="form-control w-full">
             <label className="label">
@@ -311,15 +312,7 @@ const StudentForm = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex gap-2 items-center my-4">
-          <input
-            name="condition"
-            onChange={handleUserDataOnChange}
-            type="checkbox"
-          />
-          <p>accept our terms and conditions</p>
-        </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"

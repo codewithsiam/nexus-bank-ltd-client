@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { baseUrl } from '../../config/server';
 import { useParams } from 'react-router';
-import Footer from '../Shared/Footer/Footer';
+
 
 const BlogDetail = () => {
     const [newsData, setNewsData] = useState({})
@@ -16,7 +16,8 @@ const BlogDetail = () => {
                 setNewsData(data)
             })
     }, [])
-    console.log(id)
+    //console.log(id)
+    // console.log(newsData)
     return (
         <div className='w-full bg-slate-100  '>
             <div className='py-8  mx-20 '>

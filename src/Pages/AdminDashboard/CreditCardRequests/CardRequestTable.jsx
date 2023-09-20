@@ -11,26 +11,38 @@ import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
 
 const CardRequestTable = () => {
   const [cardRequests, setCardRequests] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [control, setControl] = useState(false);
   const [feedId, setFeedId] = useState(null);
+  const [loading,setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true)
     fetch(`${baseUrl}/credit-card-requests`)
       .then((res) => res.json())
-      .then((data) => setCardRequests(data));
+      .then((data) => {
+        setCardRequests(data)
+        setLoading(false)
+      });
   }, [control]);
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  if(loading){
+    return <LoadingComponent/>
+  }
 
   // handle status ----
   const handleStatus = (id, status) => {
     axios
       .patch(`${baseUrl}/card-status/${id}/?status=${status}`)
       .then((data) => {
+        // console.log(data)
         if (data.data.modifiedCount > 0) {
           setControl(!control);
           Swal.fire({
@@ -87,6 +99,7 @@ const CardRequestTable = () => {
                   <TableCell>Full Name</TableCell>
                   <TableCell>Nid Card Number</TableCell>
                   <TableCell>Account Number</TableCell>
+                  <TableCell>Status</TableCell>
                   <TableCell>Action</TableCell>
                 </TableRow>
               </TableHead>
@@ -103,6 +116,7 @@ const CardRequestTable = () => {
                     </TableCell>
                     <TableCell>{card.nidCardNumber}</TableCell>
                     <TableCell>{card?.accountNumber}</TableCell>
+                    <TableCell>{card?.status}</TableCell>
                     <TableCell>
                       <div className="flex gap-3 items-center">
                         <button
@@ -111,7 +125,10 @@ const CardRequestTable = () => {
                         >
                           Deny
                         </button>
-                        <button  onClick={() => handleStatus(card._id, "approved")} className="bg-green-500 px-4 py-2 rounded text-white ">
+                        <button
+                          onClick={() => handleStatus(card._id, "approved")}
+                          className="bg-green-500 px-4 py-2 rounded text-white "
+                        >
                           Approve
                         </button>
                       </div>

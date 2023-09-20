@@ -4,12 +4,12 @@ import TitleGroup from '../../../Components/Title/TitleGroup';
 
 const About = () => {
     return (
-        <div className="w-full max-w-screen-xl mx-auto mb-10 mt-20 grid md:grid-cols-2 gap-10">
+        <div className="w-full max-w-screen-xl mx-auto my-5 md:mb-10 md:mt-20 grid md:grid-cols-2 md:gap-10">
             <div className="">
                 <div className="md:flex">
                     <img className="w-full " src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
-                    <div>
-                        <div className='flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
+                    <div className='hidden md:block'>
+                        <div className=' md:flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
                             <h1 className='lg:text-5xl text-xl'>5</h1>
                             <p className='lg:text-2xl text-[10px]'>Years of Experience</p>
                         </div>
@@ -21,7 +21,7 @@ const About = () => {
                     <img className="md:w-[230px] lg:w-[300px]" src="https://i.ibb.co/sFZBGzh/about-two.jpg" alt="" />
                 </div>
             </div>
-            <div className="bg-[url('https://i.ibb.co/5FWTNWH/bg-right-text.png')]">
+            <div className="bg-[url('https://i.ibb.co/5FWTNWH/bg-right-text.png')] p-5">
                 <div>
                     <TitleGroup 
                         subHeading={"About Us"}
@@ -43,7 +43,7 @@ const About = () => {
                         <TbSquareRounded /> <p>Our Startup industry Here</p>
                     </div>
                 </div>
-                <Link to={`aboutDetails`} className="my-btn text-white px-4 py-2 rounded">Read More</Link>
+                <Link to={`about-details`} className="my-btn text-white px-4 py-2 rounded">Read More</Link>
             </div>
         </div>
     );
