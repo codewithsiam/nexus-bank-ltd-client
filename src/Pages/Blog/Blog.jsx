@@ -1,5 +1,4 @@
 import React from 'react';
-import BlogNews from './BlogNews';
 import CenterTitle from '../../Components/Title/CenterTitle';
 import useDesignation from '../../Hooks/useDesignation';
 import { useState } from 'react';
