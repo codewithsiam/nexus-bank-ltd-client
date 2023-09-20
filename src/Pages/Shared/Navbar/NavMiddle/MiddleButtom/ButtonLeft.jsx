@@ -29,7 +29,7 @@ const {user} = useContext(AuthContext)
         </div>
         {
           expendService && <div className="flex flex-col absolute z-30 bg-white px-6 py-3 rounded-lg space-y-2 ">
-          <Link onClick={()=>setExpendService(!expendService)} to="/about-details">Cards</Link>
+          <Link onClick={()=>setExpendService(!expendService)} to="/nexus-accounts">Accounts</Link>
           <Link onClick={()=>setExpendService(!expendService)} to="/retail-loan">Loan</Link>
           
           </div>

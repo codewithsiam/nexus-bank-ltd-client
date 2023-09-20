@@ -1,0 +1,92 @@
+{
+    "directors":[
+        {
+          "name": "John Doe",
+          "role": "Senior Manager",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/YttY8Zz/Capture.png"
+        },
+      
+        {
+          "name": "Jane Smith",
+          "role": "Financial Analyst",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
+        },
+      
+        {
+          "name": "Michael Johnson",
+          "role": "Designer",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
+        },
+      
+        {
+          "name": "Emily Williams",
+          "role":"Branch Manager",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
+        }
+    ],
+    "management":[
+        {
+          "name": "John Doe",
+          "role": "Senior Manager",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/YttY8Zz/Capture.png"
+        },
+      
+        {
+          "name": "Jane Smith",
+          "role": "Financial Analyst",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
+        },
+      
+        {
+          "name": "Michael Johnson",
+          "role": "Designer",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
+        },
+      
+        {
+          "name": "Emily Williams",
+          "role":"Branch Manager",
+          "socialLinks": {
+            "facebook": "https://facebook.com/",
+            "twitter": "https://twitter.com/",
+            "instagram": "https://instagram.com/"
+          },
+          "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
+        }
+    ]
+}

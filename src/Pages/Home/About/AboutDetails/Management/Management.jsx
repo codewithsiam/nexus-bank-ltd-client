@@ -55,13 +55,13 @@ const teamMembers = [
 
 const Management = () => {
   const [hoveredIndex, setHoveredIndex] = useState(-1);
-  // const [employees,setEmployees] = useState([]);
+  const [management,setManagement] = useState([]);
 
-  // useEffect(()=>{
-  //   fetch(`${baseUrl}/employees`)
-  //   .then(res=>res.json())
-  //   .then(data=>console.log(data))
-  // },[])
+  useEffect(()=>{
+    fetch(`${baseUrl}/get-management`)
+    .then(res=>res.json())
+    .then(data=>console.log(data))
+  },[])
 
   const handleHover = (index) => {
     setHoveredIndex(index);

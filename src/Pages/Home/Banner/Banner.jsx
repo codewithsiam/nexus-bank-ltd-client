@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { baseUrl } from '../../../config/server';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 const Banner = () => {
-  const [banners, setBanners] = useState([]);
+  const banners = useLoaderData()
+  // const [banners, setBanners] = useState([]);
 
-  useEffect(() => {
-    fetch(`${baseUrl}/get-banner`)
-      .then((res) => res.json())
-      .then((data) => setBanners(data))
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch(`${baseUrl}/get-banner`)
+  //     .then((res) => res.json())
+  //     .then((data) => setBanners(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
+  console.log(banners)
 
   const carouselSettings = {
     showArrows: true,
@@ -27,7 +29,7 @@ const Banner = () => {
     <Carousel {...carouselSettings}>
       {banners.map((slide, index) => (
         <div key={index} className='relative '>
-          <img className='object-cover h-[200px] md:h-[400px] lg:h-[500px]' src={slide.banner_img} alt={`Slide ${index}`} />
+          <img className='object-cover h-[200px] md:h-[300px] lg:h-[400px]' src={slide.banner_img} alt={`Slide ${index}`} />
           <div className='text-left absolute top-[20%] left-0 text-white w-full lg:w-2/3 pl-14'>
             <div>
               {

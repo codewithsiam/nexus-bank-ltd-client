@@ -7,7 +7,7 @@ const About = () => {
         <div className="w-full max-w-screen-xl mx-auto my-5 md:mb-10 md:mt-20 grid md:grid-cols-2 md:gap-10">
             <div className="">
                 <div className="md:flex">
-                    <img className="w-full " src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
+                    <img className="w-[70%]" src="https://i.ibb.co/vqNFFDS/about-one.jpg" alt="" />
                     <div className='hidden md:block'>
                         <div className=' md:flex gap-[3px] md:gap-4 items-center my-btn py-2 px-1 md:py-2 md:px-5 text-white w-[70px] md:w-[100px] lg:w-[220px] animate-fade-right animate-infinite my-custom-animation'>
                             <h1 className='lg:text-5xl text-xl'>5</h1>
