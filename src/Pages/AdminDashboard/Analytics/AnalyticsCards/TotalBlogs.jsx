@@ -8,7 +8,7 @@ const TotalBlogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [data,setData] = useState([]);
     const [single,setSingle] = useState([]);
-    console.log(single)
+    // console.log(single)
 
     useEffect(() => {
         fetch(`${baseUrl}/getBlogs`)
@@ -25,7 +25,7 @@ const TotalBlogs = () => {
             });
     }, []);
 
-    console.log(blogs.length); // Check the fetched data in the console
+    // console.log(blogs.length); // Check the fetched data in the console
 
     return (
         <div className='bg-[#FFFFFF] shadow-sm border rounded-xl' style={{ height: '250px' }}>

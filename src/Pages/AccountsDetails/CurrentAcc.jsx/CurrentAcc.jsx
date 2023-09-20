@@ -91,7 +91,7 @@ const CurrentAcc = () => {
                         </div>
                         <div className="collapse-content text-lg mt-4"> 
                             <p  className=' flex gap-2 items-center my-4 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Please see the<Link 
-                            to="https://drive.google.com/file/d/1Ai-vPQKmWeJv5UWRyjPV3NnlB8sPIrBC/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1_uFR4tZZb9BdnzYdO7pNvo0uTfeLxX_y/view?usp=sharing" 
                             className='text-rose-700' target='_blank'>here</Link></p>
                         </div>
                     </div>
@@ -107,6 +107,10 @@ const CurrentAcc = () => {
                                 <li  className=' flex gap-2 items-center my-2 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Debit card fee : Tk. 600</li>
                                 <li  className=' flex gap-2 items-center my-2 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Closing charge: Tk. 300</li>
                             </ul>
+
+                            <p  className='flex gap-2 items-center my-2 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> You can also visit<Link 
+                            to="https://drive.google.com/file/d/1aeWz8vvF7AJGSRG3lE9cRpom3la8b-OD/view?usp=drive_link" 
+                            className='text-rose-700' target='_blank'>here</Link></p>
                         </div>
                     </div>
                     <div className="collapse collapse-arrow">

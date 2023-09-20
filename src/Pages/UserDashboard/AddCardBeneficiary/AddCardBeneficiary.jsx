@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const AddCardBeneficiary = () => {
     const {user}=useContext(AuthContext)
-    console.log(user)
+    // console.log(user)
     const [error,setError] = useState(null)
     const handleOnSubmit=(e)=>{
         e.preventDefault()

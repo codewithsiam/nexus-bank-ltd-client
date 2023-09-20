@@ -16,7 +16,7 @@ const BlogDetail = () => {
                 setNewsData(data)
             })
     }, [])
-    console.log(newsData)
+    // console.log(newsData)
     return (
         <div className='w-full bg-slate-100  '>
             <div className='py-8  mx-20 '>

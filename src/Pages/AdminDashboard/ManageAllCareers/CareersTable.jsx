@@ -36,7 +36,7 @@ export default function CareersTable({ careersData, setCareersData }) {
                         return res.json();
                     })
                     .then((data) => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.message === "Career deleted successfully") {
                             const remaining = careersData.filter((career) => career._id !== _id);
                             setCareersData(remaining); // Update the state using setCareersData

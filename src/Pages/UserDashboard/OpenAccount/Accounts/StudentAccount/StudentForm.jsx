@@ -51,7 +51,7 @@ const StudentForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.verified) {
           fetch(`${baseUrl}/add-account`, {
             method: "POST",
@@ -79,7 +79,7 @@ const StudentForm = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
                 Swal.fire(
                   "Successful",

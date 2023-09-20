@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 
 const UserReview=()=> {
   const {user}=useContext(AuthContext)
-  console.log(user)
+  // console.log(user)
   const [rating, setRating] = useState(null);
   const [feedback, setFeedback] = useState('');
   const [name, setName] = useState('');
@@ -84,7 +84,7 @@ const UserReview=()=> {
         }
       })
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.insertedId) {
           Swal.fire({
             position: "top-center",

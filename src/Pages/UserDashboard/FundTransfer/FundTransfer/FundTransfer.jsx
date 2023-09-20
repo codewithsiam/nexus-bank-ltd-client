@@ -64,7 +64,7 @@ const FundTransfer = () => {
       };
 
       const result = await sendOTP(data);
-      console.log(result);
+      // console.log(result);
       setOtpSent(true);
       Swal.fire({
         position: "top-end",
@@ -92,7 +92,7 @@ const FundTransfer = () => {
 
     
     setTransferData(transferDataInfo);
-    console.log(transferDataInfo);
+    // console.log(transferDataInfo);
     handleSendOTP();
   };
 
@@ -110,7 +110,7 @@ const FundTransfer = () => {
   const handleVerifyPin = (enteredOtp) => {
     const storedEmail = localStorage.getItem("email");
     const storedAccountNumber = localStorage.getItem("accountNumber");
-    console.log("transfer data", transferData);
+    // console.log("transfer data", transferData);
     let Url = "";
     if (storedEmail) {
       Url = `${baseUrl}/verify-otp?email=${storedEmail}&otp=${enteredOtp}`;
@@ -121,7 +121,7 @@ const FundTransfer = () => {
     axios
       .post(Url)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.verified) {
           setOtpMessageSuccess(response.data.message);
           localStorage.removeItem("email");
@@ -138,12 +138,12 @@ const FundTransfer = () => {
   };
 
   const handleTransferFinally = (pinVerified) => {
-    console.log("Transfer");
+    // console.log("Transfer");
     // console.log(transferData);
     axios
       .put(`${baseUrl}/money-transfer`, transferData)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data.success) {
           Swal.fire({
             position: "top-end",

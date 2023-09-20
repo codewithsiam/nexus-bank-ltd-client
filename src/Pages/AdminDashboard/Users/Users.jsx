@@ -16,7 +16,7 @@ const Users = () => {
       <div>
         <h1 className='text-2xl mt-12 text-primary text-center'>Our all users</h1>
       </div>
-      <UsersCard></UsersCard>
+      {/* <UsersCard></UsersCard> */}
       <UserTable usersTableData={usersData} setUsersTableData={setUsersData} />
     </>
   );

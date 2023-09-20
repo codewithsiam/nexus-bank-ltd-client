@@ -12,7 +12,7 @@ const UpdateNews = () => {
     const [detail, setDetail] = useState('')
     const [title, setTitle] = useState('')
     const [img, setImg] = useState('')
-    console.log(title)
+    // console.log(title)
     useEffect(() => {
         fetch(`${baseUrl}/news/${id}`)
             .then(res => res.json())
@@ -25,7 +25,7 @@ const UpdateNews = () => {
     }, [])
     const handelImgChange = async (e) => {
         const img = e.target.files[0]
-        console.log(img)
+        // console.log(img)
         const formData = new FormData();
         formData.append('image', img);
         fetch(img_url, {
@@ -38,11 +38,11 @@ const UpdateNews = () => {
     const handleSubmit = (e) => {
         setLoading(true)
         e.preventDefault()
-        console.log("aaaaaaaaaa", title)
+        // console.log("aaaaaaaaaa", title)
 
 
         const info = { title, detail, img, date: new Date() }
-        console.log(info)
+        // console.log(info)
 
         fetch(`${baseUrl}/updateBlogs/${id}`, {
             method: "PATCH",

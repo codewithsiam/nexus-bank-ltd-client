@@ -19,7 +19,21 @@ const StudentAcc = () => {
             </div>
             <div className='w-full max-w-screen-xl mx-auto'> 
                 <div className='text-center my-10'>
-                    <p className='text-xl lg:text-3xl'>NBL Current Account gives you an array of services like online banking from any NBL Branch in Bangladesh, access to Internet banking as well as cheque book and debit card facility. With unlimited transaction facility, this is truly your best choice to conduct your day to day transaction.</p>
+                    <p className='text-xl lg:text-3xl'>Secure the future of your children where we joining with you to fulfill the dream.Helping you to save, helping you to grow because we value your investment.</p>
+                </div>
+                <div className='md:flex lg:gap-10 gap-5 items-center justify-between my-10 text-center'>
+                    <div className='bg-[#C4E2F7] hover:shadow-lg hover:rounded-xl p-10 mb-5'>
+                        <h1 className='text-[30px] text-primary'>NexusmaxX Card</h1>
+                        <p> No Account Maintenance Fee</p>
+                    </div>
+                    <div className='bg-[#C4E2F7] hover:shadow-lg hover:rounded-xl p-10 mb-5'>
+                        <h1 className='text-[30px] text-primary'>Nexustouch</h1>
+                        <p>No Minimum Balance Requirement</p>
+                    </div>
+                    <div className='bg-[#C4E2F7] hover:shadow-lg hover:rounded-xl p-10 mb-5'>
+                        <h1 className='text-[30px] text-primary'>Instant Debit Card & Locker Facility</h1>
+                        <p>Daily Interest</p>
+                    </div>
                 </div>
 
                 <div>
@@ -63,7 +77,7 @@ const StudentAcc = () => {
                         </div>
                         <div className="collapse-content text-lg mt-4"> 
                             <p  className=' flex gap-2 items-center my-4 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Please see the<Link 
-                            to="https://drive.google.com/file/d/1Ai-vPQKmWeJv5UWRyjPV3NnlB8sPIrBC/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1_uFR4tZZb9BdnzYdO7pNvo0uTfeLxX_y/view?usp=sharing" 
                             className='text-rose-700' target='_blank'>here</Link></p>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ const TransferMoney = () => {
         `${baseUrl}/verify-otp?accountNumber=${formData.senderAccountNumber}&otp=${otp}`
       ); // Replace with your API endpoint
       setVerificationResult(response.data);
-      console.log(response.data);
+      // console.log(response.data);
       const requestData = { ...formData };
 
       try {
@@ -32,7 +32,7 @@ const TransferMoney = () => {
           `${baseUrl}/money-transfer`,
           requestData
         );
-        console.log(response.data);
+        // console.log(response.data);
 
         Swal.fire("Success", "Money transfer successful", "success");
 
@@ -67,11 +67,11 @@ const TransferMoney = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log(formData.senderAccountNumber);
+    // console.log(formData.senderAccountNumber);
     const response = await axios.get(
       `${baseUrl}/send-otp?accountNumber=${formData.senderAccountNumber}`
     );
-    console.log(response.data);
+    // console.log(response.data);
     if (response.data.sendEmail === false) {
       return alert("OTP not sent");
     }

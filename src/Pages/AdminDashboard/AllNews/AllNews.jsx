@@ -36,7 +36,7 @@ const AllNews = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        // console.log(data)
                         if (data.deletedCount) {
                             Swal.fire(
                                 'Deleted!',

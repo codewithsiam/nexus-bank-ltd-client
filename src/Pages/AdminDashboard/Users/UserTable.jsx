@@ -33,7 +33,7 @@ export default function UserTable({ usersTableData, setUsersTableData }) {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               const remaining = usersTableData.filter((user) => user._id !== _id);
               setUsersTableData(remaining); // Update the state using setUsersTableData
@@ -78,9 +78,9 @@ export default function UserTable({ usersTableData, setUsersTableData }) {
           <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete(params.row._id)}>
             <DeleteIcon />
           </IconButton>
-          <Link to={`${params.row.email}`}>
+          {/* <Link to={`${params.row.email}`}>
             <CgProfile className="h-6 w-6 cursor-pointer m-6" />
-          </Link>
+          </Link> */}
         </>
       ),
     },

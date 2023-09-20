@@ -74,7 +74,7 @@ const SavingsAcc = () => {
                         </div>
                         <div className="collapse-content text-lg mt-4"> 
                             <p  className=' flex gap-2 items-center my-4 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Please see the<Link 
-                            to="https://drive.google.com/file/d/1Ai-vPQKmWeJv5UWRyjPV3NnlB8sPIrBC/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1_uFR4tZZb9BdnzYdO7pNvo0uTfeLxX_y/view?usp=sharing" 
                             className='text-rose-700' target='_blank'>here</Link></p>
                         </div>
                     </div>

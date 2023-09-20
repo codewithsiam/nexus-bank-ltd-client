@@ -15,7 +15,7 @@ const SrcAndFilter = ({ requestedAccounts, setRequestedAccounts }) => {
   // handle filter -------------
   const handleFilter = (e)=>{
     const filterItem = e.target.value;
-    console.log(filterItem)
+    // console.log(filterItem)
    fetch(`${baseUrl}/pending/${filterItem}`)
    .then(res=>res.json())
    .then(data=>setRequestedAccounts(data))

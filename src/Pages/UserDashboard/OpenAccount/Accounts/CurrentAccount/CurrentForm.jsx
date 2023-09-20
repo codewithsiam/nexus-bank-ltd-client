@@ -30,7 +30,7 @@ const CurrentForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData);
+  // console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -54,7 +54,7 @@ const CurrentForm = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.verified) {
           fetch(`${baseUrl}/add-account`, {
             method: "POST",
@@ -81,7 +81,7 @@ const CurrentForm = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
                 Swal.fire(
                   'Successful',

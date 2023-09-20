@@ -13,7 +13,7 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(user)
+  // console.log(user)
   
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
 
@@ -71,7 +71,7 @@ const EditProfile = () => {
       first_name: first_name,
       profile_image: imageUrl
     };
-    console.log(updatedProfileInfo);
+    // console.log(updatedProfileInfo);
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -91,7 +91,7 @@ const EditProfile = () => {
         })
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           if (data.message === 'Profile updated successfully') {
             Swal.fire(
               'Good job!',
@@ -139,7 +139,7 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="w-2/3">
+          <div className="mt-5 w-full md:w-2/3">
             <Box>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* Profile Name */}

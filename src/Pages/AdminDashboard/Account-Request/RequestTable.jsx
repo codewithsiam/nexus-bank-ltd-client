@@ -49,7 +49,7 @@ const RequestTable = ({
   // handle status ----
   const handleStatus = (id, status) => {
     axios.patch(`${baseUrl}/status/${id}/?status=${status}`).then((data) => {
-      console.log(data)
+      // console.log(data)
       if (data.data.modifiedCount > 0) {
         setControl(!control);
         Swal.fire({

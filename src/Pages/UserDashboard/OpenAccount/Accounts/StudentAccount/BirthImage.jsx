@@ -3,7 +3,7 @@ import { FaPlus } from "react-icons/fa";
 import { compressAndConvertToBase64 } from "../../../../../config/base64";
 
 const BirthImage = ({ birthImage, setBirthImage }) => {
-  console.log(birthImage);
+  // console.log(birthImage);
   const handleBirthImage = async (e) => {
     const image = e.target.files[0];
     const compressBase64 = await compressAndConvertToBase64(

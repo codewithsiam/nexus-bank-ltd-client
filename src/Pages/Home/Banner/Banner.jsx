@@ -5,16 +5,15 @@ import { Carousel } from 'react-responsive-carousel';
 import { Link, useLoaderData } from 'react-router-dom';
 
 const Banner = () => {
-  const banners = useLoaderData()
   // const [banners, setBanners] = useState([]);
 
+  const banners = useLoaderData();
   // useEffect(() => {
   //   fetch(`${baseUrl}/get-banner`)
   //     .then((res) => res.json())
   //     .then((data) => setBanners(data))
   //     .catch((error) => console.error(error));
   // }, []);
-  console.log(banners)
 
   const carouselSettings = {
     showArrows: true,

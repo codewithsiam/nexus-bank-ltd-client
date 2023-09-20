@@ -47,7 +47,7 @@ const StudentLoan = () => {
                             <p className='flex gap-2 mb-1'><BiSolidHandRight className='w-[25px] text-primary flex-shrink-0'/>To pursue higher studies for undergraduate courses (general/technical) in home and post-graduate courses in home and abroad.</p>
                         </div>
                     </div>
-                    <div className="collapse collapse-arrow ">
+                    <div className="collapse collapse-plus">
                         <input className='' type="radio" name="my-accordion-3" /> 
                         <div className="collapse-title text-xl font-medium">
                             Features

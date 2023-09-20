@@ -89,7 +89,7 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
       axios
         .post(`${baseUrl}/payments`, paymentData)
         .then((res) => {
-          console.log("Payment successful:", res.data.insertedId);
+          // console.log("Payment successful:", res.data.insertedId);
           if (res.data.insertedId) {
             Swal.fire({
               icon: "success",

@@ -17,7 +17,7 @@ const CustomerServiceForm = () => {
     const notify = () => toast.success('Submitted');
 
     const onSubmit = async (data) => {
-        console.log(data)
+        // console.log(data)
         try {
             const res = await axios.post(`${baseUrl}/support-customers`, data)
             if (res.data.insertedId) {
@@ -31,8 +31,8 @@ const CustomerServiceForm = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className='mt-5'>
-                <div className='flex items-center gap-5'>
+            <form onSubmit={handleSubmit(onSubmit)} className='mt-5 px-3 md:px-20'>
+                <div className='md:flex items-center gap-5'>
                     <div className='w-full'>
                         <label className='block text-sm'>Customer Name</label>
                         <input {...register("customerName", { required: true })}
@@ -44,7 +44,7 @@ const CustomerServiceForm = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center gap-5 mt-5'>
+                <div className='md:flex items-center gap-5 mt-5'>
                     <div className='w-full'>
                         <label className='block text-sm'>E-mail Address (Registered with Nexus)</label>
                         <input {...register("emailAddress", { required: true })} type="text" placeholder='E-mail Address (Registered with Nexus)' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />

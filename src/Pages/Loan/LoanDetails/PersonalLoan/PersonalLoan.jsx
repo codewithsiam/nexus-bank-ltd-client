@@ -62,7 +62,7 @@ const PersonalLoan = () => {
                         </div>
                         <div className="collapse-content mt-4 text-lg"> 
                             <p className='flex gap-2 items-center my-3'><BiSolidHandRight className='w-[25px] text-primary'/> please see the <Link 
-                            to="https://drive.google.com/file/d/1XMeoorcqaBSg2HTlIWH9kYCeoQm8rM2X/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1aeWz8vvF7AJGSRG3lE9cRpom3la8b-OD/view?usp=drive_link" 
                             target="_blank" className='text-rose-700'>Schedule of Charges</Link></p>
                         </div>
                     </div>

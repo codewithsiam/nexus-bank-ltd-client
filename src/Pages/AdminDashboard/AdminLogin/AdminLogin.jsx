@@ -34,12 +34,12 @@ const AdminLogin = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
-    console.log(formData);
+    // console.log(formData);
 
     axios
       .post(`${baseUrl}/admin-login`, formData)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.success) {
           const { token, result, isAdmin } = res.data;
           toast.success("Login Success")

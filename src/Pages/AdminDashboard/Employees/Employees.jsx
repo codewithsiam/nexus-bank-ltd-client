@@ -23,6 +23,8 @@ import EmployeeTable from "./EmployeeTable";
 import { useEffect } from "react";
 import { baseUrl } from "../../../config/server";
 import toast from "react-hot-toast";
+import { LanOutlined } from "@mui/icons-material";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
 
 // generate random string --------------
 function generateRandomString() {
@@ -48,13 +50,17 @@ const Employees = () => {
   const [hidePassword, SetHidePassword] = React.useState(true);
   const [employees, setEmployees] = useState([]);
   const [control, setControl] = useState(true);
-  const [error,setError] = useState("");
-  console.log(temporaryPassword);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  // console.log(temporaryPassword);
 
   useEffect(() => {
     fetch(`${baseUrl}/employees`)
       .then((res) => res.json())
-      .then((data) => setEmployees(data));
+      .then((data) => {
+        setEmployees(data)
+        setLoading(false);
+      });
   }, [control]);
 
   const handleOpen = () => {
@@ -89,17 +95,15 @@ const Employees = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        if(data.acknowledged === true){
+        // console.log(data);
+        if (data.acknowledged === true) {
           setTemporaryPassword(randomString);
-   
+
           setControl(!control);
+        } else {
+          setError(data.message);
+          toast.error(data.message);
         }
-        else{
-          setError(data.message)
-          toast.error(data.message)
-        }
-       
       })
       .catch((err) => console.log(err));
   };
@@ -120,13 +124,22 @@ const Employees = () => {
       setIsCopied(false);
     }, 2000);
   };
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
   return (
     <div>
       <h1 className="text-2xl font-bold mt-16 border-b-2 border-black">
         <PeopleIcon style={{ fontSize: "42" }} /> EMPLOYEES
       </h1>
       <SearchFilter handleOpen={handleOpen} setEmployees={setEmployees} />
-      <EmployeeTable employees={employees && employees} control={control} setControl={setControl} />
+      <EmployeeTable
+        employees={employees && employees}
+        control={control}
+        setControl={setControl}
+      />
 
       {/* modal data here  */}
       <Modal
@@ -238,12 +251,7 @@ const Employees = () => {
                   />
                 </div>
               </div>
-            {
-              error &&   <p className="mt-4 text-red-600">
-              {error}
-              
-            </p>
-            }
+              {error && <p className="mt-4 text-red-600">{error}</p>}
             </div>
             <div className="flex gap-2 justify-end my-2">
               <span
@@ -279,7 +287,6 @@ const Employees = () => {
                   <span ref={passRef}>
                     <span>{temporaryPassword}</span>
                   </span>
-                  
                   <button className="ml-4" onClick={handleCopy}>
                     {" "}
                     {isCopied ? (

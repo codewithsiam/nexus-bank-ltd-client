@@ -1,6 +1,7 @@
 import React from 'react';
 import Subscribe from './Subscribe';
 import SocialFooterIcons from './SocialFooterIcons';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -22,16 +23,16 @@ const Footer = () => {
                             <h1 className="text-2xl font-bold mb-5">Useful Links</h1>
                             <ul className=''>
                                 <li className='mb-2'>
-                                    <a href="#">Home</a>
+                                    <Link  target='blank' to="/">Home</Link>
                                 </li>
                                 <li className='mb-2'>
-                                    <a href="#">About Us</a>
+                                    <Link  target='blank' to="/about-details">About Us</Link>
                                 </li>
                                 <li className='mb-2'>
-                                    <a href="#">Services</a>
+                                    <Link  target='blank' to="/nexus-accounts">Services</Link>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <Link  target='blank' to="/contact">Contact</Link>
                                 </li>
                             </ul>
                         </div>
@@ -41,10 +42,10 @@ const Footer = () => {
                             <h1 className="text-2xl font-bold mb-5">Company</h1>
                             <ul className=''>
                                 <li className='mb-2'>
-                                    <a href="#">Careers</a>
+                                    <Link  target='blank' to="/careers">Careers</Link>
                                 </li>
                                 <li className='mb-2'>
-                                    <a href="#">Awards</a>
+                                    <Link  target='blank' to="/blogs">Blogs</Link>
                                 </li>
                             </ul>
                         </div>
@@ -54,10 +55,10 @@ const Footer = () => {
                             <h1 className="text-2xl font-bold mb-5">Support</h1>
                             <ul className=''>
                                 <li className='mb-2'>
-                                    <a href="#">Contact Us</a>
+                                    <Link  target='blank' to="/nexus-customer-service-portal">Customer Support Portal</Link>
                                 </li>
                                 <li className='mb-2'>
-                                    <a href="#">FAQ</a>
+                                    <Link  target='blank' to="/">FAQ</Link>
                                 </li>
                             </ul>
                         </div>

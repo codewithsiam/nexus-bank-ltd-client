@@ -8,7 +8,7 @@ const BkashFundTransfer = () => {
 
   const onSubmit = (data , e) => {
     e.preventDefault(e)
-    console.log(data);
+    // console.log(data);
     // Handle the form submission logic here
     
     fetch(`${baseUrl}/ssl-payment`,{
@@ -20,7 +20,7 @@ const BkashFundTransfer = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
+        // console.log(result);
         window.location.replace(result.url);
       })
 

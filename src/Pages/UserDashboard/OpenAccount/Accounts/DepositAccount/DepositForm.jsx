@@ -23,7 +23,7 @@ const DepositForm = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData);
+  // console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -32,7 +32,11 @@ const DepositForm = () => {
       `${baseUrl}/send-otp?email=${userData.email}&userName=${userData.first_name}`
     )
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+
+        // console.log(data)
+      }
+      )
       .then((err) => console.log(err));
     setIsOpen(true);
     // const form = e.target;
@@ -74,7 +78,7 @@ const DepositForm = () => {
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
                 Swal.fire(
                   'Successful',

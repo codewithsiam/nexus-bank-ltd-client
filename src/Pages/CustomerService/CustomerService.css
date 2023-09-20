@@ -1,10 +1,11 @@
 .cover-image {
     background-image: url('https://i.ibb.co/NC1WQhP/contact-center.webp');
-    height: 300px;
+    
     width: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     display: flex;
+    object-fit: cover;
     flex-direction: column;
     justify-content: center;
 }
