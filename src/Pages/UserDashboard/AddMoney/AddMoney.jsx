@@ -31,7 +31,7 @@ const AddMoney = () => {
         console.error("Error fetching data:", error);
       });
   }, []);
-console.log("my account", myAccounts);
+// console.log("my account", myAccounts);
   const handlePayClick = (event) => {
     event.preventDefault();
 

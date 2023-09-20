@@ -10,7 +10,7 @@ const AccountBeneficiaryList = () => {
   const [beneficiaryList, setBeneficiaryList] = useState([]);
   const [control,setControl] = useState(true)
   const {user} = useContext(AuthContext);
-  console.log(user.username)
+  // console.log(user.username)
   // const username = "test1";
   useEffect(() => {
     fetch(`${baseUrl}/beneficiaryList/${user && user?.username}`)

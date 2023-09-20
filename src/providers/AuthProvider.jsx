@@ -88,7 +88,7 @@ const AuthProvider = ({ children }) => {
     if (!user) {
       return;
     }
-    console.log("Logout called");
+    // console.log("Logout called");
     localStorage.removeItem("authToken");
     setUser(null);
   };

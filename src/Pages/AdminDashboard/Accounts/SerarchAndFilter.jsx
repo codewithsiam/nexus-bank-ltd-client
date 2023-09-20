@@ -14,7 +14,7 @@ const SerarchAndFilter = ({ accounts, setAccounts,control,setControl }) => {
   // handle filter -------------
   const handleFilter = (e)=>{
     const filterItem = e.target.value;
-    console.log(filterItem)
+    // console.log(filterItem)
    fetch(`${baseUrl}/approved/${filterItem}`)
    .then(res=>res.json())
    .then(data=>setAccounts(data))

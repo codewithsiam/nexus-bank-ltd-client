@@ -8,11 +8,11 @@ import { baseUrl } from '../../config/server';
 
 const BlogPage = () => {
     const {designation} = useDesignation();
-    console.log(designation)
+    // console.log(designation)
     const [blogNews,setBlogNews]=useState([])
     useEffect(()=>{
         fetch(`${baseUrl}/getBlogs`).then(res=>res.json()).then(data=>{
-            console.log(data)
+            // console.log(data)
             setBlogNews(data)
         })
     },[])

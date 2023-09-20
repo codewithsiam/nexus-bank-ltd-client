@@ -12,7 +12,7 @@ import CenterTitle from '../../../Components/Title/CenterTitle';
 
 const Testimonial = () => {
   const {user}=useContext(AuthContext)
-  console.log(user)
+  // console.log(user)
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     fetch(`${baseUrl}/user-reviews`)

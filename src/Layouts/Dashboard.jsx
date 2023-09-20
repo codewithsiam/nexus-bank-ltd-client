@@ -274,7 +274,7 @@ export default function MiniDrawer() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
   const handleLogout = () => {
-    console.log("User logged out");
+    // console.log("User logged out");
     logout(user);
   };
 

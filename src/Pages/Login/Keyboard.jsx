@@ -38,9 +38,9 @@ const Keyboard = () => {
       .then((res) => {
         if (res.data.success === true) {
           const { token, result, isAdmin } = res.data;
-          console.log("Login Successful!", res.data);
-          console.log("User Data:", result);
-          console.log("Token:", token);
+          // console.log("Login Successful!", res.data);
+          // console.log("User Data:", result);
+          // console.log("Token:", token);
 
           // login(token);
           localStorage.setItem("authToken", token);
@@ -59,7 +59,7 @@ const Keyboard = () => {
         setError("An error occurred during login.");
       });
   };
-  console.log(user);
+  // console.log(user);
 
   const handleKeyPress = (key) => {
     if (key === "Backspace") {

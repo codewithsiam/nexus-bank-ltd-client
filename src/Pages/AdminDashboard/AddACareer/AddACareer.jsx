@@ -25,7 +25,7 @@ const AddACareer = () => {
         })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log('Response from MongoDB:', responseData);
+                // console.log('Response from MongoDB:', responseData);
                 setSubmitted(true);
             })
             .catch((error) => {

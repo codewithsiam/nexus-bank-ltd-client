@@ -26,7 +26,7 @@ const Google = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        // console.log(data)
                         toast.success('Successfully toasted!')
                     })
 

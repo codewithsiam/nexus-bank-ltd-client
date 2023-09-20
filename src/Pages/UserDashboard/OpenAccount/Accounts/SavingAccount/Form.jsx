@@ -38,7 +38,7 @@ const Form = () => {
       .then(res => res.json())
       .then(data => {
         setUserLocation(data)
-        console.log(data)
+        // console.log(data)
       })
       .catch(err => console.log(err))
   }
@@ -64,7 +64,7 @@ const ipUrl = "https://api.ipify.org?format=json";
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  console.log(userData);
+  // console.log(userData);
 
   // handle submit
   const handleOnSubmit = (e) => {
@@ -73,7 +73,9 @@ const ipUrl = "https://api.ipify.org?format=json";
       `${baseUrl}/send-otp?email=${userData.email}&userName=${userData.first_name}`
     )
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        // console.log(data)
+      })
       .then((err) => console.log(err));
     setIsOpen(true);
     // const form = e.target;
@@ -112,7 +114,7 @@ const ipUrl = "https://api.ipify.org?format=json";
           })
             .then((res) => res.json())
             .then((data) => {
-              console.log(data);
+              // console.log(data);
               if (data.acknowledged === true) {
                 Swal.fire(
                   'Successful',

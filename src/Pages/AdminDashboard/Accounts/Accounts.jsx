@@ -18,7 +18,7 @@ const Accounts = () => {
   const [accounts, setAccounts] = useState([]);
   const [control, setControl] = useState(false);
   const [loading, setLoading] = useState(true);
-  console.log("account", accounts);
+  // console.log("account", accounts);
 
   useEffect(() => {
     fetch(`${baseUrl}/approved-accounts`)

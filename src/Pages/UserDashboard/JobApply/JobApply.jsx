@@ -19,7 +19,7 @@ const JobApply = () => {
     const [submitted, setSubmitted] = useState(false);
 
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         fetch(`${baseUrl}/appliedJobs`, {
             method: 'POST',
             headers: {
@@ -29,7 +29,7 @@ const JobApply = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.acknowledged == true) {
                     Swal.fire({
                         title: 'Success!',

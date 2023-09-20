@@ -66,7 +66,7 @@ function RegistrationForm() {
             })
                 .then(res => res.json())
                 .then(photo => {
-                    console.log(photo);
+                    // console.log(photo);
 
                     const storeUser = {
                         name: data.name,
@@ -84,12 +84,12 @@ function RegistrationForm() {
                     })
                         .then(res => res.json())
                         .then(data => {
-                            console.log(data);
+                            // console.log(data);
                             navigate(from, { navigate: true });
                             setError("");
 
                             verifyEmail(result.user).then((result) => {
-                                console.log(result);
+                                // console.log(result);
                                 alert("Please verify your email");
                             });
                         })

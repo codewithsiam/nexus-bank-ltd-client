@@ -92,7 +92,7 @@ const CustomerSupport = () => {
                 })
                     .then((res) => res.json())
                     .then((data) => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.deletedCount > 0) {
                             // Update the state to remove the deleted item
                             setDetails((prevDetails) => prevDetails.filter((item) => item._id !== detail._id));
@@ -107,7 +107,7 @@ const CustomerSupport = () => {
     };
 
     const handleDetails = (detail) => {
-        console.log(detail)
+        // console.log(detail)
         setIsOpen(!isOpen)
         fetch(`${baseUrl}/customer/${detail?._id}`)
             .then(res => res.json())

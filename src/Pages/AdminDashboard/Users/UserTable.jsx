@@ -33,7 +33,7 @@ export default function UserTable({ usersTableData, setUsersTableData }) {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.deletedCount > 0) {
               const remaining = usersTableData.filter((user) => user._id !== _id);
               setUsersTableData(remaining); // Update the state using setUsersTableData

@@ -52,7 +52,7 @@ const Employees = () => {
   const [control, setControl] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  console.log(temporaryPassword);
+  // console.log(temporaryPassword);
 
   useEffect(() => {
     fetch(`${baseUrl}/employees`)
@@ -95,7 +95,7 @@ const Employees = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data.acknowledged === true) {
           setTemporaryPassword(randomString);
 

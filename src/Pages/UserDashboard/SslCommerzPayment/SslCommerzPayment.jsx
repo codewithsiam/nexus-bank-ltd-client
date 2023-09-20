@@ -66,7 +66,7 @@ const SslCommerzPayment = () => {
       };
 
       const result = await sendOTP(data);
-      console.log(result);
+      // console.log(result);
       setOtpSent(true);
       Swal.fire({
         position: "top-end",
@@ -93,7 +93,7 @@ const SslCommerzPayment = () => {
 
     
     setTransferData(transferDataInfo);
-    console.log(transferDataInfo);
+    // console.log(transferDataInfo);
     handleSendOTP();
   };
 
@@ -111,7 +111,7 @@ const SslCommerzPayment = () => {
   const handleVerifyPin = (enteredOtp) => {
     const storedEmail = localStorage.getItem("email");
     const storedAccountNumber = localStorage.getItem("accountNumber");
-    console.log("transfer data", transferData);
+    // console.log("transfer data", transferData);
     let Url = "";
     if (storedEmail) {
       Url = `${baseUrl}/verify-otp?email=${storedEmail}&otp=${enteredOtp}`;
@@ -122,7 +122,7 @@ const SslCommerzPayment = () => {
     axios
       .post(Url)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         if (response.data.verified) {
           setOtpMessageSuccess(response.data.message);
           localStorage.removeItem("email");
@@ -139,8 +139,8 @@ const SslCommerzPayment = () => {
   };
 
   const handleTransferFinally = (pinVerified) => {
-    console.log("Transfer");
-    console.log(transferData);
+    // console.log("Transfer");
+    // console.log(transferData);
 
      
     fetch(`${baseUrl}/ssl-payment`,{
@@ -152,7 +152,7 @@ const SslCommerzPayment = () => {
     })
       .then(res => res.json())
       .then(result => {
-        console.log(result);
+        // console.log(result);
         window.location.replace(result.url);
       })
   };

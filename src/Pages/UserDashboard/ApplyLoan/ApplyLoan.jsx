@@ -10,7 +10,7 @@ const ApplyLoan = () => {
   const { user } = useContext(AuthContext);
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
 
     data.status = "pending";
     data.email = user.email;

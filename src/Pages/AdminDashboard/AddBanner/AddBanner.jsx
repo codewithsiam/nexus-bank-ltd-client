@@ -16,7 +16,7 @@ const AddBanner = () => {
     } = useForm()
 
     const onSubmit = (data, e) => {
-        console.log(data.Photo[0])
+        // console.log(data.Photo[0])
      setLoading(true)
         const img = data.Photo[0]
 

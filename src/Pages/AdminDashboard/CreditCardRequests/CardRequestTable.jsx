@@ -42,7 +42,7 @@ const CardRequestTable = () => {
     axios
       .patch(`${baseUrl}/card-status/${id}/?status=${status}`)
       .then((data) => {
-        console.log(data)
+        // console.log(data)
         if (data.data.modifiedCount > 0) {
           setControl(!control);
           Swal.fire({
