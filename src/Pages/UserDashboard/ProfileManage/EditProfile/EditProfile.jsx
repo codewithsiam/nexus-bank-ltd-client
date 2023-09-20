@@ -114,11 +114,11 @@ const EditProfile = () => {
         Update your Profile page {" "}
       </h1>
       <form onSubmit={handleOnSubmit}>
-        <div className="md:flex gap-10  ">
+        <div className="lg:flex gap-10  ">
           <div classNames=" my-5 w-full md:w-1/3 bg-white py-5 overflow-hidden h-[320px] ">
             <div className="flex justify-center">
               <img
-              className="w-[200px] rounded-full"
+              className="w-[100px] md:w-[200px] rounded-full"
               src="https://i.ibb.co/7kT8phM/profile5.png"
               alt="profile"
               ></img>
@@ -139,7 +139,7 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="mt-5 w-full md:w-2/3">
+          <div className="mt-5 w-full lg:w-2/3">
             <Box>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* Profile Name */}

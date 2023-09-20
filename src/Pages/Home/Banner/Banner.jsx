@@ -29,7 +29,7 @@ const Banner = () => {
       {banners.map((slide, index) => (
         <div key={index} className='relative '>
           <img className='object-cover h-[200px] md:h-[300px] lg:h-[400px]' src={slide.banner_img} alt={`Slide ${index}`} />
-          <div className='text-left absolute top-[20%] left-0 text-white w-full lg:w-2/3 pl-14'>
+          <div className='text-left absolute top-[18%] left-5 text-white w-full lg:w-2/3 pl-14'>
             <div>
               {
                   slide.banner_text?<p className="text-[20px] md:text-[30px] lg:text-[50px] font-bold ">{slide.banner_text}</p>:""
