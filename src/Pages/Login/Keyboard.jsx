@@ -131,10 +131,10 @@ const Keyboard = () => {
   return (
     <div className="bg-[#EEEDEB]">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="bg-[#3E639F] flex items-center px-4">
+        <div className="bg-[#3E639F] md:flex space-y-3 md:space-y-0 gap-3  items-center px-4 py-4">
           <input
             {...register("username", { required: true })}
-            className="border"
+            className="border py-2 pl-2 rounded"
             type="text"
             id="emailInput"
             placeholder="Type your username"
@@ -143,12 +143,12 @@ const Keyboard = () => {
             onClick={() => setActiveInput("emailInput")}
           />
           {errors.email?.type === "required" && (
-            <p className="text-red-400 mt-2">Email is required</p>
+            <p className="text-red-400">Email is required</p>
           )}
           {toggleKeyboardEnabled ? (
             <input
               {...register("password", { required: true })}
-              className="border ml-2"
+              className="border py-2 pl-2 rounded "
               type="text"
               placeholder="Type your password"
               // value={passwordValue}
@@ -159,7 +159,7 @@ const Keyboard = () => {
           ) : (
             <input
               {...register("password", { required: true })}
-              className="border ml-2"
+              className="border py-2 pl-2 rounded"
               type="text"
               placeholder="Type your password"
               value={passwordValue}
@@ -171,13 +171,13 @@ const Keyboard = () => {
           {errors.password?.type === "required" && (
             <p className="text-red-400 mt-2">Password is required</p>
           )}
-          <button className="bg-[#E40100] text-white ml-2 px-3 py-1 mt-2 rounded mb-4">
+          <button className="bg-[#E40100] block md:inline text-white  px-10  py-[9px]  rounded ">
             Login
           </button>
         </div>
         <p>{error}</p>
       </form>
-      <button onClick={() => handleToggleKeyboard()} className="bg-gradient-to-r from-[#004F70] to-[#007C9C] px-3 py-1 mt-2 rounded text-white text-sm">
+      <button onClick={() => handleToggleKeyboard()} className="bg-gradient-to-r ml-3 from-[#004F70] to-[#007C9C] px-3 py-2 mt-2 rounded text-white text-sm">
         Manual Keyboard for password
       </button>
       <div className="keyboard">

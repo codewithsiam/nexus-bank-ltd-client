@@ -9,8 +9,8 @@ import Video from './Video';
 const Login = () => {
 
     return (
-        <section className="md:px-36 mt-11">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5  justify-center">
+        <section className=" md:px-16 lg:px-36 mt-11">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5  justify-center">
                 <div className="">
                     <Keyboard />
 
