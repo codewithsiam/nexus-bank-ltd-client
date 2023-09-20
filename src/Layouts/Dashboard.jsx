@@ -47,6 +47,10 @@ import PaidIcon from "@mui/icons-material/Paid";
 import { PiPasswordFill } from "react-icons/pi";
 import { useScroll } from "framer-motion";
 import { MdAccountTree, MdRateReview } from "react-icons/md";
+import LogoutIcon from '@mui/icons-material/Logout';
+import PaymentsIcon from '@mui/icons-material/Payments';
+import PaymentIcon from '@mui/icons-material/Payment';
+import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
 
 const drawerWidth = 300;
 
@@ -519,7 +523,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AccountBalanceWalletOutlinedIcon />}
+                          {<AccountBalanceWalletIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Current Account"}
@@ -565,7 +569,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<EnergySavingsLeafOutlinedIcon />}
+                          {<SavingsIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Deposit Account"}
@@ -611,7 +615,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<StickyNote2OutlinedIcon />}
+                          {<AddCardIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Apply For Credit Card"}
@@ -670,7 +674,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AccountBalanceWalletOutlinedIcon />}
+                          {<FeaturedPlayListIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Transfer Beneficiary List"}
@@ -803,7 +807,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AiOutlineTransaction />}
+                          {<PaymentsIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"sslcommerz Fund Transfer"}
@@ -826,7 +830,7 @@ export default function MiniDrawer() {
                             justifyContent: "center",
                           }}
                         >
-                          {<AiOutlineTransaction />}
+                          {<PaymentIcon />}
                         </ListItemIcon>
                         <ListItemText
                           primary={"Stripe Fund Transfer"}
@@ -849,6 +853,29 @@ export default function MiniDrawer() {
                     </h4>
                   )}
                   <div className={`${open && "ml-3"}`}>
+                    <Link to={"/"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<HomeIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Home"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
                     <Link to={"my-profile"}>
                       <ListItemButton
                         sx={{
@@ -926,34 +953,30 @@ export default function MiniDrawer() {
 
           <Divider />
           <List>
-            <ListItem disablePadding sx={{ display: "block" }}>
-              <div
-                onClick={() => handleLogout()}
-                className="bg-red-400 rounded-full mb-10  px-4 mx-7 font-bold mt-4"
-              >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? "initial" : "center",
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : "auto",
-                      justifyContent: "center",
-                    }}
-                  >
-                    {/* icon  */}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={"Log Out"}
-                    sx={{ opacity: open ? 1 : 0 }}
-                  />
-                </ListItemButton>
-              </div>
-            </ListItem>
+             <div   onClick={() => handleLogout()} className="mb-10"> 
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<LogoutIcon />}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Logout"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </div>
+           
           </List>
         </Drawer>
       </ThemeProvider>
