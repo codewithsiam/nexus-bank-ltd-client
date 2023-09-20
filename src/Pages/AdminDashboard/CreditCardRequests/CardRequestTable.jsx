@@ -11,21 +11,31 @@ import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
 
 const CardRequestTable = () => {
   const [cardRequests, setCardRequests] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [control, setControl] = useState(false);
   const [feedId, setFeedId] = useState(null);
+  const [loading,setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true)
     fetch(`${baseUrl}/credit-card-requests`)
       .then((res) => res.json())
-      .then((data) => setCardRequests(data));
+      .then((data) => {
+        setCardRequests(data)
+        setLoading(false)
+      });
   }, [control]);
   const closeModal = () => {
     setIsOpen(false);
   };
+
+  if(loading){
+    return <LoadingComponent/>
+  }
 
   // handle status ----
   const handleStatus = (id, status) => {

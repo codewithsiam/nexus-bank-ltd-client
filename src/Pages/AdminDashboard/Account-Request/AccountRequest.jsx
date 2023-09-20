@@ -6,18 +6,25 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { baseUrl } from "../../../config/server";
 import SrcAndFilter from "./SrcAndFilter";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
 
 const AccountRequest = () => {
   const [requestedAccounts,setRequestedAccounts] =useState([]);
   const [control,setControl] = useState(false);
+  const [loading,setLoading] = useState(true)
   // console.log(accounts)
   useEffect(()=>{
     fetch(`${baseUrl}/requested-accounts`)
     .then(res=>res.json())
     .then(data=>{
       setRequestedAccounts(data)
+      setLoading(false)
     })
   },[control])
+
+  if(loading){
+    return <LoadingComponent/>
+  }
   
   return (
     <div>
