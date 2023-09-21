@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 const BlogNews = ({ news }) => {
     const { date, img, detail, title,_id } = news
     const [showText, setShowText] = useState(true)
-    // console.log(_id)
     return (
         <>
           <div data-testid="testNews" className=" px-4 cursor-pointer">

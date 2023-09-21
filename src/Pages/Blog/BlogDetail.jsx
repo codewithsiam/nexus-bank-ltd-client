@@ -6,12 +6,15 @@ import { useParams } from 'react-router';
 
 
 const BlogDetail = () => {
-    const [newsData, setNewsData] = useState({})
-    const { id } = useParams()
-    useEffect(() => {
-        fetch(`${baseUrl}/news/${id}`)
-            .then(res => res.json())
-            .then(data => {
+  const [newsData, setNewsData] = useState({});
+  const { id } = useParams();
+//   console.log(id);
+  useEffect(() => {
+    const url = `${baseUrl}/news/?id=${id}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
 
                 setNewsData(data)
             })
