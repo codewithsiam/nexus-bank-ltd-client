@@ -14,7 +14,7 @@ import { FaArrowAltCircleUp } from "react-icons/fa";
 import Lottie from "lottie-react";
 import icon from '../../assets/animation/animation_lmhksght.json';
 import RightMenu from "../../components/RightMenu/RightMenu";
-import Footer from "../Shared/Footer/Footer";
+import Subscribe from "../Shared/Footer/Subscribe";
 
 const Home = () => {
   const ref = useRef(null);

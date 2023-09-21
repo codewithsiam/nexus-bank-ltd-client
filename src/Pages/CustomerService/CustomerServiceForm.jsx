@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { useForm } from "react-hook-form"
 import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
-import { AuthContext } from '../../providers/AuthProvider';
 import { baseUrl } from '../../config/server';
 
 const CustomerServiceForm = () => {
@@ -33,24 +32,24 @@ const CustomerServiceForm = () => {
         <div>
             <form onSubmit={handleSubmit(onSubmit)} className='mt-5 px-3 md:px-20'>
                 <div className='md:flex items-center gap-5'>
-                    <div className='w-full'>
-                        <label className='block text-sm'>Customer Name</label>
+                    <div className='w-full mt-5'>
+                        <label className='block text-sm font-bold'>Customer Name</label>
                         <input {...register("customerName", { required: true })}
                             type="text" placeholder='Customer Name' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />
                     </div>
-                    <div className='w-full'>
-                        <label className='block text-sm'>Mobile Number (Registered with Nexus)</label>
-                        <input {...register("mobileNo", { required: true })} type="text" placeholder='Mobile Number (Registered with Nexus)' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />
+                    <div className='w-full mt-5'>
+                        <label className='block text-sm font-bold'>Mobile Number (Registered with Nexus)</label>
+                        <input {...register("mobileNo", { required: true })} type="text" placeholder='Mobile Number' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />
                     </div>
                 </div>
 
-                <div className='md:flex items-center gap-5 mt-5'>
-                    <div className='w-full'>
-                        <label className='block text-sm'>E-mail Address (Registered with Nexus)</label>
-                        <input {...register("emailAddress", { required: true })} type="text" placeholder='E-mail Address (Registered with Nexus)' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />
+                <div className='md:flex items-center gap-5'>
+                    <div className='w-full mt-5'>
+                        <label className='block text-sm font-bold'>E-mail Address (Registered with Nexus)</label>
+                        <input {...register("emailAddress", { required: true })} type="text" placeholder='Your email Address' className="w-full outline-none p-2 rounded border border-[#CED4DA]" />
                     </div>
-                    <div className='w-full'>
-                        <label className='block text-sm'>Service Type</label>
+                    <div className='w-full mt-5'>
+                        <label className='block text-sm font-bold'>Service Type</label>
                         <select className='p-2 w-full outline-none border border-[#CED4DA]' {...register("accountType")}>
                             <option value="current account">Current account</option>
                             <option value="saving account">Saving account</option>
@@ -61,11 +60,11 @@ const CustomerServiceForm = () => {
                     </div>
                 </div>
 
-                <label className='block text-sm  mt-5'>Request/Complaint Details</label>
+                <label className='block text-sm  font-bold mt-5'>Request/Complaint Details</label>
 
                 <textarea {...register("details")} className='outline-none w-full p-2 rounded border border-[#CED4DA]' name="details" id="details" cols="30" rows="5"></textarea>
 
-                <button onClick={notify} className='bg-[#CEEAF3] p-3 rounded mt-4'>Submit</button>
+                <button onClick={notify} className='bg-primary text-white hover:bg-blue-900 p-3 rounded mt-4'>Submit</button>
             </form>
             <Toaster />
         </div>

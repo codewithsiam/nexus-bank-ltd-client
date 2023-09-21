@@ -36,7 +36,8 @@ const SavingsAcc = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='lg:flex w-full justify-center'>
+                <div className='flex-col lg:w-[50%] w-full justify-center'>
                     <div className='text-center'>
                     <Heading heading= "Overview"></Heading>
                     </div>
@@ -74,7 +75,7 @@ const SavingsAcc = () => {
                         </div>
                         <div className="collapse-content text-lg mt-4"> 
                             <p  className=' flex gap-2 items-center my-4 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Please see the<Link 
-                            to="https://drive.google.com/file/d/1Ai-vPQKmWeJv5UWRyjPV3NnlB8sPIrBC/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1_uFR4tZZb9BdnzYdO7pNvo0uTfeLxX_y/view?usp=sharing" 
                             className='text-rose-700' target='_blank'>here</Link></p>
                         </div>
                     </div>
@@ -100,6 +101,7 @@ const SavingsAcc = () => {
                             </ul>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div className='p-2 md:flex justify-center items-center my-5 md:my-10'>
                     <h1 className='text-3xl md:text-5xl text-center'>Interested to open an account?</h1>

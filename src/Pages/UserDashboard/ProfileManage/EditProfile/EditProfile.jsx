@@ -13,7 +13,7 @@ const EditProfile = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  // console.log(user)
+  console.log(user)
   
   const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
 
@@ -114,11 +114,11 @@ const EditProfile = () => {
         Update your Profile page {" "}
       </h1>
       <form onSubmit={handleOnSubmit}>
-        <div className="md:flex gap-10  ">
+        <div className="lg:flex gap-10  ">
           <div classNames=" my-5 w-full md:w-1/3 bg-white py-5 overflow-hidden h-[320px] ">
             <div className="flex justify-center">
               <img
-              className="w-[200px] rounded-full"
+              className="w-[100px] md:w-[200px] rounded-full"
               src="https://i.ibb.co/7kT8phM/profile5.png"
               alt="profile"
               ></img>
@@ -139,49 +139,56 @@ const EditProfile = () => {
               </div>
             </div>
           </div>
-          <div className="w-2/3">
+          <div className="mt-5 w-full lg:w-2/3">
             <Box>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* Profile Name */}
                 <div>
                   <label htmlFor="profileName" className="block font-bold">First Name</label>
-                  <TextField required className="w-full" id="outlined-basic" name="profileName" variant="standard" />
+                  <TextField required defaultValue={user?.first_name}
+                  className="w-full" id="outlined-basic" name="profileName" variant="standard" />
                 </div>
                 {/* Nick Name */}
                 <div>
                   <label htmlFor="nickName" className="block font-bold">Last Name</label>
-                  <TextField className="w-full" id="outlined-basic" name="nickName" variant="standard" />
+                  <TextField defaultValue={user?.last_name}
+                  className="w-full" id="outlined-basic" name="nickName" variant="standard" />
                 </div>
               </div>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* email */}
                 <div className="">
                   <label htmlFor="email" className="block font-bold">User's Email</label>
-                  <TextField className="w-full" id="outlined-basic" name="email" variant="standard" />
+                  <TextField defaultValue={user?.email}
+                  className="w-full" id="outlined-basic" name="email" variant="standard" />
                 </div>
                 {/* number */}
                 <div>
                   <label htmlFor="number" className="block font-bold">Number</label>
-                  <TextField type="number" className="w-full" id="outlined-basic" name="number" variant="standard" />
+                  <TextField type="number" defaultValue={user?.number}
+                  className="w-full" id="outlined-basic" name="number" variant="standard" />
                 </div>
               </div>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* Profession */}
                 <div>
                   <label htmlFor="profession" className="block font-bold">Profession</label>
-                  <TextField className="w-full" id="outlined-basic" name="profession" variant="standard" />
+                  <TextField defaultValue={user?.profession}
+                  className="w-full" id="outlined-basic" name="profession" variant="standard" />
                 </div>
                 {/* Birthday */}
                 <div className="">
                   <label htmlFor="Birthday" className="block font-bold">Birthday</label>
-                  <input name="birthday" className="border px-3 py-3 rounded-md w-full" type="date" />
+                  <input name="birthday"  defaultValue={user?.birthday}
+                  className="border px-3 py-3 rounded-md w-full" type="date" />
                 </div>
               </div>
               <div className="grid md:grid-cols-2 gap-5 mb-4">
                 {/* Nationality */}
                 <div>
                   <label htmlFor="nationality" className="block font-bold">Nationality</label>
-                  <TextField className="w-full" id="outlined-basic" name="nationality" variant="standard" />
+                  <TextField defaultValue={user?.nationality} id="outlined-basic"
+                  className="w-full" name="nationality" variant="standard" />
                 </div>
                 {/* Gender */}
                 <div className="">
@@ -203,18 +210,21 @@ const EditProfile = () => {
                 {/* present Address */}
                 <div>
                   <label htmlFor="present_address" className="block font-bold">Present Address</label>
-                  <TextField className="w-full" id="outlined-basic" name="presentAddress" variant="standard" />
+                  <TextField className="w-full" defaultValue={user?.present_address} 
+                  id="outlined-basic" name="presentAddress" variant="standard" />
                 </div>
                 {/* Permanent Address */}
                 <div>
                   <label htmlFor="permanent_address" className="block font-bold">Permanent Address</label>
-                  <TextField className="w-full" id="outlined-basic" name="permanentAddress" variant="standard" />
+                  <TextField className="w-full" defaultValue={user?.permanent_address} 
+                  id="outlined-basic" name="permanentAddress" variant="standard" />
                 </div>
               </div>
               {/* About Me */}
               <div className="">
                 <label htmlFor="description" className="block font-bold">About Yourself</label>
-                <input type="textarea"  name="description" className="border px-3 py-3 rounded-md w-full"/>
+                <input type="textarea" defaultValue={user?.description} 
+                name="description" className="border px-3 py-3 rounded-md w-full"/>
               </div>
               <button type="submit"className="text-white my-btn px-5 py-2.5 rounded mt-4">Submit</button>
             </Box>

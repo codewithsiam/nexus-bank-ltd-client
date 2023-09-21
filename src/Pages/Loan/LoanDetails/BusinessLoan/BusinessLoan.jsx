@@ -122,7 +122,7 @@ const BusinessLoan = () => {
                         </div>
                         <div className="collapse-content text-lg mt-4"> 
                             <p  className=' flex gap-2 items-center my-4 ml-5'><BiSolidHandRight className='w-[25px] text-primary'/> Please see the<Link 
-                            to="https://drive.google.com/file/d/1Ai-vPQKmWeJv5UWRyjPV3NnlB8sPIrBC/view?usp=drive_link" 
+                            to="https://drive.google.com/file/d/1ubwkUJI1VQSqDSfspxvhyMy--mNcUzJE/view?usp=sharing" 
                             className='text-rose-700' target='_blank'>Cluster Financing Policy</Link></p>
                         </div>
                     </div>
