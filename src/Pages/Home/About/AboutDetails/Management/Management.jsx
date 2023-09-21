@@ -16,7 +16,7 @@ const Management = () => {
     .then(res=>res.json())
     .then(data=>setEmployees(data))
   },[])
-  console.log(employees)
+  // console.log(employees)
 
   const handleHover = (index) => {
     setHoveredIndex(index);
