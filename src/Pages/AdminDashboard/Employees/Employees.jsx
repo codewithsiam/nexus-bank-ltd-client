@@ -25,6 +25,9 @@ import { baseUrl } from "../../../config/server";
 import toast from "react-hot-toast";
 import { LanOutlined } from "@mui/icons-material";
 import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 // generate random string --------------
 function generateRandomString() {
@@ -52,6 +55,7 @@ const Employees = () => {
   const [control, setControl] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const {user} = useContext(AuthContext);
   // console.log(temporaryPassword);
 
   useEffect(() => {
@@ -64,7 +68,16 @@ const Employees = () => {
   }, [control]);
 
   const handleOpen = () => {
-    setOpen(true);
+    if(user?.designation === "Super Admin"){
+      setOpen(true);
+    }
+    else{
+      Swal.fire(
+        "You Are Not Super Admin",
+        "You can not add any employee",
+        "error"
+      );
+    }
   };
   const handleClose = () => {
     setOpen(false);
