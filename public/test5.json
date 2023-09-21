@@ -1,91 +1,39 @@
 {
-  "directors":[
-      {
-        "name": "John Doe",
-        "role": "Senior Manager",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
-        "image":"https://i.ibb.co/YttY8Zz/Capture.png"
-      },
-    
-      {
-        "name": "Jane Smith",
-        "role": "Financial Analyst",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
-        "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
-      },
-    
-      {
-        "name": "Michael Johnson",
-        "role": "Designer",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
-        "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
-      },
-    
-      {
-        "name": "Emily Williams",
-        "role":"Branch Manager",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
-        "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
-      }
-  ],
+  
   "employees":[
       {
-        "name": "John Doe",
-        "role": "Senior Manager",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
+        "firstName": "Tonmoy",
+        "lastName": "Sarker",
+        "designation":"Senior Manager",
+        "email": "tonmoy@gmail.com",
+        "phoneNumber": "01952159052",
         "image":"https://i.ibb.co/YttY8Zz/Capture.png"
       },
     
       {
-        "name": "Jane Smith",
-        "role": "Financial Analyst",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
+        "firstName": "Abu Sayed al  ",
+        "lastName": "Siam",
+        "designation": "Financial Analyst",
+        "email": "siam@gmail.com",
+        "phoneNumber": "01952196032",
         "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
       },
     
       {
-        "name": "Michael Johnson",
-        "role": "Designer",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
+        "firstName": "Michael ",
+        "lastName": "Johnson",
+        "designation": "Designer",
+        "email": "john@gmail.com",
+        "phoneNumber": "01952197194",
         "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
       },
     
       {
-        "name": "Emily Williams",
-        "role":"Branch Manager",
-        "socialLinks": {
-          "facebook": "https://facebook.com/",
-          "twitter": "https://twitter.com/",
-          "instagram": "https://instagram.com/"
-        },
+        "firstName": "Raj ",        
+        "lastName": "Mahmud",
+        "designation":"Branch Manager",
+        "email": "raj@gmail.com",
+        "phoneNumber": "01952197194",
         "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
       }
   ]
