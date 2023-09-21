@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -12,6 +12,8 @@ import employeeData from "../../../constant/employees";
 import { baseUrl } from "../../../config/server";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { AuthContext } from "../../../providers/AuthProvider";
+import toast from "react-hot-toast";
 
 function createData(name, code, population, size) {
   const density = population / size;
@@ -21,6 +23,7 @@ function createData(name, code, population, size) {
 const EmployeeTable = ({ employees, setControl, control }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  const { user } = useContext(AuthContext);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -60,6 +63,9 @@ const EmployeeTable = ({ employees, setControl, control }) => {
                 timer: 1500,
               });
               setControl(!control);
+            } else if (!data.success) {
+              toast.error(`${data.message}`);
+              // console.log("data table",data);
             }
           });
       }
@@ -80,6 +86,9 @@ const EmployeeTable = ({ employees, setControl, control }) => {
             showConfirmButton: false,
             timer: 1500,
           });
+        } else if (!data.data.success) {
+          toast.error(`${data.data.message}`);
+          // console.log("data table",data.data);
         }
       });
   };
