@@ -36,7 +36,8 @@ const StudentAcc = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className='lg:flex w-full justify-center'>
+                <div className='flex-col lg:w-[50%] w-full justify-center'>
                     <div className='text-center'>
                     <Heading heading= "Overview"></Heading>
                     </div>
@@ -96,6 +97,7 @@ const StudentAcc = () => {
                             </ul>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div className='p-2 md:flex justify-center items-center my-5 md:my-10'>
                     <h1 className='text-3xl md:text-5xl text-center'>Interested to open an account?</h1>
