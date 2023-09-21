@@ -84,6 +84,8 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
         transactionId,
         amount,
         date: new Date(),
+        transactionType: "cash in",
+        username: user?.username || "anonymous",
       };
 
       axios

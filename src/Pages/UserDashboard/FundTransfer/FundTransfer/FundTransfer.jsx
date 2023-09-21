@@ -141,7 +141,7 @@ const FundTransfer = () => {
     // console.log("Transfer");
     // console.log(transferData);
     axios
-      .put(`${baseUrl}/money-transfer`, transferData)
+      .put(`${baseUrl}/money-transfer?username=${user?.username}`, transferData)
       .then((response) => {
         // console.log(response.data);
         if (response.data.success) {
