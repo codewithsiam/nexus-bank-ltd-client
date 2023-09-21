@@ -25,7 +25,7 @@ const Menu = () => {
         <Link to='/dashboard'>Dashboard</Link>
       </div>
       <div className="flex justify-between border-b-2 py-2">
-        <Link>About Us </Link>
+        <Link to="/about-details">About Us </Link>
         {expendAbout === true ? (
           <FaAngleDown onClick={() => setExpendAbout(false)} />
         ) : (
@@ -44,8 +44,8 @@ const Menu = () => {
        <div>
        {expendService && (
           <div className="ps-4 py-2 flex flex-col space-y-2 ">
-            <Link className="border-b-2">Service</Link>
-            <Link className="border-b-2">Service details</Link>
+            <Link to="/nexus-accounts" className="border-b-2">Accounts</Link>
+            <Link to="/retail-loan" className="border-b-2">Loan</Link>
           </div>
         )}
        </div>
