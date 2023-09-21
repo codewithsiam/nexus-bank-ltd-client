@@ -66,12 +66,13 @@ const AllNews = () => {
                         {/* head */}
                         <thead>
                             <tr>
-                            
+
                                 <th></th>
                                 <th>Title</th>
                                 <th>Job</th>
-                                <th>Action</th>
-                                
+                              
+                                <th className='text-center'>Action</th>
+
                             </tr>
                         </thead>
                         <tbody>
@@ -86,27 +87,31 @@ const AllNews = () => {
                                                     <img src={news.img} />
                                                 </div>
                                             </div>
-                                            
+
                                         </div>
                                     </td>
                                     <td>
-                                    
-                                                <div className="font-bold">{news.title.slice(0,50)}</div>
-                                                
-                                            
+
+                                        <div className="font-bold">{news.title.slice(0, 50)}</div>
+
+
                                     </td>
                                     <td> {moment(news.date).format("MMM Do YY")}</td>
                                     <th>
                                         <div className=' flex gap-2 items-center justify-center'>
-                                            <Link to={`update/${news._id}`}>
-                                                <FaEdit title='edit this news' className='w-6 h-6'></FaEdit></Link>
+                                            <Link  to={`update/${news._id}`}
+                                             className="bg-green-600 px-6 py-3 text-white font-semibold rounded"
+                                            >
+                                                <button>Update</button></Link>
+                                            <button
+                                            onClick={() => handelDelete(news._id)}
+                                            className="bg-red-600 px-6 py-3 text-white font-semibold rounded">Delete</button>
 
-
-                                            <AiFillDelete
+                                            {/* <AiFillDelete
                                                 onClick={() => handelDelete(news._id)}
                                                 title='delete this news'
                                                 className='w-6 h-6'>
-                                            </AiFillDelete>
+                                            </AiFillDelete> */}
                                         </div>
                                     </th>
                                 </tr>)
@@ -117,7 +122,7 @@ const AllNews = () => {
 
                     </table>
                 </div>
-               
+
             </div>
         </div>
     );

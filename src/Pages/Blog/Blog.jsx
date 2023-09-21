@@ -12,7 +12,7 @@ const BlogPage = () => {
     const [blogNews,setBlogNews]=useState([])
     useEffect(()=>{
         fetch(`${baseUrl}/getBlogs`).then(res=>res.json()).then(data=>{
-            // console.log(data)
+            console.log(data)
             setBlogNews(data)
         })
     },[])

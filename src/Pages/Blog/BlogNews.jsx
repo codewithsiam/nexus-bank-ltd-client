@@ -9,7 +9,7 @@ const BlogNews = ({ news }) => {
     // console.log(_id)
     return (
         <>
-            <div data-testid="testNews" className=" px-4 cursor-pointer">
+          <div data-testid="testNews" className=" px-4 cursor-pointer">
                 <div className="max-w-[400px] mx-auto mb-10">
                     <div className="rounded overflow-hidden  mb-8">
                         <img
@@ -34,6 +34,7 @@ const BlogNews = ({ news }) => {
                     </div>
                 </div>
             </div>
+            
         </>
     );
 };

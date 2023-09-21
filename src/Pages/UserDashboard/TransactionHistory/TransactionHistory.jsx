@@ -8,8 +8,6 @@ const TransactionHistory = () => {
             <h1 className='text-2xl font-bold'>Transaction History</h1>
             <p className='text-[#6F7A83]'>Keep track of your financial status</p>
 
-            {/* Finance dashboard top */}
-            <Statement />
 
             {/* Transaction table */}
             <RecentTransactions />
