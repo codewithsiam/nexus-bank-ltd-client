@@ -123,7 +123,7 @@ const CheckoutForm = ({ amount, accountNumber, reason }) => {
 
     setTimeout(() => {
       clearInterval(interval);
-      navigate("/dashboard/my-profile", { replace: true });
+      navigate("/dashboard/account-overview", { replace: true });
     }, 10000);
   };
 
