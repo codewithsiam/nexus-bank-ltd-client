@@ -70,9 +70,9 @@ export default function CareersTable({ careersData, setCareersData }) {
                     >
                         <DeleteIcon />
                     </IconButton>
-                    <Link to={`/path-to-profile/${params.row._id}`}>
+                    {/* <Link to={`/path-to-profile/${params.row._id}`}>
                         <CgProfile className="h-6 w-6 cursor-pointer m-6" />
-                    </Link>
+                    </Link> */}
                 </>
             ),
         },

@@ -21,6 +21,7 @@ const Form = () => {
   const [geoLocation, setGeoLocation] = useState(null);
   const [userLocation, setUserLocation] = useState(null);
 
+  // location start 
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -56,6 +57,8 @@ const ipUrl = "https://api.ipify.org?format=json";
       .catch(error => console.log(error))
       // }
     } ,[ipUrl])
+    
+// location end 
 
   const navigate = useNavigate();
 

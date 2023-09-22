@@ -12,6 +12,7 @@ import { ElectricScooterSharp } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import SharedNidCardImage from "../DepositAccount/SharedNidCardImage";
 import SharedProfileImage from "../DepositAccount/SharedProfileImage";
+import { useEffect } from "react";
 
 const CurrentForm = () => {
   const [userData, setUserData] = useState({});
@@ -21,8 +22,50 @@ const CurrentForm = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const [geoLocation, setGeoLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const navigate = useNavigate();
   // console.log(error)
+
+    // location start 
+    useEffect(() => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          setGeoLocation({ latitude, longitude });
+        });
+      } else {
+        console.error("Geolocation is not available in this browser.");
+      }
+    }, []);
+    
+    const handleTrack = (ip) => {
+      fetch(`https://ipinfo.io/${ip}?token=${import.meta.env.VITE_ip_tracking_token}`)
+        .then(res => res.json())
+        .then(data => {
+          setUserLocation(data)
+          // console.log(data)
+        })
+        .catch(err => console.log(err))
+    }
+  
+  const ipUrl = "https://api.ipify.org?format=json";
+  
+    useEffect(()=> {
+  
+      // const getIpAddress = () => {
+        fetch(ipUrl)
+        .then(res => res.json())
+        .then(data => {
+          handleTrack(data.ip)
+        })
+        .catch(error => console.log(error))
+        // }
+      } ,[ipUrl])
+      
+  // location end 
+
 
   // handle user data change
   const handleUserDataOnChange = (e) => {
@@ -76,6 +119,8 @@ const CurrentForm = () => {
               profileImage: profileImage,
               nidCardImage: nidCardImage,
               permanent_address: userData.permanent_address,
+              geoLocation,
+              userLocation,
               status: "pending",
             }),
           })

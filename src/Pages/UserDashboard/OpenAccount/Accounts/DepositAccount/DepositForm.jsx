@@ -7,6 +7,7 @@ import SharedProfileImage from "./SharedProfileImage";
 import OtpModal from "../OtpModal/OtpModal";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const DepositForm = () => {
   const [userData, setUserData] = useState({});
@@ -16,7 +17,49 @@ const DepositForm = () => {
   const [otp, setOtp] = useState(new Array(5).fill(""));
   const otpDigit = otp.reduce((acc, curr) => acc + curr);
   const [error, setError] = useState("");
+  const [geoLocation, setGeoLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const navigate = useNavigate();
+
+    // location start 
+    useEffect(() => {
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+          setGeoLocation({ latitude, longitude });
+        });
+      } else {
+        console.error("Geolocation is not available in this browser.");
+      }
+    }, []);
+    
+    const handleTrack = (ip) => {
+      fetch(`https://ipinfo.io/${ip}?token=${import.meta.env.VITE_ip_tracking_token}`)
+        .then(res => res.json())
+        .then(data => {
+          setUserLocation(data)
+          // console.log(data)
+        })
+        .catch(err => console.log(err))
+    }
+  
+  const ipUrl = "https://api.ipify.org?format=json";
+  
+    useEffect(()=> {
+  
+      // const getIpAddress = () => {
+        fetch(ipUrl)
+        .then(res => res.json())
+        .then(data => {
+          handleTrack(data.ip)
+        })
+        .catch(error => console.log(error))
+        // }
+      } ,[ipUrl])
+      
+  // location end 
+
 
   const handleUserDataOnChange = (e) => {
     const newUserData = { ...userData };
@@ -73,6 +116,8 @@ const DepositForm = () => {
               profileImage: profileImage,
               present_address: userData.present_address,
               permanent_address: userData.permanent_address,
+              geoLocation,
+              userLocation,
               status: "pending",
             }),
           })

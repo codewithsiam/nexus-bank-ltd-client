@@ -50,11 +50,6 @@ const adminMenu = [
     route: "accounts",
   },
   {
-    name: "Add Blog",
-    icon: <MdCreateNewFolder />,
-    route: "AddLatestNews",
-  },
-  {
     name: "Account Requests",
     icon: <AccountBalanceWalletIcon />,
     route: "account-request",
@@ -78,6 +73,11 @@ const adminMenu = [
     name: "Customer Support",
     icon: <SupportAgentIcon />,
     route: "customer-support",
+  },
+  {
+    name: "Add Blog",
+    icon: <MdCreateNewFolder />,
+    route: "AddLatestNews",
   },
   {
     name: "Add A Career",
