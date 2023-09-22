@@ -23,7 +23,9 @@ function createData(name, code, population, size) {
 const EmployeeTable = ({ employees, setControl, control }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
+  // const {designation} = useDesignation();
   const { user } = useContext(AuthContext);
+  // console.log(user.designation);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -36,61 +38,75 @@ const EmployeeTable = ({ employees, setControl, control }) => {
 
   // handle employee delete ------------
   const handleEmployeeDelete = (id) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        fetch(`${baseUrl}/delete-employee/${id}`, {
-          method: "PATCH",
-          headers: {
-            "content-type": "application/json",
-          },
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.deletedCount) {
-              Swal.fire({
-                position: "top-center",
-                icon: "success",
-                title: `Employee deleted Successfully`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-              setControl(!control);
-            } else if (!data.success) {
-              toast.error(`${data.message}`);
-              // console.log("data table",data);
-            }
-          });
-      }
-    });
+    if (user?.designation === "Super Admin") {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`${baseUrl}/delete-employee/${id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.deletedCount) {
+                Swal.fire({
+                  position: "top-center",
+                  icon: "success",
+                  title: `Employee deleted Successfully`,
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                setControl(!control);
+              } else {
+                toast.error(data.message);
+              }
+            });
+        }
+      });
+    } else {
+      Swal.fire(
+        "You Are Not Super Admin",
+        "You can not delete employee",
+        "error"
+      );
+    }
   };
 
   // handle employee designation
   const handleEmployeeDesignation = (id, designation) => {
-    axios
-      .patch(`${baseUrl}/designation/${id}/?designation=${designation}`)
-      .then((data) => {
-        if (data.data.modifiedCount > 0) {
-          setControl(!control);
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: `Make ${designation} successfully`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        } else if (!data.data.success) {
-          toast.error(`${data.data.message}`);
-          // console.log("data table",data.data);
-        }
-      });
+    if (user?.designation === "Super Admin") {
+      axios
+        .patch(`${baseUrl}/designation/${id}/?designation=${designation}`)
+        .then((data) => {
+          if (data.data.modifiedCount > 0) {
+            setControl(!control);
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: `Make ${designation} successfully`,
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          } else {
+            toast.error(data.data.message);
+          }
+        });
+    } else {
+      Swal.fire(
+        "You Are Not Super Admin",
+        "You can not delete employee",
+        "error"
+      );
+    }
   };
 
   return (
@@ -112,7 +128,7 @@ const EmployeeTable = ({ employees, setControl, control }) => {
               <TableBody>
                 {employees?.map((employee, index) => (
                   <TableRow
-                    key={employee.id}
+                    key={index}
                     hover
                     role="checkbox"
                     tabIndex={-1}

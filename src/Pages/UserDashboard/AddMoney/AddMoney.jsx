@@ -59,7 +59,7 @@ const AddMoney = () => {
         <h2 className="text-2xl font-bold">
           <span className="text-green-400 flex items-center justify-center">
             NEXUS BANK LTD
-           <img className="w-10 h-10 ml-4" src="../../../../public/nexus-bank-logo.png" alt="" />
+           <img className="w-10 h-10 ml-4" src="/public/nexus-bank-logo.png" alt="" />
           </span>
         </h2>
         <h3 className="font-semibold text-xl mb-4"> Add Money</h3>
