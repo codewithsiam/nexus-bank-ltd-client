@@ -11,7 +11,7 @@ const UsersCard = () => {
                     <h3 className="title text-gray-400">Session</h3>
                     <div className='flex justify-between gap-3 rounded'>
                         <h4 className='text-green-500 py-1'><span className='text-2xl text-gray-700'>21,459</span>  ( + 29%)</h4>
-                        <div className="icon bg-gray-200 py-2 px-2">
+                        <div className="icon py-2 px-2">
                             <FiUser className='text-blue-400 text-lg'></FiUser>
                         </div>
                     </div>
@@ -24,7 +24,7 @@ const UsersCard = () => {
                     <h3 className="title text-gray-400">Paid Users</h3>
                     <div className='flex justify-between gap-3 rounded'>
                         <h4 className='text-green-500 py-1'><span className='text-2xl text-gray-700'>21,459</span>  ( + 29%)</h4>
-                        <div className="icon bg-gray-200 py-2 px-2">
+                        <div className="icon py-2 px-2">
                             <FiUserPlus className='text-red-400 text-lg'></FiUserPlus>
                         </div>
                     </div>
@@ -37,7 +37,7 @@ const UsersCard = () => {
                     <h3 className="title text-gray-400">Active Users</h3>
                     <div className='flex justify-between gap-3 rounded'>
                         <h4 className='text-green-500 py-1'><span className='text-2xl text-gray-700'>21,459</span>  ( + 29%)</h4>
-                        <div className="icon bg-gray-200 py-2 px-2">
+                        <div className="icon py-2 px-2">
                             <FiUserCheck className='text-green-400 text-lg'></FiUserCheck>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ const UsersCard = () => {
                     <h3 className="title text-gray-400">Session</h3>
                     <div className='flex justify-between gap-3 rounded'>
                         <h4 className='text-green-500 py-1'><span className='text-2xl text-gray-700'>21,459</span>  ( + 29%)</h4>
-                        <div className="icon bg-gray-200 py-2 px-2">
+                        <div className="icon  py-2 px-2">
                             <GrUserNew className='text-red-300 text-lg'></GrUserNew>
                         </div>
                     </div>

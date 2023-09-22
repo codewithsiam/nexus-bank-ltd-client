@@ -1,19 +1,165 @@
+
 [
-    {
-      "id": 1111,
-      "company_logo": "https://raw.githubusercontent.com/Rukshanarupu/assignment-image-link/main/Assignment-9-img/Logo/google-1-1%201.png",
-      "job_title": "Software Engineer",
-      "company_name": "Google LLC",
-      "remote_or_onsite": "Remote",
-      "location": "San Francisco, CA",
-      "fulltime_or_partTime": "Full-time",
-      "salary": "$1000,00 - $120,000",
-      "job_description": "We are seeking a skilled software engineer to develop and maintain software solutions. The ideal candidate will have experience in web development using modern JavaScript frameworks and a passion for creating high-quality, scalable software.",
-      "job_responsibility": "Design, develop, and maintain software applications; Write well-designed, testable, and efficient code; Participate in code reviews; Troubleshoot and debug applications; Collaborate with cross-functional teams to identify and solve complex problems.",
-      "educational_requirements": "Bachelor's degree in Computer Science or related field",
-      "experiences": "3+ years of experience in software development",
-      "phone":  "+1 123-456-7890",
-      "email": "jobs@llc.com"
-      
-    }
+  {
+    "type": "Student Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Minimum 2 years for students"
+    ],
+    "monthlyIncomeCriteria": "Not applicable for student loans",
+    "requiredDocumentsLink": "Link to download required documents for Student Loan"
+  },
+  {
+    "type": "Personal Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Salaried Executive: Minimum 2 years",
+      "- Professionals: Minimum 2 years of practice",
+      "- Businessman: Minimum 3 years"
+    ],
+    "monthlyIncomeCriteria": [
+      "Salaried Executive (A/C Payee): BDT 40,000",
+      "Landlord: BDT 50,000",
+      "Professional: BDT 60,000",
+      "Business person: BDT 100,000"
+    ],
+    "requiredDocumentsLink": "Link to download required documents for Personal Loan"
+  },
+  {
+    "type": "Business Loan",
+    "features": [
+      "Loan amount from BDT 2 lacs to BDT 20 lacs",
+      "Loan tenure 12 to 60 months",
+      "No hidden charges",
+      "Competitive interest rate",
+      "Processing Fee - Please see the Schedule of Charges",
+      "Eligibility: Age 22 to 60 years",
+      "Experience:",
+      "- Businessman: Minimum 3 years"
+    ],
+    "monthlyIncomeCriteria": "Not applicable for business loans",
+    "requiredDocumentsLink": "Link to download required documents for Business Loan"
+  }
 ]
+
+[
+  {
+    "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg"
+  },
+  {
+    "banner": "blob:https://web.whatsapp.com/14804b17-77db-4707-9f12-fd6f277fd416",
+    "banner_btn_text":"Learn more"
+  },
+  {
+    "banner": "blob:https://web.whatsapp.com/6f0a5807-efbc-4b5c-ae7e-e37e6b9e0c1b",
+    "banner_btn_text":"See Details"
+  },
+  {
+    "banner": "blob:https://web.whatsapp.com/aa92ba17-7633-47bb-8480-0be627f52c58",
+    "banner_btn_text":"See Details"
+  }
+]
+
+[
+  {
+    "banner": "https://i.ibb.co/ctw7H0f/slide-1.jpg",
+    "banner_text":"Welcome to nexus bank Ltd.",
+  },
+  {
+    "banner":"https://i.ibb.co/HF8vGXS/slide-2-without-text.jpg",
+    "banner_btn_text":"Learn more",
+    "banner_text":"What we are doing to spread Financial Literacy",
+    "link":"https://drive.google.com/file/d/1Zkt7QkOyrS3SeWm0owgFy3UZNXFb-_Od/view?usp=sharing"
+  },
+  {
+    "banner":"https://i.ibb.co/LSGHCt1/slide-3-without-text.jpg",
+    "banner_btn_text":"See Details",
+    "banner_text":"unlock your financial freedom with personal loan",
+    "link":"/personal-loan"
+  },
+  {
+    "banner":"https://i.ibb.co/hBCgmrx/slide-4-without-text.jpg",
+    "banner_btn_text":"See Details",
+    "banner_text":"Fuel your business growth with hassle-free business loan",
+    "link":"/business-loan"
+  },
+  {
+    "banner":"https://i.ibb.co/vJBR9Kp/bd-personal-loan-calculator-1349x-497y.jpg",
+    "banner_btn_text":"See Details",
+    "banner_text":"Open your first bank account with Nexus Bank student Account",
+    "link":"/nexus-accounts"
+  },
+  {
+    "banner":"https://i.ibb.co/p1XMRkm/bd-fixed-deposit-1600x-350y.jpg",
+    "banner_text":"Saving money is like planting seeds for a secure financial future.A penny saved today is a dollar earned tomorrow"
+  }
+]
+
+"directors":[
+  {
+    "name": "John Doe",
+    "role": "Senior Manager",
+    "socialLinks": {
+      "facebook": "https://facebook.com/",
+      "twitter": "https://twitter.com/",
+      "instagram": "https://instagram.com/"
+    },
+    "image":"https://i.ibb.co/YttY8Zz/Capture.png"
+  },
+
+  {
+    "name": "Jane Smith",
+    "role": "Financial Analyst",
+    "socialLinks": {
+      "facebook": "https://facebook.com/",
+      "twitter": "https://twitter.com/",
+      "instagram": "https://instagram.com/"
+    },
+    "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
+  },
+
+  {
+    "name": "Michael Johnson",
+    "role": "Designer",
+    "socialLinks": {
+      "facebook": "https://facebook.com/",
+      "twitter": "https://twitter.com/",
+      "instagram": "https://instagram.com/"
+    },
+    "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
+  },
+
+  {
+    "name": "Emily Williams",
+    "role":"Branch Manager",
+    "socialLinks": {
+      "facebook": "https://facebook.com/",
+      "twitter": "https://twitter.com/",
+      "instagram": "https://instagram.com/"
+    },
+    "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
+  }
+]
+
+
+
+
+
+
+
+
+
+
+

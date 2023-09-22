@@ -1,17 +1,11 @@
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 
-const App = () => {
+function App() {
   return (
-    <div>
-      <MessengerCustomerChat
-        pageId="<PAGE_ID>"
-        appId="<APP_ID>"
-        htmlRef="<REF_STRING>"
-      />,
-
-    </div>
+    <>
+      <h1>siam</h1>
+    </>
   );
-};
+}
 
 export default App;

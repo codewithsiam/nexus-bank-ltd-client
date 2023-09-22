@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import StripePayment from "./Payment/Methods/Stripe/StripePayment";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import InfoAddMoney from "./InfoAddMoney";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import axios from "axios";
+import { baseUrl } from "../../../config/server";
+import { Link } from "react-router-dom";
+
 
 const AddMoney = () => {
   const [termsAgreed, setTermsAgreed] = useState(false);
@@ -9,7 +15,23 @@ const AddMoney = () => {
   const [showStripePayment, setShowStripePayment] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [amount, setAmount] = useState("");
+  const [accountNumber, setAccountNumber] = useState(""); 
+  const [reason, setReason] = useState("");   // New state for the reason
+  const [myAccounts, setMyAccounts] = useState(""); 
 
+  const {user} = useContext(AuthContext)
+
+  useEffect(() => {
+    axios
+      .get(`${baseUrl}/myAccounts?nidNumber=${user?.nid_card_number}`)
+      .then((response) => {
+        setMyAccounts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+// console.log("my account", myAccounts);
   const handlePayClick = (event) => {
     event.preventDefault();
 
@@ -17,6 +39,7 @@ const AddMoney = () => {
     const amountInput = form.querySelector('input[name="amount"]');
     const enteredAmount = parseFloat(amountInput.value);
 
+    
     if (enteredAmount > 0 && termsAgreed) {
       setErrorMessage("");
       setAmount(enteredAmount);
@@ -25,7 +48,7 @@ const AddMoney = () => {
       setErrorMessage("Please enter a valid amount and agree to the terms");
     }
   };
-
+ 
   return (
     <div className="mt-20 flex gap-4 flex-col-reverse justify-center items-center md:flex-row-reverse ">
       <div className="w-1/2">
@@ -36,40 +59,45 @@ const AddMoney = () => {
         <h2 className="text-2xl font-bold">
           <span className="text-green-400 flex items-center justify-center">
             NEXUS BANK LTD
-            <img
-              className="w-10 h-10"
-              src="https://i.ibb.co/Xzt8GjV/png-clipart-white-bank-illustration-online-banking-finance-icon-white-bank-building-building-black-w.png"
-              alt=""
-            />
+           <img className="w-10 h-10 ml-4" src="/nexus-bank-logo.png" alt="" />
           </span>
         </h2>
         <h3 className="font-semibold text-xl mb-4"> Add Money</h3>
         {!showPaymentMethods ? (
           <form onSubmit={handlePayClick}>
-            <label className="block text-sm mb-2">Full Name</label>
-            <input
-              type="text"
+            <label className="block text-sm mb-2">Account Select</label>
+            <select
               className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your full name"
-              name="name"
-            />
-            <label className="block text-sm mb-2 mt-4 ">Account Number</label>
+              name="accountNumber"
+              value={accountNumber}
+              onChange={(e) => setAccountNumber(e.target.value)}
+            >
+              <option value="">Select an account</option>
+              {
+               myAccounts && myAccounts?.map(account => <option value={account.accountNumber}>  {account.account_type} - {account.accountNumber}</option> )
+              }
+              
+            </select>
+
+            <label className="block text-sm mt-4 mb-2">Amount ($)</label>
             <input
               type="number"
               className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-              placeholder="Enter your full name"
-              name="accountNumber"
+              placeholder="Enter payment amount"
+              name="amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
             />
 
-            <label className="block text-sm mt-4 mb-2">Enter Amount ($)</label>
-            <div className="flex">
-              <input
-                type="number"
-                className="border rounded-l w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
-                placeholder="Enter payment amount"
-                name="amount"
-              />
-            </div>
+            <label className="block text-sm mt-4 mb-2">Reason</label>
+            <input
+              type="text"
+              className="border rounded w-full py-2 px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+              placeholder="Enter the reason"
+              name="reason"
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            />
 
             <div className="mt-4">
               <label className="flex items-center">
@@ -81,9 +109,9 @@ const AddMoney = () => {
                 />
                 <span className="ml-2">
                   I agree to the{" "}
-                  <a href="/terms" className="underline">
+                  <Link to="/stripe-terms-and-conditions"  target="_blank" className="underline">
                     Terms and Conditions
-                  </a>
+                  </Link>
                 </span>
               </label>
               {errorMessage && (
@@ -139,7 +167,7 @@ const AddMoney = () => {
               Go Back
             </button>
 
-            <StripePayment amount={amount} />
+            <StripePayment amount={amount} accountNumber={accountNumber} reason={reason} />
           </>
         )}
       </div>

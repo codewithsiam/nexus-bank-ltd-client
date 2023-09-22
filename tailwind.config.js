@@ -5,10 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': 'rgb(1,87,155)',
+        'secondary': 'rgb(52 211 153)',
+      }
+    },
   },
 
-  // plugins: [require("daisyui")],
-  plugins: [require("daisyui")],
+   plugins: [require("daisyui")],
+  //  plugins: [require("daisyui"),require('tailwind-scrollbar-hide')],
 }
 

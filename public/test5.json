@@ -1,0 +1,40 @@
+{
+  
+  "employees":[
+      {
+        "firstName": "Tonmoy",
+        "lastName": "Sarker",
+        "designation":"Senior Manager",
+        "email": "tonmoy@gmail.com",
+        "phoneNumber": "01952159052",
+        "image":"https://i.ibb.co/YttY8Zz/Capture.png"
+      },
+    
+      {
+        "firstName": "Abu Sayed al  ",
+        "lastName": "Siam",
+        "designation": "Financial Analyst",
+        "email": "siam@gmail.com",
+        "phoneNumber": "01952196032",
+        "image":"https://i.ibb.co/6g1FhyY/Capture2.png"
+      },
+    
+      {
+        "firstName": "Michael ",
+        "lastName": "Johnson",
+        "designation": "Designer",
+        "email": "john@gmail.com",
+        "phoneNumber": "01952197194",
+        "image":"https://i.ibb.co/Hr5sgCq/images.jpg"
+      },
+    
+      {
+        "firstName": "Raj ",        
+        "lastName": "Mahmud",
+        "designation":"Branch Manager",
+        "email": "raj@gmail.com",
+        "phoneNumber": "01952197194",
+        "image":"https://i.ibb.co/3cJXDpR/shuvo.jpg"
+      }
+  ]
+}

@@ -15,10 +15,7 @@ const Registration = () => {
         <div className="mx-auto max-w-lg text-center">
           <h1 className="text-2xl font-bold sm:text-3xl mt-0">Registration!</h1>
 
-          <p className="mt-4 text-gray-500">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Et libero
-            nulla eaque error neque ipsa culpa autem, at itaque nostrum!
-          </p>
+          
         </div>
 
         <div className="mx-auto mb-0 max-w-md space-y-4">

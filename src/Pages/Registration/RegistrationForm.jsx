@@ -5,15 +5,17 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { baseUrl } from "../../config/server";
 
 
+const imageUploadToken = 'c3182784e4720bdedd414fbd09afa2f5'
 
-const RegistrationForm = () => {
+function RegistrationForm() {
     const {
-        register,
-        formState: { errors },
-        handleSubmit,
+        register, formState: { errors }, handleSubmit,
     } = useForm();
+
+    const imageHostingUrl = `https://api.imgbb.com/1/upload?key=${imageUploadToken}`
 
     const { registration, verifyEmail } = useContext(AuthContext);
     let navigate = useNavigate();
@@ -35,6 +37,7 @@ const RegistrationForm = () => {
 
     // registration
     const onSubmit = (data) => {
+
         // validation
         if (!/(?=.*?[A-Z])/.test(data.password && data.confirmPassword)) {
             setError("At least one uppercase letter");
@@ -49,36 +52,50 @@ const RegistrationForm = () => {
             setError("At least one special character");
             return;
         }
-
         setError("");
 
         if (data.password === data.confirmPassword) {
-            registration(data.email, data.password)
+            registration(data.email, data.password);
 
-            const storeUser = { name: data.name, email: data.email, role: "customer" }
-            fetch('http://localhost:5000/users', {
+            const formData = new FormData();
+            formData.append('image', data.photoURL[0]);
+
+            fetch(imageHostingUrl, {
                 method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(storeUser)
+                body: formData
             })
                 .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                })
+                .then(photo => {
+                    // console.log(photo);
 
+                    const storeUser = {
+                        name: data.name,
+                        email: data.email,
+                        role: "customer",
+                        photoURL: photo.data.display_url
+                    };
 
-                .then((result) => {
-                    console.log(result)
-                    const registeredUser = result;
-                    navigate(from, { navigate: true });
-                    setError("");
+                    fetch(`${baseUrl}/addUser`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify(storeUser)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            // console.log(data);
+                            navigate(from, { navigate: true });
+                            setError("");
 
-                    verifyEmail(result.user).then((result) => {
-                        console.log(result);
-                        alert("Please verify your email");
-                    });
+                            verifyEmail(result.user).then((result) => {
+                                // console.log(result);
+                                alert("Please verify your email");
+                            });
+                        })
+                        .catch((error) => {
+                            setError(error.message);
+                        });
                 })
                 .catch((error) => {
                     setError(error.message);
@@ -98,8 +115,7 @@ const RegistrationForm = () => {
                         {...register("name", { required: true })}
                         type="text"
                         className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm mb-3"
-                        placeholder="Enter Your Name"
-                    />
+                        placeholder="Enter Your Name" />
                     {errors.name?.type === "required" && (
                         <p className="text-red-400 mt-2">Name is required</p>
                     )}
@@ -116,8 +132,24 @@ const RegistrationForm = () => {
                         {...register("email", { required: true })}
                         type="email"
                         className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm mb-3"
-                        placeholder="Enter Your Email"
-                    />
+                        placeholder="Enter Your Email" />
+                    {errors.email?.type === "required" && (
+                        <p className="text-red-400 mt-2">Email is required</p>
+                    )}
+                </div>
+            </div>
+
+            <div>
+                <label for="email" className="sr-only">
+                    Photo
+                </label>
+
+                <div className="relative">
+                    <input
+                        {...register("photoURL")}
+                        type="file"
+                        className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm mb-3"
+                        placeholder="Enter Your Photo URL" />
                     {errors.email?.type === "required" && (
                         <p className="text-red-400 mt-2">Email is required</p>
                     )}
@@ -134,8 +166,7 @@ const RegistrationForm = () => {
                         {...register("password", { required: true })}
                         type={showOne ? "text" : "password"}
                         className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
-                        placeholder="Enter password"
-                    />
+                        placeholder="Enter password" />
                     {errors.password?.type === "required" && (
                         <p className="text-red-400 mt-2">Password is required</p>
                     )}
@@ -157,8 +188,7 @@ const RegistrationForm = () => {
                         {...register("confirmPassword", { required: true })}
                         type={showTwo ? "text" : "password"}
                         className="w-full border outline-none rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm mb-5"
-                        placeholder="Enter Confirm Password"
-                    />
+                        placeholder="Enter Confirm Password" />
                     {errors.confirmPassword?.type === "required" && (
                         <p className="text-red-400 mt-2">
                             Confirm Password is required
@@ -200,6 +230,7 @@ const RegistrationForm = () => {
             </div>
         </form>
     );
-};
+}
+
 
 export default RegistrationForm;

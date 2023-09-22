@@ -1,96 +1,106 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Swal from 'sweetalert2';
+import { CgProfile } from 'react-icons/cg';
+import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Paper } from '@mui/material';
+import { baseUrl } from '../../../config/server';
 
-const columns = [
-  {
-    field: 'user',
-    headerName: 'User',
-    width: 200,
-    renderCell: (params) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img src={params.row.userImage} alt={params.row.userName} style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 10 }} />
-        <div>
-          <div>{params.row.userName}</div>
-          <div>{params.row.userEmail}</div>
-        </div>
-      </div>
-    ),
-  },
-  { field: 'role', headerName: 'Role', width: 150 },
-  { field: 'plan', headerName: 'Plan', width: 150 },
-  { field: 'billing', headerName: 'Billing', width: 150 },
-  { field: 'status', headerName: 'Status', width: 120 },
-  {
-    field: 'actions',
-    headerName: 'Actions',
-    width: 150, 
-    renderCell: (params) => (
-      <>
-        <IconButton aria-label="update" color="primary" onClick={() => handleUpdate(params.row.id)}>
-          <EditIcon />
-        </IconButton>
-        <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete(params.row.id)}>
-          <DeleteIcon />
-        </IconButton>
-      </>
-    ),
-  },
-];
-
-const rows = [
-  { id: 1, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 1', userEmail: 'user1@example.com', role: 'Admin', plan: 'Basic', billing: 'Manual Cash', status: 'Active' },
-  { id: 2, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 2', userEmail: 'user2@example.com', role: 'User', plan: 'Expertise', billing: 'Auto Debit', status: 'Inactive' },
-  { id: 3, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 3', userEmail: 'user3@example.com', role: 'User', plan: 'Team', billing: 'Manual Cash', status: 'Active' },
-  { id: 4, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 4', userEmail: 'user4@example.com', role: 'Admin', plan: 'Basic', billing: 'Auto Debit', status: 'Active' },
-  { id: 5, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 5', userEmail: 'user5@example.com', role: 'User', plan: 'Basic', billing: 'Manual Cash', status: 'Inactive' },
-  { id: 6, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 6', userEmail: 'user6@example.com', role: 'Admin', plan: 'Expertise', billing: 'Auto Debit', status: 'Active' },
-  { id: 7, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 7', userEmail: 'user7@example.com', role: 'User', plan: 'Team', billing: 'Manual Cash', status: 'Active' },
-  { id: 8, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 8', userEmail: 'user8@example.com', role: 'Admin', plan: 'Basic', billing: 'Auto Debit', status: 'Inactive' },
-  { id: 9, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 9', userEmail: 'user9@example.com', role: 'User', plan: 'Expertise', billing: 'Manual Cash', status: 'Active' },
-  { id: 10, userImage: 'https://th.bing.com/th/id/OIP.rbkAFakTOzAS9ufbDaYGNQHaHa?pid=ImgDet&w=550&h=550&rs=1', userName: 'User 10', userEmail: 'user10@example.com', role: 'User', plan: 'Team', billing: 'Auto Debit', status: 'Active' },
-];
-
-
-export default function UserTable() {
+export default function UserTable({ usersTableData, setUsersTableData }) {
   const [filterValue, setFilterValue] = useState('');
-  const handleUpdate = (id) => {
-    // Implement your update logic here
-    console.log(`Updating user with ID: ${id}`);
-  };
 
-  const handleDelete = (id) => {
-    // Implement your delete logic here
-    console.log(`Deleting user with ID: ${id}`);
-  };
-  const filteredRows = rows.filter(row =>
-    row.userName.toLowerCase().includes(filterValue.toLowerCase())
+  const filteredRows = usersTableData.filter(
+    (row) =>
+      (row.name && row.name.toLowerCase().includes(filterValue.toLowerCase())) ||
+      (row.email && row.email.toLowerCase().includes(filterValue.toLowerCase()))
   );
 
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`${baseUrl}/users/${_id}`, {
+          method: 'DELETE',
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.deletedCount > 0) {
+              const remaining = usersTableData.filter((user) => user._id !== _id);
+              setUsersTableData(remaining); // Update the state using setUsersTableData
+              Swal.fire('Deleted!', 'User deleted successfully!', 'success');
+            }
+          })
+          .catch((error) => {
+            console.error('Error deleting user:', error);
+          });
+      }
+    });
+  };
+
+  const columns = [
+    {
+      field: 'user',
+      headerName: 'User',
+      width: 400,
+      renderCell: (params) => (
+        <div style={{ display: 'flex', alignItems: 'center' }}>
+          <img
+            src={params.row.photo}
+            alt={params.row.name}
+            style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 10 }}
+          />
+          <div>
+            <div>{params.row.name}</div>
+            <div>{params.row.email}</div>
+          </div>
+        </div>
+      ),
+    },
+    { field: 'role', headerName: 'Role', width: 150 },
+    { field: 'plan', headerName: 'Plan', width: 150 },
+    { field: 'billing', headerName: 'Billing', width: 150 },
+    {
+      field: 'actions',
+      headerName: 'Actions',
+      width: 200,
+      renderCell: (params) => (
+        <>
+          <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete(params.row._id)}>
+            <DeleteIcon />
+          </IconButton>
+          {/* <Link to={`${params.row.email}`}>
+            <CgProfile className="h-6 w-6 cursor-pointer m-6" />
+          </Link> */}
+        </>
+      ),
+    },
+  ];
+
   return (
-<div className='w-full mx-auto flex flex-col items-center' style={{ width: '100%' }}>
-  <div className='flex flex-col md:flex-row gap-5' style={{ marginBottom: '16px' }}>
-    <h4>Search Here</h4>
-    <input
-      type="text"
-      placeholder="Search by username"
-      value={filterValue}
-      onChange={(e) => setFilterValue(e.target.value)}
-    />
-  </div>
-  <div className="flex justify-center">
-    <DataGrid
-      rows={filteredRows}
-      columns={columns}
-      pageSize={5}
-    />
-  </div>
-</div>
-
-
+    <div className="w-full flex flex-col mx-auto">
+      <div className="flex flex-col md:flex-row gap-5 items-center" style={{ marginBottom: '16px' }}>
+        <h4>Search Here</h4>
+        <input
+          className="border-2 px-4 py-3"
+          type="text"
+          placeholder="Search by name or email"
+          value={filterValue}
+          onChange={(e) => setFilterValue(e.target.value)}
+        />
+      </div>
+      <div style={{ width: '100%', overflowX: 'auto' }}>
+        <DataGrid rows={filteredRows} columns={columns} pageSize={5} getRowId={(row) => row._id} />
+      </div>
+    </div>
   );
 }

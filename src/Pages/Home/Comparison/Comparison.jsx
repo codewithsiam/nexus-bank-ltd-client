@@ -11,7 +11,8 @@ const Comparison = () => {
                     subHeading={"SERVICE COMPARISONS"}
                     heading={"Our better services"}
                 ></CenterTitle>
-                <p>There are many variations of passages of Lorem Ipsum available, <br /> but the majority have suffered alteration in some form,</p>
+                {/* to do  */}
+                <p></p>
             </div>
             <div class="flex flex-col">
                 <div class="overflow-x-auto sm:mx-0.5 lg:mx-0.5">

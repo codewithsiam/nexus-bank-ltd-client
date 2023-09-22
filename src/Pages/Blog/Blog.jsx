@@ -1,28 +1,24 @@
 import React from 'react';
-import BlogNews from './BlogNews';
 import CenterTitle from '../../Components/Title/CenterTitle';
+import useDesignation from '../../Hooks/useDesignation';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { baseUrl } from '../../config/server';
+import BlogNews from './BlogNews';
 
 const BlogPage = () => {
-    const blogNews = [
-        {
-            date: 'Dec 22, 2023',
-            image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-01.jpg',
-            headline: ' Meet AutoManage, the best AI management tools',
-            title: ' Lorem Ipsum is simply dummy text of the printing'
-        },
-        {
-            date: 'OCT 02, 2019',
-            image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-02.jpg',
-            headline: ' Meet AutoManage, the best AI management tools',
-            title: ' Lorem Ipsum is simply dummy text of the printing'
-        },
-        {
-            date: 'JAN 02, 2023',
-            image: 'https://cdn.tailgrids.com/1.0/assets/images/blogs/blog-01/image-03.jpg',
-            headline: ' Meet AutoManage, the best AI management tools',
-            title: ' Lorem Ipsum is simply dummy text of the printing'
-        }
-    ]
+    const {designation} = useDesignation();
+    // console.log(designation)
+    const [blogNews,setBlogNews]=useState([])
+    useEffect(()=>{
+        fetch(`${baseUrl}/getBlogs`).then(res=>res.json()).then(data=>{
+            console.log(data)
+            setBlogNews(data)
+        })
+    },[])
+
+
+
     return (
         <section className="pt-20 lg:pt-[120px] pb-10 lg:pb-20 bg-[#F7F9FA]">
             <div className="w-full max-w-screen-xl mx-auto">
@@ -34,8 +30,7 @@ const BlogPage = () => {
                                 heading={"Our Recent News"}>
                             </CenterTitle>
                             <p className="text-base text-body-color">
-                                There are many variations of passages of Lorem Ipsum available
-                                but the majority have suffered alteration in some form.
+                            The Bank Group is one of the world’s largest sources of funding and knowledge for developing countries.
                             </p>
                         </div>
                     </div>
