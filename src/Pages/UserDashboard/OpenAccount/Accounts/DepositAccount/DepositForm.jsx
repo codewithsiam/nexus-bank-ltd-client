@@ -145,7 +145,7 @@ const DepositForm = () => {
     <div className="bg-white px-8 py-12 rounded-md w-full">
       <h2 className="text-2xl font-semibold">Your Personal Information</h2>
       <form onSubmit={handleOnSubmit}>
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           <div className="form-control w-full mt-3">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -177,7 +177,7 @@ const DepositForm = () => {
             />
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           <div className="form-control w-full mt-2">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -211,7 +211,7 @@ const DepositForm = () => {
             />
           </div>
         </div>
-        <div className="flex items-center gap-4 mt-2 ">
+        <div className="md:flex items-center gap-4 mt-2 ">
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -257,7 +257,7 @@ const DepositForm = () => {
             </select>
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           {/* <div className="form-control w-full mt-2">
               <label className="label">
                 <span className="label-text text-md font-semibold">
@@ -303,7 +303,7 @@ const DepositForm = () => {
             />
           </div>
         </div>
-        {/* <div className="flex gap-4 mt-4 mb-2">
+        {/* <div className="md:flex gap-4 mt-4 mb-2">
             <NidCardImage
               nidCardImage={nidCardImage}
               setNidCardImage={setNidCardImage}
@@ -314,7 +314,7 @@ const DepositForm = () => {
             />
           </div> */}
 
-        <div className="flex gap-4 mt-4 mb-2">
+        <div className="md:flex gap-4 mt-4 mb-2">
           <SharedNidCardImage
             nidCardImage={nidCardImage}
             setNidCardImage={setNidCardImage}
@@ -325,7 +325,7 @@ const DepositForm = () => {
           />
         </div>
 
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           <div className="form-control w-full ">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -361,7 +361,7 @@ const DepositForm = () => {
             />
           </div>
         </div>
-        <div className="flex gap-4">
+        <div className="md:flex gap-4">
           <div className="form-control w-full">
             <label className="label">
               <span className="label-text text-md font-semibold">
@@ -391,7 +391,7 @@ const DepositForm = () => {
             ></textarea>
           </div>
         </div>
-        <div className="flex justify-end my-4">
+        <div className="md:flex justify-end my-4">
           <button
             className="my-btn px-12  py-3 text-white font-semibold rounded-md"
             type="submit"
