@@ -87,7 +87,7 @@ const AddLatestNews = () => {
 
                     {errors.details && <span className="text-red-600">this field is required</span>} <br />
 
-                    <input disabled={loading} className="py-2 rounded-lg  text-white hover:bg-sky-600 hover:text-black bg-primary md:w-5/6 " type="submit" />
+                    <input disabled={loading} className="py-2 px-4 rounded-lg  text-white hover:bg-sky-600 hover:text-black bg-primary md:w-5/6 " type="submit" />
                 </form>
             </div>
          

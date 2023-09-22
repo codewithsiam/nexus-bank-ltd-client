@@ -1,10 +1,10 @@
 import React from 'react';
-import BlogNews from './BlogNews';
 import CenterTitle from '../../Components/Title/CenterTitle';
 import useDesignation from '../../Hooks/useDesignation';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { baseUrl } from '../../config/server';
+import BlogNews from './BlogNews';
 
 const BlogPage = () => {
     const {designation} = useDesignation();
@@ -12,7 +12,7 @@ const BlogPage = () => {
     const [blogNews,setBlogNews]=useState([])
     useEffect(()=>{
         fetch(`${baseUrl}/getBlogs`).then(res=>res.json()).then(data=>{
-            // console.log(data)
+            console.log(data)
             setBlogNews(data)
         })
     },[])

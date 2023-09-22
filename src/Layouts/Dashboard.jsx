@@ -51,6 +51,7 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import PaymentsIcon from '@mui/icons-material/Payments';
 import PaymentIcon from '@mui/icons-material/Payment';
 import FeaturedPlayListIcon from '@mui/icons-material/FeaturedPlayList';
+import { FaHistory } from "react-icons/fa";
 
 const drawerWidth = 300;
 
@@ -651,6 +652,29 @@ export default function MiniDrawer() {
                         </ListItemIcon>
                         <ListItemText
                           primary={"Make a transfer"}
+                          sx={{ opacity: open ? 1 : 0 }}
+                        />
+                      </ListItemButton>
+                    </Link>
+                    <Link to={"transaction-history"}>
+                      <ListItemButton
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? "initial" : "center",
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : "auto",
+                            justifyContent: "center",
+                          }}
+                        >
+                          {<FaHistory/>}
+                        </ListItemIcon>
+                        <ListItemText
+                          primary={"Transaction history"}
                           sx={{ opacity: open ? 1 : 0 }}
                         />
                       </ListItemButton>

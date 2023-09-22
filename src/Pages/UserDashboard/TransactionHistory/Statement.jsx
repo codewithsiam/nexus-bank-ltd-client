@@ -1,6 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { baseUrl } from "../../../config/server";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const Statement = () => {
+  const {user}=useContext(AuthContext)
+const [cashInData,setCashInData]=useState([])
+const [transferData,setTransferData]=useState([])
+useEffect(()=>{
+
+  
+  fetch(`${baseUrl}/cash-in-history-info?username=${user.username}`)
+  .then(res=>res.json()).then(data=>setCashInData(data))
+  fetch(`${baseUrl}/transfer-history-info?username=${user.username}`)
+  .then(res=>res.json()).then(data=>setTransferData(data))
+
+},[])
+console.log(cashInData,transferData)
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-9 mt-11">
       <div className="bg-white p-7 rounded-2xl">
@@ -14,7 +29,7 @@ const Statement = () => {
           </div>
           <div>
             <p className="text-sm text-[#6F7A83]">Total</p>
-            <h1 className="text-2xl">2,000.00 BDT</h1>
+            <h1 className="text-2xl">{cashInData?.amount?cashInData?.amount:0} BDT</h1>
           </div>
         </div>
         <div className="mt-5">
@@ -34,7 +49,7 @@ const Statement = () => {
           </div>
           <div>
             <p className="text-sm text-[#6F7A83]">Total</p>
-            <h1 className="text-2xl">2,000.00 BDT</h1>
+            <h1 className="text-2xl">{transferData?.totalTransferAmount?transferData?.totalTransferAmount:0} BDT</h1>
           </div>
         </div>
         <div className="mt-5">
