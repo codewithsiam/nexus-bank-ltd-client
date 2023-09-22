@@ -119,8 +119,6 @@ const CurrentForm = () => {
               profileImage: profileImage,
               nidCardImage: nidCardImage,
               permanent_address: userData.permanent_address,
-              geoLocation,
-              userLocation,
               status: "pending",
             }),
           })
