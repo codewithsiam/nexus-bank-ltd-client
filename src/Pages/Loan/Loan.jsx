@@ -14,7 +14,7 @@ const Loan = () => {
                         <p>Our team of experts uses a methodology to identify the credit cards most.</p>
                     </div>
                     <div className='grid md:grid-cols-2 gap-5 items-center'>
-                        <div className='flex flex-col lg:flex-col items-center justify-center gap-5'>
+                        <div className='hidden md:block lg:flex-col items-center justify-center gap-5'>
                             <img className='w-full animate-pulse animate-twice' src="https://i.ibb.co/C6LNcV7/lone-total.png" alt="" />
                             <img className='my-custom-animation' src="https://i.ibb.co/mvYnCNZ/lone-graf.png" alt="" />
                         </div>

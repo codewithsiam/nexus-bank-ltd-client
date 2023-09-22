@@ -22,9 +22,10 @@ const LoanService = () => {
                     <div className='px-5'>
                         <h3 className="text-2xl font-semibold heading mb-2">Personal Loan</h3>
                         <p className='paragraph text-left mb-5'>An Nexus Personal Loan is your one-stop-solution for all your financial needs to fulfill any of your desires.</p>
-                        <div className='hidden loan-btn'>
-                            <Link to="/dashboard/apply-loan" className='absolute bottom-3 left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
-                            <Link to="/personal-loan" className='absolute bottom-3 right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
+                        <div className=''>
+                            <Link to="/dashboard/apply-loan" 
+                            className='absolute bottom-3 md:bottom-[51px] lg:bottom-3 left-[15px] md:left-[55px] lg:left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
+                            <Link to="/business-loan" className='absolute bottom-3 right-[15px] md:right-[55px] lg:right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
                                 <TbArrowBigRightLineFilled/>
                             </Link>
                         </div>
@@ -41,10 +42,11 @@ const LoanService = () => {
                     </div>
                     <div className='px-5'>
                         <h3 className="text-2xl font-semibold heading mb-2">Student Loan</h3>
-                        <p className='paragraph text-left mb-5'>Help Child to grow a habit of savings for a secure future.</p>
-                        <div className='hidden loan-btn'>
-                            <Link to="/dashboard/apply-loan" className='absolute bottom-3 left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
-                            <Link to="/student-loan" className='absolute bottom-3 right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
+                        <p className='paragraph text-left mb-16 md:mb-5'>Help Child to grow a habit of savings for a secure future.</p>
+                        <div className=''>
+                            <Link to="/dashboard/apply-loan" 
+                            className='absolute bottom-3 md:bottom-[51px] lg:bottom-3 left-[15px] md:left-[55px] lg:left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
+                            <Link to="/business-loan" className='absolute bottom-3 right-[15px] md:right-[55px] lg:right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
                                 <TbArrowBigRightLineFilled/>
                             </Link>
                         </div>
@@ -61,10 +63,11 @@ const LoanService = () => {
                     </div>
                     <div className='px-5'>
                         <h3 className="text-2xl font-semibold heading mb-2">Business Loan</h3>
-                        <p className='paragraph text-left mb-5'>Help Child to grow a habit of savings for a secure future.</p>
-                        <div className='hidden loan-btn'>
-                            <Link to="/dashboard/apply-loan" className='absolute bottom-3 left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
-                            <Link to="/business-loan" className='absolute bottom-3 right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
+                        <p className='paragraph text-left mb-16 md:mb-[58px] lg:mb-5'>Help Child to grow a habit of savings for a secure future.</p>
+                        <div className=''>
+                            <Link to="/dashboard/apply-loan" 
+                            className='absolute bottom-3 md:bottom-[51px] lg:bottom-3 left-[15px] md:left-[55px] lg:left-[15px] text-white bg-primary font-bold px-5 rounded py-2'>Apply Now</Link>
+                            <Link to="/business-loan" className='absolute bottom-3 right-[15px] md:right-[55px] lg:right-[15px] text-primary font-bold py-1 px-5 flex gap-2 items-center border border-primary'>Learn More
                                 <TbArrowBigRightLineFilled/>
                             </Link>
                         </div>

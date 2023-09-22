@@ -23,7 +23,8 @@ const LoanCalculator = () => {
         <Heading heading={"Taking a loan? Calculate your EMI"} ></Heading>
       </div>
       
-      <div className="flex gap-5 justify-between mb-10">
+      <div className="lg:flex gap-5 justify-around mb-10 p-5">
+        <div className='md:flex gap-5 justify-between mb-10'>
         <div>
           <label className="label font-bold  "><span className="label-text text-lg">Loan Amount</span></label>
           <div className='flex gap-1 items-center'>
@@ -57,9 +58,10 @@ const LoanCalculator = () => {
             <span className='text-gray-900 font-semibold text-lg'>%</span>
           </div>
         </div>
-        <div>
-          <label className="label font-bold text-white "><span className="text-lg">Emi calculation</span></label>
-          <button onClick={calculateEMI} class="capitalize btn bg-primary text-white hover:text-primary border hover:border-primary" type="submit" id="emi-calculate-btn">Calculate EMI</button>
+        </div>
+        <div className=''>
+          <label className="hidden lg:block label font-bold text-white "><span className="text-lg">Emi calculation</span></label>
+          <button onClick={calculateEMI} class="capitalize btn bg-primary text-white hover:text-primary border hover:bg-white hover:border-primary" type="submit" id="emi-calculate-btn">Calculate EMI</button>
         </div>
       </div>
       { showEMI &&

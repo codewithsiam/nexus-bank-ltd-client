@@ -176,12 +176,8 @@ const adminMenu = [
     name: "Customers Support",
     icon: <FcDebt></FcDebt>,
     route: "/admin/customer-support",
-    name: "Add A Career",
-  },
-  {
-    icon: <FcDebt></FcDebt>,
-    route: "addacareer",
-  },
+    // name: "Add A Career",
+  }
 ];
 
 const HomeMenu = [
