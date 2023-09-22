@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import PeopleIcon from "@mui/icons-material/People";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
-import Table from "./Table";
+import Table from "./EmployeeTable";
 import SearchFilter from "./SearchFilter";
 import Modal from "@mui/material/Modal";
 import { useState } from "react";
@@ -19,6 +19,15 @@ import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import ContentCopyTwoToneIcon from "@mui/icons-material/ContentCopyTwoTone";
+import EmployeeTable from "./EmployeeTable";
+import { useEffect } from "react";
+import { baseUrl } from "../../../config/server";
+import toast from "react-hot-toast";
+import { LanOutlined } from "@mui/icons-material";
+import LoadingComponent from "../../Shared/LoadingComponent/LoadingComponent";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 // generate random string --------------
 function generateRandomString() {
@@ -42,9 +51,33 @@ const Employees = () => {
   const [temporaryPassword, setTemporaryPassword] = useState("");
   const [isCopied, setIsCopied] = React.useState(false);
   const [hidePassword, SetHidePassword] = React.useState(true);
+  const [employees, setEmployees] = useState([]);
+  const [control, setControl] = useState(true);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
+  const {user} = useContext(AuthContext);
+  // console.log(temporaryPassword);
+
+  useEffect(() => {
+    fetch(`${baseUrl}/employees`)
+      .then((res) => res.json())
+      .then((data) => {
+        setEmployees(data)
+        setLoading(false);
+      });
+  }, [control]);
 
   const handleOpen = () => {
-    setOpen(true);
+    if(user?.designation === "Super Admin"){
+      setOpen(true);
+    }
+    else{
+      Swal.fire(
+        "You Are Not Super Admin",
+        "You can not add any employee",
+        "error"
+      );
+    }
   };
   const handleClose = () => {
     setOpen(false);
@@ -57,9 +90,35 @@ const Employees = () => {
     newUserData[e.target.name] = e.target.value;
     setUserData(newUserData);
   };
-  // click handle ---------
-  const handleClick = () => {
-    setTemporaryPassword(randomString);
+  // click on submit ---------
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    fetch(`${baseUrl}/add-employee`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        firstName: userData.first_name,
+        lastName: userData.last_name,
+        username: userData.username,
+        email: userData.email,
+        designation: userData.designation,
+        phoneNumber: userData.phoneNumber,
+        password: randomString,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        if (data.acknowledged === true) {
+          setTemporaryPassword(randomString);
+
+          setControl(!control);
+        } else {
+          setError(data.message);
+          toast.error(data.message);
+        }
+      })
+      .catch((err) => console.log(err));
   };
 
   // copy
@@ -78,13 +137,22 @@ const Employees = () => {
       setIsCopied(false);
     }, 2000);
   };
+
+  if (loading) {
+    return <LoadingComponent />;
+  }
+
   return (
     <div>
       <h1 className="text-2xl font-bold mt-16 border-b-2 border-black">
         <PeopleIcon style={{ fontSize: "42" }} /> EMPLOYEES
       </h1>
-      <SearchFilter handleOpen={handleOpen} />
-      <Table />
+      <SearchFilter handleOpen={handleOpen} setEmployees={setEmployees} />
+      <EmployeeTable
+        employees={employees && employees}
+        control={control}
+        setControl={setControl}
+      />
 
       {/* modal data here  */}
       <Modal
@@ -95,6 +163,7 @@ const Employees = () => {
       >
         {temporaryPassword === "" ? (
           <form
+            onSubmit={handleOnSubmit}
             //   onSubmit={handleOnSubmit}
             className="mt-32 bg-white rounded p-8 text-black w-10/12 md:w-8/12 lg:w-[700px] mx-auto "
           >
@@ -131,16 +200,14 @@ const Employees = () => {
                     <TextField
                       id="standard-basic"
                       type="text"
-                      label="Primary Email*"
+                      label="Username*"
                       variant="standard"
-                      name="primaryEmail"
+                      name="username"
                       required
                       onChange={handleUserDataOnChange}
                       style={{ width: "300px" }}
                     />
-                    <div className="mt-4">
-                      <span>.nexus@gmail.com</span>
-                    </div>
+                    <div className="mt-4"></div>
                   </div>
                   <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Role</InputLabel>
@@ -149,16 +216,27 @@ const Employees = () => {
                       id="demo-simple-select"
                       // value={userData.role}
                       label="Role"
-                      name="role"
+                      name="designation"
                       required
                       onChange={handleUserDataOnChange}
                     >
-                      <MenuItem value={"super-admin"}>Super Admin</MenuItem>
-                      <MenuItem value={"operation-manager"}>
-                        Operation Manager
+                      <MenuItem value={"Assistant Manager"}>
+                        Assistant Manager
                       </MenuItem>
-                      <MenuItem value={"costumer-support-officer"}>
-                        Costumer Support Officer
+                      <MenuItem value={"Bank Teller"}>Bank Teller</MenuItem>
+                      <MenuItem value={"Loan Officer"}>Loan Officer</MenuItem>
+                      <MenuItem value={"Relationship Manager"}>
+                        Relationship Manager
+                      </MenuItem>
+                      <MenuItem value={"Financial Advisor"}>
+                        Financial Advisor
+                      </MenuItem>
+                      <MenuItem value={"Credit Analyst"}>
+                        Credit Analyst
+                      </MenuItem>
+                      <MenuItem value={"Risk Manager"}>Risk Manager</MenuItem>
+                      <MenuItem value={"Collections Officer"}>
+                        Collections Officer
                       </MenuItem>
                     </Select>
                   </FormControl>
@@ -167,9 +245,9 @@ const Employees = () => {
                   <TextField
                     id="standard-basic"
                     type="email"
-                    label="Secondary Email*"
+                    label="Email*"
                     variant="standard"
-                    name="secondaryEmail"
+                    name="email"
                     required
                     onChange={handleUserDataOnChange}
                     sx={{ width: "100%" }}
@@ -179,17 +257,14 @@ const Employees = () => {
                     type="number"
                     label="Phone Number*"
                     variant="standard"
-                    name="phone"
+                    name="phoneNumber"
                     required
                     onChange={handleUserDataOnChange}
                     sx={{ width: "100%" }}
                   />
                 </div>
               </div>
-              <p className="mt-4">
-                Manage user,s password, organization unit and profile photo
-                <KeyboardArrowDownIcon />
-              </p>
+              {error && <p className="mt-4 text-red-600">{error}</p>}
             </div>
             <div className="flex gap-2 justify-end my-2">
               <span
@@ -203,10 +278,7 @@ const Employees = () => {
               type="submit"
               value="Add New Employee"
             /> */}
-              <button
-                onClick={handleClick}
-                className="my-btn py-2 px-4 text-white rounded-md"
-              >
+              <button className="my-btn py-2 px-4 text-white rounded-md">
                 {" "}
                 Add New Employee
               </button>
@@ -219,30 +291,15 @@ const Employees = () => {
                 <div>
                   <AccountCircleIcon style={{ fontSize: "100" }} />
                 </div>
-                <h4>User Name : {userData.primaryEmail}@suvatrip.com </h4>
+                <h4>User Name : {userData.username}</h4>
                 {isCopied && (
                   <p className="absolute ml-4 left-2/3 mb-6">Copied</p>
                 )}
                 <p className="flex gap-2 items-center justify-center">
                   <span>Password : </span>{" "}
-                  <span className={hidePassword && "mb-2"} ref={passRef}>
-                    {hidePassword === true ? (
-                      <span className="text-2xl font-bold ">......</span>
-                    ) : (
-                      <span>{temporaryPassword}</span>
-                    )}
-                  </span>{" "}
-                  <button>
-                    {hidePassword === true ? (
-                      <span onClick={() => SetHidePassword(false)}>
-                        <RemoveRedEyeIcon />
-                      </span>
-                    ) : (
-                      <span onClick={() => SetHidePassword(true)}>
-                        <VisibilityOffIcon />
-                      </span>
-                    )}
-                  </button>{" "}
+                  <span ref={passRef}>
+                    <span>{temporaryPassword}</span>
+                  </span>
                   <button className="ml-4" onClick={handleCopy}>
                     {" "}
                     {isCopied ? (

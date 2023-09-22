@@ -27,7 +27,7 @@ const ErrorPage = () => {
                 className="inline-flex items-center px-6 py-3 text-base font-semibold text-white bg-green-500 hover:bg-green-700 rounded-lg transition duration-300"
               >
                 <ArrowCircleLeftIcon className="mr-2" />
-                Go back
+                Go to Home
               </Link>
               <Link to="/contact">
                 <button

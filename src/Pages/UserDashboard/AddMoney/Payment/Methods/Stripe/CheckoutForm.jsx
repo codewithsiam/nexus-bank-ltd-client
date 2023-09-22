@@ -5,8 +5,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { AuthContext } from "../../../../../../providers/AuthProvider";
 import SentimentVerySatisfiedIcon from "@mui/icons-material/SentimentVerySatisfied";
+import { baseUrl } from "../../../../../../config/server";
 
-const CheckoutForm = ({ amount }) => {
+const CheckoutForm = ({ amount, accountNumber, reason }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -22,7 +23,7 @@ const CheckoutForm = ({ amount }) => {
   useEffect(() => {
     if (amount > 0) {
       axios
-        .post(`http://localhost:5000/create-payment-intent`, {
+        .post(`${baseUrl}/create-payment-intent`, {
           amount,
         })
         .then((res) => {
@@ -62,8 +63,7 @@ const CheckoutForm = ({ amount }) => {
         payment_method: {
           card: card,
           billing_details: {
-            name: user?.displayName || "anonymous",
-            email: user?.email || "anonymous",
+            name: user?.username || "anonymous",
           },
         },
       });
@@ -79,17 +79,19 @@ const CheckoutForm = ({ amount }) => {
       setTransactionId(transactionId);
 
       const paymentData = {
-        userName: user?.displayName,
-        userEmail: user?.email,
+        reason,
+        accountNumber,
         transactionId,
         amount,
         date: new Date(),
+        transactionType: "cash in",
+        username: user?.username || "anonymous",
       };
 
       axios
-        .post(`http://localhost:5000/payments`, paymentData)
+        .post(`${baseUrl}/payments`, paymentData)
         .then((res) => {
-          console.log("Payment successful:", res.data.insertedId);
+          // console.log("Payment successful:", res.data.insertedId);
           if (res.data.insertedId) {
             Swal.fire({
               icon: "success",
@@ -97,6 +99,7 @@ const CheckoutForm = ({ amount }) => {
               showConfirmButton: false,
               timer: 2000,
             });
+            setProcessing(false);
             // call a countdown function and redirect to profile
             startCountdown();
           }
@@ -120,7 +123,7 @@ const CheckoutForm = ({ amount }) => {
 
     setTimeout(() => {
       clearInterval(interval);
-      navigate("/dashboard/my-profile", { replace: true });
+      navigate("/dashboard/account-overview", { replace: true });
     }, 10000);
   };
 
@@ -134,7 +137,7 @@ const CheckoutForm = ({ amount }) => {
       )}
 
       <h1 className="text-2xl font-bold mb-4 text-[#004D6E]">
-        Hello, {user?.displayName}!{" "}
+        Hello, {user?.lastname}!{" "}
         <SentimentVerySatisfiedIcon fontSize="large" color="" />
       </h1>
       {!showCountdown && (
@@ -146,14 +149,14 @@ const CheckoutForm = ({ amount }) => {
         <div className="text-center text-gray-600">
           Your payment complete with transaction id :{" "}
           <p className="text-semibold text-[#319cca]">{transactionId}</p> . You
-          will be redirected to{" "}
+          will be redirected to
           <Link
-            to="/dashboard/my-profile"
+            to="/dashboard/account-overview"
             className="text-[#2a7b9e] underline font-semibold"
           >
-            your profile
-          </Link>{" "}
-          in {countdown} {countdown === 1 ? "second" : "seconds"}.
+            account overview {" "}
+          </Link>
+          in - {countdown} {countdown === 1 ? "second" : "seconds"}.
         </div>
       )}
       <form onSubmit={handleSubmit}>
@@ -214,8 +217,6 @@ const CheckoutForm = ({ amount }) => {
       </form>
 
       {cardError && <p className="text-red-600 ml-8 mt-2">{cardError}</p>}
-
-    
     </div>
   );
 };

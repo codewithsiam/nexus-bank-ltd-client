@@ -6,9 +6,9 @@ import Heading from '../../../Components/Title/Heading';
 
 const ContactUs = () => {
     return (
-        <div className='pb-36 my-16'>
+        <div className='my-5 md:my-10'>
             <div className="container mx-auto">
-                <div className='shadow p-5 py-10 rounded'>
+                <div className='shadow p-5 rounded'>
                     <div>
                         <Heading
                         heading={"Get in touch"}
